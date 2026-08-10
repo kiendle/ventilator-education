@@ -38,7 +38,7 @@ export function BottomNav({ items = defaultNavItems, activeId, onNavigate }: Bot
   return (
     <nav
       aria-label="Primary"
-      className="mx-auto w-fit max-w-full rounded-[var(--radius-capsule)] bg-ember-100 px-2 py-1.5 shadow-[var(--shadow-panel)]"
+      className="mx-auto w-fit max-w-full rounded-[var(--radius-capsule)] border-2 border-ember-200 bg-pastel-cream px-2 py-1.5 shadow-[0_5px_0_#d87b01,0_12px_24px_rgb(2_13_24_/_0.2)]"
     >
       <ul className="flex items-center gap-1">
         {items.map((item) => {
@@ -54,7 +54,7 @@ export function BottomNav({ items = defaultNavItems, activeId, onNavigate }: Bot
                   onNavigate?.(item.id);
                 }}
                 className={`flex flex-col items-center gap-0.5 rounded-[var(--radius-capsule)] px-3.5 py-1.5 font-mono text-[9px] font-bold lowercase ${
-                  isActive ? "bg-ember-300 text-hull-900" : "bg-solar-300/60 text-hull-900 hover:bg-solar-300"
+                  isActive ? "bg-pastel-peach text-space-900" : "bg-pastel-mint/70 text-space-900 hover:bg-pastel-mint"
                 }`}
               >
                 <Icon className="size-4" />

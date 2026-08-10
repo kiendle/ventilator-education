@@ -1,34 +1,13 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-/*
- * GAMER-ICU design tokens — grounded in Figma "Ventilator Education App"
- * (Sections: Shared Components 59:16, System 59:40, Dashboard 59:13 / 193:656,
- * home frame "iPhone 17 - 11" 193:661, home frame 236:356).
- *
- * Palette evidence:
- *  - Planet map background ........ #00253F (deep space navy, sampled from asset)
- *  - Island terrain orange ........ #ED7923 / path gold #F1C049 (sampled)
- *  - Button face / underside ...... #FF7400 on #A74C00 (button component 236:334)
- *  - Activity card face / edge .... #FD9610 on #D87B01 (cards 206:69-71, 206:85)
- *  - Bottom-nav capsule ........... #FFEAB8 / tabs #FFD87D, active #FFB14B (321:117)
- *  - Nav labels / accents ......... #FD9610 (Cascadia Mono Bold)
- *  - HUD panel gradient ........... #1E293B -> #0F172A, border #334155 (193:692)
- *  - Avatar gradient .............. #818CF8 -> #4F46E5 (193:693)
- *  - Feedback FAB gradient ........ #6366F1 -> #4338CA (193:707)
- *  - Streak text .................. #FDBA74 (193:700) / warm #FFAF6D (home 193:661)
- *  - Badge icon tiles ............. #FFCC00 quiz / #FB6F6F video (206:69, 206:70)
- *  - Home neutrals ................ #F8F8F8, #CCCCCC, #B5B0B0, #676666, ink #1E1E1E/#1D1B20
- */
-
+/* GAMER-ICU tokens sampled from the Figma design and exported planet artwork. */
 @theme {
-  /* Surfaces — dark space ambience */
   --color-space-950: #020d18;
   --color-space-900: #00253f;
   --color-space-800: #0f172a;
   --color-space-700: #1e293b;
   --color-space-600: #334155;
 
-  /* Ember oranges — primary action / island terrain */
   --color-ember-700: #a74c00;
   --color-ember-600: #d87b01;
   --color-ember-500: #ff7400;
@@ -37,25 +16,23 @@
   --color-ember-200: #fed59f;
   --color-ember-100: #ffeab8;
 
-  /* Solar yellows — streaks, badges, highlights */
   --color-solar-500: #ffcc00;
   --color-solar-400: #f1c049;
   --color-solar-300: #ffd87d;
   --color-solar-200: #fdba74;
 
-  /* Nebula indigo/purple — HUD, avatar, feedback */
   --color-nebula-600: #4338ca;
   --color-nebula-500: #4f46e5;
   --color-nebula-400: #6366f1;
   --color-nebula-300: #818cf8;
   --color-nebula-200: #a5b4fc;
 
-  /* Signal colors */
+  --color-aqua-400: #5fe1da;
+  --color-aqua-300: #8ff4ee;
   --color-signal-danger: #fb6f6f;
   --color-signal-success: #4ade80;
   --color-signal-info: #38bdf8;
 
-  /* Neutrals — visible home-frame values (193:661) */
   --color-hull-50: #f8f8f8;
   --color-hull-100: #f1f5f9;
   --color-hull-200: #e6e6e6;
@@ -67,98 +44,393 @@
   --color-hull-700: #89738a;
   --color-hull-900: #1e1e1e;
   --color-ink: #1d1b20;
-
-  /* Warm highlight visible on the home frame (#FFAF6D) — streaks/glow */
   --color-warm: #ffaf6d;
 
-  /* Semantic aliases */
-  --color-background: var(--color-space-900);
-  --color-foreground: var(--color-hull-100);
-  --color-primary: var(--color-ember-500);
-  --color-accent: var(--color-solar-500);
+  --color-pastel-cream: #fff6df;
+  --color-pastel-peach: #ffb171;
+  --color-pastel-mint: #bdebdc;
+  --color-pastel-sky: #c5e8f0;
+  --color-pastel-lilac: #ddd2f2;
 
-  /* Typography — Cascadia Mono (Figma) maps to the mono stack;
-   * Instrument Sans / Inter map to the sans stack. Weights seen: 400-800. */
-  --font-sans: var(--font-geist-sans), "Instrument Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), "Cascadia Mono", ui-monospace, monospace;
+  --font-sans: var(--font-geist-sans), 'Instrument Sans', system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), 'Cascadia Mono', ui-monospace, monospace;
 
-  /* Radii — measured from Figma nodes */
-  --radius-chip: 7px; /* PEEP points chip 193:702 */
-  --radius-icon: 10px; /* badge icon tile, avatar */
-  --radius-button: 12px; /* button component 236:334 */
-  --radius-panel: 14px; /* HUD container 193:692 */
-  --radius-card: 16px; /* activity cards 206:69 */
-  --radius-capsule: 60px; /* bottom-nav capsule 320:106 */
+  --radius-chip: 7px;
+  --radius-icon: 10px;
+  --radius-button: 12px;
+  --radius-panel: 14px;
+  --radius-card: 16px;
+  --radius-capsule: 60px;
 
-  /* Raised retro shadow: face floats over a darker "underside" block */
-  --shadow-raise-ember: 0 4px 0 0 var(--color-ember-700);
-  --shadow-raise-card: 0 4px 0 0 var(--color-ember-600);
-  --shadow-panel: 0 8px 24px rgb(2 13 24 / 0.55);
-  --shadow-fab: 0 6px 16px rgb(99 102 241 / 0.45);
-
-  /* Spacing rhythm observed across the 375-402px frames */
-  --spacing-gutter: 1.25rem; /* 20px side gutters */
-  --spacing-section: 1.5rem; /* 24px between sections */
-
-  /* Focus ring — strong, visible on dark space backgrounds */
-  --color-focus: var(--color-solar-500);
+  --shadow-raise-ember: 0 4px 0 #a74c00;
+  --shadow-raise-card: 0 4px 0 #d87b01;
+  --shadow-panel: 0 8px 24px rgb(2 13 24 / 0.28);
+  --shadow-fab: 0 10px 28px rgb(67 56 202 / 0.4);
 }
-
-/* ---- Global foundations ---- */
 
 html {
   color-scheme: dark;
+  background: var(--color-space-950);
 }
 
 body {
-  background:
-    radial-gradient(1200px 600px at 80% -10%, rgb(129 140 248 / 0.12), transparent 60%),
-    var(--color-background);
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-space-950);
+  color: var(--color-hull-100);
   font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
-/* Strong, consistent focus state for keyboard users */
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
-  border-radius: var(--radius-chip);
+  outline: 2px solid var(--color-solar-300);
+  outline-offset: 3px;
 }
 
-/* Respect reduced-motion: kill animation & smooth scrolling */
+.raise {
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    background-color 120ms ease;
+}
+
+.raise:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgb(2 13 24 / 0.55);
+}
+
+@keyframes page-slide {
+  0% {
+    transform: translateX(var(--page-slide-from));
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  78% {
+    transform: translateX(var(--page-slide-overshoot));
+    animation-timing-function: ease-out;
+  }
+  91% {
+    transform: translateX(var(--page-slide-rebound));
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.page-slide-forward,
+.page-slide-back {
+  animation: page-slide 320ms both;
+}
+
+.page-slide-forward {
+  --page-slide-from: 100%;
+  --page-slide-overshoot: -1.5%;
+  --page-slide-rebound: 0.4%;
+}
+
+.page-slide-back {
+  --page-slide-from: -100%;
+  --page-slide-overshoot: 1.5%;
+  --page-slide-rebound: -0.4%;
+}
+
+@keyframes mission-crawl {
+  0% {
+    opacity: 0;
+    transform: rotateX(24deg) translateY(105%) scale(1.18);
+  }
+  6%,
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotateX(25deg) translateY(-155%) scale(0.58);
+  }
+}
+
+.mission-crawl-stage {
+  position: relative;
+  height: 32rem;
+  overflow: hidden;
+  perspective: 480px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.mission-crawl {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 82%;
+  margin-inline: auto;
+  color: var(--color-solar-300);
+  font-size: 1rem;
+  line-height: 1.65;
+  text-align: justify;
+  transform-origin: 50% 100%;
+  animation: mission-crawl 32s linear both;
+  will-change: transform, opacity;
+}
+
+.mission-crawl > p:first-child,
+.mission-crawl > p:last-child,
+.mission-crawl h2 {
+  text-align: center;
+}
+
+@keyframes welcome-bubble-in {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.78);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes welcome-astronaut-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) rotate(5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.welcome-bubble {
+  position: relative;
+  max-width: 19rem;
+  border: 3px solid var(--color-ember-200);
+  border-radius: 1.25rem;
+  background: #fff8ed;
+  padding: 1rem 1.35rem;
+  color: var(--color-space-900);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-align: center;
+  box-shadow: 0 8px 0 rgb(2 13 24 / 0.16);
+  animation: welcome-bubble-in 560ms cubic-bezier(0.34, 1.56, 0.64, 1) 320ms both;
+}
+
+.welcome-bubble::after {
+  position: absolute;
+  bottom: -0.7rem;
+  left: calc(50% - 0.65rem);
+  width: 1.3rem;
+  height: 1.3rem;
+  border-right: 3px solid var(--color-ember-200);
+  border-bottom: 3px solid var(--color-ember-200);
+  background: #fff8ed;
+  content: '';
+  transform: rotate(45deg);
+}
+
+.welcome-astronaut {
+  animation: welcome-astronaut-in 680ms ease-out both;
+}
+
+.pastel-card .text-white,
+.pastel-card .text-hull-100 {
+  color: var(--color-space-950);
+}
+
+.pastel-card .text-hull-200,
+.pastel-card .text-hull-300 {
+  color: var(--color-space-700);
+}
+
+.pastel-card .text-hull-400 {
+  color: var(--color-space-600);
+}
+
+.pastel-card .border-space-600 {
+  border-color: var(--color-ember-200);
+}
+
+.pastel-card .bg-space-950\/50,
+.pastel-card .bg-space-950\/60,
+.pastel-card .bg-space-950\/70 {
+  background-color: rgb(255 255 255 / 0.58);
+}
+
+.pastel-card .bg-space-800 {
+  background-color: var(--color-pastel-cream);
+}
+
+.dashboard-map-view {
+  opacity: 1;
+  scale: 1;
+  transition:
+    opacity 260ms ease,
+    scale 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dashboard-list-view {
+  opacity: 1;
+  translate: 0;
+  scale: 1;
+  transition:
+    opacity 260ms ease,
+    translate 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dashboard-map-view[data-active='false'] {
+  pointer-events: none;
+  opacity: 0;
+  scale: 0.97;
+}
+
+.dashboard-list-view[data-active='false'] {
+  pointer-events: none;
+  opacity: 0;
+  translate: 0 1.75rem;
+  scale: 0.97;
+}
+
+@keyframes completion-check-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.45) rotate(-14deg);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.12) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes completion-orbit-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7) rotate(-35deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes completion-spark {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.72) rotate(-8deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(8deg);
+  }
+}
+
+@keyframes completion-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.completion-mark {
+  position: relative;
+  display: grid;
+  width: 7.5rem;
+  height: 7.5rem;
+  place-items: center;
+}
+
+.completion-orbit {
+  position: absolute;
+  inset: 0;
+  border: 3px dashed var(--color-ember-400);
+  border-radius: 999px;
+  background: radial-gradient(circle, var(--color-pastel-mint) 0 53%, transparent 54%);
+  animation: completion-orbit-in 520ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.completion-check {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 5rem;
+  height: 5rem;
+  place-items: center;
+  border: 4px solid var(--color-pastel-mint);
+  border-radius: 999px;
+  background: var(--color-space-900);
+  color: var(--color-pastel-cream);
+  box-shadow:
+    0 6px 0 var(--color-ember-600),
+    0 12px 20px rgb(2 13 24 / 0.22);
+  animation: completion-check-in 560ms cubic-bezier(0.34, 1.56, 0.64, 1) 120ms both;
+}
+
+.completion-spark {
+  position: absolute;
+  z-index: 2;
+  color: var(--color-ember-500);
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1;
+  animation: completion-spark 600ms ease-out 360ms both;
+}
+
+.completion-spark-one {
+  top: 0.15rem;
+  right: 0.2rem;
+}
+
+.completion-spark-two {
+  bottom: 0.5rem;
+  left: -0.1rem;
+  animation-delay: 420ms;
+}
+
+.completion-spark-three {
+  top: 1.3rem;
+  left: -0.35rem;
+  color: var(--color-nebula-400);
+  animation-delay: 480ms;
+}
+
+.completion-copy,
+.completion-reward,
+.completion-progress,
+.completion-actions {
+  animation: completion-copy-in 180ms ease-out 340ms both;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
-}
 
-/* Raised controls settle when pressed (Figma Press variant 236:335) */
-@media (prefers-reduced-motion: no-preference) {
-  .raise {
-    transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
-  }
-  .raise:active {
-    transform: translateY(3px);
-    box-shadow: 0 1px 0 0 var(--color-ember-700) !important;
-  }
-}
-
-/* Subtle starfield twinkle used behind the dashboard */
-@keyframes twinkle {
-  0%, 100% { opacity: 0.25; }
-  50% { opacity: 0.9; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .twinkle {
+  .mission-crawl {
     animation: none;
+    transform: none;
   }
 }

@@ -2,6 +2,7 @@ import {
   EXPECTED_SOURCE_FORMAT_COUNTS,
   ISLAND_IDS,
   ROSTER_ACTIVITY_IDS,
+  ROSTER_DESCRIPTORS,
   type ActivityType,
   type CurriculumDatabase,
   type SourceFormat,
@@ -28,7 +29,7 @@ const CONTENT_STATUSES = new Set(['ready', 'needs_review', 'unavailable'])
 const CONFLICT_STATUSES = new Set(['needs_review', 'accepted', 'resolved', 'unavailable'])
 const CONFLICT_SCOPES = new Set(['source', 'activity', 'island', 'totals', 'mapping', 'content'])
 
-const isRecord = (value: unknown): value is Record<string, any> =>
+const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value)
 const isFiniteNumber = (value: unknown): value is number =>
   typeof value === 'number' && Number.isFinite(value)
@@ -42,7 +43,7 @@ const isSha256 = (value: unknown): value is string =>
   typeof value === 'string' && /^[0-9a-f]{64}$/i.test(value)
 const isExplicitlyNonReady = (status: unknown): boolean =>
   typeof status === 'string' && EXTRACTION_STATUSES.has(status) && status !== 'ready' && status !== 'ok'
-const hasOwn = (value: Record<string, any>, key: string): boolean =>
+const hasOwn = (value: Record<string, unknown>, key: string): boolean =>
   Object.prototype.hasOwnProperty.call(value, key)
 
 function sourceFormat(kind: unknown, relativePath: unknown): SourceFormat | null {
@@ -72,8 +73,10 @@ function checkLocator(locator: unknown, context: string, errors: string[]): void
       if (!isPositiveInteger(locator[locator.kind])) errors.push(`${context}.${locator.kind} must be a positive integer`)
       return
     case 'time':
-      if (!isFiniteNumber(locator.startSeconds) || locator.startSeconds < 0) errors.push(`${context}.startSeconds must be nonnegative`)
-      if (locator.endSeconds !== undefined && (!isFiniteNumber(locator.endSeconds) || locator.endSeconds < (locator.startSeconds ?? 0))) {
+      const startSeconds = locator.startSeconds
+      if (!isFiniteNumber(startSeconds) || startSeconds < 0) errors.push(`${context}.startSeconds must be nonnegative`)
+      const endSeconds = locator.endSeconds
+      if (endSeconds !== undefined && (!isFiniteNumber(endSeconds) || (isFiniteNumber(startSeconds) && endSeconds < startSeconds))) {
         errors.push(`${context}.endSeconds must be at least startSeconds`)
       }
       return
@@ -85,7 +88,7 @@ function checkLocator(locator: unknown, context: string, errors: string[]): void
 function checkMediaReference(
   value: unknown,
   context: string,
-  assets: Map<string, Record<string, any>>,
+  assets: Map<string, Record<string, unknown>>,
   sourceIds: Set<string>,
   contentStatus: unknown,
   errors: string[],
@@ -123,7 +126,7 @@ function checkMediaReference(
 function checkSourceReferences(
   value: unknown,
   context: string,
-  sourceById: Map<string, Record<string, any>>,
+  sourceById: Map<string, Record<string, unknown>>,
   errors: string[],
 ): void {
   if (!Array.isArray(value) || value.length === 0) {
@@ -148,19 +151,19 @@ function checkSourceReferences(
   })
 }
 
-function checkReview(value: unknown, context: string, sourceById: Map<string, Record<string, any>>, errors: string[]): void {
+function checkReview(value: unknown, context: string, sourceById: Map<string, Record<string, unknown>>, errors: string[]): void {
   if (isRecord(value) && value.sourceReferences !== undefined) checkSourceReferences(value.sourceReferences, `${context}.sourceReferences`, sourceById, errors)
 }
 
 function checkActivityPayload(
-  activity: Record<string, any>,
+  activity: Record<string, unknown>,
   context: string,
-  assets: Map<string, Record<string, any>>,
+  assets: Map<string, Record<string, unknown>>,
   sourceIds: Set<string>,
-  sourceById: Map<string, Record<string, any>>,
+  sourceById: Map<string, Record<string, unknown>>,
   errors: string[],
 ): void {
-  const type = activity.type as ActivityType
+  const type = activity.type
   const status = activity.contentStatus
   const content = activity.content
   if (type === 'pending') {
@@ -168,7 +171,8 @@ function checkActivityPayload(
     if (content !== null) errors.push(`${context}.content must be null for pending`)
     return
   }
-  if (!CONTENT_STATUSES.has(status)) errors.push(`${context}.contentStatus is invalid`)
+  if (typeof status !== 'string' || !CONTENT_STATUSES.has(status)) errors.push(`${context}.contentStatus is invalid`)
+  if (content === null && status === 'unavailable') return
   if (status === 'ready' && !isRecord(content)) errors.push(`${context}.ready content must be present`)
   if (!isRecord(content)) {
     errors.push(`${context}.content must be an object or null`)
@@ -203,7 +207,8 @@ function checkActivityPayload(
             else choiceIds.add(choice.id)
           })
         }
-        if (!isRecord(question.answer) || !choiceIds.has(question.answer.correctChoiceId)) errors.push(`${context}.confirmationQuestion.answer must name a listed choice`)
+        const answer = question.answer
+        if (!isRecord(answer) || !isNonemptyString(answer.correctChoiceId) || !choiceIds.has(answer.correctChoiceId)) errors.push(`${context}.confirmationQuestion.answer must name a listed choice`)
         checkReview(question.review, `${context}.confirmationQuestion.review`, sourceById, errors)
       }
       break
@@ -214,14 +219,19 @@ function checkActivityPayload(
         errors.push(`${context}.content.questions must be nonempty`)
         break
       }
-      content.questions.forEach((question: any, index: number) => {
+      content.questions.forEach((question: unknown, index: number) => {
         const qContext = `${context}.content.questions[${index}]`
-        if (!isRecord(question) || !['mcq', 'drag_drop', 'matching', 'fill_blank'].includes(question.interaction)) {
+        if (!isRecord(question)) {
+          errors.push(`${qContext}.interaction is invalid`)
+          return
+        }
+        if (typeof question.interaction !== 'string' || !['mcq', 'drag_drop', 'matching', 'fill_blank'].includes(question.interaction)) {
           errors.push(`${qContext}.interaction is invalid`)
           return
         }
         if (!isNonemptyString(question.prompt)) errors.push(`${qContext}.prompt must be nonempty`)
         if (!Array.isArray(question.choices)) errors.push(`${qContext}.choices must be an array`)
+        else if (question.interaction === 'drag_drop' && question.choices.length === 0) errors.push(`${qContext}.choices must be nonempty`)
         const choiceIds = new Set<string>()
         if (Array.isArray(question.choices)) {
           question.choices.forEach((choice: unknown, choiceIndex: number) => {
@@ -231,19 +241,45 @@ function checkActivityPayload(
             if (isRecord(choice) && choice.media) checkMediaReference(choice.media, `${qContext}.choices[${choiceIndex}].media`, assets, sourceIds, status, errors)
           })
         }
+        const targetIds = new Set<string>()
+        if (question.interaction === 'drag_drop') {
+          if (!Array.isArray(question.targets) || question.targets.length === 0) errors.push(`${qContext}.targets must be nonempty`)
+          if (Array.isArray(question.targets)) {
+            question.targets.forEach((target: unknown, targetIndex: number) => {
+              if (!isRecord(target) || !isNonemptyString(target.id)) errors.push(`${qContext}.targets[${targetIndex}].id is required`)
+              else if (targetIds.has(target.id)) errors.push(`${qContext} has duplicate target ${target.id}`)
+              else targetIds.add(target.id)
+              if (isRecord(target) && target.media) checkMediaReference(target.media, `${qContext}.targets[${targetIndex}].media`, assets, sourceIds, status, errors)
+            })
+          }
+        }
         if (question.promptMedia) checkMediaReference(question.promptMedia, `${qContext}.promptMedia`, assets, sourceIds, status, errors)
         const answer = question.answer
         if (!isRecord(answer) || answer.interaction !== question.interaction) errors.push(`${qContext}.answer.interaction must match question interaction`)
-        else if (question.interaction === 'mcq' && !choiceIds.has(answer.correctChoiceId)) errors.push(`${qContext}.answer.correctChoiceId must name a listed choice`)
+        else if (question.interaction === 'mcq' && (!isNonemptyString(answer.correctChoiceId) || !choiceIds.has(answer.correctChoiceId))) errors.push(`${qContext}.answer.correctChoiceId must name a listed choice`)
         else if (question.interaction === 'matching') {
           if (!Array.isArray(answer.pairs) || answer.pairs.length === 0) errors.push(`${qContext}.answer.pairs must be nonempty`)
           if (Array.isArray(answer.pairs)) {
             answer.pairs.forEach((pair: unknown) => {
-              if (!isRecord(pair) || !choiceIds.has(pair.leftChoiceId) || !choiceIds.has(pair.rightChoiceId)) errors.push(`${qContext}.answer.pairs must use listed choices`)
+              if (!isRecord(pair) || !isNonemptyString(pair.leftChoiceId) || !choiceIds.has(pair.leftChoiceId) || !isNonemptyString(pair.rightChoiceId) || !choiceIds.has(pair.rightChoiceId)) errors.push(`${qContext}.answer.pairs must use listed choices`)
             })
           }
         } else if (question.interaction === 'fill_blank' && (!Array.isArray(answer.acceptedAnswers) || answer.acceptedAnswers.length === 0)) errors.push(`${qContext}.answer.acceptedAnswers must be nonempty`)
-        else if (question.interaction === 'drag_drop' && !isRecord(answer.placements)) errors.push(`${qContext}.answer.placements must be an object`)
+        else if (question.interaction === 'drag_drop') {
+          if (!isRecord(answer.placements)) errors.push(`${qContext}.answer.placements must be an object`)
+          else {
+            const placements: Record<string, unknown> = answer.placements
+            const placementEntries = Object.entries(placements)
+            if (placementEntries.length === 0) errors.push(`${qContext}.answer.placements must be nonempty`)
+            placementEntries.forEach(([choiceId, targetId]) => {
+              if (!choiceIds.has(choiceId)) errors.push(`${qContext}.answer.placements has undeclared choice ${choiceId}`)
+              if (!isNonemptyString(targetId) || !targetIds.has(targetId)) errors.push(`${qContext}.answer.placements has undeclared target ${String(targetId)}`)
+            })
+            choiceIds.forEach((choiceId) => {
+              if (!hasOwn(placements, choiceId)) errors.push(`${qContext}.answer.placements is missing choice ${choiceId}`)
+            })
+          }
+        }
         checkReview(question.review, qContext, sourceById, errors)
       })
       break
@@ -261,24 +297,27 @@ function checkActivityPayload(
           else ids.add(decision.id)
         })
         decisions.forEach((decision: unknown) => {
-          if (isRecord(decision) && decision.nextId !== undefined && !ids.has(decision.nextId)) errors.push(`${context}.decisions.nextId is unknown`)
+          if (isRecord(decision) && decision.nextId !== undefined && (!isNonemptyString(decision.nextId) || !ids.has(decision.nextId))) errors.push(`${context}.decisions.nextId is unknown`)
         })
       }
       if (isRecord(content.sbar) && !isNonemptyString(content.sbar.prompt)) errors.push(`${context}.sbar.prompt must be nonempty`)
-      if (content.answer?.acceptedDecisionIds !== undefined && !Array.isArray(content.answer.acceptedDecisionIds)) {
+      const answer = isRecord(content.answer) ? content.answer : undefined
+      const acceptedDecisionIds = answer?.acceptedDecisionIds
+      if (acceptedDecisionIds !== undefined && !Array.isArray(acceptedDecisionIds)) {
         errors.push(`${context}.answer.acceptedDecisionIds must be an array`)
-      } else if (Array.isArray(content.answer?.acceptedDecisionIds)) {
-        content.answer.acceptedDecisionIds.forEach((id: unknown) => {
-          if (!ids.has(id as string)) errors.push(`${context}.answer names an unknown decision`)
+      } else if (Array.isArray(acceptedDecisionIds)) {
+        acceptedDecisionIds.forEach((id: unknown) => {
+          if (!isNonemptyString(id) || !ids.has(id)) errors.push(`${context}.answer names an unknown decision`)
         })
       }
-      checkReview(content.sbar?.review, `${context}.sbar.review`, sourceById, errors)
+      const sbar = isRecord(content.sbar) ? content.sbar : undefined
+      checkReview(sbar?.review, `${context}.sbar.review`, sourceById, errors)
       break
     }
     case 'quest': {
       requireFields(['instructions', 'supervisorRole', 'offlineValidation'])
       if (content.repeatCount !== undefined && !isPositiveInteger(content.repeatCount)) errors.push(`${context}.content.repeatCount must be positive`)
-      if (isRecord(content.offlineValidation) && !['supervisor_confirmation', 'checklist', 'local_attestation', 'other'].includes(content.offlineValidation.method)) errors.push(`${context}.offlineValidation.method is invalid`)
+      if (isRecord(content.offlineValidation) && (typeof content.offlineValidation.method !== 'string' || !['supervisor_confirmation', 'checklist', 'local_attestation', 'other'].includes(content.offlineValidation.method))) errors.push(`${context}.offlineValidation.method is invalid`)
       checkReview(content.review, `${context}.review`, sourceById, errors)
       break
     }
@@ -313,16 +352,16 @@ function checkConflict(value: unknown, context: string, sourceIds: Set<string>, 
     return
   }
   if (!isNonemptyString(value.conflictId)) errors.push(`${context}.conflictId must be nonempty`)
-  if (!CONFLICT_SCOPES.has(value.scope)) errors.push(`${context}.scope is invalid`)
-  if (!CONFLICT_STATUSES.has(value.status)) errors.push(`${context}.status is invalid`)
+  if (typeof value.scope !== 'string' || !CONFLICT_SCOPES.has(value.scope)) errors.push(`${context}.scope is invalid`)
+  if (typeof value.status !== 'string' || !CONFLICT_STATUSES.has(value.status)) errors.push(`${context}.status is invalid`)
   if (!isNonemptyString(value.message)) errors.push(`${context}.message must be nonempty`)
   if (!Array.isArray(value.sourceIds)) errors.push(`${context}.sourceIds must be an array`)
   else value.sourceIds.forEach((id: unknown) => {
-    if (!sourceIds.has(id as string)) errors.push(`${context}.sourceIds contains unknown source ${String(id)}`)
+    if (!isNonemptyString(id) || !sourceIds.has(id)) errors.push(`${context}.sourceIds contains unknown source ${String(id)}`)
   })
   if (value.activityIds !== undefined && !Array.isArray(value.activityIds)) errors.push(`${context}.activityIds must be an array`)
   else if (Array.isArray(value.activityIds)) value.activityIds.forEach((id: unknown) => {
-    if (!activityIds.has(id as string)) errors.push(`${context}.activityIds contains unknown activity ${String(id)}`)
+    if (!isNonemptyString(id) || !activityIds.has(id)) errors.push(`${context}.activityIds contains unknown activity ${String(id)}`)
   })
 }
 
@@ -338,11 +377,11 @@ function checkPath(path: unknown, context: string, errors: string[]): void {
 
 export function validateCurriculumDatabase(database: CurriculumDatabase): string[] {
   const errors: string[] = []
-  const value = database as unknown as Record<string, any>
+  const value = database as unknown as Record<string, unknown>
   if (!isRecord(value)) return ['database must be an object']
 
   const sources = value.sources
-  const sourceById = new Map<string, Record<string, any>>()
+  const sourceById = new Map<string, Record<string, unknown>>()
   const sourcePaths = new Set<string>()
   const sourceFormats: Record<SourceFormat, number> = { docx: 0, pptx: 0, pdf: 0, png: 0, video: 0, audio: 0 }
   if (!Array.isArray(sources)) errors.push('database.sources must be an array')
@@ -362,15 +401,15 @@ export function validateCurriculumDatabase(database: CurriculumDatabase): string
         if (sourcePaths.has(source.relativePath)) errors.push(`${context}.relativePath is duplicated`)
         sourcePaths.add(source.relativePath)
       }
-      if (!SOURCE_KINDS.includes(source.kind)) errors.push(`${context}.kind is invalid`)
+      if (typeof source.kind !== 'string' || !SOURCE_KINDS.includes(source.kind as SourceKind)) errors.push(`${context}.kind is invalid`)
       const format = sourceFormat(source.kind, source.relativePath)
       if (format) sourceFormats[format] += 1
       else errors.push(`${context} has no supported source format`)
-      if (source.islandId !== null && !ISLAND_IDS.includes(source.islandId)) errors.push(`${context}.islandId is invalid`)
+      if (source.islandId !== null && (typeof source.islandId !== 'string' || !ISLAND_IDS.includes(source.islandId as (typeof ISLAND_IDS)[number]))) errors.push(`${context}.islandId is invalid`)
       if (source.byteSize !== null && !isNonnegativeInteger(source.byteSize)) errors.push(`${context}.byteSize must be nonnegative or null`)
       if (source.sha256 !== null && !isNonemptyString(source.sha256)) errors.push(`${context}.sha256 must be nonempty or null`)
       const status = source.extractionStatus ?? source.status
-      if (!EXTRACTION_STATUSES.has(status)) errors.push(`${context} must include a valid extraction status`)
+      if (typeof status !== 'string' || !EXTRACTION_STATUSES.has(status)) errors.push(`${context} must include a valid extraction status`)
       if (source.media !== undefined && !Array.isArray(source.media)) errors.push(`${context}.media must be an array`)
       else if (Array.isArray(source.media)) source.media.forEach((media: unknown, mediaIndex: number) => {
         if (isRecord(media) && media.sourceId && media.sourceId !== source.sourceId) errors.push(`${context}.media[${mediaIndex}].sourceId does not match source`)
@@ -380,9 +419,10 @@ export function validateCurriculumDatabase(database: CurriculumDatabase): string
       if (sourceFormats[format] !== EXPECTED_SOURCE_FORMAT_COUNTS[format]) errors.push(`source format ${format} must have ${EXPECTED_SOURCE_FORMAT_COUNTS[format]} records (got ${sourceFormats[format]})`)
     })
   }
+  const sourceIds = new Set(sourceById.keys())
 
   const mediaAssets = value.mediaAssets
-  const assets = new Map<string, Record<string, any>>()
+  const assets = new Map<string, Record<string, unknown>>()
   if (!Array.isArray(mediaAssets)) errors.push('database.mediaAssets must be an array')
   else mediaAssets.forEach((asset: unknown, index: number) => {
     const context = `mediaAssets[${index}]`
@@ -398,7 +438,8 @@ export function validateCurriculumDatabase(database: CurriculumDatabase): string
     } else if (!isSha256(asset.sha256)) {
       errors.push(`${context}.sha256 must be a valid SHA-256 digest`)
     }
-    if (asset.sourceId && !sourceById.has(asset.sourceId)) errors.push(`${context}.sourceId is unknown`)
+    const assetSourceId = asset.sourceId
+    if (assetSourceId && (!isNonemptyString(assetSourceId) || !sourceById.has(assetSourceId))) errors.push(`${context}.sourceId is unknown`)
     if (isNonemptyString(asset.sourceId) && asset.relativePath !== undefined && asset.relativePath !== null) {
       const source = sourceById.get(asset.sourceId)
       if (source && asset.relativePath !== source.relativePath) errors.push(`${context}.relativePath does not match its source record`)
@@ -415,6 +456,7 @@ export function validateCurriculumDatabase(database: CurriculumDatabase): string
       const context = `islands[${index}]`
       const expectedId = ISLAND_IDS[index]
       const expectedActivityIds = expectedId === undefined ? undefined : ROSTER_ACTIVITY_IDS[expectedId]
+      const expectedDescriptors = expectedId === undefined ? undefined : ROSTER_DESCRIPTORS[expectedId]
       if (!isRecord(island)) {
         errors.push(`${context} must be an object`)
         return
@@ -443,14 +485,31 @@ export function validateCurriculumDatabase(database: CurriculumDatabase): string
             if (sequence !== activityIndex + 1) errors.push(`${activityContext}.sequence must be contiguous starting at 1`)
           }
           if (activity.islandId !== island.id) errors.push(`${activityContext}.islandId does not match its island`)
-          if (!ACTIVITY_TYPES.includes(activity.type)) errors.push(`${activityContext}.type is invalid`)
+          if (typeof activity.type !== 'string' || !ACTIVITY_TYPES.includes(activity.type as ActivityType)) errors.push(`${activityContext}.type is invalid`)
           if (!isNonemptyString(activity.activityId)) errors.push(`${activityContext}.activityId must be nonempty`)
           else if (activityIds.has(activity.activityId)) errors.push(`${activityContext}.activityId is duplicated`)
           else activityIds.add(activity.activityId)
           if (expectedActivityIds && activityIndex < expectedActivityIds.length) {
-            const expectedActivityId = expectedActivityIds[activityIndex]
-            if (activity.activityId !== expectedActivityId) {
-              errors.push(`${activityContext}.activityId must be ${expectedActivityId}`)
+            const expectedDescriptor = expectedDescriptors?.[activityIndex]
+            if (expectedDescriptor) {
+              if (activity.activityId !== expectedDescriptor.activityId) {
+                errors.push(`${activityContext}.activityId must be ${expectedDescriptor.activityId}`)
+              }
+              if (activity.title !== expectedDescriptor.title) {
+                errors.push(`${activityContext}.title must be ${expectedDescriptor.title}`)
+              }
+              if (activity.type !== expectedDescriptor.type) {
+                errors.push(`${activityContext}.type must be ${expectedDescriptor.type}`)
+              }
+              if (activity.estimatedMinutes !== expectedDescriptor.estimatedMinutes) {
+                errors.push(`${activityContext}.estimatedMinutes must be ${expectedDescriptor.estimatedMinutes}`)
+              }
+              if (activity.peepPointsValue !== expectedDescriptor.peepPointsValue) {
+                errors.push(`${activityContext}.peepPointsValue must be ${expectedDescriptor.peepPointsValue}`)
+              }
+              if (activity.countsTowardProgress !== expectedDescriptor.countsTowardProgress) {
+                errors.push(`${activityContext}.countsTowardProgress must be ${expectedDescriptor.countsTowardProgress}`)
+              }
             }
             if (activityIndex === expectedActivityIds.length - 1) {
               if (activity.type !== 'quiz') errors.push(`${activityContext}.type must be quiz for the final exam`)
@@ -466,7 +525,7 @@ export function validateCurriculumDatabase(database: CurriculumDatabase): string
           if (typeof activity.countsTowardProgress !== 'boolean') errors.push(`${activityContext}.countsTowardProgress must be boolean`)
           if (activity.repeatCount !== undefined && !isPositiveInteger(activity.repeatCount)) errors.push(`${activityContext}.repeatCount must be a positive integer`)
           checkSourceReferences(activity.provenance, `${activityContext}.provenance`, sourceById, errors)
-          checkActivityPayload(activity, activityContext, assets, new Set(sourceById.keys()), sourceById, errors)
+          checkActivityPayload(activity, activityContext, assets, sourceIds, sourceById, errors)
         })
       }
       if (!Array.isArray(island.conflicts)) errors.push(`${context}.conflicts must be an array`)
@@ -476,12 +535,12 @@ export function validateCurriculumDatabase(database: CurriculumDatabase): string
 
   if (!Array.isArray(value.conflicts)) errors.push('database.conflicts must be an array')
   else allConflicts.push(...value.conflicts)
-  const conflictIds = new Set<string>()
+  const conflictIds = new Set<unknown>()
   allConflicts.forEach((conflict, index) => {
     const context = `conflicts[${index}]`
     if (isRecord(conflict) && conflict.conflictId && conflictIds.has(conflict.conflictId)) errors.push(`${context}.conflictId is duplicated`)
     if (isRecord(conflict) && conflict.conflictId) conflictIds.add(conflict.conflictId)
-    checkConflict(conflict, context, new Set(sourceById.keys()), activityIds, errors)
+    checkConflict(conflict, context, sourceIds, activityIds, errors)
   })
 
   const metadata = value.metadata
@@ -491,9 +550,10 @@ export function validateCurriculumDatabase(database: CurriculumDatabase): string
     if (!isNonemptyString(metadata.title)) errors.push('metadata.title must be nonempty')
     if (!isNonemptyString(metadata.version)) errors.push('metadata.version must be nonempty')
     if (metadata.sourceFileCount !== 76) errors.push('metadata.sourceFileCount must be 76')
-    if (!isRecord(metadata.sourceFormatCounts)) errors.push('metadata.sourceFormatCounts must be an object')
+    const sourceFormatCounts = metadata.sourceFormatCounts
+    if (!isRecord(sourceFormatCounts)) errors.push('metadata.sourceFormatCounts must be an object')
     else (Object.keys(EXPECTED_SOURCE_FORMAT_COUNTS) as SourceFormat[]).forEach((format) => {
-      if (metadata.sourceFormatCounts[format] !== EXPECTED_SOURCE_FORMAT_COUNTS[format]) errors.push(`metadata.sourceFormatCounts.${format} must be ${EXPECTED_SOURCE_FORMAT_COUNTS[format]}`)
+      if (sourceFormatCounts[format] !== EXPECTED_SOURCE_FORMAT_COUNTS[format]) errors.push(`metadata.sourceFormatCounts.${format} must be ${EXPECTED_SOURCE_FORMAT_COUNTS[format]}`)
     })
   }
   return errors

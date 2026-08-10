@@ -12,12 +12,12 @@ export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
 };
 
 const tones: Record<BadgeTone, string> = {
-  streak: "bg-space-700/80 text-warm border border-warm/40", // #FFAF6D warm streak (home 193:661) / #FDBA74 (193:700)
-  points: "bg-space-700/80 text-white border border-nebula-300/40",
-  quiz: "bg-solar-500 text-hull-900", // #FFCC00 quiz tile
-  video: "bg-signal-danger text-white", // #FB6F6F video tile
-  reading: "bg-nebula-400 text-white",
-  neutral: "bg-hull-200 text-hull-900",
+  streak: "border-2 border-ember-200 bg-pastel-cream text-ember-700",
+  points: "border-2 border-nebula-200 bg-pastel-lilac text-space-900",
+  quiz: "border-2 border-solar-400 bg-solar-300 text-space-900",
+  video: "border-2 border-signal-danger/40 bg-[#ffd0c8] text-space-900",
+  reading: "border-2 border-nebula-200 bg-pastel-lilac text-space-900",
+  neutral: "border-2 border-aqua-400/40 bg-pastel-mint text-space-900",
 };
 
 export function Badge({ tone = "neutral", icon, children, className = "", ...rest }: BadgeProps) {

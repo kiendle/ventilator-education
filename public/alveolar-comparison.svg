@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
+  <title id="title">Air-filled and fluid-filled alveoli</title>
+  <desc id="description">A stylized comparison showing open air spaces on the left and fluid collecting inside alveoli on the right.</desc>
+  <rect width="1200" height="675" fill="#071d32"/>
+  <path d="M600 96v112M600 162 405 278M600 162l195 116" fill="none" stroke="#ffeab8" stroke-linecap="round" stroke-width="36"/>
+  <g fill="#b7eadc" stroke="#56b9b2" stroke-width="12">
+    <circle cx="286" cy="364" r="105"/>
+    <circle cx="444" cy="406" r="112"/>
+    <circle cx="330" cy="510" r="98"/>
+  </g>
+  <g fill="#b7eadc" stroke="#56b9b2" stroke-width="12">
+    <circle cx="756" cy="406" r="112"/>
+    <circle cx="914" cy="364" r="105"/>
+    <circle cx="870" cy="510" r="98"/>
+  </g>
+  <g fill="#58a8ce" opacity=".82">
+    <path d="M655 422c30 34 66 52 101 52s71-18 111-54v87c-34 47-72 70-111 70s-73-19-101-57z"/>
+    <path d="M811 389c32 34 67 50 103 50 34 0 69-17 105-51v74c-28 46-63 69-105 69-40 0-75-19-103-56z"/>
+    <path d="M772 523c31 25 64 38 98 38 31 0 62-11 91-34-6 49-45 81-91 81-47 0-84-30-98-85z"/>
+  </g>
+  <g fill="none" stroke="#ff9363" stroke-linecap="round" stroke-width="10">
+    <path d="M174 584c108 55 219 54 334-3"/>
+    <path d="M692 581c114 57 225 58 334 3"/>
+  </g>
+  <g fill="#fff8ed" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="34" font-weight="700" text-anchor="middle">
+    <text x="350" y="120">OPEN AIR SPACES</text>
+    <text x="850" y="120">FLUID-FILLED SPACES</text>
+  </g>
+  <g fill="#ffb14b">
+    <circle cx="224" cy="344" r="14"/><circle cx="356" cy="418" r="14"/><circle cx="315" cy="505" r="14"/>
+  </g>
+  <g fill="#fff8ed" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" font-weight="700">
+    <text x="156" y="637">EASIER O₂ TRANSFER</text>
+    <text x="786" y="637">REDUCED O₂ TRANSFER</text>
+  </g>
+</svg>

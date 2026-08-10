@@ -4,14 +4,13 @@ import sourceManifest from './generated/source-manifest.json'
 import type {
   ExtractedSourceContent,
   MediaAssetRecord,
-  MediaKind,
   MediaReference,
   SourceExtractionStatus,
   SourceFileRecord,
   SourceKind,
   SourceLocator,
   SourceReference,
-} from './curriculum/types'
+} from './types'
 
 type RawSource = (typeof sourceManifest.files)[number]
 type RawExtractedSource = (typeof extractedContentManifest.sources)[number]
@@ -46,12 +45,6 @@ const normalizeMediaKind = (kind: unknown): NormalizedMediaKind => {
   return 'other'
 }
 
-const normalizeNullableNumber = (value: unknown): number | null =>
-  typeof value === 'number' && Number.isFinite(value) ? value : null
-
-const normalizeNullableString = (value: unknown): string | null =>
-  typeof value === 'string' ? value : null
-
 const extractedBySourceId = new Map<string, RawExtractedSource>(
   extractedContentManifest.sources.map((source) => [source.sourceId, source]),
 )
@@ -61,11 +54,8 @@ const normalizeMediaAsset = (raw: RawMediaAsset): MediaAssetRecord => ({
   assetId: raw.assetId,
   kind: normalizeMediaKind(raw.kind),
   sourceId: raw.sourceId,
-  relativePath: raw.relativePath,
-  memberPath: raw.memberPath ?? null,
-  storageKey: raw.storageKey ?? null,
-  sha256: normalizeNullableString(raw.sha256),
-  byteSize: normalizeNullableNumber(raw.byteSize),
+  sha256: typeof raw.sha256 === 'string' ? raw.sha256 : null,
+  byteSize: typeof raw.byteSize === 'number' && Number.isFinite(raw.byteSize) ? raw.byteSize : null,
   status: normalizeStatus(raw.status),
 })
 
@@ -90,8 +80,8 @@ const normalizeSource = (raw: RawSource): SourceFileRecord => {
     relativePath: raw.relativePath,
     kind: normalizeSourceKind(raw.kind, raw.relativePath),
     islandId: raw.islandId as SourceFileRecord['islandId'],
-    byteSize: normalizeNullableNumber(raw.byteSize),
-    sha256: normalizeNullableString(raw.sha256),
+    byteSize: typeof raw.byteSize === 'number' && Number.isFinite(raw.byteSize) ? raw.byteSize : null,
+    sha256: typeof raw.sha256 === 'string' ? raw.sha256 : null,
     status: normalizeStatus(raw.status),
     extractionStatus: normalizeStatus(raw.extractionStatus),
     errors: Array.isArray(raw.errors) ? raw.errors : [],
@@ -151,4 +141,3 @@ export function mediaRefForSource(relativePath: string, memberPath?: string): Me
   return reference
 }
 
-export type { MediaKind }

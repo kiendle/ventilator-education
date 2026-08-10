@@ -14,13 +14,12 @@ const base =
 const variants: Record<ButtonVariant, string> = {
   // Figma button component 236:334 — #FF7400 face over #A74C00 underside
   primary:
-    "bg-ember-500 text-white shadow-[var(--shadow-raise-ember)] hover:bg-ember-400 active:bg-ember-400 disabled:bg-hull-500 disabled:text-hull-300 disabled:shadow-none",
+    "bg-ember-500 text-space-950 shadow-[var(--shadow-raise-ember)] hover:bg-ember-400 active:bg-ember-400 disabled:bg-hull-500 disabled:text-hull-300 disabled:shadow-none",
   // Secondary — light capsule with hairline border (Figma pills 193:664-667)
   secondary:
-    "bg-hull-50 text-hull-900 border border-hull-400 shadow-none hover:bg-hull-200 disabled:bg-hull-200 disabled:text-hull-500",
-  // Nebula — indigo gradient action (Figma feedback FAB 193:707)
+    "border-2 border-ember-200 bg-pastel-cream text-space-900 shadow-[0_3px_0_#d87b01] hover:bg-ember-100 disabled:bg-hull-200 disabled:text-hull-500 disabled:shadow-none",
   nebula:
-    "bg-gradient-to-br from-nebula-400 to-nebula-600 text-white shadow-[var(--shadow-fab)] hover:from-nebula-300 hover:to-nebula-500 disabled:from-hull-500 disabled:to-hull-600 disabled:shadow-none",
+    "border-2 border-nebula-200 bg-pastel-lilac text-space-900 shadow-[0_4px_0_#6366f1] hover:bg-nebula-200 disabled:bg-hull-300 disabled:text-hull-600 disabled:shadow-none",
 };
 
 function Spinner() {

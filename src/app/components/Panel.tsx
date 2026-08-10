@@ -8,12 +8,9 @@ export type PanelProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 const variants: Record<PanelVariant, string> = {
-  // Figma HUD container 193:692 — slate gradient, #334155 border, r=14
-  hud: "rounded-[var(--radius-panel)] border border-space-600 bg-gradient-to-b from-space-700 to-space-800 shadow-[var(--shadow-panel)] text-hull-100",
-  // Light surface capsule (Figma pills 193:664-667)
-  surface: "rounded-[var(--radius-panel)] border border-hull-400 bg-hull-50 text-hull-900",
-  // Transparent frame with slate hairline
-  outline: "rounded-[var(--radius-panel)] border border-space-600 bg-transparent text-hull-100",
+  hud: "pastel-card rounded-[var(--radius-panel)] border-2 border-ember-200 bg-pastel-cream text-space-950 shadow-[0_6px_0_#d87b01,0_14px_28px_rgb(2_13_24_/_0.16)]",
+  surface: "pastel-card rounded-[var(--radius-panel)] border-2 border-ember-200 bg-hull-50 text-space-950 shadow-[0_4px_0_#d87b01]",
+  outline: "pastel-card rounded-[var(--radius-panel)] border-2 border-aqua-400/60 bg-pastel-mint text-space-950 shadow-[0_5px_0_#5faea8]",
 };
 
 export function Panel({ variant = "hud", children, className = "", ...rest }: PanelProps) {
@@ -46,22 +43,22 @@ export function ActivityCard({
 }: ActivityCardProps) {
   return (
     <div
-      className={`raise relative rounded-[var(--radius-card)] bg-ember-400 p-3 pr-4 text-white shadow-[var(--shadow-raise-card)] ${
-        completed ? "" : "saturate-75"
+      className={`raise relative rounded-[var(--radius-card)] border-2 border-ember-200 bg-pastel-peach p-3 pr-4 text-space-950 shadow-[0_5px_0_#d87b01] ${
+        completed ? "" : "opacity-80"
       } ${className}`}
       {...rest}
     >
       <div className="flex items-center gap-3">
         <span
-          className="grid size-9 shrink-0 place-items-center rounded-[var(--radius-icon)] bg-solar-500 text-hull-900"
+          className="grid size-9 shrink-0 place-items-center rounded-[var(--radius-icon)] border-2 border-space-900/10 bg-pastel-mint text-space-900"
           aria-hidden="true"
         >
           {icon ?? "▶"}
         </span>
         <span className="min-w-0 flex-1 truncate font-mono text-sm font-bold">{title}</span>
         <span className="flex shrink-0 flex-col items-end font-mono text-[10px] font-bold leading-tight">
-          <span className="text-hull-100">+{points} PEEP</span>
-          <span className="text-ember-200">~{minutes} min</span>
+          <span className="text-space-900">+{points} PEEP</span>
+          <span className="text-ember-700">~{minutes} min</span>
         </span>
       </div>
       {completed && (
