@@ -1,0 +1,38 @@
+schema: spec-driven
+
+# Project context shown to AI when creating artifacts.
+context: |
+  Product: GAMER-ICU, a 90-day gamified ventilator-education PWA for pediatric ICU nurses.
+  Stack: Next.js 16, React 19, TypeScript, Tailwind CSS, Vitest, and fast-check.
+  Privacy invariant: participant-level game data remains on the participant device during the study and may leave only through participant-initiated encrypted QR transfer to an authorized onsite collector.
+  Supabase may host public application/content assets and genuinely non-identifiable cohort aggregates only. It must not receive participant-level, pseudonymous, or linkable study records.
+  Collector systems are institution-provisioned computers with encrypted local storage, separate identity linkage, access auditing, backup, retention, and deletion controls.
+  Specifications use observable RFC 2119 requirements and GIVEN/WHEN/THEN scenarios.
+
+# Per-artifact rules.
+rules:
+  proposal:
+    - Name breaking privacy or deployment changes explicitly
+    - Include non-goals when scope could be mistaken
+  specs:
+    - Keep implementation details in design.md
+    - Give every requirement at least one observable scenario
+    - Include privacy failure and interrupted-transfer scenarios
+  design:
+    - Distinguish participant device, static host, Supabase aggregate store, and collector trust zones
+    - Record unresolved regulatory or operational assumptions explicitly
+  tasks:
+    - Preserve the full pipeline from development through verification, deployment, onsite collection, and production acceptance
+    - Mark previously implemented but superseded Supabase work as replacement work, not completed target behavior
+
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+# Example:
+#   operations:
+#     apply:
+#       guidance:
+#         - Keep test summaries concise
+#     archive:
+#       guidance:
+#         - Summarize the archive outcome before finishing

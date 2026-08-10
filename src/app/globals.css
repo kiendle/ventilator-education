@@ -1,26 +1,164 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * GAMER-ICU design tokens — grounded in Figma "Ventilator Education App"
+ * (Sections: Shared Components 59:16, System 59:40, Dashboard 59:13 / 193:656,
+ * home frame "iPhone 17 - 11" 193:661, home frame 236:356).
+ *
+ * Palette evidence:
+ *  - Planet map background ........ #00253F (deep space navy, sampled from asset)
+ *  - Island terrain orange ........ #ED7923 / path gold #F1C049 (sampled)
+ *  - Button face / underside ...... #FF7400 on #A74C00 (button component 236:334)
+ *  - Activity card face / edge .... #FD9610 on #D87B01 (cards 206:69-71, 206:85)
+ *  - Bottom-nav capsule ........... #FFEAB8 / tabs #FFD87D, active #FFB14B (321:117)
+ *  - Nav labels / accents ......... #FD9610 (Cascadia Mono Bold)
+ *  - HUD panel gradient ........... #1E293B -> #0F172A, border #334155 (193:692)
+ *  - Avatar gradient .............. #818CF8 -> #4F46E5 (193:693)
+ *  - Feedback FAB gradient ........ #6366F1 -> #4338CA (193:707)
+ *  - Streak text .................. #FDBA74 (193:700) / warm #FFAF6D (home 193:661)
+ *  - Badge icon tiles ............. #FFCC00 quiz / #FB6F6F video (206:69, 206:70)
+ *  - Home neutrals ................ #F8F8F8, #CCCCCC, #B5B0B0, #676666, ink #1E1E1E/#1D1B20
+ */
+
+@theme {
+  /* Surfaces — dark space ambience */
+  --color-space-950: #020d18;
+  --color-space-900: #00253f;
+  --color-space-800: #0f172a;
+  --color-space-700: #1e293b;
+  --color-space-600: #334155;
+
+  /* Ember oranges — primary action / island terrain */
+  --color-ember-700: #a74c00;
+  --color-ember-600: #d87b01;
+  --color-ember-500: #ff7400;
+  --color-ember-400: #fd9610;
+  --color-ember-300: #ff9318;
+  --color-ember-200: #fed59f;
+  --color-ember-100: #ffeab8;
+
+  /* Solar yellows — streaks, badges, highlights */
+  --color-solar-500: #ffcc00;
+  --color-solar-400: #f1c049;
+  --color-solar-300: #ffd87d;
+  --color-solar-200: #fdba74;
+
+  /* Nebula indigo/purple — HUD, avatar, feedback */
+  --color-nebula-600: #4338ca;
+  --color-nebula-500: #4f46e5;
+  --color-nebula-400: #6366f1;
+  --color-nebula-300: #818cf8;
+  --color-nebula-200: #a5b4fc;
+
+  /* Signal colors */
+  --color-signal-danger: #fb6f6f;
+  --color-signal-success: #4ade80;
+  --color-signal-info: #38bdf8;
+
+  /* Neutrals — visible home-frame values (193:661) */
+  --color-hull-50: #f8f8f8;
+  --color-hull-100: #f1f5f9;
+  --color-hull-200: #e6e6e6;
+  --color-hull-300: #d9d9d9;
+  --color-hull-350: #cccccc;
+  --color-hull-400: #b5b0b0;
+  --color-hull-500: #868686;
+  --color-hull-600: #676666;
+  --color-hull-700: #89738a;
+  --color-hull-900: #1e1e1e;
+  --color-ink: #1d1b20;
+
+  /* Warm highlight visible on the home frame (#FFAF6D) — streaks/glow */
+  --color-warm: #ffaf6d;
+
+  /* Semantic aliases */
+  --color-background: var(--color-space-900);
+  --color-foreground: var(--color-hull-100);
+  --color-primary: var(--color-ember-500);
+  --color-accent: var(--color-solar-500);
+
+  /* Typography — Cascadia Mono (Figma) maps to the mono stack;
+   * Instrument Sans / Inter map to the sans stack. Weights seen: 400-800. */
+  --font-sans: var(--font-geist-sans), "Instrument Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "Cascadia Mono", ui-monospace, monospace;
+
+  /* Radii — measured from Figma nodes */
+  --radius-chip: 7px; /* PEEP points chip 193:702 */
+  --radius-icon: 10px; /* badge icon tile, avatar */
+  --radius-button: 12px; /* button component 236:334 */
+  --radius-panel: 14px; /* HUD container 193:692 */
+  --radius-card: 16px; /* activity cards 206:69 */
+  --radius-capsule: 60px; /* bottom-nav capsule 320:106 */
+
+  /* Raised retro shadow: face floats over a darker "underside" block */
+  --shadow-raise-ember: 0 4px 0 0 var(--color-ember-700);
+  --shadow-raise-card: 0 4px 0 0 var(--color-ember-600);
+  --shadow-panel: 0 8px 24px rgb(2 13 24 / 0.55);
+  --shadow-fab: 0 6px 16px rgb(99 102 241 / 0.45);
+
+  /* Spacing rhythm observed across the 375-402px frames */
+  --spacing-gutter: 1.25rem; /* 20px side gutters */
+  --spacing-section: 1.5rem; /* 24px between sections */
+
+  /* Focus ring — strong, visible on dark space backgrounds */
+  --color-focus: var(--color-solar-500);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ---- Global foundations ---- */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgb(129 140 248 / 0.12), transparent 60%),
+    var(--color-background);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Strong, consistent focus state for keyboard users */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-chip);
+}
+
+/* Respect reduced-motion: kill animation & smooth scrolling */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Raised controls settle when pressed (Figma Press variant 236:335) */
+@media (prefers-reduced-motion: no-preference) {
+  .raise {
+    transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+  }
+  .raise:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 0 var(--color-ember-700) !important;
+  }
+}
+
+/* Subtle starfield twinkle used behind the dashboard */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .twinkle {
+    animation: none;
+  }
 }

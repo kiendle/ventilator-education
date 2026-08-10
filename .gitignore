@@ -19,6 +19,7 @@
 
 # production
 /build
+/storybook-static/
 
 # misc
 .DS_Store
@@ -40,3 +41,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 node_modules
+
+*storybook.log
+storybook-static

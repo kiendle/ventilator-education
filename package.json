@@ -4,12 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:mobile": "next dev --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "spec:validate": "openspec validate --all --strict --no-interactive",
+    "data:extract": "python3 tools/extract_gamer_icu.py --root \"$HOME/Downloads/Game-extracted/Game\" --out src/data/curriculum/generated",
+    "storybook": "storybook dev -p 6007 --disable-telemetry",
+    "build-storybook": "storybook build --disable-telemetry"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
@@ -21,6 +26,7 @@
     "zustand": "^5.0.11"
   },
   "devDependencies": {
+    "@fission-ai/openspec": "^1.8.0",
     "@tailwindcss/postcss": "^4",
     "@types/babel__generator": "^7.27.0",
     "@types/node": "^20",
@@ -35,6 +41,11 @@
     "prettier": "^3.8.1",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vitest": "^4.0.18"
+    "vitest": "^4.0.18",
+    "storybook": "^10.5.7",
+    "@storybook/nextjs-vite": "^10.5.7",
+    "@storybook/addon-a11y": "^10.5.7",
+    "@storybook/addon-docs": "^10.5.7",
+    "vite": "latest"
   }
 }

@@ -1,0 +1,4385 @@
+{
+  "assets": [
+    {
+      "assetId": "asset-125b21ebfe244ff87698",
+      "byteSize": 655624,
+      "kind": "embedded",
+      "memberPath": "ppt/media/hdphoto1.wdp",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "sha256": "ceeb89818bbbc082c74592cfa82d39da53238047d37492eafc353131361b240c",
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok",
+      "storageKey": "media/ceeb89818bbbc082c74592cfa82d39da53238047d37492eafc353131361b240c.wdp"
+    },
+    {
+      "assetId": "asset-d53e46100785f39b2af0",
+      "byteSize": 143518,
+      "kind": "embedded",
+      "memberPath": "ppt/media/hdphoto2.wdp",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "sha256": "12e36f76cad71470668d72532a382e52b78840f8aecdb52d265b52f3ad69d31b",
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok",
+      "storageKey": "media/12e36f76cad71470668d72532a382e52b78840f8aecdb52d265b52f3ad69d31b.wdp"
+    },
+    {
+      "assetId": "asset-cae85b51fb3e423ad15f",
+      "byteSize": 68107,
+      "kind": "embedded",
+      "memberPath": "ppt/media/hdphoto3.wdp",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "sha256": "56e742322aed319701fc86451d6aac77f9e09a6757a93bd2aae0d920032ac8e8",
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok",
+      "storageKey": "media/56e742322aed319701fc86451d6aac77f9e09a6757a93bd2aae0d920032ac8e8.wdp"
+    },
+    {
+      "assetId": "asset-cf21e05da2d65f3e6e4e",
+      "byteSize": 11062521,
+      "kind": "png",
+      "memberPath": "ppt/media/image1.png",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "sha256": "a38637741d804948fa018cef0590ca52ed6e918ff8fdca0161b4d5f6aeeb1975",
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok",
+      "storageKey": "media/a38637741d804948fa018cef0590ca52ed6e918ff8fdca0161b4d5f6aeeb1975.png"
+    },
+    {
+      "assetId": "asset-15bda101d550d21dcd64",
+      "byteSize": 50021,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "sha256": "6483a4ec744ad7e88694fb7ebbeb2ea0e422013fc988a52cfcbbe350ec312ace",
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok",
+      "storageKey": "media/6483a4ec744ad7e88694fb7ebbeb2ea0e422013fc988a52cfcbbe350ec312ace.png"
+    },
+    {
+      "assetId": "asset-a36d21bddc154eb03a4a",
+      "byteSize": 97482,
+      "kind": "image",
+      "memberPath": "ppt/media/image3.jpeg",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "sha256": "cbf638c0000fe13194cec83bf72d4b66c4fc2f862940d06fbbc2193cc86c1e5b",
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok",
+      "storageKey": "media/cbf638c0000fe13194cec83bf72d4b66c4fc2f862940d06fbbc2193cc86c1e5b.jpeg"
+    },
+    {
+      "assetId": "asset-5af578a3a8587a7fdde3",
+      "byteSize": 60909,
+      "kind": "image",
+      "memberPath": "ppt/media/image4.jpeg",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "sha256": "17de57442dda6484a3a3afb42ec8b738102341fca1ee44344ec04c046dd6d9b0",
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok",
+      "storageKey": "media/17de57442dda6484a3a3afb42ec8b738102341fca1ee44344ec04c046dd6d9b0.jpeg"
+    },
+    {
+      "assetId": "asset-ece229c9b1c5be9876f7",
+      "byteSize": 52354,
+      "kind": "png",
+      "memberPath": "ppt/media/image5.png",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "sha256": "8f4402a7fe659bcd00767b4da56fed773aa1a0928d981455d06b402439116312",
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok",
+      "storageKey": "media/8f4402a7fe659bcd00767b4da56fed773aa1a0928d981455d06b402439116312.png"
+    },
+    {
+      "assetId": "asset-bb10b177af8a72da4824",
+      "byteSize": 366761,
+      "kind": "png",
+      "memberPath": "ppt/media/image6.png",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "sha256": "f6d68197e5b2a2cd65d2654cc2d27ad0e078a27ffa52b8d59c91781179b0a616",
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok",
+      "storageKey": "media/f6d68197e5b2a2cd65d2654cc2d27ad0e078a27ffa52b8d59c91781179b0a616.png"
+    },
+    {
+      "assetId": "asset-708c2c6869885b0ec9fe",
+      "byteSize": 258018,
+      "kind": "image",
+      "memberPath": "ppt/media/image7.jpeg",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "sha256": "848c2772d15504f715f77ddb880f5c20d1b824fea140452557a331fe00c41daf",
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok",
+      "storageKey": "media/848c2772d15504f715f77ddb880f5c20d1b824fea140452557a331fe00c41daf.jpeg"
+    },
+    {
+      "assetId": "asset-56826305ed197e150e76",
+      "byteSize": 162384,
+      "kind": "audio",
+      "memberPath": null,
+      "relativePath": "1. Lake Mucosa/Lung Sounds Quiz AUDIO 1.mp3",
+      "sha256": "07b93a0fadfb2126fa4ef6e6c0bf7a569a95ae794c75b5e37c0d8ee6c0f18929",
+      "sourceId": "source-99c2c5de9816c2c1a219",
+      "status": "missing_dependency",
+      "storageKey": "media/07b93a0fadfb2126fa4ef6e6c0bf7a569a95ae794c75b5e37c0d8ee6c0f18929.mp3"
+    },
+    {
+      "assetId": "asset-675b5f775197b98a4614",
+      "byteSize": 65472,
+      "kind": "audio",
+      "memberPath": null,
+      "relativePath": "1. Lake Mucosa/Lung Sounds Quiz AUDIO 2.mp3",
+      "sha256": "27daae322559a090cd081474405a30e2828e502ebaea8145583adb56efac2ee5",
+      "sourceId": "source-92fe9f61bc96e60a8fd8",
+      "status": "missing_dependency",
+      "storageKey": "media/27daae322559a090cd081474405a30e2828e502ebaea8145583adb56efac2ee5.mp3"
+    },
+    {
+      "assetId": "asset-161a29f9321bf9c391f7",
+      "byteSize": 542196,
+      "kind": "png",
+      "memberPath": "word/media/image1.png",
+      "relativePath": "1. Lake Mucosa/Oxygenation & MAP_Quiz.docx",
+      "sha256": "5707215ec5bc62e11aac26c507bcd563ee2a1546051b5bdee904617f37b9f860",
+      "sourceId": "source-9a35f406920f298d2898",
+      "status": "ok",
+      "storageKey": "media/5707215ec5bc62e11aac26c507bcd563ee2a1546051b5bdee904617f37b9f860.png"
+    },
+    {
+      "assetId": "asset-2716f9b61d5c6fa3850b",
+      "byteSize": 68345279,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "1. Lake Mucosa/Oxygenation & MAP_Video.mp4",
+      "sha256": "ff15e5600abd3e42eb2e2d8c5c35e9d1ec804c3675fc1694291249f5803a0939",
+      "sourceId": "source-5e94435d563fdb818659",
+      "status": "missing_dependency",
+      "storageKey": "media/ff15e5600abd3e42eb2e2d8c5c35e9d1ec804c3675fc1694291249f5803a0939.mp4"
+    },
+    {
+      "assetId": "asset-35e83c474815861c8aef",
+      "byteSize": 423187,
+      "kind": "png",
+      "memberPath": "ppt/media/image1.png",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "sha256": "cc4754b2b560eb5fc652b3cfb8ac8982b1b33a324f3ebd2b385a47d505d69bdb",
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok",
+      "storageKey": "media/cc4754b2b560eb5fc652b3cfb8ac8982b1b33a324f3ebd2b385a47d505d69bdb.png"
+    },
+    {
+      "assetId": "asset-8fcc2e067d15457687e3",
+      "byteSize": 8795,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "sha256": "932007c97b4e99e9e8903812ed42e3950c07d506ee9c7aae0cec1fb8f3c09a8f",
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok",
+      "storageKey": "media/932007c97b4e99e9e8903812ed42e3950c07d506ee9c7aae0cec1fb8f3c09a8f.png"
+    },
+    {
+      "assetId": "asset-2a5cac1336ae015f16d8",
+      "byteSize": 107266,
+      "kind": "image",
+      "memberPath": "ppt/media/image3.jpeg",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "sha256": "4f15eeb8565a094f3289b7e67f8c80bc7138313f86ab962a370335ab60e57854",
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok",
+      "storageKey": "media/4f15eeb8565a094f3289b7e67f8c80bc7138313f86ab962a370335ab60e57854.jpeg"
+    },
+    {
+      "assetId": "asset-90f19a025ee71ec151d8",
+      "byteSize": 54217,
+      "kind": "image",
+      "memberPath": "ppt/media/image4.jpeg",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "sha256": "58b66bde5104108b393e859959305f83599f1de16390fe1fc1c6af86035724f9",
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok",
+      "storageKey": "media/58b66bde5104108b393e859959305f83599f1de16390fe1fc1c6af86035724f9.jpeg"
+    },
+    {
+      "assetId": "asset-1c03e16daecf868220d2",
+      "byteSize": 110136,
+      "kind": "image",
+      "memberPath": "ppt/media/image5.jpeg",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "sha256": "d36d85009430dce0d3b03375800d719fa989ee646085a84f6030e67e10e49cc4",
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok",
+      "storageKey": "media/d36d85009430dce0d3b03375800d719fa989ee646085a84f6030e67e10e49cc4.jpeg"
+    },
+    {
+      "assetId": "asset-c0f49cccd678d16cea7f",
+      "byteSize": 57630,
+      "kind": "image",
+      "memberPath": "ppt/media/image6.jpeg",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "sha256": "5bc18ef1a45ed4601fe3ab2609e48f80a5eca71b1c254fe0903058631d37b2f5",
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok",
+      "storageKey": "media/5bc18ef1a45ed4601fe3ab2609e48f80a5eca71b1c254fe0903058631d37b2f5.jpeg"
+    },
+    {
+      "assetId": "asset-8cf1f51e0587be76af27",
+      "byteSize": 959426,
+      "kind": "png",
+      "memberPath": null,
+      "relativePath": "1. Lake Mucosa/Suctioning_Quest1.png",
+      "sha256": "47733b8dce6b445962f087da4b75a774188f8abd09adf247b874c8adfcdce1a5",
+      "sourceId": "source-dd99f2a0d3e187cc8404",
+      "status": "ok",
+      "storageKey": "media/47733b8dce6b445962f087da4b75a774188f8abd09adf247b874c8adfcdce1a5.png"
+    },
+    {
+      "assetId": "asset-4294e1a004f972af6cea",
+      "byteSize": 3570309,
+      "kind": "png",
+      "memberPath": "ppt/media/image1.png",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "d2c86c2b496a90b93657bcf71f3ae4f333f1d28afe5e683d9e5f5f704129628a",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/d2c86c2b496a90b93657bcf71f3ae4f333f1d28afe5e683d9e5f5f704129628a.png"
+    },
+    {
+      "assetId": "asset-02af0bda8d95ca60b5ff",
+      "byteSize": 2110628,
+      "kind": "png",
+      "memberPath": "ppt/media/image10.png",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "313c90ed86dd6d4e167cd1fb6b06aa1aaf5ee1e470a4da1f1262dbc6544e1c70",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/313c90ed86dd6d4e167cd1fb6b06aa1aaf5ee1e470a4da1f1262dbc6544e1c70.png"
+    },
+    {
+      "assetId": "asset-ed2c0f5dc79de30d0d64",
+      "byteSize": 3143914,
+      "kind": "png",
+      "memberPath": "ppt/media/image11.png",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "8df1c2c9bd1c1fb8984e0167b5f5b4e26e766610fd927ea73a8ab3b267ca4592",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/8df1c2c9bd1c1fb8984e0167b5f5b4e26e766610fd927ea73a8ab3b267ca4592.png"
+    },
+    {
+      "assetId": "asset-ba881ad482c07a83170b",
+      "byteSize": 296816,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "787135c8f130125e6228991d2707f90b7f4329c40b13fa73acb32135a5436982",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/787135c8f130125e6228991d2707f90b7f4329c40b13fa73acb32135a5436982.png"
+    },
+    {
+      "assetId": "asset-e61fcc7e1a719ffea6eb",
+      "byteSize": 3204872,
+      "kind": "png",
+      "memberPath": "ppt/media/image3.png",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "102f310406c5631853bc22b80c758710f49f6e9a8f7a0fbf94ff3019296222f9",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/102f310406c5631853bc22b80c758710f49f6e9a8f7a0fbf94ff3019296222f9.png"
+    },
+    {
+      "assetId": "asset-a25e1491a0f28b9f30b2",
+      "byteSize": 4917116,
+      "kind": "png",
+      "memberPath": "ppt/media/image4.png",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "fd3dd6cd0e3c6c5f0212e253e6f567026d452a8030ef8bc08d00d6a4c5c90382",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/fd3dd6cd0e3c6c5f0212e253e6f567026d452a8030ef8bc08d00d6a4c5c90382.png"
+    },
+    {
+      "assetId": "asset-515ef09e20352bf80c73",
+      "byteSize": 4844815,
+      "kind": "png",
+      "memberPath": "ppt/media/image5.png",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "b6ede8cd81275946b6f69d54a61e927e48688cc0bee5e00d1f4a7fbbad35dd1a",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/b6ede8cd81275946b6f69d54a61e927e48688cc0bee5e00d1f4a7fbbad35dd1a.png"
+    },
+    {
+      "assetId": "asset-0fe5c90a19b4edfed6d4",
+      "byteSize": 2548755,
+      "kind": "png",
+      "memberPath": "ppt/media/image6.png",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "4f07cefcb4c2f8a18bed2775828fd3bbc1cf4447a498966ba4f70ac4de7d7884",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/4f07cefcb4c2f8a18bed2775828fd3bbc1cf4447a498966ba4f70ac4de7d7884.png"
+    },
+    {
+      "assetId": "asset-26812b621b790929e797",
+      "byteSize": 2913344,
+      "kind": "png",
+      "memberPath": "ppt/media/image7.png",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "b6a7d4ddf2eb0d96340c2ec5f03cdc8bb9e99f7f64ae902e5fb1584062f4a0cc",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/b6a7d4ddf2eb0d96340c2ec5f03cdc8bb9e99f7f64ae902e5fb1584062f4a0cc.png"
+    },
+    {
+      "assetId": "asset-f07ed679744ba49bdca8",
+      "byteSize": 2503996,
+      "kind": "png",
+      "memberPath": "ppt/media/image8.png",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "1f25e9651e0f2a349b138dbc5377c36305f22dcadf748f689fe28b9cb2bf25a2",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/1f25e9651e0f2a349b138dbc5377c36305f22dcadf748f689fe28b9cb2bf25a2.png"
+    },
+    {
+      "assetId": "asset-86654053bcd3b2e892fe",
+      "byteSize": 2263158,
+      "kind": "png",
+      "memberPath": "ppt/media/image9.png",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "51e38e00e4eaa0b4b9ef652c517d1434c4db7655022241874ab7286221128fa5",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/51e38e00e4eaa0b4b9ef652c517d1434c4db7655022241874ab7286221128fa5.png"
+    },
+    {
+      "assetId": "asset-620e40256bd7cbbfb77a",
+      "byteSize": 16462613,
+      "kind": "video",
+      "memberPath": "ppt/media/media1.mp4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "25c9dee25717614bdfdd6050ef0b54245a53b2b0172ce2e72459e53d972eccac",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/25c9dee25717614bdfdd6050ef0b54245a53b2b0172ce2e72459e53d972eccac.mp4"
+    },
+    {
+      "assetId": "asset-a2cbabd43deee8c3d010",
+      "byteSize": 101850295,
+      "kind": "video",
+      "memberPath": "ppt/media/media10.mp4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "20dd24209885e9f2649303f41afcf12b2c4b778c6dd204c36fbcd3daae4c716c",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/20dd24209885e9f2649303f41afcf12b2c4b778c6dd204c36fbcd3daae4c716c.mp4"
+    },
+    {
+      "assetId": "asset-029b6648bfb1ba22efc5",
+      "byteSize": 23722422,
+      "kind": "video",
+      "memberPath": "ppt/media/media2.mp4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "75e61fd185a9ccbc2e8eef9f44eb3498ca8a33c2ea5bd69f2a6903414455c164",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/75e61fd185a9ccbc2e8eef9f44eb3498ca8a33c2ea5bd69f2a6903414455c164.mp4"
+    },
+    {
+      "assetId": "asset-4bc53834e24853c9a6c8",
+      "byteSize": 67687006,
+      "kind": "video",
+      "memberPath": "ppt/media/media3.mp4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "6d140eeec8ea58154d71321b9db7d77f094e601b7f622dc8cb308cae78d2d4a9",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/6d140eeec8ea58154d71321b9db7d77f094e601b7f622dc8cb308cae78d2d4a9.mp4"
+    },
+    {
+      "assetId": "asset-c644faab964c3e53158c",
+      "byteSize": 67179620,
+      "kind": "video",
+      "memberPath": "ppt/media/media4.mp4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "2bce5118570456a9df55532aa7653f5a20f44f75a463fd0795156e515ea9cb35",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/2bce5118570456a9df55532aa7653f5a20f44f75a463fd0795156e515ea9cb35.mp4"
+    },
+    {
+      "assetId": "asset-1622fe655723ed476e8f",
+      "byteSize": 77364097,
+      "kind": "video",
+      "memberPath": "ppt/media/media5.mp4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "e703b4979bfc9b290a3fdc29e8ee39d32a04b3b71e7e24a602200f067aff75ef",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/e703b4979bfc9b290a3fdc29e8ee39d32a04b3b71e7e24a602200f067aff75ef.mp4"
+    },
+    {
+      "assetId": "asset-03ad35b0d9225aeb369d",
+      "byteSize": 74652641,
+      "kind": "video",
+      "memberPath": "ppt/media/media6.mp4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "e862c05980bc436a25fd3ec6aa13312f2b9d7c63d0bdc071f0c2a0521c396bd8",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/e862c05980bc436a25fd3ec6aa13312f2b9d7c63d0bdc071f0c2a0521c396bd8.mp4"
+    },
+    {
+      "assetId": "asset-d507af7ba34478629121",
+      "byteSize": 158453587,
+      "kind": "video",
+      "memberPath": "ppt/media/media7.mp4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "4429ddcf6ae256c083944a6f2dc36f3993412f2f2597509eba209ce6d78e0a9a",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/4429ddcf6ae256c083944a6f2dc36f3993412f2f2597509eba209ce6d78e0a9a.mp4"
+    },
+    {
+      "assetId": "asset-5d0377eb68566da87031",
+      "byteSize": 95304556,
+      "kind": "video",
+      "memberPath": "ppt/media/media8.mp4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "fdacaaec59f723bfddcf9188e37b3a2b8f9af32a75463a15d95052f80ed9c2db",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/fdacaaec59f723bfddcf9188e37b3a2b8f9af32a75463a15d95052f80ed9c2db.mp4"
+    },
+    {
+      "assetId": "asset-af2dc930319306949e50",
+      "byteSize": 44383073,
+      "kind": "video",
+      "memberPath": "ppt/media/media9.mp4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "9bc1fae101c6248b67fa541ac5a57497beaf356a17748086db793ad67e7c5851",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok",
+      "storageKey": "media/9bc1fae101c6248b67fa541ac5a57497beaf356a17748086db793ad67e7c5851.mp4"
+    },
+    {
+      "assetId": "asset-0e7c061c05d39c0a7471",
+      "byteSize": 683046,
+      "kind": "png",
+      "memberPath": "ppt/media/image1.png",
+      "relativePath": "1. Lake Mucosa/VentLab _Fio2Boost.pptx",
+      "sha256": "6901ca3076483805a86e7e7bfdcbec66ecc3471bb86b61de1b70dbcc41e6219f",
+      "sourceId": "source-2e113d0e60ce8364a1bf",
+      "status": "ok",
+      "storageKey": "media/6901ca3076483805a86e7e7bfdcbec66ecc3471bb86b61de1b70dbcc41e6219f.png"
+    },
+    {
+      "assetId": "asset-3e5b2a1e54ad898128ed",
+      "byteSize": 284984,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "1. Lake Mucosa/VentLab _Fio2Boost.pptx",
+      "sha256": "c27dbeb2d777663e23faa6de6b85e2b387f29e3945c913c90573028e118383c4",
+      "sourceId": "source-2e113d0e60ce8364a1bf",
+      "status": "ok",
+      "storageKey": "media/c27dbeb2d777663e23faa6de6b85e2b387f29e3945c913c90573028e118383c4.png"
+    },
+    {
+      "assetId": "asset-70e168bb7e9400a63150",
+      "byteSize": 2682501,
+      "kind": "png",
+      "memberPath": "ppt/media/image3.png",
+      "relativePath": "1. Lake Mucosa/VentLab _Fio2Boost.pptx",
+      "sha256": "ce256df1caa694c494fe688ff1a07677143739710c2b48e4c2217041f2f56bb0",
+      "sourceId": "source-2e113d0e60ce8364a1bf",
+      "status": "ok",
+      "storageKey": "media/ce256df1caa694c494fe688ff1a07677143739710c2b48e4c2217041f2f56bb0.png"
+    },
+    {
+      "assetId": "asset-8ae16ea207efbe799e54",
+      "byteSize": 259534,
+      "kind": "png",
+      "memberPath": "ppt/media/image4.png",
+      "relativePath": "1. Lake Mucosa/VentLab _Fio2Boost.pptx",
+      "sha256": "15dada425dfbc8dbed1da93bd3049d49819d7178e40c1a478c43dca5a59c3d32",
+      "sourceId": "source-2e113d0e60ce8364a1bf",
+      "status": "ok",
+      "storageKey": "media/15dada425dfbc8dbed1da93bd3049d49819d7178e40c1a478c43dca5a59c3d32.png"
+    },
+    {
+      "assetId": "asset-4983f2a55528db0099ff",
+      "byteSize": 126481415,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "1. Lake Mucosa/Ventilation & MV_Video.mp4",
+      "sha256": "1626a32457b636e81fece7c0115f353841761791850ec35894f8f4ca708e7b2b",
+      "sourceId": "source-761beb275da50b68b7ec",
+      "status": "missing_dependency",
+      "storageKey": "media/1626a32457b636e81fece7c0115f353841761791850ec35894f8f4ca708e7b2b.mp4"
+    },
+    {
+      "assetId": "asset-002da34ef4b7603d5240",
+      "byteSize": 542922181,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "2. Interlobar Divides/CCDH considerations.MOV",
+      "sha256": "ec84d0abc35d398e6d00cd3145f445b6081e71680f3c3412bf024b1479278c22",
+      "sourceId": "source-5864f1afd209244c6281",
+      "status": "missing_dependency",
+      "storageKey": "media/ec84d0abc35d398e6d00cd3145f445b6081e71680f3c3412bf024b1479278c22.mov"
+    },
+    {
+      "assetId": "asset-307042b96d2778d8c68b",
+      "byteSize": 1117939428,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "2. Interlobar Divides/CVICU Ventilator Considerations_Video.MOV",
+      "sha256": "f3efe4bd9c0ce67af246db47a4924e8b2fb3d35ba533f4005a1926a6c82cb703",
+      "sourceId": "source-e629b58f8ab6925ffa90",
+      "status": "missing_dependency",
+      "storageKey": "media/f3efe4bd9c0ce67af246db47a4924e8b2fb3d35ba533f4005a1926a6c82cb703.mov"
+    },
+    {
+      "assetId": "asset-ccb9fc4652596f2dbaa9",
+      "byteSize": 969843,
+      "kind": "png",
+      "memberPath": null,
+      "relativePath": "2. Interlobar Divides/Determining Compliance_Quest2.png",
+      "sha256": "102816436518b51306110d497b3046d4d87ba2f27616a67dd3159236b4dba9a2",
+      "sourceId": "source-bc09dd734ce7f408914b",
+      "status": "ok",
+      "storageKey": "media/102816436518b51306110d497b3046d4d87ba2f27616a67dd3159236b4dba9a2.png"
+    },
+    {
+      "assetId": "asset-c1b4a434b784eca8a3dd",
+      "byteSize": 971072,
+      "kind": "png",
+      "memberPath": null,
+      "relativePath": "2. Interlobar Divides/Determining Compliance_Quest3.png",
+      "sha256": "c6f519c24f636b88b996feb0da199ce90d87727c87e4e7e5495b0cdc52f09fe3",
+      "sourceId": "source-a7334f339fa443c85f65",
+      "status": "ok",
+      "storageKey": "media/c6f519c24f636b88b996feb0da199ce90d87727c87e4e7e5495b0cdc52f09fe3.png"
+    },
+    {
+      "assetId": "asset-d920642fab1aa7f0ea71",
+      "byteSize": 106743931,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "2. Interlobar Divides/Independent v Dependent variables_Movie.mp4",
+      "sha256": "432b6c2d6b86359b1694146b5c0ef813357fe086389aeaa9ca98764db47bd50e",
+      "sourceId": "source-cdfd799e02a7a3ed8885",
+      "status": "missing_dependency",
+      "storageKey": "media/432b6c2d6b86359b1694146b5c0ef813357fe086389aeaa9ca98764db47bd50e.mp4"
+    },
+    {
+      "assetId": "asset-18e58d8ea1ff63baca4b",
+      "byteSize": 199311740,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "2. Interlobar Divides/Lung Compliance_Video.mp4",
+      "sha256": "036fa2aad8375ee81f843f2f040c18d91fe984795e6a7e287d374ce6a35c672d",
+      "sourceId": "source-79c4e904def804b35389",
+      "status": "missing_dependency",
+      "storageKey": "media/036fa2aad8375ee81f843f2f040c18d91fe984795e6a7e287d374ce6a35c672d.mp4"
+    },
+    {
+      "assetId": "asset-bf93febcbab93304883a",
+      "byteSize": 2534567,
+      "kind": "png",
+      "memberPath": "ppt/media/image1.png",
+      "relativePath": "2. Interlobar Divides/SpecialVentilatorStrategiesInterlobarDivides.pptx",
+      "sha256": "0c80771f822aabff66602b8e61746ccebc50b483c892194d67d80ca46bd2db51",
+      "sourceId": "source-b80d3aa7d18ad5b243f1",
+      "status": "ok",
+      "storageKey": "media/0c80771f822aabff66602b8e61746ccebc50b483c892194d67d80ca46bd2db51.png"
+    },
+    {
+      "assetId": "asset-3346d5d44ed38b2bdc65",
+      "byteSize": 265274,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "2. Interlobar Divides/SpecialVentilatorStrategiesInterlobarDivides.pptx",
+      "sha256": "5c6a685db307345e43402d9ab9c7bea83881caa76ccd4f3134eb919a1e1a2abc",
+      "sourceId": "source-b80d3aa7d18ad5b243f1",
+      "status": "ok",
+      "storageKey": "media/5c6a685db307345e43402d9ab9c7bea83881caa76ccd4f3134eb919a1e1a2abc.png"
+    },
+    {
+      "assetId": "asset-6b53fa7ae2aa5c789766",
+      "byteSize": 65054209,
+      "kind": "video",
+      "memberPath": "ppt/media/media1.mp4",
+      "relativePath": "2. Interlobar Divides/SpecialVentilatorStrategiesInterlobarDivides.pptx",
+      "sha256": "c6cc908ba683b741bf09ffb14a2cbb24013890e54fc9c545e9fd728f9caecfbe",
+      "sourceId": "source-b80d3aa7d18ad5b243f1",
+      "status": "ok",
+      "storageKey": "media/c6cc908ba683b741bf09ffb14a2cbb24013890e54fc9c545e9fd728f9caecfbe.mp4"
+    },
+    {
+      "assetId": "asset-4a8c096ec2e878b47a69",
+      "byteSize": 1117939428,
+      "kind": "video",
+      "memberPath": "ppt/media/media2.MOV",
+      "relativePath": "2. Interlobar Divides/SpecialVentilatorStrategiesInterlobarDivides.pptx",
+      "sha256": "f3efe4bd9c0ce67af246db47a4924e8b2fb3d35ba533f4005a1926a6c82cb703",
+      "sourceId": "source-b80d3aa7d18ad5b243f1",
+      "status": "ok",
+      "storageKey": "media/f3efe4bd9c0ce67af246db47a4924e8b2fb3d35ba533f4005a1926a6c82cb703.mov"
+    },
+    {
+      "assetId": "asset-de657d83bcfc50fb3a93",
+      "byteSize": 1378421498,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "2. Interlobar Divides/Vent alarms 101.mov",
+      "sha256": "191d3e9fcc1de4337af8108cfadd43af6633569987065d22157eba7d1cb368ce",
+      "sourceId": "source-2c23d200d1dcfd800295",
+      "status": "missing_dependency",
+      "storageKey": "media/191d3e9fcc1de4337af8108cfadd43af6633569987065d22157eba7d1cb368ce.mov"
+    },
+    {
+      "assetId": "asset-efee22907e4add7006cf",
+      "byteSize": 558041,
+      "kind": "image",
+      "memberPath": "ppt/media/image1.jpeg",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "sha256": "068a5cb556887fae17a67dacf36ccc0ee1d578d8822a95e5abe9ebfab3f5096d",
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok",
+      "storageKey": "media/068a5cb556887fae17a67dacf36ccc0ee1d578d8822a95e5abe9ebfab3f5096d.jpeg"
+    },
+    {
+      "assetId": "asset-7c083fb25324040d4ab5",
+      "byteSize": 56393,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "sha256": "97887314a9b28fc831777f250f3a03626c6689cff27ceab3bf4cb784dd6e6674",
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok",
+      "storageKey": "media/97887314a9b28fc831777f250f3a03626c6689cff27ceab3bf4cb784dd6e6674.png"
+    },
+    {
+      "assetId": "asset-f5ae23b2d864a59f4168",
+      "byteSize": 23177,
+      "kind": "png",
+      "memberPath": "ppt/media/image3.png",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "sha256": "395bcf8cafaf940b29420cc24c02fee8d81d51b17ae9b5b0337c98c481cadee3",
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok",
+      "storageKey": "media/395bcf8cafaf940b29420cc24c02fee8d81d51b17ae9b5b0337c98c481cadee3.png"
+    },
+    {
+      "assetId": "asset-96cfa9826306d8d975b8",
+      "byteSize": 13711,
+      "kind": "png",
+      "memberPath": "ppt/media/image4.png",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "sha256": "91f746a93b0b295c5e99db89b757d83cf0b82de18c97a86e9f3d9f20e0ada7fd",
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok",
+      "storageKey": "media/91f746a93b0b295c5e99db89b757d83cf0b82de18c97a86e9f3d9f20e0ada7fd.png"
+    },
+    {
+      "assetId": "asset-54fd0fd0f8c0b72f3257",
+      "byteSize": 5351,
+      "kind": "png",
+      "memberPath": "ppt/media/image5.png",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "sha256": "0028642942adc7bd39af38981e114881d41b548caaef4d184222dc7a06ea8a51",
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok",
+      "storageKey": "media/0028642942adc7bd39af38981e114881d41b548caaef4d184222dc7a06ea8a51.png"
+    },
+    {
+      "assetId": "asset-28eabe82f3afe2bb305f",
+      "byteSize": 235064,
+      "kind": "png",
+      "memberPath": "ppt/media/image6.png",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "sha256": "b07019d561e25ec1ac79a494fe7bc8f3d4e8e91a344b1af542a374f37efe8893",
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok",
+      "storageKey": "media/b07019d561e25ec1ac79a494fe7bc8f3d4e8e91a344b1af542a374f37efe8893.png"
+    },
+    {
+      "assetId": "asset-f42917a62a5dd01d0fa4",
+      "byteSize": 85649,
+      "kind": "png",
+      "memberPath": "ppt/media/image7.png",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "sha256": "d478016860387380ae671a67c4a33e1ad4a6762264a5ccabe337727edb458ce3",
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok",
+      "storageKey": "media/d478016860387380ae671a67c4a33e1ad4a6762264a5ccabe337727edb458ce3.png"
+    },
+    {
+      "assetId": "asset-16958b65753c03cdec7d",
+      "byteSize": 241963,
+      "kind": "png",
+      "memberPath": "ppt/media/image8.png",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "sha256": "216c6d645bc545941661737e0876685692457a75b772e15a25ef1fe455666b0d",
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok",
+      "storageKey": "media/216c6d645bc545941661737e0876685692457a75b772e15a25ef1fe455666b0d.png"
+    },
+    {
+      "assetId": "asset-b6cf132401590f691f91",
+      "byteSize": 255442,
+      "kind": "png",
+      "memberPath": "ppt/media/image9.png",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "sha256": "f635c27a0f1e638150a9fd47fc3aaf2517abee035026851214271fa03e6b2142",
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok",
+      "storageKey": "media/f635c27a0f1e638150a9fd47fc3aaf2517abee035026851214271fa03e6b2142.png"
+    },
+    {
+      "assetId": "asset-7ce5d8813058a515657b",
+      "byteSize": 1213096,
+      "kind": "png",
+      "memberPath": null,
+      "relativePath": "2. Interlobar Divides/Ventilator Modes_Graphic.png",
+      "sha256": "655b06b0f38edee5c5c0fe057e289812b7d31c26e98039bc687c140aae081e1c",
+      "sourceId": "source-ef0636ab0a0fde4c4b81",
+      "status": "ok",
+      "storageKey": "media/655b06b0f38edee5c5c0fe057e289812b7d31c26e98039bc687c140aae081e1c.png"
+    },
+    {
+      "assetId": "asset-e6f63ee03fe38d9e443b",
+      "byteSize": 142886115,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "3. Valley of Pulmonara/ARDS_GAMERICU.mp4",
+      "sha256": "83107a8d0c7d6482a123cfec900e743d53aa7145ff26f87d1fcd8262d9b9c525",
+      "sourceId": "source-9c2b5778b7dca050c030",
+      "status": "missing_dependency",
+      "storageKey": "media/83107a8d0c7d6482a123cfec900e743d53aa7145ff26f87d1fcd8262d9b9c525.mp4"
+    },
+    {
+      "assetId": "asset-c26f476f1a7446731147",
+      "byteSize": 89497172,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "3. Valley of Pulmonara/Bronchiolitis_GAMERICU.mp4",
+      "sha256": "d643e4bcff7c24216d93671c9bb3bd86b8471f1851949eabc6e2f99e3d602880",
+      "sourceId": "source-f6f8e6bb77e377d91b93",
+      "status": "missing_dependency",
+      "storageKey": "media/d643e4bcff7c24216d93671c9bb3bd86b8471f1851949eabc6e2f99e3d602880.mp4"
+    },
+    {
+      "assetId": "asset-24e78fe4a0454047fc52",
+      "byteSize": 31530463,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "3. Valley of Pulmonara/Captured_Video.mp4",
+      "sha256": "3e1eff4493c19417d78642ad3d828a2ff472a7adf7aa37fb93599d25d1039682",
+      "sourceId": "source-4723af25dd62be419a52",
+      "status": "missing_dependency",
+      "storageKey": "media/3e1eff4493c19417d78642ad3d828a2ff472a7adf7aa37fb93599d25d1039682.mp4"
+    },
+    {
+      "assetId": "asset-8fcbcf26eb0f66f99161",
+      "byteSize": 74461574,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "3. Valley of Pulmonara/CriticalAsthma_Gamer_ICU.mp4",
+      "sha256": "caa5ca12b1506d45cbfc6c86dce3dfceffc752adef38a3e51d9c01c506bdc50a",
+      "sourceId": "source-a90394b226e1370ad272",
+      "status": "missing_dependency",
+      "storageKey": "media/caa5ca12b1506d45cbfc6c86dce3dfceffc752adef38a3e51d9c01c506bdc50a.mp4"
+    },
+    {
+      "assetId": "asset-0d294dafb155bc593ed4",
+      "byteSize": 1626066826,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "3. Valley of Pulmonara/EAT considerstions.mov",
+      "sha256": "f5ec8e3346f36a938509d7dadb3740c0b152eb005d6e7ec58fca96c468dc8737",
+      "sourceId": "source-991d6a188cefced1dc6d",
+      "status": "missing_dependency",
+      "storageKey": "media/f5ec8e3346f36a938509d7dadb3740c0b152eb005d6e7ec58fca96c468dc8737.mov"
+    },
+    {
+      "assetId": "asset-daba98519c93f6d05336",
+      "byteSize": 422488,
+      "kind": "png",
+      "memberPath": "ppt/media/image1.png",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "sha256": "e3b2a9843d31de261e42f9edc4b92277db0288c2adaf87702b3aab356c034c50",
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok",
+      "storageKey": "media/e3b2a9843d31de261e42f9edc4b92277db0288c2adaf87702b3aab356c034c50.png"
+    },
+    {
+      "assetId": "asset-97d444eb3a75acee948d",
+      "byteSize": 854546,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "sha256": "9913b8d05d0d27e119074571d1988d93a63319e0e8f2a8ddef261599c58f69c1",
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok",
+      "storageKey": "media/9913b8d05d0d27e119074571d1988d93a63319e0e8f2a8ddef261599c58f69c1.png"
+    },
+    {
+      "assetId": "asset-d4323beafec7ea9d6db9",
+      "byteSize": 801561,
+      "kind": "png",
+      "memberPath": "ppt/media/image3.png",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "sha256": "106b25132ed130349a2a8f512b27a3d3649fc40c5b98e882a51843eaa7875f3c",
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok",
+      "storageKey": "media/106b25132ed130349a2a8f512b27a3d3649fc40c5b98e882a51843eaa7875f3c.png"
+    },
+    {
+      "assetId": "asset-4bae7c63f27b2ae94cff",
+      "byteSize": 163613,
+      "kind": "png",
+      "memberPath": "ppt/media/image4.png",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "sha256": "ec9b9935e6e04e776abdbbeef7e507c1a27aefcd1c6649149a2bc295127c08d1",
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok",
+      "storageKey": "media/ec9b9935e6e04e776abdbbeef7e507c1a27aefcd1c6649149a2bc295127c08d1.png"
+    },
+    {
+      "assetId": "asset-d697a8d074a7a504dde2",
+      "byteSize": 397824,
+      "kind": "png",
+      "memberPath": "ppt/media/image5.png",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "sha256": "e21ea2986b20af69beff3d15c1b73f8fbb7a1026568c81a7e4e6143edc25f893",
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok",
+      "storageKey": "media/e21ea2986b20af69beff3d15c1b73f8fbb7a1026568c81a7e4e6143edc25f893.png"
+    },
+    {
+      "assetId": "asset-92d5acf56ad97bd0d5c1",
+      "byteSize": 202796,
+      "kind": "png",
+      "memberPath": "ppt/media/image6.png",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "sha256": "747ba8ec3c5f93005d1c11cd02096ab734ecef3efe11e3c467480d79868a5b00",
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok",
+      "storageKey": "media/747ba8ec3c5f93005d1c11cd02096ab734ecef3efe11e3c467480d79868a5b00.png"
+    },
+    {
+      "assetId": "asset-76a1c88fe85432f847e7",
+      "byteSize": 104366,
+      "kind": "image",
+      "memberPath": "ppt/media/image7.jpeg",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "sha256": "7b48ef518575d35b24edf2debcb6c4a6609b51fc18670ed0c531710009b1c994",
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok",
+      "storageKey": "media/7b48ef518575d35b24edf2debcb6c4a6609b51fc18670ed0c531710009b1c994.jpeg"
+    },
+    {
+      "assetId": "asset-8d1653d838c1f5d09d14",
+      "byteSize": 235075,
+      "kind": "png",
+      "memberPath": "ppt/media/image1.png",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "4a9c944e11fbab2832850bf354ba0c21c85125f4b0b2882bc64c1e218d095767",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok",
+      "storageKey": "media/4a9c944e11fbab2832850bf354ba0c21c85125f4b0b2882bc64c1e218d095767.png"
+    },
+    {
+      "assetId": "asset-9ce32615fd9db8468e05",
+      "byteSize": 4152,
+      "kind": "png",
+      "memberPath": "ppt/media/image10.png",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "65918442accc00306ae82f468a7903b4ba7421b4ac281f884638ba6f72fb40db",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok",
+      "storageKey": "media/65918442accc00306ae82f468a7903b4ba7421b4ac281f884638ba6f72fb40db.png"
+    },
+    {
+      "assetId": "asset-e55c8a1ff6145fa4c842",
+      "byteSize": 1198,
+      "kind": "image",
+      "memberPath": "ppt/media/image11.svg",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "db8369f7221673b131888a04e83320ed0f13a33c16536d0a482d6facb133f8dd",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok",
+      "storageKey": "media/db8369f7221673b131888a04e83320ed0f13a33c16536d0a482d6facb133f8dd.svg"
+    },
+    {
+      "assetId": "asset-2535ba77f6c34e932cb3",
+      "byteSize": 330919,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "134ec3678faa3cd4c66aa9e9780391d56f42dda043faa671bc8acd3e4217ccc9",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok",
+      "storageKey": "media/134ec3678faa3cd4c66aa9e9780391d56f42dda043faa671bc8acd3e4217ccc9.png"
+    },
+    {
+      "assetId": "asset-0e4f753327ef700cdbb1",
+      "byteSize": 401496,
+      "kind": "png",
+      "memberPath": "ppt/media/image3.png",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "aa03a09ebb7c8de000a4478906853f52fb40487e1b5cc7c2fbfe0b43644501ca",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok",
+      "storageKey": "media/aa03a09ebb7c8de000a4478906853f52fb40487e1b5cc7c2fbfe0b43644501ca.png"
+    },
+    {
+      "assetId": "asset-0f5a103d7b2ea35bcf21",
+      "byteSize": 63912,
+      "kind": "png",
+      "memberPath": "ppt/media/image4.png",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "940b0d3a755849f9419888ee345968c80675a29f4ab9c124abebead3a19e92bf",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok",
+      "storageKey": "media/940b0d3a755849f9419888ee345968c80675a29f4ab9c124abebead3a19e92bf.png"
+    },
+    {
+      "assetId": "asset-a141bc504979a19a98cd",
+      "byteSize": 253264,
+      "kind": "png",
+      "memberPath": "ppt/media/image5.png",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "22dcddd03f3f3279b39d683ba3a5805a2799b408063200e96c4716b6afc3a1b6",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok",
+      "storageKey": "media/22dcddd03f3f3279b39d683ba3a5805a2799b408063200e96c4716b6afc3a1b6.png"
+    },
+    {
+      "assetId": "asset-3e73734fcde194f8594e",
+      "byteSize": 803037,
+      "kind": "png",
+      "memberPath": "ppt/media/image6.png",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "1d63c9f0065e8f5b7154d3751979f47786b5de883ab0d17dbd478e1256731c42",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok",
+      "storageKey": "media/1d63c9f0065e8f5b7154d3751979f47786b5de883ab0d17dbd478e1256731c42.png"
+    },
+    {
+      "assetId": "asset-88683f58b899e8da3d4f",
+      "byteSize": 430946,
+      "kind": "png",
+      "memberPath": "ppt/media/image7.png",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "8012a3e191042881350df9bf77720906283ac88699a1c1150ab1bb20175423bf",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok",
+      "storageKey": "media/8012a3e191042881350df9bf77720906283ac88699a1c1150ab1bb20175423bf.png"
+    },
+    {
+      "assetId": "asset-395768d7e82d21bde138",
+      "byteSize": 3139,
+      "kind": "png",
+      "memberPath": "ppt/media/image8.png",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "e450cf26731e6cb0c4912d6eea686986a4436a3d7c42705f98305e57f6c030b8",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok",
+      "storageKey": "media/e450cf26731e6cb0c4912d6eea686986a4436a3d7c42705f98305e57f6c030b8.png"
+    },
+    {
+      "assetId": "asset-93c545f4b05300670056",
+      "byteSize": 1163,
+      "kind": "image",
+      "memberPath": "ppt/media/image9.svg",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "dabc38388c7816a3a1a2ba9ef7ddd74e9e9dff9078cd833d1f829c508770b38f",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok",
+      "storageKey": "media/dabc38388c7816a3a1a2ba9ef7ddd74e9e9dff9078cd833d1f829c508770b38f.svg"
+    },
+    {
+      "assetId": "asset-2fd7e8a6cbeec5bb3186",
+      "byteSize": 651,
+      "kind": "image",
+      "memberPath": "word/media/image1.jpeg",
+      "relativePath": "3. Valley of Pulmonara/Vent Alarms Quest 5.docx",
+      "sha256": "bc4add3c3d2a97243818bb1464c7c8426643696348b91eb27299cefc5bf96e98",
+      "sourceId": "source-1c7571b0559d55c2a66d",
+      "status": "ok",
+      "storageKey": "media/bc4add3c3d2a97243818bb1464c7c8426643696348b91eb27299cefc5bf96e98.jpeg"
+    },
+    {
+      "assetId": "asset-2827a581505c40d1070c",
+      "byteSize": 18176,
+      "kind": "image",
+      "memberPath": "ppt/media/image1.jpeg",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "0db8b9252defc05eb1aa595196174fef349aa3384d2d9e453e2fcb9e3d831059",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/0db8b9252defc05eb1aa595196174fef349aa3384d2d9e453e2fcb9e3d831059.jpeg"
+    },
+    {
+      "assetId": "asset-e934e8c2657ed7549e55",
+      "byteSize": 17601,
+      "kind": "png",
+      "memberPath": "ppt/media/image10.png",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "a2863e2adb55cddcee87da174079f48cf7c33b60b3c52add775526bbd735d46a",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/a2863e2adb55cddcee87da174079f48cf7c33b60b3c52add775526bbd735d46a.png"
+    },
+    {
+      "assetId": "asset-af5624795bf5f1fd1da0",
+      "byteSize": 2690398,
+      "kind": "image",
+      "memberPath": "ppt/media/image11.jpeg",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "1fe1e054dd02b84998c14a99c8127977393a70b45cb897fd0d4e0aad4c32fb06",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/1fe1e054dd02b84998c14a99c8127977393a70b45cb897fd0d4e0aad4c32fb06.jpeg"
+    },
+    {
+      "assetId": "asset-bdae90f832bcd2ce7a2d",
+      "byteSize": 2292808,
+      "kind": "image",
+      "memberPath": "ppt/media/image12.jpeg",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "099264d7b2957e85ef0a87454e98049f82e195be2c94aee53cefcc55f20ea6c3",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/099264d7b2957e85ef0a87454e98049f82e195be2c94aee53cefcc55f20ea6c3.jpeg"
+    },
+    {
+      "assetId": "asset-0340599f9c16a90d8754",
+      "byteSize": 342934,
+      "kind": "png",
+      "memberPath": "ppt/media/image13.png",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "c6bc5e0173c9554b991b39d0c94e6756a5a9fd6217511388e32c366f19adf095",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/c6bc5e0173c9554b991b39d0c94e6756a5a9fd6217511388e32c366f19adf095.png"
+    },
+    {
+      "assetId": "asset-ec0dbf6aa6166f9c7cd6",
+      "byteSize": 296707,
+      "kind": "png",
+      "memberPath": "ppt/media/image14.png",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "9ef092f62700d1d8c1bf26efbe737f2dd52a5df2131a480664ee2a22d3a7eb80",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/9ef092f62700d1d8c1bf26efbe737f2dd52a5df2131a480664ee2a22d3a7eb80.png"
+    },
+    {
+      "assetId": "asset-9c7bf32fc0a06986ba35",
+      "byteSize": 35339,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "cbc1a4429e073791020e353c274ee42d55da5b9d34156fe21a57f6ca941d298b",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/cbc1a4429e073791020e353c274ee42d55da5b9d34156fe21a57f6ca941d298b.png"
+    },
+    {
+      "assetId": "asset-e0569a5f14bebeb90cb3",
+      "byteSize": 29723,
+      "kind": "image",
+      "memberPath": "ppt/media/image3.jpeg",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "a61b4cefaedafbf27e4e69ae638b654f26dae0dae8eeeacf03ad378675395863",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/a61b4cefaedafbf27e4e69ae638b654f26dae0dae8eeeacf03ad378675395863.jpeg"
+    },
+    {
+      "assetId": "asset-a9115065c490a3940c9e",
+      "byteSize": 11886,
+      "kind": "image",
+      "memberPath": "ppt/media/image4.jpeg",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "1c67405c065d2b1f2c71a64978a1360dfedb0af5386e110a871fff450ac86bf0",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/1c67405c065d2b1f2c71a64978a1360dfedb0af5386e110a871fff450ac86bf0.jpeg"
+    },
+    {
+      "assetId": "asset-54bd2200d88562185f60",
+      "byteSize": 53228,
+      "kind": "image",
+      "memberPath": "ppt/media/image5.jpeg",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "115deeeb6d8af060741dbf35ed82aa6f3f2d892f6d9bdee3665740ff6caf0609",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/115deeeb6d8af060741dbf35ed82aa6f3f2d892f6d9bdee3665740ff6caf0609.jpeg"
+    },
+    {
+      "assetId": "asset-6d9d10471110c14f4f21",
+      "byteSize": 12219,
+      "kind": "image",
+      "memberPath": "ppt/media/image6.jpeg",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "9df8ca1c5c8fd79925338240991f5036597f5f4c10755b3e4fbc242ef839e280",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/9df8ca1c5c8fd79925338240991f5036597f5f4c10755b3e4fbc242ef839e280.jpeg"
+    },
+    {
+      "assetId": "asset-ae5eef2f0cbc1a95d914",
+      "byteSize": 88298,
+      "kind": "image",
+      "memberPath": "ppt/media/image7.jpeg",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "c16caf121113b5d091902d5b78a72b3490f7fcb6e5d22887cd94c9988cc749d3",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/c16caf121113b5d091902d5b78a72b3490f7fcb6e5d22887cd94c9988cc749d3.jpeg"
+    },
+    {
+      "assetId": "asset-a01234df9df9f6f7bcc5",
+      "byteSize": 59886,
+      "kind": "image",
+      "memberPath": "ppt/media/image8.jpeg",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "b7de09fc48972adbb558628a17799f1441a07c66404459356ab8c731f0774734",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/b7de09fc48972adbb558628a17799f1441a07c66404459356ab8c731f0774734.jpeg"
+    },
+    {
+      "assetId": "asset-b7b2ffe678b4fd6adf58",
+      "byteSize": 66395,
+      "kind": "png",
+      "memberPath": "ppt/media/image9.png",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "3b92ab4f5db1d5aa626836eefef6e7b15a3fda7585d4fd755ca56db96417d6e2",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok",
+      "storageKey": "media/3b92ab4f5db1d5aa626836eefef6e7b15a3fda7585d4fd755ca56db96417d6e2.png"
+    },
+    {
+      "assetId": "asset-61df7d5d08b6d0936f3b",
+      "byteSize": 967344,
+      "kind": "png",
+      "memberPath": null,
+      "relativePath": "4. Bronchial Bluffs/BVM Deliberate Practice_Quest7.png",
+      "sha256": "d6566bcab2d36ca5dff4274e4ba2f1dbe21fa235ac7417d27e4117dbe2da93ff",
+      "sourceId": "source-1552687737fc868fbcd6",
+      "status": "ok",
+      "storageKey": "media/d6566bcab2d36ca5dff4274e4ba2f1dbe21fa235ac7417d27e4117dbe2da93ff.png"
+    },
+    {
+      "assetId": "asset-513939dc54df3acea613",
+      "byteSize": 43504761,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "4. Bronchial Bluffs/Blood Gas Interpretation Part 1 - Identify the Gas.mp4",
+      "sha256": "893d9e42d6888d5174b444043b3749fb8421f409a3c00aecbdb26884ef0791ce",
+      "sourceId": "source-2134690e4562b5fb36d7",
+      "status": "missing_dependency",
+      "storageKey": "media/893d9e42d6888d5174b444043b3749fb8421f409a3c00aecbdb26884ef0791ce.mp4"
+    },
+    {
+      "assetId": "asset-53911f409d5361bc389b",
+      "byteSize": 27182548,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "4. Bronchial Bluffs/Blood Gas Interpretation Part 2 - Act on the Gas.mp4",
+      "sha256": "4c0c0e3a73e144c89a9db271bccef85e63ec870f784381d5cf190083924a8348",
+      "sourceId": "source-ddec61eb224f6f705493",
+      "status": "missing_dependency",
+      "storageKey": "media/4c0c0e3a73e144c89a9db271bccef85e63ec870f784381d5cf190083924a8348.mp4"
+    },
+    {
+      "assetId": "asset-f5aa193e0bbcbf9ba9f4",
+      "byteSize": 975899,
+      "kind": "png",
+      "memberPath": null,
+      "relativePath": "4. Bronchial Bluffs/CXR in Real Life_Quest6.png",
+      "sha256": "8eafe5157fd20583edc5ad04d4acb6a364647a1b235bad259760d642ca8c5358",
+      "sourceId": "source-1d08bb4b6d9de03e0bfd",
+      "status": "ok",
+      "storageKey": "media/8eafe5157fd20583edc5ad04d4acb6a364647a1b235bad259760d642ca8c5358.png"
+    },
+    {
+      "assetId": "asset-9cb7b12e220525fad6ca",
+      "byteSize": 1384808,
+      "kind": "embedded",
+      "memberPath": "ppt/media/image1.emf",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "9efbc1950768380bb6521011efe56ff09e77613b96382c00110a350ff14d68b8",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/9efbc1950768380bb6521011efe56ff09e77613b96382c00110a350ff14d68b8.emf"
+    },
+    {
+      "assetId": "asset-d14332a15ef0251d9cc2",
+      "byteSize": 318524,
+      "kind": "png",
+      "memberPath": "ppt/media/image10.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "390184a784f4367aa45402d47c3b2bc5d121318df63a44713858b2348fe808e9",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/390184a784f4367aa45402d47c3b2bc5d121318df63a44713858b2348fe808e9.png"
+    },
+    {
+      "assetId": "asset-965776e9173735a43faf",
+      "byteSize": 140352,
+      "kind": "png",
+      "memberPath": "ppt/media/image11.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "ac9b932ad413e54c25099da4538272921924670f0a728d802f0944cecd370280",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/ac9b932ad413e54c25099da4538272921924670f0a728d802f0944cecd370280.png"
+    },
+    {
+      "assetId": "asset-d0de6853cb05c0df8efe",
+      "byteSize": 506948,
+      "kind": "png",
+      "memberPath": "ppt/media/image12.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "3983b3bff923463434159023556251c49f340a15d7ef442f8f52a6fc6e26b0c2",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/3983b3bff923463434159023556251c49f340a15d7ef442f8f52a6fc6e26b0c2.png"
+    },
+    {
+      "assetId": "asset-02db85320abcbc2e2a88",
+      "byteSize": 272159,
+      "kind": "png",
+      "memberPath": "ppt/media/image13.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "22771e193a332a165d04bb416efd6d6f1dc2a5ad0483c8bea45e81bb79d0f6b9",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/22771e193a332a165d04bb416efd6d6f1dc2a5ad0483c8bea45e81bb79d0f6b9.png"
+    },
+    {
+      "assetId": "asset-37f515167f34af889372",
+      "byteSize": 162035,
+      "kind": "png",
+      "memberPath": "ppt/media/image14.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "4b5592a214de6e206439d0e0243037880f5fd3773e7ec496945e8c37042a5abd",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/4b5592a214de6e206439d0e0243037880f5fd3773e7ec496945e8c37042a5abd.png"
+    },
+    {
+      "assetId": "asset-16c8a3d7d4476169b9d0",
+      "byteSize": 331960,
+      "kind": "png",
+      "memberPath": "ppt/media/image15.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "440c9052777719bd64ea25dc00414a7c8263808fcb213497d5de73ec4dbfe0ff",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/440c9052777719bd64ea25dc00414a7c8263808fcb213497d5de73ec4dbfe0ff.png"
+    },
+    {
+      "assetId": "asset-88d8eb130a68f5f68af6",
+      "byteSize": 326343,
+      "kind": "png",
+      "memberPath": "ppt/media/image16.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "0e8d8523d51d8e769400499398546c5114533a4c957132e3c5e62ee1984840bb",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/0e8d8523d51d8e769400499398546c5114533a4c957132e3c5e62ee1984840bb.png"
+    },
+    {
+      "assetId": "asset-fb0625cd37c598d475a6",
+      "byteSize": 136732,
+      "kind": "png",
+      "memberPath": "ppt/media/image17.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "fb1218976f3ee8485d1fd754567993a9aeb6f2bf714693ef6a9fa6abc50a2d40",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/fb1218976f3ee8485d1fd754567993a9aeb6f2bf714693ef6a9fa6abc50a2d40.png"
+    },
+    {
+      "assetId": "asset-fed6f1d922bae03d5288",
+      "byteSize": 544223,
+      "kind": "png",
+      "memberPath": "ppt/media/image18.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "7f3438521dcb2c3c433492005699b30c582fb7d0be62931b8255a49bf34ea88e",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/7f3438521dcb2c3c433492005699b30c582fb7d0be62931b8255a49bf34ea88e.png"
+    },
+    {
+      "assetId": "asset-47704d604776da89c183",
+      "byteSize": 539139,
+      "kind": "png",
+      "memberPath": "ppt/media/image19.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "f52b77623271640a3d7c12aaa1bfd5a934a7e933583d87a1089cb0bde86d55e5",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/f52b77623271640a3d7c12aaa1bfd5a934a7e933583d87a1089cb0bde86d55e5.png"
+    },
+    {
+      "assetId": "asset-c4240960796dc98725d1",
+      "byteSize": 136899,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "9d777da6759538e68266c2c0cc4366351197b27cc90ebb3155f89b692380a13f",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/9d777da6759538e68266c2c0cc4366351197b27cc90ebb3155f89b692380a13f.png"
+    },
+    {
+      "assetId": "asset-5a6f6d8694b72ab4e30e",
+      "byteSize": 280298,
+      "kind": "png",
+      "memberPath": "ppt/media/image20.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "b3d6e4fa3d8e78bc2ab2025f54af60161a81cd44146df4bd46ba643968891853",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/b3d6e4fa3d8e78bc2ab2025f54af60161a81cd44146df4bd46ba643968891853.png"
+    },
+    {
+      "assetId": "asset-f1d2ae4c8abfa8d04225",
+      "byteSize": 523764,
+      "kind": "png",
+      "memberPath": "ppt/media/image21.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "2d3c369074af84428366188c1e37889fc8bb8176b1a3f0380ffc1e36b62e147c",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/2d3c369074af84428366188c1e37889fc8bb8176b1a3f0380ffc1e36b62e147c.png"
+    },
+    {
+      "assetId": "asset-c509ea1c45bdf7fad997",
+      "byteSize": 423360,
+      "kind": "png",
+      "memberPath": "ppt/media/image22.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "faf875647bc1580ca29250e1116425e498a8ca9b5432409977bf2f6c25a2e844",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/faf875647bc1580ca29250e1116425e498a8ca9b5432409977bf2f6c25a2e844.png"
+    },
+    {
+      "assetId": "asset-6911b575361f623a310c",
+      "byteSize": 582255,
+      "kind": "png",
+      "memberPath": "ppt/media/image23.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "982eea99ac67214e46af2daecdc0964939ec406e796f8c7cccaf895ae30a8c22",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/982eea99ac67214e46af2daecdc0964939ec406e796f8c7cccaf895ae30a8c22.png"
+    },
+    {
+      "assetId": "asset-9a8e9274944fc157866f",
+      "byteSize": 250774,
+      "kind": "png",
+      "memberPath": "ppt/media/image24.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "f50ea7551f52c0ced44957d8f1e02f76d6ef5c1b36cd0059f2c41997b68c46d8",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/f50ea7551f52c0ced44957d8f1e02f76d6ef5c1b36cd0059f2c41997b68c46d8.png"
+    },
+    {
+      "assetId": "asset-a39f2c9690e01ebf5322",
+      "byteSize": 327287,
+      "kind": "png",
+      "memberPath": "ppt/media/image25.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "2835f4487d753fd55cee3226c9ad76472adaebdb25c13c8c8dc3db2f12c5f4ca",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/2835f4487d753fd55cee3226c9ad76472adaebdb25c13c8c8dc3db2f12c5f4ca.png"
+    },
+    {
+      "assetId": "asset-c8e4fb920331c1127789",
+      "byteSize": 312833,
+      "kind": "png",
+      "memberPath": "ppt/media/image26.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "8e275d88c31b5eed04505996bc177d0fab2885163e63f020758b2faf604a7a3a",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/8e275d88c31b5eed04505996bc177d0fab2885163e63f020758b2faf604a7a3a.png"
+    },
+    {
+      "assetId": "asset-08c033e668588a1cbeec",
+      "byteSize": 424351,
+      "kind": "png",
+      "memberPath": "ppt/media/image27.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "066754afebb71bbe9b48169b65e1223f7a3201d863f4e0f48be6aafd141ae724",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/066754afebb71bbe9b48169b65e1223f7a3201d863f4e0f48be6aafd141ae724.png"
+    },
+    {
+      "assetId": "asset-c49f7cd6ae5607e2ede5",
+      "byteSize": 95838,
+      "kind": "png",
+      "memberPath": "ppt/media/image28.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "fba6bf9e5c4c2dcc627a760e81e536ad153cb6e1a9c640541fafbcdf2fd60e20",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/fba6bf9e5c4c2dcc627a760e81e536ad153cb6e1a9c640541fafbcdf2fd60e20.png"
+    },
+    {
+      "assetId": "asset-67bc3af6398cc8dfdc62",
+      "byteSize": 179427,
+      "kind": "png",
+      "memberPath": "ppt/media/image3.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "ad8b26fdd6b89dfe0cf7c1890cdc0b9e0bfe3af2f420956bfc0e587c0eb703ab",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/ad8b26fdd6b89dfe0cf7c1890cdc0b9e0bfe3af2f420956bfc0e587c0eb703ab.png"
+    },
+    {
+      "assetId": "asset-0fee1473181ca141f557",
+      "byteSize": 248934,
+      "kind": "png",
+      "memberPath": "ppt/media/image4.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "6e8a8d82e4d36d6c21cc221c384ceb9eeba605ced73814539a88fea93fdabe07",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/6e8a8d82e4d36d6c21cc221c384ceb9eeba605ced73814539a88fea93fdabe07.png"
+    },
+    {
+      "assetId": "asset-294b19dce8c15041a2a8",
+      "byteSize": 344591,
+      "kind": "png",
+      "memberPath": "ppt/media/image5.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "405a4e29bc1666d2896013b8dff17bacab397cf0c64a4309244376f229d4f88b",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/405a4e29bc1666d2896013b8dff17bacab397cf0c64a4309244376f229d4f88b.png"
+    },
+    {
+      "assetId": "asset-94aa817b76c79ecd3ad5",
+      "byteSize": 331560,
+      "kind": "png",
+      "memberPath": "ppt/media/image6.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "42ca4ad3185891a5981b37afb27476b0e0aa12a2937947276db520c2343fe215",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/42ca4ad3185891a5981b37afb27476b0e0aa12a2937947276db520c2343fe215.png"
+    },
+    {
+      "assetId": "asset-505e2c979d724fcd71a9",
+      "byteSize": 523729,
+      "kind": "png",
+      "memberPath": "ppt/media/image7.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "4bd7c213acd9f049382dea3edb27ed6f6f79d2af0f00c5d7bc7cdfbbe589d3b3",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/4bd7c213acd9f049382dea3edb27ed6f6f79d2af0f00c5d7bc7cdfbbe589d3b3.png"
+    },
+    {
+      "assetId": "asset-9c2fd28bff0e37be4622",
+      "byteSize": 172535,
+      "kind": "png",
+      "memberPath": "ppt/media/image8.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "0089be2edec7ae22f1b0be621ff7f9dcc1e23a3ba7c02afafaee777d2febab9d",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/0089be2edec7ae22f1b0be621ff7f9dcc1e23a3ba7c02afafaee777d2febab9d.png"
+    },
+    {
+      "assetId": "asset-f10b18418e9da5818937",
+      "byteSize": 262131,
+      "kind": "png",
+      "memberPath": "ppt/media/image9.png",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "a3eec3ba1dcd473acd0e058383f99ac415061f06c7d79fb88f104f2102c4b14e",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok",
+      "storageKey": "media/a3eec3ba1dcd473acd0e058383f99ac415061f06c7d79fb88f104f2102c4b14e.png"
+    },
+    {
+      "assetId": "asset-6eaaa88fc378b56189b9",
+      "byteSize": 50412125,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "4. Bronchial Bluffs/ChestXray_video.mp4",
+      "sha256": "96d5fa53b8522e58b0a80ed723a112f0e101551b52facc154a8ebdbaff579524",
+      "sourceId": "source-afa0408a6ddd481ccf7b",
+      "status": "missing_dependency",
+      "storageKey": "media/96d5fa53b8522e58b0a80ed723a112f0e101551b52facc154a8ebdbaff579524.mp4"
+    },
+    {
+      "assetId": "asset-cf35c4827cd0d5430e5b",
+      "byteSize": 310860,
+      "kind": "png",
+      "memberPath": "word/media/image1.png",
+      "relativePath": "4. Bronchial Bluffs/Goldilocks and the 3 Endotracheal Tubes_Quiz.docx",
+      "sha256": "a82b5659b8baeb15f5696a4e36904963be5cf95e4fcf2be78af968046efa80ea",
+      "sourceId": "source-94143374f3d8ee0dce98",
+      "status": "ok",
+      "storageKey": "media/a82b5659b8baeb15f5696a4e36904963be5cf95e4fcf2be78af968046efa80ea.png"
+    },
+    {
+      "assetId": "asset-bcac5a765c58d5f64523",
+      "byteSize": 151833,
+      "kind": "png",
+      "memberPath": "word/media/image2.png",
+      "relativePath": "4. Bronchial Bluffs/Goldilocks and the 3 Endotracheal Tubes_Quiz.docx",
+      "sha256": "764806e7850e30a4dd7de3ee593b6d2a1d97f6a6826f08c4c41891702f8e108a",
+      "sourceId": "source-94143374f3d8ee0dce98",
+      "status": "ok",
+      "storageKey": "media/764806e7850e30a4dd7de3ee593b6d2a1d97f6a6826f08c4c41891702f8e108a.png"
+    },
+    {
+      "assetId": "asset-f86a561029c8dc2e08a6",
+      "byteSize": 251166,
+      "kind": "png",
+      "memberPath": "word/media/image3.png",
+      "relativePath": "4. Bronchial Bluffs/Goldilocks and the 3 Endotracheal Tubes_Quiz.docx",
+      "sha256": "38d4d00fdf49d1f228296fc1e37af219e287c7cb025c144089a9b340cdb6adea",
+      "sourceId": "source-94143374f3d8ee0dce98",
+      "status": "ok",
+      "storageKey": "media/38d4d00fdf49d1f228296fc1e37af219e287c7cb025c144089a9b340cdb6adea.png"
+    },
+    {
+      "assetId": "asset-28eddaa3369ef03d9a8c",
+      "byteSize": 209125,
+      "kind": "png",
+      "memberPath": "word/media/image4.png",
+      "relativePath": "4. Bronchial Bluffs/Goldilocks and the 3 Endotracheal Tubes_Quiz.docx",
+      "sha256": "5a5318538441146313dce93d2c82cfa735192ceae9e048d84c0bf390f1570964",
+      "sourceId": "source-94143374f3d8ee0dce98",
+      "status": "ok",
+      "storageKey": "media/5a5318538441146313dce93d2c82cfa735192ceae9e048d84c0bf390f1570964.png"
+    },
+    {
+      "assetId": "asset-a4ceee99270fc7189afc",
+      "byteSize": 437810,
+      "kind": "png",
+      "memberPath": "word/media/image5.png",
+      "relativePath": "4. Bronchial Bluffs/Goldilocks and the 3 Endotracheal Tubes_Quiz.docx",
+      "sha256": "02339423915d1cd3090a8aa3aaf32846d78b5eefcec5709778794381728122bc",
+      "sourceId": "source-94143374f3d8ee0dce98",
+      "status": "ok",
+      "storageKey": "media/02339423915d1cd3090a8aa3aaf32846d78b5eefcec5709778794381728122bc.png"
+    },
+    {
+      "assetId": "asset-1cc2583cf15c31a3b353",
+      "byteSize": 32766,
+      "kind": "png",
+      "memberPath": "word/media/image1.png",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sha256": "1ef08e605bd71e3c40dcf287ef62039d7be89e242dabcf0a515c7d30edd8ed45",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok",
+      "storageKey": "media/1ef08e605bd71e3c40dcf287ef62039d7be89e242dabcf0a515c7d30edd8ed45.png"
+    },
+    {
+      "assetId": "asset-6f12770bb134de245923",
+      "byteSize": 63259,
+      "kind": "image",
+      "memberPath": "word/media/image2.jpeg",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sha256": "e45ce5caacef8b0af219dc2fa3acb3e1d1b7d401de77208b98f6d5da9ba697a9",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok",
+      "storageKey": "media/e45ce5caacef8b0af219dc2fa3acb3e1d1b7d401de77208b98f6d5da9ba697a9.jpeg"
+    },
+    {
+      "assetId": "asset-ade9356407a558ea9cd7",
+      "byteSize": 4473,
+      "kind": "image",
+      "memberPath": "word/media/image3.jpeg",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sha256": "afb56eb69c5e3bcbf67e1cd8e459eb7271574d971cad7c4b40b3ff012b481cc4",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok",
+      "storageKey": "media/afb56eb69c5e3bcbf67e1cd8e459eb7271574d971cad7c4b40b3ff012b481cc4.jpeg"
+    },
+    {
+      "assetId": "asset-4e9d4403668e53e41cd7",
+      "byteSize": 37756,
+      "kind": "image",
+      "memberPath": "word/media/image4.jpeg",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sha256": "c854d80b09078d806c630f0de3631614e9a0d39924e1f50c8848c65e5c15985d",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok",
+      "storageKey": "media/c854d80b09078d806c630f0de3631614e9a0d39924e1f50c8848c65e5c15985d.jpeg"
+    },
+    {
+      "assetId": "asset-881a5e8d96245cbac392",
+      "byteSize": 5343,
+      "kind": "image",
+      "memberPath": "word/media/image5.jpeg",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sha256": "779e92ae33a51df57426740a0217c3c5f20148c12256df906194f4434dddeb9b",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok",
+      "storageKey": "media/779e92ae33a51df57426740a0217c3c5f20148c12256df906194f4434dddeb9b.jpeg"
+    },
+    {
+      "assetId": "asset-897c1b3bd240ad5c647e",
+      "byteSize": 4236,
+      "kind": "image",
+      "memberPath": "word/media/image6.jpeg",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sha256": "c7d7adbe76cbcef9e9a4e486eafbc1fac2c446b62082c51661de27e4583bfd6d",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok",
+      "storageKey": "media/c7d7adbe76cbcef9e9a4e486eafbc1fac2c446b62082c51661de27e4583bfd6d.jpeg"
+    },
+    {
+      "assetId": "asset-cbcb50ac9ad89d7db2e4",
+      "byteSize": 2949,
+      "kind": "image",
+      "memberPath": "word/media/image7.jpeg",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sha256": "01e8f508c12d46681dd6a8bd81d10cc6faae61261e4ee612aa0f1633b8829844",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok",
+      "storageKey": "media/01e8f508c12d46681dd6a8bd81d10cc6faae61261e4ee612aa0f1633b8829844.jpeg"
+    },
+    {
+      "assetId": "asset-82dedd6cbe09207f1c0c",
+      "byteSize": 216609,
+      "kind": "image",
+      "memberPath": "ppt/media/image1.jpeg",
+      "relativePath": "5. Mount Pneumonora/APRV.pptx",
+      "sha256": "88f9a8a173173b618bf9a3639fd76b155a4371586bfd4aa6b4b7de330650002a",
+      "sourceId": "source-4127d424b9b35fe0043b",
+      "status": "ok",
+      "storageKey": "media/88f9a8a173173b618bf9a3639fd76b155a4371586bfd4aa6b4b7de330650002a.jpeg"
+    },
+    {
+      "assetId": "asset-45008feae9d67cfacd2a",
+      "byteSize": 19045,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "5. Mount Pneumonora/APRV.pptx",
+      "sha256": "8d6b21f867fe03e0e91f1e08a554533b8ca4770e96a8f61ef9a8116c2bc4607f",
+      "sourceId": "source-4127d424b9b35fe0043b",
+      "status": "ok",
+      "storageKey": "media/8d6b21f867fe03e0e91f1e08a554533b8ca4770e96a8f61ef9a8116c2bc4607f.png"
+    },
+    {
+      "assetId": "asset-d64f564faf2b9e4c2879",
+      "byteSize": 988911,
+      "kind": "png",
+      "memberPath": null,
+      "relativePath": "5. Mount Pneumonora/Non Conventional Ventilation_Quest8.png",
+      "sha256": "cca182677e344fa48c1e3b6112a2a733ae58656c8fca2b44f9bc0529442f930e",
+      "sourceId": "source-0f174b416d67eab3682d",
+      "status": "ok",
+      "storageKey": "media/cca182677e344fa48c1e3b6112a2a733ae58656c8fca2b44f9bc0529442f930e.png"
+    },
+    {
+      "assetId": "asset-95f0ab9cf0bc72ec7c6f",
+      "byteSize": 2868816,
+      "kind": "png",
+      "memberPath": "ppt/media/image1.png",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "sha256": "1be2667f538c0cf08a856c9054c3a831ab556850be3233c771669f02a35129f2",
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok",
+      "storageKey": "media/1be2667f538c0cf08a856c9054c3a831ab556850be3233c771669f02a35129f2.png"
+    },
+    {
+      "assetId": "asset-3839b2fcf53b7ae9f971",
+      "byteSize": 2421087,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "sha256": "6ce1d025ad63bf26913c1745231a1dae2b2021016725314d286ae0b1d4679e27",
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok",
+      "storageKey": "media/6ce1d025ad63bf26913c1745231a1dae2b2021016725314d286ae0b1d4679e27.png"
+    },
+    {
+      "assetId": "asset-3edd34b45902a7513d2a",
+      "byteSize": 2509417,
+      "kind": "png",
+      "memberPath": "ppt/media/image3.png",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "sha256": "069680827a18384971b94d51c27ddc6d0973d791774925081c00eaa334308425",
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok",
+      "storageKey": "media/069680827a18384971b94d51c27ddc6d0973d791774925081c00eaa334308425.png"
+    },
+    {
+      "assetId": "asset-818552ce55feb02ff349",
+      "byteSize": 2401614,
+      "kind": "png",
+      "memberPath": "ppt/media/image4.png",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "sha256": "aea40ba584c0462011ee3d63e905487772d40e6a6a9ec2f38b5a157c1544dc58",
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok",
+      "storageKey": "media/aea40ba584c0462011ee3d63e905487772d40e6a6a9ec2f38b5a157c1544dc58.png"
+    },
+    {
+      "assetId": "asset-613fa62289cb29dc7da8",
+      "byteSize": 2546259,
+      "kind": "png",
+      "memberPath": "ppt/media/image5.png",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "sha256": "ff14fdef09b36c61308a2b08dbf4670e58bf9d5bcd9421444676947d66591251",
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok",
+      "storageKey": "media/ff14fdef09b36c61308a2b08dbf4670e58bf9d5bcd9421444676947d66591251.png"
+    },
+    {
+      "assetId": "asset-899fd05ec2b6765c9f82",
+      "byteSize": 2217958,
+      "kind": "png",
+      "memberPath": "ppt/media/image6.png",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "sha256": "21effd81ef749a7b96e0f094b804fd1d8f2ef95878e723de866047378b5afabd",
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok",
+      "storageKey": "media/21effd81ef749a7b96e0f094b804fd1d8f2ef95878e723de866047378b5afabd.png"
+    },
+    {
+      "assetId": "asset-1481fe119ee01489ff23",
+      "byteSize": 92407537,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "5. Mount Pneumonora/Weaning nonCMV_Video.mp4",
+      "sha256": "626521fe320c60af805a51042d21617310c8f550d9f9fa19867e99d17d73cb97",
+      "sourceId": "source-26a5a749292d001f1261",
+      "status": "missing_dependency",
+      "storageKey": "media/626521fe320c60af805a51042d21617310c8f550d9f9fa19867e99d17d73cb97.mp4"
+    },
+    {
+      "assetId": "asset-f886bdf676fb0c414b52",
+      "byteSize": 2694979,
+      "kind": "image",
+      "memberPath": "ppt/media/image1.jpeg",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "f3a02e76f877c02f59844210fab57b26d766747b3d4cd98cd4dd5a8166f6fb1a",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/f3a02e76f877c02f59844210fab57b26d766747b3d4cd98cd4dd5a8166f6fb1a.jpeg"
+    },
+    {
+      "assetId": "asset-524ce3d026e8849bc0d5",
+      "byteSize": 6063,
+      "kind": "image",
+      "memberPath": "ppt/media/image10.svg",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "94634ca2e80d11b75e2e820af3ea4cb535ba88a207f1992971877d5018a15141",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/94634ca2e80d11b75e2e820af3ea4cb535ba88a207f1992971877d5018a15141.svg"
+    },
+    {
+      "assetId": "asset-8a6559f15cc257be9264",
+      "byteSize": 118514,
+      "kind": "png",
+      "memberPath": "ppt/media/image11.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "bdfd46cdd302a49400e61ec0aa28a8daf56747fb568c149b619ff92c4adb3fd3",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/bdfd46cdd302a49400e61ec0aa28a8daf56747fb568c149b619ff92c4adb3fd3.png"
+    },
+    {
+      "assetId": "asset-107d7037b091af7f35de",
+      "byteSize": 1511460,
+      "kind": "image",
+      "memberPath": "ppt/media/image12.jpeg",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "d653cbfdfbd3f12775cd91b3c685e1eb2526da3dd635679ba30d4d156ceedf82",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/d653cbfdfbd3f12775cd91b3c685e1eb2526da3dd635679ba30d4d156ceedf82.jpeg"
+    },
+    {
+      "assetId": "asset-29249d7231f320064204",
+      "byteSize": 680095,
+      "kind": "png",
+      "memberPath": "ppt/media/image13.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "bdcc78b445b5ea8a2e65112dd6f7c891796456a0a0768933b339aeb7729494f7",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/bdcc78b445b5ea8a2e65112dd6f7c891796456a0a0768933b339aeb7729494f7.png"
+    },
+    {
+      "assetId": "asset-4b0d8c5a7996f4f4bdda",
+      "byteSize": 65156,
+      "kind": "png",
+      "memberPath": "ppt/media/image14.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "5d2f51b72e4b225dee1b857816712c92defc894e1ccde3008d9d4f1904c8229d",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/5d2f51b72e4b225dee1b857816712c92defc894e1ccde3008d9d4f1904c8229d.png"
+    },
+    {
+      "assetId": "asset-8154fd3a5199cc733146",
+      "byteSize": 767445,
+      "kind": "png",
+      "memberPath": "ppt/media/image15.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "2d9e9a3cf61c5a1921c71ed3bc58669db2a4fe990b47f527c4a75e22b21bbc1c",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/2d9e9a3cf61c5a1921c71ed3bc58669db2a4fe990b47f527c4a75e22b21bbc1c.png"
+    },
+    {
+      "assetId": "asset-7aa171499694046e43fa",
+      "byteSize": 33709,
+      "kind": "png",
+      "memberPath": "ppt/media/image16.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "23baa5d6596b8a774c019d1eaf52efa727bb82f316ad69955b8a748a0f29dfe5",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/23baa5d6596b8a774c019d1eaf52efa727bb82f316ad69955b8a748a0f29dfe5.png"
+    },
+    {
+      "assetId": "asset-faea3ffa12e45bc0c098",
+      "byteSize": 1038359,
+      "kind": "png",
+      "memberPath": "ppt/media/image17.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "45705bee8dbfc876f24e521fb4ed3da06a51159a0ffb3d227cabb25ea06c6f96",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/45705bee8dbfc876f24e521fb4ed3da06a51159a0ffb3d227cabb25ea06c6f96.png"
+    },
+    {
+      "assetId": "asset-202f36b4ec87b68d7d5f",
+      "byteSize": 39759,
+      "kind": "png",
+      "memberPath": "ppt/media/image18.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "73e59dab9526108e303d81338be1b7ca730b542670169b0e88c041b748cc4159",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/73e59dab9526108e303d81338be1b7ca730b542670169b0e88c041b748cc4159.png"
+    },
+    {
+      "assetId": "asset-c053f43bb1207ad0b2ff",
+      "byteSize": 458638,
+      "kind": "png",
+      "memberPath": "ppt/media/image19.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "44d604e9da34e0688fdb3349579e37c883cffaf014fd863f2569fc4aeca21d76",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/44d604e9da34e0688fdb3349579e37c883cffaf014fd863f2569fc4aeca21d76.png"
+    },
+    {
+      "assetId": "asset-34c9a4a286325cde3c93",
+      "byteSize": 705965,
+      "kind": "png",
+      "memberPath": "ppt/media/image2.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "a4804b5c6ba583dcd2924707b67f2235beedde2d8a7f71edd6f5d1d0f6b9da49",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/a4804b5c6ba583dcd2924707b67f2235beedde2d8a7f71edd6f5d1d0f6b9da49.png"
+    },
+    {
+      "assetId": "asset-68fa5c7ba86f972732ec",
+      "byteSize": 533517,
+      "kind": "png",
+      "memberPath": "ppt/media/image20.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "adba75610399d44f1f00502912d705d86b1bc9febcb910e030bee4938dfc4ed7",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/adba75610399d44f1f00502912d705d86b1bc9febcb910e030bee4938dfc4ed7.png"
+    },
+    {
+      "assetId": "asset-7552f2cb34de9abebb11",
+      "byteSize": 271805,
+      "kind": "png",
+      "memberPath": "ppt/media/image21.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "c2c568721095a6e3c99bf5d6526c3eb174aa1d7cd986c67bb4c19468469577b4",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/c2c568721095a6e3c99bf5d6526c3eb174aa1d7cd986c67bb4c19468469577b4.png"
+    },
+    {
+      "assetId": "asset-b0549809a9d0ab1d0951",
+      "byteSize": 325748,
+      "kind": "png",
+      "memberPath": "ppt/media/image22.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "8d1f3e0837447430e2a06b27286cb60cc149948cbc4e7fff6253964a7c4c400e",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/8d1f3e0837447430e2a06b27286cb60cc149948cbc4e7fff6253964a7c4c400e.png"
+    },
+    {
+      "assetId": "asset-e9d1f422ba1c8ee2b1b1",
+      "byteSize": 505166,
+      "kind": "png",
+      "memberPath": "ppt/media/image3.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "c88047c12046bcb3558b66099365d80ecd80059fcf2faab9992dc0b78df843bf",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/c88047c12046bcb3558b66099365d80ecd80059fcf2faab9992dc0b78df843bf.png"
+    },
+    {
+      "assetId": "asset-38001e73aa16d565f493",
+      "byteSize": 28085,
+      "kind": "png",
+      "memberPath": "ppt/media/image4.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "637fe0b84d90b6f3dd18040c6b33f5f56e0c015e597ccdb3de19cb4b97401cde",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/637fe0b84d90b6f3dd18040c6b33f5f56e0c015e597ccdb3de19cb4b97401cde.png"
+    },
+    {
+      "assetId": "asset-a1e1a0f8f9c570a0d9d0",
+      "byteSize": 4039,
+      "kind": "image",
+      "memberPath": "ppt/media/image5.svg",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "bd934a1e4f0a382d9e2941ec42edf69df0ec068509998cc60b83cad4819b51f5",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/bd934a1e4f0a382d9e2941ec42edf69df0ec068509998cc60b83cad4819b51f5.svg"
+    },
+    {
+      "assetId": "asset-8a6ae1e0e4cab2ef85ce",
+      "byteSize": 1459241,
+      "kind": "image",
+      "memberPath": "ppt/media/image6.jpeg",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "415c3941ff6ffaef651c275ff893802c044bdd63a7c87337b4330d66eb62a6cf",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/415c3941ff6ffaef651c275ff893802c044bdd63a7c87337b4330d66eb62a6cf.jpeg"
+    },
+    {
+      "assetId": "asset-0ea8ef45404c3b242a4a",
+      "byteSize": 36252,
+      "kind": "png",
+      "memberPath": "ppt/media/image7.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "929929ac05870e1d1a765f583e4b8f547622af8ad49f99d5bb56e9a56005dd91",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/929929ac05870e1d1a765f583e4b8f547622af8ad49f99d5bb56e9a56005dd91.png"
+    },
+    {
+      "assetId": "asset-5ec7d971fd0032c32387",
+      "byteSize": 5658,
+      "kind": "image",
+      "memberPath": "ppt/media/image8.svg",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "0cb47b40b41f95f14b22b260e2130dea526269332b45a2ba1ed639959f10437e",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/0cb47b40b41f95f14b22b260e2130dea526269332b45a2ba1ed639959f10437e.svg"
+    },
+    {
+      "assetId": "asset-9fb979fb214d69a1dde7",
+      "byteSize": 35303,
+      "kind": "png",
+      "memberPath": "ppt/media/image9.png",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "474ecf76d8662205faa5a8efe2df1444127483548cd19b4bde8c4e596bf19d32",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok",
+      "storageKey": "media/474ecf76d8662205faa5a8efe2df1444127483548cd19b4bde8c4e596bf19d32.png"
+    },
+    {
+      "assetId": "asset-7e368c41fc8e267cb9dd",
+      "byteSize": 969488,
+      "kind": "png",
+      "memberPath": null,
+      "relativePath": "6. Alveolar Highlands/BVM_Quest9.png",
+      "sha256": "fcd585a0c7886d1087dcfb3056352a65aa649dd4bb1e5d06478e2dea07329737",
+      "sourceId": "source-5e952dd8dae61b4f5e32",
+      "status": "ok",
+      "storageKey": "media/fcd585a0c7886d1087dcfb3056352a65aa649dd4bb1e5d06478e2dea07329737.png"
+    },
+    {
+      "assetId": "asset-1291fd9a9e5e64726de8",
+      "byteSize": 981232,
+      "kind": "png",
+      "memberPath": null,
+      "relativePath": "6. Alveolar Highlands/Blood Gas Interpretation_Quest10.png",
+      "sha256": "a9862d562f8b6c20c10ce0f846e3c732d67612b0b5f74a1ca7dcbc2a2ccd2856",
+      "sourceId": "source-dbe97b1abf849784d31f",
+      "status": "ok",
+      "storageKey": "media/a9862d562f8b6c20c10ce0f846e3c732d67612b0b5f74a1ca7dcbc2a2ccd2856.png"
+    },
+    {
+      "assetId": "asset-04261e831cc3bdb9adda",
+      "byteSize": 985161,
+      "kind": "png",
+      "memberPath": null,
+      "relativePath": "6. Alveolar Highlands/ERT_Quest11.png",
+      "sha256": "6463ff981ca7c7b9729a226ea173014a69e998a3771e3e861f65afdf3a681d69",
+      "sourceId": "source-662c616b4cca28b8c35e",
+      "status": "ok",
+      "storageKey": "media/6463ff981ca7c7b9729a226ea173014a69e998a3771e3e861f65afdf3a681d69.png"
+    },
+    {
+      "assetId": "asset-531e8ba1322c0b54e60d",
+      "byteSize": 61467904,
+      "kind": "video",
+      "memberPath": null,
+      "relativePath": "6. Alveolar Highlands/GAMERICU_DOPE_Mnemonic_Airway_Emergencies_video.mp4",
+      "sha256": "f5aafeeb034b08c0f5338983517311d4ce0bd5a72488c2f24647ff48a9dc4eaa",
+      "sourceId": "source-36a2b41f3d180d8f3b0f",
+      "status": "missing_dependency",
+      "storageKey": "media/f5aafeeb034b08c0f5338983517311d4ce0bd5a72488c2f24647ff48a9dc4eaa.mp4"
+    },
+    {
+      "assetId": "asset-c2df311779eaa1808d2d",
+      "byteSize": 903836,
+      "kind": "png",
+      "memberPath": "word/media/image1.png",
+      "relativePath": "GameOutline.docx",
+      "sha256": "66c64c15ace73390535b74a97057074db5c70b9fa242853543f6f73c8a9a9964",
+      "sourceId": "source-7effcb159366c230bc93",
+      "status": "ok",
+      "storageKey": "media/66c64c15ace73390535b74a97057074db5c70b9fa242853543f6f73c8a9a9964.png"
+    },
+    {
+      "assetId": "asset-374eb5ba9454a3f2e5f4",
+      "byteSize": 10364,
+      "kind": "png",
+      "memberPath": "word/media/image1.png",
+      "relativePath": "Poster Draft.docx",
+      "sha256": "e5aae4fa3dcb7d296739a27cb4245297c151e1acc83da97d5225bedbb99982c6",
+      "sourceId": "source-9bdf304adec2bfda9fbc",
+      "status": "ok",
+      "storageKey": "media/e5aae4fa3dcb7d296739a27cb4245297c151e1acc83da97d5225bedbb99982c6.png"
+    },
+    {
+      "assetId": "asset-88fab8e0d787df19073a",
+      "byteSize": 2382894,
+      "kind": "png",
+      "memberPath": "word/media/image2.png",
+      "relativePath": "Poster Draft.docx",
+      "sha256": "534d8dfba24b3bf8858646f2b1c0bd9c0ff853dba55b7f83d7da37fe16241e09",
+      "sourceId": "source-9bdf304adec2bfda9fbc",
+      "status": "ok",
+      "storageKey": "media/534d8dfba24b3bf8858646f2b1c0bd9c0ff853dba55b7f83d7da37fe16241e09.png"
+    }
+  ],
+  "references": [
+    {
+      "memberPath": "ppt/media/hdphoto1.wdp",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "slide": 2,
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/hdphoto2.wdp",
+      "relationshipId": "rId3",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "slide": 3,
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/hdphoto3.wdp",
+      "relationshipId": "rId5",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "slide": 3,
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.png",
+      "relationshipId": "rId3",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "slide": 2,
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId5",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "slide": 2,
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image3.jpeg",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "slide": 3,
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.jpeg",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "slide": 3,
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.png",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "slide": 4,
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.png",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "slide": 5,
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "slide": 6,
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image1.png",
+      "relationshipId": "rId6",
+      "relativePath": "1. Lake Mucosa/Oxygenation & MAP_Quiz.docx",
+      "sourceId": "source-9a35f406920f298d2898",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.png",
+      "relationshipId": "rId3",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "slide": 2,
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "slide": 2,
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image3.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "slide": 3,
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "slide": 4,
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "slide": 5,
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "slide": 6,
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.png",
+      "relationshipId": "rId5",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 1,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.png",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 9,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image11.png",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 10,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId6",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 1,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image3.png",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 2,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 3,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.png",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 4,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.png",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 5,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 6,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.png",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 7,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId4",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 8,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media1.mp4",
+      "relationshipId": "rId1",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 1,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media1.mp4",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 1,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media10.mp4",
+      "relationshipId": "rId1",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 10,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media10.mp4",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 10,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media2.mp4",
+      "relationshipId": "rId1",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 2,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media2.mp4",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 2,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media3.mp4",
+      "relationshipId": "rId1",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 3,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media3.mp4",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 3,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media4.mp4",
+      "relationshipId": "rId1",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 4,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media4.mp4",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 4,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media5.mp4",
+      "relationshipId": "rId1",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 5,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media5.mp4",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 5,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media6.mp4",
+      "relationshipId": "rId1",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 6,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media6.mp4",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 6,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media7.mp4",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 7,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media8.mp4",
+      "relationshipId": "rId1",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 8,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media8.mp4",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 8,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media9.mp4",
+      "relationshipId": "rId1",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 9,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media9.mp4",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "slide": 9,
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.png",
+      "relationshipId": "rId3",
+      "relativePath": "1. Lake Mucosa/VentLab _Fio2Boost.pptx",
+      "slide": 2,
+      "sourceId": "source-2e113d0e60ce8364a1bf",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId2",
+      "relativePath": "1. Lake Mucosa/VentLab _Fio2Boost.pptx",
+      "slide": 3,
+      "sourceId": "source-2e113d0e60ce8364a1bf",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image3.png",
+      "relationshipId": "rId3",
+      "relativePath": "1. Lake Mucosa/VentLab _Fio2Boost.pptx",
+      "slide": 3,
+      "sourceId": "source-2e113d0e60ce8364a1bf",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId3",
+      "relativePath": "1. Lake Mucosa/VentLab _Fio2Boost.pptx",
+      "slide": 4,
+      "sourceId": "source-2e113d0e60ce8364a1bf",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.png",
+      "relationshipId": "rId5",
+      "relativePath": "2. Interlobar Divides/SpecialVentilatorStrategiesInterlobarDivides.pptx",
+      "slide": 1,
+      "sourceId": "source-b80d3aa7d18ad5b243f1",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId4",
+      "relativePath": "2. Interlobar Divides/SpecialVentilatorStrategiesInterlobarDivides.pptx",
+      "slide": 2,
+      "sourceId": "source-b80d3aa7d18ad5b243f1",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media1.mp4",
+      "relationshipId": "rId1",
+      "relativePath": "2. Interlobar Divides/SpecialVentilatorStrategiesInterlobarDivides.pptx",
+      "slide": 1,
+      "sourceId": "source-b80d3aa7d18ad5b243f1",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media1.mp4",
+      "relationshipId": "rId2",
+      "relativePath": "2. Interlobar Divides/SpecialVentilatorStrategiesInterlobarDivides.pptx",
+      "slide": 1,
+      "sourceId": "source-b80d3aa7d18ad5b243f1",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media2.MOV",
+      "relationshipId": "rId1",
+      "relativePath": "2. Interlobar Divides/SpecialVentilatorStrategiesInterlobarDivides.pptx",
+      "slide": 2,
+      "sourceId": "source-b80d3aa7d18ad5b243f1",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/media2.MOV",
+      "relationshipId": "rId2",
+      "relativePath": "2. Interlobar Divides/SpecialVentilatorStrategiesInterlobarDivides.pptx",
+      "slide": 2,
+      "sourceId": "source-b80d3aa7d18ad5b243f1",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.png",
+      "relationshipId": "rId3",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "slide": 2,
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "slide": 2,
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "slide": 3,
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "slide": 4,
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.png",
+      "relationshipId": "rId3",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "slide": 3,
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId3",
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "slide": 4,
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "slide": 1,
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "slide": 2,
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image3.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "slide": 4,
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "slide": 5,
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "slide": 6,
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "slide": 8,
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.jpeg",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "slide": 10,
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "slide": 2,
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "slide": 3,
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image3.png",
+      "relationshipId": "rId3",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "slide": 3,
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "slide": 4,
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.png",
+      "relationshipId": "rId3",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "slide": 4,
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "slide": 8,
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "slide": 9,
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.jpeg",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 2,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 15,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image11.jpeg",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 16,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 16,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image13.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 18,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image14.png",
+      "relationshipId": "rId3",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 18,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId3",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 2,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image3.jpeg",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 4,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.jpeg",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 6,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 6,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.jpeg",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 7,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.jpeg",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 10,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 10,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId2",
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "slide": 13,
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.emf",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 1,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 9,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image11.png",
+      "relationshipId": "rId3",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 9,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 10,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image13.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 11,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image14.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 12,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image15.png",
+      "relationshipId": "rId3",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 12,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image16.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 13,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image17.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 14,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image18.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 15,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image19.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 16,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 3,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image20.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 17,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image21.png",
+      "relationshipId": "rId3",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 17,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image22.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 18,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image23.png",
+      "relationshipId": "rId3",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 18,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image24.png",
+      "relationshipId": "rId4",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 18,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image25.png",
+      "relationshipId": "rId5",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 18,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image26.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 19,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image27.png",
+      "relationshipId": "rId3",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 19,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image28.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 20,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image3.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 4,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 5,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 6,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.png",
+      "relationshipId": "rId3",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 6,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 7,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.png",
+      "relationshipId": "rId2",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 8,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId3",
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "slide": 8,
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image1.png",
+      "relationshipId": "rId5",
+      "relativePath": "4. Bronchial Bluffs/Goldilocks and the 3 Endotracheal Tubes_Quiz.docx",
+      "sourceId": "source-94143374f3d8ee0dce98",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image2.png",
+      "relationshipId": "rId6",
+      "relativePath": "4. Bronchial Bluffs/Goldilocks and the 3 Endotracheal Tubes_Quiz.docx",
+      "sourceId": "source-94143374f3d8ee0dce98",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image3.png",
+      "relationshipId": "rId7",
+      "relativePath": "4. Bronchial Bluffs/Goldilocks and the 3 Endotracheal Tubes_Quiz.docx",
+      "sourceId": "source-94143374f3d8ee0dce98",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image4.png",
+      "relationshipId": "rId8",
+      "relativePath": "4. Bronchial Bluffs/Goldilocks and the 3 Endotracheal Tubes_Quiz.docx",
+      "sourceId": "source-94143374f3d8ee0dce98",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image5.png",
+      "relationshipId": "rId9",
+      "relativePath": "4. Bronchial Bluffs/Goldilocks and the 3 Endotracheal Tubes_Quiz.docx",
+      "sourceId": "source-94143374f3d8ee0dce98",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image1.png",
+      "relationshipId": "rId5",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image2.jpeg",
+      "relationshipId": "rId6",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image3.jpeg",
+      "relationshipId": "rId7",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image4.jpeg",
+      "relationshipId": "rId8",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image5.jpeg",
+      "relationshipId": "rId9",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image6.jpeg",
+      "relationshipId": "rId10",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image7.jpeg",
+      "relationshipId": "rId11",
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "5. Mount Pneumonora/APRV.pptx",
+      "slide": 2,
+      "sourceId": "source-4127d424b9b35fe0043b",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId2",
+      "relativePath": "5. Mount Pneumonora/APRV.pptx",
+      "slide": 4,
+      "sourceId": "source-4127d424b9b35fe0043b",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.png",
+      "relationshipId": "rId2",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "slide": 1,
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId3",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "slide": 2,
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image3.png",
+      "relationshipId": "rId2",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "slide": 3,
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId2",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "slide": 4,
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.png",
+      "relationshipId": "rId2",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "slide": 5,
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.png",
+      "relationshipId": "rId2",
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "slide": 6,
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image1.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 1,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 2,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 3,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 10,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 11,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 12,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 13,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 14,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 15,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 16,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 17,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 18,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 19,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 20,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 21,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 4,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 5,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 6,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 7,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 8,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image10.svg",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 9,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image11.png",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 3,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId2",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 10,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 4,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 5,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 6,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 7,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 8,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 9,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 12,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 13,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 15,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 16,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 17,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 18,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 19,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image12.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 20,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image13.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 4,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image13.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 5,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image13.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 6,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image13.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 7,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image13.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 8,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image13.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 9,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image14.png",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 9,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image15.png",
+      "relationshipId": "rId10",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 13,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image16.png",
+      "relationshipId": "rId10",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 18,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image17.png",
+      "relationshipId": "rId10",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 20,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image18.png",
+      "relationshipId": "rId2",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 21,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image19.png",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 21,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image2.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 1,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image20.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 21,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image21.png",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 21,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image22.png",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 21,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image3.png",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 1,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 4,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 5,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 6,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 7,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 8,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 9,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 1,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 2,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 3,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 10,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 11,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 12,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 13,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 14,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 15,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 16,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 17,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 18,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 19,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 20,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image4.png",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 21,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId10",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 21,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 4,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 5,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 6,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 7,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 8,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 9,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 1,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 2,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 3,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId8",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 10,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 11,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 12,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 13,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 14,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 15,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 16,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 17,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 18,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 19,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image5.svg",
+      "relationshipId": "rId9",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 20,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.jpeg",
+      "relationshipId": "rId2",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 2,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.jpeg",
+      "relationshipId": "rId2",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 3,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 11,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image6.jpeg",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 14,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 2,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 3,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId3",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 10,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 11,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 12,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 13,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 14,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 15,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 16,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 17,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 18,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 19,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image7.png",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 20,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 2,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 3,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId4",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 10,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 11,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 12,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 13,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 14,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 15,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 16,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 17,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 18,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 19,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image8.svg",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 20,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 2,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 3,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId5",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 10,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 11,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 12,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 13,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 14,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 15,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 16,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 17,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 18,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 19,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 20,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId6",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 21,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 4,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 5,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 6,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 7,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 8,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "ppt/media/image9.png",
+      "relationshipId": "rId7",
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "slide": 9,
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image1.png",
+      "relationshipId": "rId6",
+      "relativePath": "GameOutline.docx",
+      "sourceId": "source-7effcb159366c230bc93",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image1.png",
+      "relationshipId": "rId4",
+      "relativePath": "Poster Draft.docx",
+      "sourceId": "source-9bdf304adec2bfda9fbc",
+      "status": "ok"
+    },
+    {
+      "memberPath": "word/media/image2.png",
+      "relationshipId": "rId5",
+      "relativePath": "Poster Draft.docx",
+      "sourceId": "source-9bdf304adec2bfda9fbc",
+      "status": "ok"
+    }
+  ],
+  "schemaVersion": 1
+}

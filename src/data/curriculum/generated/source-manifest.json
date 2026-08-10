@@ -1,0 +1,1049 @@
+{
+  "counts": {
+    "byIsland": {
+      "alveolar-highlands": 8,
+      "bronchial-bluffs": 14,
+      "interlobar-divides": 13,
+      "lake-mucosa": 16,
+      "mount-pneumora": 10,
+      "unmapped": 4,
+      "valley-of-pulmonara": 11
+    },
+    "byKind": {
+      "audio": 2,
+      "docx": 26,
+      "pdf": 6,
+      "png": 10,
+      "pptx": 15,
+      "video": 17
+    },
+    "total": 76
+  },
+  "files": [
+    {
+      "byteSize": 12862311,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "lake-mucosa",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "1. Lake Mucosa/Airway Anatomy.pptx",
+      "sha256": "8908c4bc0d0f6c905c061243bcf01a03085fd550382341b91f8f9d1465f651f7",
+      "sourceId": "source-8ee32055d77195c77121",
+      "status": "ok"
+    },
+    {
+      "byteSize": 162384,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "lake-mucosa",
+      "kind": "audio",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "1. Lake Mucosa/Lung Sounds Quiz AUDIO 1.mp3",
+      "sha256": "07b93a0fadfb2126fa4ef6e6c0bf7a569a95ae794c75b5e37c0d8ee6c0f18929",
+      "sourceId": "source-99c2c5de9816c2c1a219",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 65472,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "lake-mucosa",
+      "kind": "audio",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "1. Lake Mucosa/Lung Sounds Quiz AUDIO 2.mp3",
+      "sha256": "27daae322559a090cd081474405a30e2828e502ebaea8145583adb56efac2ee5",
+      "sourceId": "source-92fe9f61bc96e60a8fd8",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 21609,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "lake-mucosa",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "1. Lake Mucosa/Lung Sounds Quiz.docx",
+      "sha256": "33b25b2661599354d1b94cbf76d1f70c8438d3d35c8920b8065912c1214974ea",
+      "sourceId": "source-4c30abde1f3c28f2e94b",
+      "status": "ok"
+    },
+    {
+      "byteSize": 24250,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "lake-mucosa",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "1. Lake Mucosa/Non-Invasive Monitoring TCOM vs. ETCO2 Quiz.docx",
+      "sha256": "c2b5aff9a475f2b7ee150c176f0a745580af1ca1055b056509118bb6dd6a8fbf",
+      "sourceId": "source-f849ae831ec912bfb643",
+      "status": "ok"
+    },
+    {
+      "byteSize": 573300,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "lake-mucosa",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "1. Lake Mucosa/Oxygenation & MAP_Quiz.docx",
+      "sha256": "6aedeafd64213d199a43f7d28c12d001bb08a91ca51b97c7ed135382a9b1d784",
+      "sourceId": "source-9a35f406920f298d2898",
+      "status": "ok"
+    },
+    {
+      "byteSize": 3276426,
+      "errors": [
+        "missing_dependency:pdfinfo",
+        "missing_dependency:pdftotext"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "lake-mucosa",
+      "kind": "pdf",
+      "missingDependencies": [
+        "pdfinfo",
+        "pdftotext"
+      ],
+      "relativePath": "1. Lake Mucosa/Oxygenation & MAP_Reading.pdf",
+      "sha256": "de94ccfdc5f3a1ddf1a1d101e1c84270cd94d16d9d1976d89a17c29d4d2b8e2e",
+      "sourceId": "source-207040924f5e8da2281c",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 68345279,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "lake-mucosa",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "1. Lake Mucosa/Oxygenation & MAP_Video.mp4",
+      "sha256": "ff15e5600abd3e42eb2e2d8c5c35e9d1ec804c3675fc1694291249f5803a0939",
+      "sourceId": "source-5e94435d563fdb818659",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 20656,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "lake-mucosa",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "1. Lake Mucosa/Oxygenation vs. Ventilation Quiz.docx",
+      "sha256": "3642184189172a1d88e6111bbcfea11bdef47ddd4b1ccbfebf8976208953e53b",
+      "sourceId": "source-edf7ae981cb8be241867",
+      "status": "ok"
+    },
+    {
+      "byteSize": 811220,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "lake-mucosa",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "1. Lake Mucosa/Pulmonary Anatomy.pptx",
+      "sha256": "80cf59b5a6518a90f3bc48f2e26c458236069a54f578028ae0b3827a4e86ade5",
+      "sourceId": "source-eddb8cc88e8f7218283d",
+      "status": "ok"
+    },
+    {
+      "byteSize": 959426,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "lake-mucosa",
+      "kind": "png",
+      "missingDependencies": [],
+      "relativePath": "1. Lake Mucosa/Suctioning_Quest1.png",
+      "sha256": "47733b8dce6b445962f087da4b75a774188f8abd09adf247b874c8adfcdce1a5",
+      "sourceId": "source-dd99f2a0d3e187cc8404",
+      "status": "ok"
+    },
+    {
+      "byteSize": 759450511,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "lake-mucosa",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+      "sha256": "529ffc7fbaf2b5f97fa3d75acc342efb01fdfe269f28c6ea887938368b299651",
+      "sourceId": "source-f70f88a6b44b4db683dd",
+      "status": "ok"
+    },
+    {
+      "byteSize": 3963876,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "lake-mucosa",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "1. Lake Mucosa/VentLab _Fio2Boost.pptx",
+      "sha256": "31919fdd83df374dfa6a288842a8336595efc1f349b85cd49695bf4c7881bda8",
+      "sourceId": "source-2e113d0e60ce8364a1bf",
+      "status": "ok"
+    },
+    {
+      "byteSize": 15300,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "lake-mucosa",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "1. Lake Mucosa/Ventilation & MV_Quiz.docx",
+      "sha256": "c78e6bcf316ba494634f3a3377b25ee6b474db97d083617274de52d0e0c1a344",
+      "sourceId": "source-cbe03b4052717182f851",
+      "status": "ok"
+    },
+    {
+      "byteSize": 378997,
+      "errors": [
+        "missing_dependency:pdfinfo",
+        "missing_dependency:pdftotext"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "lake-mucosa",
+      "kind": "pdf",
+      "missingDependencies": [
+        "pdfinfo",
+        "pdftotext"
+      ],
+      "relativePath": "1. Lake Mucosa/Ventilation & MV_Reading.pdf",
+      "sha256": "5efaccdece9c8ad969b79e3e50e5d28d761d1e58c48b207a74de9be50134817e",
+      "sourceId": "source-b4e00ead889bf9410184",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 126481415,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "lake-mucosa",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "1. Lake Mucosa/Ventilation & MV_Video.mp4",
+      "sha256": "1626a32457b636e81fece7c0115f353841761791850ec35894f8f4ca708e7b2b",
+      "sourceId": "source-761beb275da50b68b7ec",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 542922181,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "interlobar-divides",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "2. Interlobar Divides/CCDH considerations.MOV",
+      "sha256": "ec84d0abc35d398e6d00cd3145f445b6081e71680f3c3412bf024b1479278c22",
+      "sourceId": "source-5864f1afd209244c6281",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 1117939428,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "interlobar-divides",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "2. Interlobar Divides/CVICU Ventilator Considerations_Video.MOV",
+      "sha256": "f3efe4bd9c0ce67af246db47a4924e8b2fb3d35ba533f4005a1926a6c82cb703",
+      "sourceId": "source-e629b58f8ab6925ffa90",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 15927,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "interlobar-divides",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "2. Interlobar Divides/Choosing a Ventilator Mode  Clinical Case.docx",
+      "sha256": "da51c1e51f4c666c94a7d400789689e543523d7d760dc5b0232d75e62b9b8c7b",
+      "sourceId": "source-638af99195c598411f75",
+      "status": "ok"
+    },
+    {
+      "byteSize": 969843,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "interlobar-divides",
+      "kind": "png",
+      "missingDependencies": [],
+      "relativePath": "2. Interlobar Divides/Determining Compliance_Quest2.png",
+      "sha256": "102816436518b51306110d497b3046d4d87ba2f27616a67dd3159236b4dba9a2",
+      "sourceId": "source-bc09dd734ce7f408914b",
+      "status": "ok"
+    },
+    {
+      "byteSize": 971072,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "interlobar-divides",
+      "kind": "png",
+      "missingDependencies": [],
+      "relativePath": "2. Interlobar Divides/Determining Compliance_Quest3.png",
+      "sha256": "c6f519c24f636b88b996feb0da199ce90d87727c87e4e7e5495b0cdc52f09fe3",
+      "sourceId": "source-a7334f339fa443c85f65",
+      "status": "ok"
+    },
+    {
+      "byteSize": 106743931,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "interlobar-divides",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "2. Interlobar Divides/Independent v Dependent variables_Movie.mp4",
+      "sha256": "432b6c2d6b86359b1694146b5c0ef813357fe086389aeaa9ca98764db47bd50e",
+      "sourceId": "source-cdfd799e02a7a3ed8885",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 199311740,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "interlobar-divides",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "2. Interlobar Divides/Lung Compliance_Video.mp4",
+      "sha256": "036fa2aad8375ee81f843f2f040c18d91fe984795e6a7e287d374ce6a35c672d",
+      "sourceId": "source-79c4e904def804b35389",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 75257,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "interlobar-divides",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "2. Interlobar Divides/Lung protective.pptx",
+      "sha256": "d0e367dd520c34ec85917a16b6e52dd29690b73eee431e767755313ee5d463ee",
+      "sourceId": "source-aedd2ba3f308aea67166",
+      "status": "ok"
+    },
+    {
+      "byteSize": 1185845044,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "interlobar-divides",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "2. Interlobar Divides/SpecialVentilatorStrategiesInterlobarDivides.pptx",
+      "sha256": "e80255100a37429f8ec7d9450027a204a344a648e18f7c8f1b0d4b63ee3a91ae",
+      "sourceId": "source-b80d3aa7d18ad5b243f1",
+      "status": "ok"
+    },
+    {
+      "byteSize": 1378421498,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "interlobar-divides",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "2. Interlobar Divides/Vent alarms 101.mov",
+      "sha256": "191d3e9fcc1de4337af8108cfadd43af6633569987065d22157eba7d1cb368ce",
+      "sourceId": "source-2c23d200d1dcfd800295",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 1542169,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "interlobar-divides",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "2. Interlobar Divides/Vent modes screens GAMER.pptx",
+      "sha256": "68eac039b543527943364f021b65b036410721d259c6712850065558048ccbc9",
+      "sourceId": "source-942d72aaf32b9eb4ff35",
+      "status": "ok"
+    },
+    {
+      "byteSize": 1213096,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "interlobar-divides",
+      "kind": "png",
+      "missingDependencies": [],
+      "relativePath": "2. Interlobar Divides/Ventilator Modes_Graphic.png",
+      "sha256": "655b06b0f38edee5c5c0fe057e289812b7d31c26e98039bc687c140aae081e1c",
+      "sourceId": "source-ef0636ab0a0fde4c4b81",
+      "status": "ok"
+    },
+    {
+      "byteSize": 1203997,
+      "errors": [
+        "missing_dependency:pdfinfo",
+        "missing_dependency:pdftotext"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "interlobar-divides",
+      "kind": "pdf",
+      "missingDependencies": [
+        "pdfinfo",
+        "pdftotext"
+      ],
+      "relativePath": "2. Interlobar Divides/Ventilator Settings_Clinical Case Vignette.pdf",
+      "sha256": "7790735ba21ccf5f3cac65416d16fd827368b865a1371eca48157629a697f153",
+      "sourceId": "source-c5425d9e98ed0863a367",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 142886115,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "valley-of-pulmonara",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "3. Valley of Pulmonara/ARDS_GAMERICU.mp4",
+      "sha256": "83107a8d0c7d6482a123cfec900e743d53aa7145ff26f87d1fcd8262d9b9c525",
+      "sourceId": "source-9c2b5778b7dca050c030",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 89497172,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "valley-of-pulmonara",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "3. Valley of Pulmonara/Bronchiolitis_GAMERICU.mp4",
+      "sha256": "d643e4bcff7c24216d93671c9bb3bd86b8471f1851949eabc6e2f99e3d602880",
+      "sourceId": "source-f6f8e6bb77e377d91b93",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 31530463,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "valley-of-pulmonara",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "3. Valley of Pulmonara/Captured_Video.mp4",
+      "sha256": "3e1eff4493c19417d78642ad3d828a2ff472a7adf7aa37fb93599d25d1039682",
+      "sourceId": "source-4723af25dd62be419a52",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 74461574,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "valley-of-pulmonara",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "3. Valley of Pulmonara/CriticalAsthma_Gamer_ICU.mp4",
+      "sha256": "caa5ca12b1506d45cbfc6c86dce3dfceffc752adef38a3e51d9c01c506bdc50a",
+      "sourceId": "source-a90394b226e1370ad272",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 1626066826,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "valley-of-pulmonara",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "3. Valley of Pulmonara/EAT considerstions.mov",
+      "sha256": "f5ec8e3346f36a938509d7dadb3740c0b152eb005d6e7ec58fca96c468dc8737",
+      "sourceId": "source-991d6a188cefced1dc6d",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 23961,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "valley-of-pulmonara",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "3. Valley of Pulmonara/NURSE VAP Prevention Quiz content.docx",
+      "sha256": "69606262df073681b7c0c1a9ff71642326702752d0e41f83adde5860b4776912",
+      "sourceId": "source-3f8c251c5b4a921d2b39",
+      "status": "ok"
+    },
+    {
+      "byteSize": 3020537,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "valley-of-pulmonara",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "3. Valley of Pulmonara/NURSES Ventilator Associated Pneumonia.pptx",
+      "sha256": "50856800d58eeb771ed751617fd6710613cb7f4d494c8a743b2b7a808f1a6784",
+      "sourceId": "source-e43be562b00ece446ef4",
+      "status": "ok"
+    },
+    {
+      "byteSize": 2640645,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "valley-of-pulmonara",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+      "sha256": "679b15227f844f0052f2e2b63fed922c04b7868a0f147af52c9bcb81f7dabfd0",
+      "sourceId": "source-50dbbfb7c85dc411ec99",
+      "status": "ok"
+    },
+    {
+      "byteSize": 34047,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "valley-of-pulmonara",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "3. Valley of Pulmonara/Vent Alarms Quest 4.docx",
+      "sha256": "fccf2d4d543fb0507800cad910d9a400263d1edb29c535f89fddc93d6e1f18d6",
+      "sourceId": "source-f18a482635104989a380",
+      "status": "ok"
+    },
+    {
+      "byteSize": 31477,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "valley-of-pulmonara",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "3. Valley of Pulmonara/Vent Alarms Quest 5.docx",
+      "sha256": "47175b8791bca5376459b82ebfb7b0e3ad07e18a650259fbcbc3ca7d202e89a2",
+      "sourceId": "source-1c7571b0559d55c2a66d",
+      "status": "ok"
+    },
+    {
+      "byteSize": 6083952,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "valley-of-pulmonara",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "3. Valley of Pulmonara/Vent lab loops.pptx",
+      "sha256": "22aaddf37947fa694507c6b345c45da23407b1f3bea8432e34d860e1d0efaeba",
+      "sourceId": "source-1e8209fe3a0de46f82bc",
+      "status": "ok"
+    },
+    {
+      "byteSize": 967344,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "bronchial-bluffs",
+      "kind": "png",
+      "missingDependencies": [],
+      "relativePath": "4. Bronchial Bluffs/BVM Deliberate Practice_Quest7.png",
+      "sha256": "d6566bcab2d36ca5dff4274e4ba2f1dbe21fa235ac7417d27e4117dbe2da93ff",
+      "sourceId": "source-1552687737fc868fbcd6",
+      "status": "ok"
+    },
+    {
+      "byteSize": 12725,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "bronchial-bluffs",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "4. Bronchial Bluffs/Bagging 201 video.docx",
+      "sha256": "909cc4b4a618fab8eae8f504e8dc7d58bfa5ae1f64d270459e6e76677d8ee7b0",
+      "sourceId": "source-858414f560e37d2e4362",
+      "status": "ok"
+    },
+    {
+      "byteSize": 398524,
+      "errors": [
+        "missing_dependency:pdfinfo",
+        "missing_dependency:pdftotext"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "bronchial-bluffs",
+      "kind": "pdf",
+      "missingDependencies": [
+        "pdfinfo",
+        "pdftotext"
+      ],
+      "relativePath": "4. Bronchial Bluffs/Blood Gas Interpretation Infographic.pdf",
+      "sha256": "075088de4db3a70a3424593b91150f092c81bc24b45174875fc4d2edb50cc81f",
+      "sourceId": "source-30f7a5a9d347509bbdb1",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 43504761,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "bronchial-bluffs",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "4. Bronchial Bluffs/Blood Gas Interpretation Part 1 - Identify the Gas.mp4",
+      "sha256": "893d9e42d6888d5174b444043b3749fb8421f409a3c00aecbdb26884ef0791ce",
+      "sourceId": "source-2134690e4562b5fb36d7",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 27182548,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "bronchial-bluffs",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "4. Bronchial Bluffs/Blood Gas Interpretation Part 2 - Act on the Gas.mp4",
+      "sha256": "4c0c0e3a73e144c89a9db271bccef85e63ec870f784381d5cf190083924a8348",
+      "sourceId": "source-ddec61eb224f6f705493",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 20965,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "bronchial-bluffs",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "4. Bronchial Bluffs/Blood Gas Quiz - Act on the Gas.docx",
+      "sha256": "b4314d3aaca04ffc457fc1b8dabbd1754b68167d9330436228007745971894c2",
+      "sourceId": "source-5a937ffba2af1400c1a9",
+      "status": "ok"
+    },
+    {
+      "byteSize": 19249,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "bronchial-bluffs",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "4. Bronchial Bluffs/Blood Gas Quiz - Identify the Gas.docx",
+      "sha256": "6fcd7c3849d4c211d9ef6b51b3279de8cacd50532d02fdda4f136853bfcb7231",
+      "sourceId": "source-73255c6a32be3c36f454",
+      "status": "ok"
+    },
+    {
+      "byteSize": 975899,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "bronchial-bluffs",
+      "kind": "png",
+      "missingDependencies": [],
+      "relativePath": "4. Bronchial Bluffs/CXR in Real Life_Quest6.png",
+      "sha256": "8eafe5157fd20583edc5ad04d4acb6a364647a1b235bad259760d642ca8c5358",
+      "sourceId": "source-1d08bb4b6d9de03e0bfd",
+      "status": "ok"
+    },
+    {
+      "byteSize": 8984055,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "bronchial-bluffs",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "4. Bronchial Bluffs/Chest XRay interpretation GAMER.pptx",
+      "sha256": "ea9da4115f97b10cc7f8521d8829dc72e0573ae5915271d7821eaa8c8f787d6c",
+      "sourceId": "source-b45cd9bafd5bbe523b54",
+      "status": "ok"
+    },
+    {
+      "byteSize": 50412125,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "bronchial-bluffs",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "4. Bronchial Bluffs/ChestXray_video.mp4",
+      "sha256": "96d5fa53b8522e58b0a80ed723a112f0e101551b52facc154a8ebdbaff579524",
+      "sourceId": "source-afa0408a6ddd481ccf7b",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 15133,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "bronchial-bluffs",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "4. Bronchial Bluffs/Gamer-ICU Quiz ABG interpretation Bronchial Bluffs.docx",
+      "sha256": "4a1f321fdc295d4a870292df7b40390f522b4727a1f2017d6fe93df5b3aaaa64",
+      "sourceId": "source-43cf381ebdfd98206de5",
+      "status": "ok"
+    },
+    {
+      "byteSize": 16502,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "bronchial-bluffs",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "4. Bronchial Bluffs/GamerICU Bronchial Bluffs – Troubleshooting ineffective BVM.docx",
+      "sha256": "f2050e7d8aa4b3143999b089928d9f4fbbddda5ea0e816d5bd237e5610179e8b",
+      "sourceId": "source-63f89949d7650868898b",
+      "status": "ok"
+    },
+    {
+      "byteSize": 1376266,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "bronchial-bluffs",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "4. Bronchial Bluffs/Goldilocks and the 3 Endotracheal Tubes_Quiz.docx",
+      "sha256": "b3e98dc90f21b49cb7a2d6f07ca94fe62e1e2ded2b5c9134ca25308c6a2597eb",
+      "sourceId": "source-94143374f3d8ee0dce98",
+      "status": "ok"
+    },
+    {
+      "byteSize": 168104,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "bronchial-bluffs",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "4. Bronchial Bluffs/Guess that disease_Quiz.docx",
+      "sha256": "77620df938c2b0260e132d3ce6b4c6b57f73ce57b2608a89376b6c8a445ad31d",
+      "sourceId": "source-3cbd94859fe4639d6d03",
+      "status": "ok"
+    },
+    {
+      "byteSize": 281930,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "mount-pneumora",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "5. Mount Pneumonora/APRV.pptx",
+      "sha256": "05fb49aa99e612b393e98a50c1b81b94c34ff21c930f12263bf1c63348009e49",
+      "sourceId": "source-4127d424b9b35fe0043b",
+      "status": "ok"
+    },
+    {
+      "byteSize": 17104,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "mount-pneumora",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "5. Mount Pneumonora/GAMER-ICU – Mount Pneumonora – Escalating Care.docx",
+      "sha256": "92df143658c6d174c7c6ba57637b76999511645051660a9e406e964cb191f7b5",
+      "sourceId": "source-602d5bf94d753cd4ecce",
+      "status": "ok"
+    },
+    {
+      "byteSize": 19404,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "mount-pneumora",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "5. Mount Pneumonora/HFOV vs APRV Quiz.docx",
+      "sha256": "aa720ef1ad3b4fadbe620f1a9b005178ee218f56883115266e6663d880ee6026",
+      "sourceId": "source-a21eec5d3a0228fe0a06",
+      "status": "ok"
+    },
+    {
+      "byteSize": 22737,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "mount-pneumora",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "5. Mount Pneumonora/Introduction to HFOV Script.docx",
+      "sha256": "a934da6c7035bf4f4ed9353a0fae1f0a0e8267846336ab4d8cb88689fdd87adb",
+      "sourceId": "source-43183594318354add9e6",
+      "status": "ok"
+    },
+    {
+      "byteSize": 31329,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "mount-pneumora",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "5. Mount Pneumonora/IntroductiontoHFOVMountPneumora.pptx",
+      "sha256": "79a1183e6fc42a5dab17c91345600a0e114334b84ab5b7a04fe5cdf7c5ec3f5f",
+      "sourceId": "source-e8bc7f26b998be4f7eba",
+      "status": "ok"
+    },
+    {
+      "byteSize": 988911,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "mount-pneumora",
+      "kind": "png",
+      "missingDependencies": [],
+      "relativePath": "5. Mount Pneumonora/Non Conventional Ventilation_Quest8.png",
+      "sha256": "cca182677e344fa48c1e3b6112a2a733ae58656c8fca2b44f9bc0529442f930e",
+      "sourceId": "source-0f174b416d67eab3682d",
+      "status": "ok"
+    },
+    {
+      "byteSize": 16363,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "mount-pneumora",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "5. Mount Pneumonora/Ventilator Adjuncts Quiz Go from iNO to I KNOW.docx",
+      "sha256": "bc78a3e9d52aa28655bf248e2b5f2edce34e301ee96c902d26ec244119a5c717",
+      "sourceId": "source-343c4e242fd2d76bed43",
+      "status": "ok"
+    },
+    {
+      "byteSize": 21003,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "mount-pneumora",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "5. Mount Pneumonora/Ventilator Adjuncts- iNO, other methods.docx",
+      "sha256": "f320f4eb827e2ec814b3d8c99ef7106c7b09e787bd9a5479786ca41130e9ca1f",
+      "sourceId": "source-adadb20180aa2b6294dd",
+      "status": "ok"
+    },
+    {
+      "byteSize": 15025507,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "mount-pneumora",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "5. Mount Pneumonora/VentilatorAdjunctsiNOReadingGraphicMountPneumora.pptx",
+      "sha256": "a3826e9a6bedc835f98a04f8d93c60e4917444d5b497773968160a76d0ffc7d7",
+      "sourceId": "source-a77c9c03925d57d9c39f",
+      "status": "ok"
+    },
+    {
+      "byteSize": 92407537,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "mount-pneumora",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "5. Mount Pneumonora/Weaning nonCMV_Video.mp4",
+      "sha256": "626521fe320c60af805a51042d21617310c8f550d9f9fa19867e99d17d73cb97",
+      "sourceId": "source-26a5a749292d001f1261",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 13048433,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "alveolar-highlands",
+      "kind": "pptx",
+      "missingDependencies": [],
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_Case vignetteANSWERS.pptx",
+      "sha256": "ba4c5c8356d01b38f29ed7632429f69066cf7b8aab1850eb8a02a1e2348ad5e4",
+      "sourceId": "source-6ef96287c330e4afb35e",
+      "status": "ok"
+    },
+    {
+      "byteSize": 45629849,
+      "errors": [
+        "missing_dependency:pdfinfo",
+        "missing_dependency:pdftotext"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "alveolar-highlands",
+      "kind": "pdf",
+      "missingDependencies": [
+        "pdfinfo",
+        "pdftotext"
+      ],
+      "relativePath": "6. Alveolar Highlands/ARDSCapturing_CaseVignette.pdf",
+      "sha256": "1018a40caed06cdf1231400d53543bb0613b12302ec12fae5736c30cf5f758a5",
+      "sourceId": "source-2be02e391da13fdf6ddd",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 969488,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "alveolar-highlands",
+      "kind": "png",
+      "missingDependencies": [],
+      "relativePath": "6. Alveolar Highlands/BVM_Quest9.png",
+      "sha256": "fcd585a0c7886d1087dcfb3056352a65aa649dd4bb1e5d06478e2dea07329737",
+      "sourceId": "source-5e952dd8dae61b4f5e32",
+      "status": "ok"
+    },
+    {
+      "byteSize": 981232,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "alveolar-highlands",
+      "kind": "png",
+      "missingDependencies": [],
+      "relativePath": "6. Alveolar Highlands/Blood Gas Interpretation_Quest10.png",
+      "sha256": "a9862d562f8b6c20c10ce0f846e3c732d67612b0b5f74a1ca7dcbc2a2ccd2856",
+      "sourceId": "source-dbe97b1abf849784d31f",
+      "status": "ok"
+    },
+    {
+      "byteSize": 21744,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "alveolar-highlands",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "6. Alveolar Highlands/ERT clinical vignette GAMER.docx",
+      "sha256": "01a0c5e77c5607f765250d0295d914514163fe5a0e9c2496a77d024e78775278",
+      "sourceId": "source-df426fa876dc1d011661",
+      "status": "ok"
+    },
+    {
+      "byteSize": 985161,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "alveolar-highlands",
+      "kind": "png",
+      "missingDependencies": [],
+      "relativePath": "6. Alveolar Highlands/ERT_Quest11.png",
+      "sha256": "6463ff981ca7c7b9729a226ea173014a69e998a3771e3e861f65afdf3a681d69",
+      "sourceId": "source-662c616b4cca28b8c35e",
+      "status": "ok"
+    },
+    {
+      "byteSize": 20215,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": "alveolar-highlands",
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "6. Alveolar Highlands/GAMER-ICU- Alveolar highlands - Intubating an asthmatic – clinical case vignette.docx",
+      "sha256": "a9a71066afd354e2c79eecf32ebfc27dbb7810ce36f2b968428bf92d80c088ab",
+      "sourceId": "source-ee4ea680d5d42ebe164a",
+      "status": "ok"
+    },
+    {
+      "byteSize": 61467904,
+      "errors": [
+        "missing_dependency:ffprobe"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": "alveolar-highlands",
+      "kind": "video",
+      "missingDependencies": [
+        "ffprobe"
+      ],
+      "relativePath": "6. Alveolar Highlands/GAMERICU_DOPE_Mnemonic_Airway_Emergencies_video.mp4",
+      "sha256": "f5aafeeb034b08c0f5338983517311d4ce0bd5a72488c2f24647ff48a9dc4eaa",
+      "sourceId": "source-36a2b41f3d180d8f3b0f",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 15971,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": null,
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "Alisa's Old Drafts/Napkin Scribbles.docx",
+      "sha256": "0049c20cc092b287c06337c997b13f0906b2e57e47d9f28fc5f41306c2b677eb",
+      "sourceId": "source-8ee71ce049b3c7b1ecea",
+      "status": "ok"
+    },
+    {
+      "byteSize": 981582,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": null,
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "GameOutline.docx",
+      "sha256": "bcdef0bf3c7735df043577641d1ec6e67d93bfe79b7fd3822fb78f397a9e7bbc",
+      "sourceId": "source-7effcb159366c230bc93",
+      "status": "ok"
+    },
+    {
+      "byteSize": 355506,
+      "errors": [
+        "missing_dependency:pdfinfo",
+        "missing_dependency:pdftotext"
+      ],
+      "extractionStatus": "missing_dependency",
+      "islandId": null,
+      "kind": "pdf",
+      "missingDependencies": [
+        "pdfinfo",
+        "pdftotext"
+      ],
+      "relativePath": "Poster Draft with QR Code.pdf",
+      "sha256": "961e07c6ae3845d400e5379d5b3182480bd70082f9af57b39f64511d53d11375",
+      "sourceId": "source-93cc317754afc48b484a",
+      "status": "missing_dependency"
+    },
+    {
+      "byteSize": 2410174,
+      "errors": [],
+      "extractionStatus": "ok",
+      "islandId": null,
+      "kind": "docx",
+      "missingDependencies": [],
+      "relativePath": "Poster Draft.docx",
+      "sha256": "bcc51cbf5822a888187bd3ced0c0d929956a5bf99b13b3b6372de2b702029cd6",
+      "sourceId": "source-9bdf304adec2bfda9fbc",
+      "status": "ok"
+    }
+  ],
+  "schemaVersion": 1
+}
