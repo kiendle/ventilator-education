@@ -1,8 +1,16 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ChangeEvent, FormEvent, ReactNode } from 'react'
+import { gradeActivity } from '@/data/curriculum'
+import type {
+  ActivitySubmission,
+  CurriculumActivity,
+  CurriculumIsland,
+  QuizQuestion,
+  QuizResponse,
+} from '@/data/curriculum'
 import { Button } from './Button'
 import { Panel, ActivityCard } from './Panel'
 import { Badge } from './Badge'
@@ -89,7 +97,7 @@ export const APP_SCREENS: AppScreen[] = [
 ]
 
 /* ------------------------------------------------------------------ */
-/* Local synthetic data (no external fetches)                          */
+/* Curriculum projection                                               */
 /* ------------------------------------------------------------------ */
 
 type ActivityType =
@@ -110,6 +118,8 @@ type Activity = {
   points: number
   minutes: number
   blurb: string
+  available: boolean
+  record: CurriculumActivity
 }
 
 type Island = {
@@ -117,212 +127,51 @@ type Island = {
   name: string
   tagline: string
   activities: Activity[]
+  finalExam: CurriculumActivity
 }
 
-const ISLANDS: Island[] = [
-  {
-    id: 'lake-mucosa',
-    name: 'Lake Mucosa',
-    tagline: 'Airway anatomy, oxygenation and your first ventilator interface.',
-    activities: [
-      {
-        id: 'lm-01',
-        title: 'Airway Anatomy & Oxygenation',
-        type: 'reading',
-        points: 40,
-        minutes: 12,
-        blurb: 'Trace the airway from nares to alveoli and read the oxygenation cascade.',
-      },
-      {
-        id: 'lm-02',
-        title: 'Vent Interfaces of Lake Mucosa',
-        type: 'video',
-        points: 60,
-        minutes: 18,
-        blurb: 'Masks, ET tubes and trachs — match the interface to the patient.',
-      },
-      {
-        id: 'lm-03',
-        title: 'Lung Sounds Quiz',
-        type: 'quiz',
-        points: 80,
-        minutes: 10,
-        blurb: 'Identify crackles, wheezes and diminished sounds from the shoreline.',
-      },
-      {
-        id: 'lm-05',
-        title: 'Monitor Match',
-        type: 'matching',
-        points: 75,
-        minutes: 10,
-        blurb: 'Match ETCO₂ and transcutaneous monitoring findings.',
-      },
-      {
-        id: 'lm-09',
-        title: 'Alarm Response Order',
-        type: 'ordering',
-        points: 60,
-        minutes: 8,
-        blurb: 'Put the bedside alarm response in a safe sequence.',
-      },
-      {
-        id: 'lm-06',
-        title: 'Minute Ventilation Check',
-        type: 'fill',
-        points: 50,
-        minutes: 6,
-        blurb: 'Calculate minute ventilation from tidal volume and rate.',
-      },
-      {
-        id: 'lm-07',
-        title: 'Clinical SBAR: Rising Pressures',
-        type: 'case',
-        points: 100,
-        minutes: 14,
-        blurb: 'Assess a deteriorating patient and deliver a focused handoff.',
-      },
-      {
-        id: 'lm-08',
-        title: 'BVM Skills Quest',
-        type: 'quest',
-        points: 120,
-        minutes: 15,
-        blurb: 'Complete supervised bag-mask ventilation practice.',
-      },
-      {
-        id: 'lm-04',
-        title: 'Ventilator Lab: First Settings',
-        type: 'sim',
-        points: 120,
-        minutes: 15,
-        blurb: 'Dial in FiO₂, PEEP and rate for a simulated pediatric patient.',
-      },
-    ],
-  },
-  {
-    id: 'interlobar-divides',
-    name: 'Interlobar Divides',
-    tagline: 'Alarms, troubleshooting and congenital heart considerations.',
-    activities: [
-      {
-        id: 'id-01',
-        title: 'Vent Alarms 101',
-        type: 'video',
-        points: 60,
-        minutes: 14,
-        blurb: 'High pressure, low pressure — respond before the second chime.',
-      },
-      {
-        id: 'id-02',
-        title: 'CCDH Considerations',
-        type: 'reading',
-        points: 50,
-        minutes: 16,
-        blurb: 'Ventilating the single-ventricle patient across the divides.',
-      },
-      {
-        id: 'id-03',
-        title: 'Alarm Response Drill',
-        type: 'quiz',
-        points: 90,
-        minutes: 12,
-        blurb: 'Timed scenarios across the ridge.',
-      },
-    ],
-  },
-  {
-    id: 'valley-of-pulmonara',
-    name: 'Valley of Pulmonara',
-    tagline: 'Airway malacia, vent waveforms and loop reading.',
-    activities: [
-      {
-        id: 'vp-01',
-        title: 'Tracheobronchomalacia Rounds',
-        type: 'reading',
-        points: 50,
-        minutes: 15,
-        blurb: 'Nurse-led care for collapsible airways.',
-      },
-      {
-        id: 'vp-02',
-        title: 'Vent Lab: Loops',
-        type: 'sim',
-        points: 120,
-        minutes: 20,
-        blurb: 'Read pressure-volume loops and fix the beak.',
-      },
-    ],
-  },
-  {
-    id: 'bronchial-bluffs',
-    name: 'Bronchial Bluffs',
-    tagline: 'Blood gases, chest imaging and bagging technique.',
-    activities: [
-      {
-        id: 'bb-01',
-        title: 'Act on the Gas',
-        type: 'quiz',
-        points: 100,
-        minutes: 12,
-        blurb: 'ABG in, action out — interpret and respond.',
-      },
-      {
-        id: 'bb-02',
-        title: 'Chest X-Ray Reading',
-        type: 'video',
-        points: 70,
-        minutes: 16,
-        blurb: 'Tube position, opacities and air leaks from the cliffs.',
-      },
-    ],
-  },
-  {
-    id: 'mount-pneumora',
-    name: 'Mount Pneumora',
-    tagline: 'APRV, HFOV and high-altitude escalation.',
-    activities: [
-      {
-        id: 'mp-01',
-        title: 'APRV Ascent',
-        type: 'reading',
-        points: 60,
-        minutes: 18,
-        blurb: 'Release ventilation without losing recruitment.',
-      },
-      {
-        id: 'mp-02',
-        title: 'HFOV Summit Drill',
-        type: 'sim',
-        points: 140,
-        minutes: 22,
-        blurb: 'Amplitude, frequency and mean airway pressure at altitude.',
-      },
-    ],
-  },
-  {
-    id: 'alveolar-highlands',
-    name: 'Alveolar Highlands',
-    tagline: 'Weaning, extubation readiness and the final ridge.',
-    activities: [
-      {
-        id: 'ah-01',
-        title: 'Extubation Readiness Trial',
-        type: 'quiz',
-        points: 110,
-        minutes: 14,
-        blurb: 'ERT criteria before you pull the tube.',
-      },
-      {
-        id: 'ah-02',
-        title: 'Weaning the Highlands',
-        type: 'video',
-        points: 80,
-        minutes: 15,
-        blurb: 'Pressure support trials and CPAP ladders.',
-      },
-    ],
-  },
-]
+function projectActivity(record: CurriculumActivity): Activity {
+  let type: ActivityType
+  if (record.type === 'vent_lab') type = 'sim'
+  else if (record.type === 'case_vignette') type = 'case'
+  else if (record.type === 'pending') type = 'quiz'
+  else if (record.type !== 'quiz') type = record.type
+  else {
+    const interaction = record.content?.questions[0]?.interaction
+    type =
+      interaction === 'matching'
+        ? 'matching'
+        : interaction === 'drag_drop'
+          ? 'ordering'
+          : interaction === 'fill_blank'
+            ? 'fill'
+            : 'quiz'
+  }
+
+  return {
+    id: record.activityId,
+    title: record.title,
+    type,
+    points: record.peepPointsValue,
+    minutes: record.estimatedMinutes,
+    blurb: record.description ?? record.title,
+    available: record.contentStatus === 'ready' && record.content !== null,
+    record,
+  }
+}
+
+function projectIsland(record: CurriculumIsland): Island {
+  const finalExam = record.activities.find((activity) => !activity.countsTowardProgress)
+  if (!finalExam) throw new Error(`${record.id} is missing its final exam slot`)
+
+  return {
+    id: record.id,
+    name: record.name,
+    tagline: record.description,
+    activities: record.activities.filter((activity) => activity.countsTowardProgress).map(projectActivity),
+    finalExam,
+  }
+}
 
 const ISLAND_SPOTS = [
   { left: '51%', top: '84%', tooltip: 'above' },
@@ -332,52 +181,6 @@ const ISLAND_SPOTS = [
   { left: '79%', top: '30%', tooltip: 'left' },
   { left: '55%', top: '12%', tooltip: 'below' },
 ] as const
-
-const QUIZ_QUESTION = {
-  prompt:
-    'You auscultate fine crackles at the bases that do not clear with suctioning, alongside rising plateau pressures. What is the most likely finding?',
-  options: [
-    { id: 'a', text: 'Mucus plug in the endotracheal tube', correct: false },
-    { id: 'b', text: 'Pulmonary edema / fluid overload', correct: true },
-    { id: 'c', text: 'Bronchospasm requiring albuterol', correct: false },
-    { id: 'd', text: 'Normal variant — document and monitor', correct: false },
-  ],
-  rationale:
-    'Fine crackles that persist after suctioning plus rising plateau pressures point to alveolar fluid — escalate to the provider and review fluid status and PEEP strategy.',
-}
-
-const EXAM_QUESTIONS = [
-  {
-    prompt: 'Your patient on AC/VC has a high-pressure alarm. First action?',
-    options: [
-      'Silence the alarm and re-chart',
-      'Assess the patient, then the circuit, then the ventilator',
-      'Increase the pressure limit',
-      'Switch to HFOV immediately',
-    ],
-    answer: 1,
-  },
-  {
-    prompt: 'pH 7.28 / pCO₂ 58 / HCO₃⁻ 26. Interpretation?',
-    options: [
-      'Respiratory alkalosis',
-      'Metabolic acidosis',
-      'Respiratory acidosis',
-      'Compensated mixed disorder',
-    ],
-    answer: 2,
-  },
-  {
-    prompt: 'Best evidence of extubation readiness?',
-    options: [
-      'FiO₂ 100% for 24 hours',
-      'Passing an ERT with minimal support and stable gases',
-      'Absence of secretions entirely',
-      'Family request',
-    ],
-    answer: 1,
-  },
-]
 
 const AVATARS = [
   { id: 'nova', label: 'Nova', role: 'Night-shift navigator' },
@@ -394,7 +197,6 @@ const RESEARCH_ROWS = [
   { island: 'Alveolar Highlands', enrolled: 11, completion: 27, avgScore: 72, medianMin: 33 },
 ]
 
-const PASS_MARK = 2
 
 /* ------------------------------------------------------------------ */
 /* Small local icons (kept in-file; icon set is intentionally minimal) */
@@ -853,11 +655,16 @@ function ToggleRow({
 /* ------------------------------------------------------------------ */
 
 export type AppFlowProps = {
+  islands: CurriculumIsland[]
   initialScreen?: AppScreen
   showScreenPicker?: boolean
 }
 
-export function AppFlow({ initialScreen = 'welcome', showScreenPicker = false }: AppFlowProps) {
+export function AppFlow({
+  islands,
+  initialScreen = 'welcome',
+  showScreenPicker = false,
+}: AppFlowProps) {
   const [screen, setScreen] = useState<AppScreen>(initialScreen)
   const [history, setHistory] = useState<AppScreen[]>([])
   const [slideDirection, setSlideDirection] = useState<'forward' | 'back' | null>(null)
@@ -876,11 +683,13 @@ export function AppFlow({ initialScreen = 'welcome', showScreenPicker = false }:
   const dashboardGesture = useRef({ y: 0, listAtTop: true })
   const dashboardListRef = useRef<HTMLDivElement>(null)
   const [lastEarned, setLastEarned] = useState<{ title: string; points: number } | null>(null)
-  const [passedIslands, setPassedIslands] = useState<Record<string, boolean>>({})
+  const [passedIslands] = useState<Record<string, boolean>>({})
+  const [selectedActivityId, setSelectedActivityId] = useState<string | null>(null)
 
   // Quiz state
   const [quizChoice, setQuizChoice] = useState<string | null>(null)
-  const [quizSubmitted, setQuizSubmitted] = useState(false)
+  const [quizQuestionIndex, setQuizQuestionIndex] = useState(0)
+  const [quizResponses, setQuizResponses] = useState<Record<string, QuizResponse>>({})
 
   // Vent sim state
   const [fio2, setFio2] = useState(60)
@@ -888,10 +697,6 @@ export function AppFlow({ initialScreen = 'welcome', showScreenPicker = false }:
   const [rate, setRate] = useState(24)
   const [mode, setMode] = useState<'AC/VC' | 'AC/PC' | 'SIMV'>('AC/VC')
 
-  // Exam state
-  const [examIdx, setExamIdx] = useState(0)
-  const [examAnswers, setExamAnswers] = useState<number[]>([])
-  const [examChoice, setExamChoice] = useState<number | null>(null)
 
   // Settings / role / connectivity
   const [soundOn, setSoundOn] = useState(true)
@@ -904,17 +709,25 @@ export function AppFlow({ initialScreen = 'welcome', showScreenPicker = false }:
   const [interactionValue, setInteractionValue] = useState('')
   const [interactionNote, setInteractionNote] = useState('')
 
-  const island = ISLANDS[currentIslandIdx]
-  const islandDone = island.activities.filter((a) => completed[a.id]).length
+  const ISLANDS = useMemo(() => islands.map(projectIsland), [islands])
+  if (ISLANDS.length === 0) throw new Error('AppFlow requires at least one curriculum island')
+
+  const island = ISLANDS[currentIslandIdx] ?? ISLANDS[0]
+  const selectedActivity = island.activities.find((activity) => activity.id === selectedActivityId)
+  const activityFor = (...types: ActivityType[]) =>
+    selectedActivity && types.includes(selectedActivity.type)
+      ? selectedActivity
+      : island.activities.find((activity) => types.includes(activity.type) && activity.available) ??
+        island.activities.find((activity) => types.includes(activity.type)) ??
+        island.activities[0]
+  const islandDone = island.activities.filter((activity) => completed[activity.id]).length
   const totalActivities = ISLANDS.reduce((total, item) => total + item.activities.length, 0)
   const totalDone = ISLANDS.reduce(
     (total, item) => total + item.activities.filter((activity) => completed[activity.id]).length,
     0
   )
-
-  const examScore = examAnswers.filter((a, i) => a === EXAM_QUESTIONS[i].answer).length
-  const examPassed = examScore >= PASS_MARK
-  const allIslandsPassed = ISLANDS.every((i) => passedIslands[i.id])
+  const overallPct = Math.round((totalDone / totalActivities) * 100)
+  const allIslandsPassed = ISLANDS.every((item) => passedIslands[item.id])
 
   function go(next: AppScreen) {
     setSlideDirection('forward')
@@ -951,18 +764,34 @@ export function AppFlow({ initialScreen = 'welcome', showScreenPicker = false }:
     go('mission')
   }
 
-  function completeActivity(a: Activity) {
-    if (!completed[a.id]) {
-      setCompleted((c) => ({ ...c, [a.id]: true }))
-      setPoints((p) => p + a.points)
+  function completeActivity(a: Activity, submission: ActivitySubmission) {
+    const grade = gradeActivity(a.record, submission)
+    if (grade.status === 'unavailable' || grade.status === 'pending_manual') {
+      setInteractionNote(grade.reason ?? 'This activity requires instructor review.')
+      return
     }
-    setLastEarned({ title: a.title, points: a.points })
+    if (grade.status === 'failed' && a.record.type !== 'quiz') {
+      setInteractionNote(
+        grade.items.find((item) => !item.correct)?.feedback ?? grade.reason ?? 'Review and try again.'
+      )
+      return
+    }
+    if (!completed[a.id]) {
+      setCompleted((current) => ({ ...current, [a.id]: true }))
+      setPoints((current) => current + grade.pointsEarned)
+    }
+    setLastEarned({ title: a.title, points: grade.pointsEarned })
     go('activityComplete')
   }
 
   function openActivity(a: Activity) {
+    if (!a.available) return
+    setSelectedActivityId(a.id)
     setInteractionValue('')
     setInteractionNote('')
+    setQuizChoice(null)
+    setQuizQuestionIndex(0)
+    setQuizResponses({})
     if (a.type === 'reading') go('lessonReading')
     else if (a.type === 'video') go('lessonVideo')
     else if (a.type === 'sim') go('ventSim')
@@ -971,36 +800,7 @@ export function AppFlow({ initialScreen = 'welcome', showScreenPicker = false }:
     else if (a.type === 'fill') go('quizFill')
     else if (a.type === 'case') go('caseVignette')
     else if (a.type === 'quest') go('quest')
-    else {
-      setQuizChoice(null)
-      setQuizSubmitted(false)
-      go('quiz')
-    }
-  }
-
-  function submitExamAnswer() {
-    if (examChoice === null) return
-    const next = [...examAnswers, examChoice]
-    setExamAnswers(next)
-    setExamChoice(null)
-    if (examIdx + 1 < EXAM_QUESTIONS.length) {
-      setExamIdx(examIdx + 1)
-    } else {
-      go('examResults')
-    }
-  }
-
-  function finishExam() {
-    if (examPassed) {
-      setPassedIslands((p) => ({ ...p, [island.id]: true }))
-      setUnlockedIslands((n) => Math.min(ISLANDS.length, Math.max(n, currentIslandIdx + 2)))
-      setPoints((p) => p + 200)
-      go('islandComplete')
-    } else {
-      setExamIdx(0)
-      setExamAnswers([])
-      resetTo('island')
-    }
+    else go('quiz')
   }
 
   function downloadCsv() {
@@ -1590,213 +1390,169 @@ export function AppFlow({ initialScreen = 'welcome', showScreenPicker = false }:
         )
 
       case 'lessonReading': {
-        const a = island.activities.find((x) => x.type === 'reading')!
+        const a = activityFor('reading')
+        const content = a.record.type === 'reading' ? a.record.content : null
+        if (!content) {
+          return (
+            <ScreenShell title={a.title} subtitle="Reading unavailable" onBack={back}>
+              <Panel className="p-5 text-sm text-hull-200">This reading is not available in the approved catalog.</Panel>
+            </ScreenShell>
+          )
+        }
+        const question = content.confirmationQuestion
         return (
-          <ScreenShell title={a.title} subtitle="Reading · ~12 min" onBack={back}>
+          <ScreenShell title={a.title} subtitle={`Reading · ~${a.minutes} min`} onBack={back}>
             <Panel className="p-5">
               <Badge tone="reading" icon={<BookIcon className="size-3" />} className="mb-3">
                 reading
               </Badge>
-              <h2 className="mb-2 text-base font-extrabold text-white">The oxygenation cascade</h2>
-              <MediaFrame
-                src="/alveolar-comparison.svg"
-                alt="Stylized comparison of open air-filled alveoli and alveoli collecting fluid"
-                width={1200}
-                height={675}
-                className="mb-4"
-              />
-              <div className="flex flex-col gap-3 text-sm leading-relaxed text-hull-200">
-                <p>
-                  Oxygen moves from room air (FiO₂ 0.21) through the conducting airways to the
-                  alveolar-capillary membrane. Each step — humidification, airway caliber, alveolar
-                  recruitment, diffusion, perfusion — is a checkpoint where pediatric patients can
-                  fail faster than adults.
-                </p>
-                <p>
-                  <span className="font-bold text-ember-300">Clinical anchor:</span> mean airway
-                  pressure, not PEEP alone, drives oxygenation. When saturations drift, think
-                  recruitment before you think rate.
-                </p>
-                <p>
-                  On this island you will connect airway anatomy to the interfaces that deliver
-                  support — and learn why the smallest airways set the biggest constraints.
-                </p>
-              </div>
+              <p className="whitespace-pre-wrap text-sm leading-relaxed text-hull-200">{content.body}</p>
             </Panel>
-            <Button onClick={() => completeActivity(a)} className="w-full py-3 text-sm">
-              Mark as read · +{a.points} PEEP
+            <Panel className="p-5">
+              <h2 className="text-sm font-bold leading-relaxed text-white">{question.prompt}</h2>
+              <div className="mt-4 flex flex-col gap-2">
+                {question.choices.map((choice) => (
+                  <button
+                    key={choice.id}
+                    type="button"
+                    aria-pressed={quizChoice === choice.id}
+                    onClick={() => {
+                      setQuizChoice(choice.id)
+                      setInteractionNote('')
+                    }}
+                    className={`rounded-[var(--radius-button)] border px-4 py-3 text-left text-[13px] ${
+                      quizChoice === choice.id
+                        ? 'border-ember-400 bg-ember-500/15 text-white'
+                        : 'border-space-600 bg-space-950/50 text-hull-200 hover:bg-space-700'
+                    }`}
+                  >
+                    {choice.text}
+                  </button>
+                ))}
+              </div>
+              {interactionNote && <p role="alert" className="mt-4 text-[12px] text-solar-400">{interactionNote}</p>}
+            </Panel>
+            <Button
+              disabled={!quizChoice}
+              onClick={() => completeActivity(a, { type: 'reading', choiceId: quizChoice ?? '' })}
+              className="w-full py-3 text-sm"
+            >
+              Check understanding · up to {a.points} PEEP
             </Button>
           </ScreenShell>
         )
       }
 
       case 'lessonVideo': {
-        const a = island.activities.find((x) => x.type === 'video')!
+        const a = activityFor('video')
+        const content = a.record.type === 'video' ? a.record.content : null
+        if (!content) {
+          return (
+            <ScreenShell title={a.title} subtitle="Video unavailable" onBack={back}>
+              <Panel className="p-5 text-sm text-hull-200">This video is not available in the approved catalog.</Panel>
+            </ScreenShell>
+          )
+        }
         return (
-          <ScreenShell title={a.title} subtitle="Video · ~18 min" onBack={back}>
+          <ScreenShell title={a.title} subtitle={`Video · ~${a.minutes} min`} onBack={back}>
             <Panel variant="outline" className="overflow-hidden">
               <div className="grid aspect-video place-items-center bg-space-950">
-                <span
-                  className="grid size-16 place-items-center rounded-full bg-gradient-to-br from-nebula-400 to-nebula-600 text-white shadow-[var(--shadow-fab)]"
-                  aria-hidden="true"
-                >
+                <span className="grid size-16 place-items-center rounded-full bg-gradient-to-br from-nebula-400 to-nebula-600 text-white shadow-[var(--shadow-fab)]" aria-hidden="true">
                   <PlayIcon className="size-7" />
                 </span>
               </div>
-              <div className="flex items-center justify-between px-4 py-3">
-                <span className="font-mono text-[10px] font-bold text-hull-300">
-                  VENT-INTERFACES.MP4 · 18:04
+              <div className="flex items-center justify-between gap-3 px-4 py-3">
+                <span className="min-w-0 truncate font-mono text-[10px] font-bold text-hull-300">
+                  {content.media.assetId} · {Math.ceil(content.durationSeconds / 60)} min
                 </span>
-                <Badge tone="video" icon={<PlayIcon className="size-3" />}>
-                  video
-                </Badge>
+                <Badge tone="video" icon={<PlayIcon className="size-3" />}>video</Badge>
               </div>
             </Panel>
             <Panel className="p-4">
-              <h2 className="mb-1 text-sm font-extrabold text-white">What you will see</h2>
+              <h2 className="mb-1 text-sm font-extrabold text-white">Source media</h2>
               <p className="text-[13px] leading-relaxed text-hull-300">
-                Interface selection from nasal prongs to tracheostomy, leak compensation, and the
-                two-point check before every position change. Packaged media plays fully offline.
+                {content.media.altText ?? a.blurb}
+              </p>
+              <p className="mt-3 font-mono text-[10px] font-bold uppercase tracking-wide text-solar-400">
+                Media package is not included in this web build.
               </p>
             </Panel>
-            <Button onClick={() => completeActivity(a)} className="w-full py-3 text-sm">
-              Finish watching · +{a.points} PEEP
+            <Button disabled className="w-full py-3 text-sm">
+              Video playback coming soon
             </Button>
           </ScreenShell>
         )
       }
 
       case 'ventSim': {
-        const a = island.activities.find((x) => x.type === 'sim')!
-        const inRange = fio2 <= 80 && peep >= 5 && peep <= 10 && rate >= 18 && rate <= 28
+        const activity = activityFor('sim')
+        const content = activity.record.type === 'vent_lab' ? activity.record.content : null
         return (
-          <ScreenShell
-            title={a.title}
-            subtitle="Simulation · orders: FiO₂ ≤ 80, PEEP 5–10, rate 18–28"
-            onBack={back}
-          >
-            <Panel className="p-4">
-              <div className="mb-3 flex items-center justify-between">
-                <Badge tone="quiz" icon={<WaveIcon className="size-3" />}>
-                  vent lab
-                </Badge>
-                <span
-                  className={`font-mono text-[10px] font-bold ${inRange ? 'text-signal-success' : 'text-solar-500'}`}
-                >
-                  {inRange ? 'WITHIN ORDERS' : 'OUTSIDE ORDERS'}
-                </span>
-              </div>
-
-              <div className="mb-4 grid grid-cols-3 gap-2">
-                {(['AC/VC', 'AC/PC', 'SIMV'] as const).map((m) => (
-                  <button
-                    key={m}
-                    type="button"
-                    onClick={() => setMode(m)}
-                    aria-pressed={mode === m}
-                    className={`rounded-[var(--radius-chip)] border px-2 py-2 font-mono text-[11px] font-bold ${
-                      mode === m
-                        ? 'border-ember-400 bg-ember-500/20 text-ember-300'
-                        : 'border-space-600 bg-space-950/50 text-hull-300 hover:bg-space-700'
-                    }`}
-                  >
-                    {m}
-                  </button>
-                ))}
-              </div>
-
-              <Field label={`FiO₂ — ${fio2}%`}>
-                <input
-                  type="range"
-                  min={21}
-                  max={100}
-                  value={fio2}
-                  onChange={(e) => setFio2(Number(e.target.value))}
-                  className="w-full accent-ember-500"
-                  aria-label="FiO2 percent"
-                />
-              </Field>
-
-              <div className="mt-4 grid grid-cols-2 gap-3">
-                {(
-                  [
-                    { label: 'PEEP', value: peep, set: setPeep, min: 0, max: 15, unit: 'cmH₂O' },
-                    { label: 'Rate', value: rate, set: setRate, min: 8, max: 40, unit: 'b/min' },
-                  ] as const
-                ).map((ctl) => (
-                  <div
-                    key={ctl.label}
-                    className="rounded-[var(--radius-panel)] border border-space-600 bg-space-950/50 p-3 text-center"
-                  >
-                    <span className="block font-mono text-[10px] font-bold uppercase tracking-wider text-hull-400">
-                      {ctl.label}
-                    </span>
-                    <span className="my-1 block text-2xl font-extrabold text-white">
-                      {ctl.value}
-                      <span className="ml-1 text-[10px] font-normal text-hull-400">{ctl.unit}</span>
-                    </span>
-                    <div className="flex justify-center gap-2">
-                      <button
-                        type="button"
-                        aria-label={`Decrease ${ctl.label}`}
-                        onClick={() => ctl.set(Math.max(ctl.min, ctl.value - 1))}
-                        className="grid size-9 place-items-center rounded-[var(--radius-chip)] border border-space-600 bg-space-800 text-lg font-bold text-hull-100 hover:bg-space-700"
-                      >
-                        −
-                      </button>
-                      <button
-                        type="button"
-                        aria-label={`Increase ${ctl.label}`}
-                        onClick={() => ctl.set(Math.min(ctl.max, ctl.value + 1))}
-                        className="grid size-9 place-items-center rounded-[var(--radius-chip)] border border-space-600 bg-space-800 text-lg font-bold text-hull-100 hover:bg-space-700"
-                      >
-                        +
-                      </button>
-                    </div>
+          <ScreenShell title={activity.title} subtitle={`Vent Lab · ~${activity.minutes} min`} onBack={back}>
+            <Panel className="p-5">
+              <Badge tone="quiz" icon={<WaveIcon className="size-3" />}>vent lab</Badge>
+              {content ? (
+                <>
+                  <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-hull-200">
+                    {content.objectives.map((objective) => <li key={objective}>{objective}</li>)}
+                  </ul>
+                  <div className="mt-4 grid grid-cols-2 gap-2">
+                    {content.controls.map((control) => (
+                      <div key={control.id} className="rounded-[var(--radius-chip)] border border-space-600 bg-space-950/50 p-3">
+                        <span className="block text-[12px] font-bold text-white">{control.label}</span>
+                        <span className="mt-1 block font-mono text-[10px] text-hull-400">
+                          {control.options?.join(' / ') ?? [control.min, control.max].filter((value) => value !== undefined).join('–')}{control.unit ? ` ${control.unit}` : ''}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-
-              <p className="mt-4 rounded-[var(--radius-chip)] border border-space-600 bg-space-950/60 px-3 py-2 font-mono text-[11px] leading-relaxed text-hull-300">
-                {mode} · FiO₂ {fio2}% · PEEP {peep} · RR {rate} —{' '}
-                {inRange
-                  ? 'SpO₂ trending 94%. Document and reassess in 30 minutes.'
-                  : 'Simulated saturations drifting. Bring settings inside the ordered envelope.'}
-              </p>
+                </>
+              ) : (
+                <p className="mt-4 text-sm text-hull-200">The approved simulation payload is unavailable.</p>
+              )}
             </Panel>
-            <Button onClick={() => completeActivity(a)} className="w-full py-3 text-sm">
-              Apply settings & finish · +{a.points} PEEP
-            </Button>
+            <Button disabled className="w-full py-3 text-sm">Interactive Vent Lab coming soon</Button>
           </ScreenShell>
         )
       }
 
       case 'quiz': {
-        const a = island.activities.find((x) => x.type === 'quiz')!
+        const a = activityFor('quiz')
+        const questions =
+          a.record.type === 'quiz' && a.record.content
+            ? a.record.content.questions.filter(
+                (question): question is Extract<QuizQuestion, { interaction: 'mcq' }> =>
+                  question.interaction === 'mcq'
+              )
+            : []
+        const question = questions[quizQuestionIndex]
+        if (!question) {
+          return (
+            <ScreenShell title={a.title} subtitle="Quiz unavailable" onBack={back}>
+              <Panel className="p-5 text-sm text-hull-200">No approved multiple-choice question is available for this activity.</Panel>
+            </ScreenShell>
+          )
+        }
         return (
-          <ScreenShell title={a.title} subtitle="Question 1 of 1 · checkpoint" onBack={back}>
+          <ScreenShell
+            title={a.title}
+            subtitle={`Question ${quizQuestionIndex + 1} of ${questions.length} · checkpoint`}
+            onBack={back}
+          >
+            <ProgressMeter label="Quiz progress" value={Math.round((quizQuestionIndex / questions.length) * 100)} />
             <Panel className="p-5">
               <Badge tone="quiz" icon={<QuizIcon className="size-3" />} className="mb-3">
                 checkpoint quiz
               </Badge>
-              <h2 className="text-sm font-bold leading-relaxed text-white">
-                {QUIZ_QUESTION.prompt}
-              </h2>
-              <MediaFrame
-                src="/alveolar-comparison.svg"
-                alt="Stylized comparison of open air-filled alveoli and alveoli collecting fluid"
-                width={1200}
-                height={675}
-                className="mt-4"
-              />
+              <h2 className="text-sm font-bold leading-relaxed text-white">{question.prompt}</h2>
               <div className="mt-4 flex flex-col gap-2">
-                {QUIZ_QUESTION.options.map((opt) => {
-                  const selected = quizChoice === opt.id
+                {question.choices.map((choice) => {
+                  const selected = quizChoice === choice.id
                   return (
                     <button
-                      key={opt.id}
+                      key={choice.id}
                       type="button"
-                      onClick={() => setQuizChoice(opt.id)}
+                      onClick={() => setQuizChoice(choice.id)}
                       aria-pressed={selected}
                       className={`flex items-center gap-3 rounded-[var(--radius-button)] border px-4 py-3 text-left text-[13px] ${
                         selected
@@ -1804,17 +1560,7 @@ export function AppFlow({ initialScreen = 'welcome', showScreenPicker = false }:
                           : 'border-space-600 bg-space-950/50 text-hull-200 hover:bg-space-700'
                       }`}
                     >
-                      <span
-                        className={`grid size-5 shrink-0 place-items-center rounded-full border font-mono text-[10px] font-bold ${
-                          selected
-                            ? 'border-ember-400 bg-ember-500 text-white'
-                            : 'border-hull-500 text-hull-400'
-                        }`}
-                        aria-hidden="true"
-                      >
-                        {opt.id.toUpperCase()}
-                      </span>
-                      {opt.text}
+                      {choice.text}
                     </button>
                   )
                 })}
@@ -1823,343 +1569,199 @@ export function AppFlow({ initialScreen = 'welcome', showScreenPicker = false }:
             <Button
               disabled={!quizChoice}
               onClick={() => {
-                setQuizSubmitted(true)
-                go('quizFeedback')
+                if (!quizChoice) return
+                const responses = {
+                  ...quizResponses,
+                  [question.id]: { interaction: 'mcq' as const, choiceId: quizChoice },
+                }
+                setQuizResponses(responses)
+                setQuizChoice(null)
+                if (quizQuestionIndex + 1 < questions.length) setQuizQuestionIndex((index) => index + 1)
+                else go('quizFeedback')
               }}
               className="w-full py-3 text-sm"
             >
-              Submit answer
+              {quizQuestionIndex + 1 === questions.length ? 'Score quiz' : 'Next question'}
             </Button>
           </ScreenShell>
         )
       }
 
       case 'quizFeedback': {
-        const a = island.activities.find((x) => x.type === 'quiz')!
-        const chosen = QUIZ_QUESTION.options.find((o) => o.id === quizChoice)
-        const correct = !!chosen?.correct
+        const a = activityFor('quiz')
+        const grade =
+          a.record.type === 'quiz'
+            ? gradeActivity(a.record, { type: 'quiz', answers: quizResponses })
+            : null
+        const passed = grade?.status === 'passed'
         return (
-          <ScreenShell
-            title="Feedback"
-            subtitle={correct ? 'Checkpoint cleared' : 'Not quite'}
-            onBack={back}
-          >
-            <Panel className={`p-5 ${correct ? '' : 'border-signal-danger/60'}`}>
+          <ScreenShell title="Quiz results" subtitle={a.title} onBack={back}>
+            <Panel className={`p-5 ${passed ? '' : 'border-signal-danger/60'}`}>
               <div className="mb-3 flex items-center gap-2">
-                <span
-                  className={`grid size-10 place-items-center rounded-full ${
-                    correct
-                      ? 'bg-signal-success/20 text-signal-success'
-                      : 'bg-signal-danger/20 text-signal-danger'
-                  }`}
-                  aria-hidden="true"
-                >
-                  {correct ? <CheckIcon className="size-5" /> : <QuizIcon className="size-5" />}
+                <span className={`grid size-10 place-items-center rounded-full ${passed ? 'bg-signal-success/20 text-signal-success' : 'bg-signal-danger/20 text-signal-danger'}`} aria-hidden="true">
+                  {passed ? <CheckIcon className="size-5" /> : <QuizIcon className="size-5" />}
                 </span>
                 <h2 className="text-base font-extrabold text-white">
-                  {correct ? 'Correct — nice assessment.' : 'Review the rationale below.'}
+                  {grade ? `${grade.correctCount} of ${grade.totalCount} correct` : 'Unable to score'}
                 </h2>
               </div>
-              {chosen && (
-                <p className="mb-2 font-mono text-[11px] text-hull-400">
-                  You chose: <span className="text-hull-200">{chosen.text}</span>
-                </p>
-              )}
-              <p className="text-sm leading-relaxed text-hull-200">{QUIZ_QUESTION.rationale}</p>
+              <p className="text-sm leading-relaxed text-hull-200">
+                {grade ? `${grade.pointsEarned} of ${grade.maxPoints} PEEP points earned.` : 'The selected activity is not an approved quiz.'}
+              </p>
+              {grade?.items.map((item) => item.feedback && (
+                <p key={item.itemId} className="mt-3 text-[12px] leading-relaxed text-hull-300">{item.feedback}</p>
+              ))}
             </Panel>
             <Button
-              onClick={() => {
-                if (correct || quizSubmitted) completeActivity(a)
-              }}
+              disabled={!grade}
+              onClick={() => completeActivity(a, { type: 'quiz', answers: quizResponses })}
               className="w-full py-3 text-sm"
             >
-              {correct ? `Collect +${a.points} PEEP` : 'Continue anyway'}
+              Continue · collect {grade?.pointsEarned ?? 0} PEEP
             </Button>
           </ScreenShell>
         )
       }
 
       case 'quizMatch': {
-        const activity = island.activities.find((item) => item.type === 'matching')!
-        const correct = interactionValue === 'ETCO2|TCOM'
+        const activity = activityFor('matching')
+        const question =
+          activity.record.type === 'quiz'
+            ? activity.record.content?.questions.find((item) => item.interaction === 'matching')
+            : undefined
         return (
-          <ScreenShell title={activity.title} subtitle="Matching · monitoring" onBack={back}>
+          <ScreenShell title={activity.title} subtitle="Matching activity" onBack={back}>
             <Panel className="p-5">
-              <h2 className="text-sm font-bold text-white">
-                Match each finding to its monitoring source.
+              <h2 className="text-sm font-bold leading-relaxed text-white">
+                {question?.prompt ?? 'The approved matching prompt is unavailable.'}
               </h2>
-              <div className="mt-4 flex flex-col gap-4">
-                <Field label="Real-time waveform at end exhalation">
-                  <select
-                    className={inputClass}
-                    value={interactionValue.split('|')[0] ?? ''}
-                    onChange={(event) =>
-                      setInteractionValue(
-                        `${event.target.value}|${interactionValue.split('|')[1] ?? ''}`
-                      )
-                    }
-                  >
-                    <option value="">Choose monitor</option>
-                    <option value="ETCO2">ETCO₂</option>
-                    <option value="TCOM">TCOM</option>
-                  </select>
-                </Field>
-                <Field label="Slow trend affected by skin perfusion">
-                  <select
-                    className={inputClass}
-                    value={interactionValue.split('|')[1] ?? ''}
-                    onChange={(event) =>
-                      setInteractionValue(
-                        `${interactionValue.split('|')[0] ?? ''}|${event.target.value}`
-                      )
-                    }
-                  >
-                    <option value="">Choose monitor</option>
-                    <option value="ETCO2">ETCO₂</option>
-                    <option value="TCOM">TCOM</option>
-                  </select>
-                </Field>
-              </div>
-              {interactionNote && (
-                <p role="alert" className="mt-4 text-[12px] text-signal-danger">
-                  {interactionNote}
-                </p>
+              {question && (
+                <ul className="mt-4 space-y-2 text-[13px] text-hull-200">
+                  {question.choices.map((choice) => (
+                    <li key={choice.id} className="rounded-[var(--radius-chip)] border border-space-600 px-3 py-2">
+                      {choice.text}
+                    </li>
+                  ))}
+                </ul>
               )}
             </Panel>
-            <Button
-              className="w-full py-3 text-sm"
-              onClick={() =>
-                correct
-                  ? completeActivity(activity)
-                  : setInteractionNote('Review response speed and sampling method, then try again.')
-              }
-            >
-              Check matches
-            </Button>
+            <Button disabled className="w-full py-3 text-sm">Interactive matching coming soon</Button>
           </ScreenShell>
         )
       }
 
       case 'quizDrag': {
-        const activity = island.activities.find((item) => item.type === 'ordering')!
-        const steps = ['Assess the patient', 'Inspect the circuit', 'Check the ventilator']
-        const ordered = interactionValue ? interactionValue.split('|') : []
-        const remaining = steps.filter((step) => !ordered.includes(step))
+        const activity = activityFor('ordering')
+        const question =
+          activity.record.type === 'quiz'
+            ? activity.record.content?.questions.find((item) => item.interaction === 'drag_drop')
+            : undefined
         return (
-          <ScreenShell
-            title={activity.title}
-            subtitle="Tap-to-sort · accessible drag-and-drop"
-            onBack={back}
-          >
+          <ScreenShell title={activity.title} subtitle="Drag-and-drop activity" onBack={back}>
             <Panel className="p-5">
-              <h2 className="text-sm font-bold text-white">
-                Build the safest first-response sequence for a ventilator alarm.
+              <h2 className="text-sm font-bold leading-relaxed text-white">
+                {question?.prompt ?? 'The approved drag-and-drop prompt is unavailable.'}
               </h2>
-              <ol className="mt-4 flex flex-col gap-2" aria-label="Selected response order">
-                {ordered.map((step, index) => (
-                  <li
-                    key={step}
-                    className="flex min-h-11 items-center gap-3 rounded-[var(--radius-button)] border border-ember-400/60 bg-ember-500/10 px-3 text-[13px] text-white"
-                  >
-                    <span className="grid size-6 place-items-center rounded-full bg-ember-500 font-mono text-[10px] font-bold">
-                      {index + 1}
-                    </span>
-                    {step}
-                  </li>
-                ))}
-              </ol>
-              <div className="mt-4 flex flex-col gap-2" aria-label="Available response steps">
-                {remaining.map((step) => (
-                  <button
-                    key={step}
-                    type="button"
-                    onClick={() => setInteractionValue([...ordered, step].join('|'))}
-                    className="min-h-11 rounded-[var(--radius-button)] border border-space-600 bg-space-950/50 px-3 text-left text-[13px] text-hull-200 hover:border-ember-400"
-                  >
-                    Add: {step}
-                  </button>
-                ))}
-              </div>
-              {ordered.length > 0 && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setInteractionValue('')
-                    setInteractionNote('')
-                  }}
-                  className="mt-4 font-mono text-[11px] font-bold text-hull-300 underline underline-offset-4"
-                >
-                  Reset order
-                </button>
-              )}
-              {interactionNote && (
-                <p role="alert" className="mt-4 text-[12px] text-signal-danger">
-                  {interactionNote}
-                </p>
+              {question && (
+                <>
+                  <div className="mt-4 flex flex-col gap-2">
+                    {question.choices.map((choice) => (
+                      <div key={choice.id} className="rounded-[var(--radius-chip)] border border-space-600 px-3 py-2 text-[13px] text-hull-200">
+                        {choice.text}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-4 font-mono text-[10px] font-bold uppercase tracking-wide text-hull-400">
+                    Targets: {question.targets.map((target) => target.text).join(' · ')}
+                  </p>
+                </>
               )}
             </Panel>
-            <Button
-              disabled={ordered.length !== steps.length}
-              className="w-full py-3 text-sm"
-              onClick={() =>
-                interactionValue === steps.join('|')
-                  ? completeActivity(activity)
-                  : setInteractionNote(
-                      'Start with the patient, then move outward through the system.'
-                    )
-              }
-            >
-              Check response order
-            </Button>
+            <Button disabled className="w-full py-3 text-sm">Interactive sorting coming soon</Button>
           </ScreenShell>
         )
       }
 
       case 'quizFill': {
-        const activity = island.activities.find((item) => item.type === 'fill')!
+        const activity = activityFor('fill')
+        const question =
+          activity.record.type === 'quiz'
+            ? activity.record.content?.questions.find((item) => item.interaction === 'fill_blank')
+            : undefined
         return (
-          <ScreenShell
-            title={activity.title}
-            subtitle="Fill in the blank · calculation"
-            onBack={back}
-          >
+          <ScreenShell title={activity.title} subtitle="Fill in the blank" onBack={back}>
             <Panel className="p-5">
               <p className="text-sm leading-relaxed text-hull-200">
-                Tidal volume is 120 mL and respiratory rate is 20 breaths/min.
+                {question?.prompt ?? 'The approved fill-in prompt is unavailable.'}
               </p>
-              <Field label="Minute ventilation in L/min" hint="Convert mL to L before multiplying.">
-                <input
-                  className={inputClass}
-                  inputMode="decimal"
-                  value={interactionValue}
-                  onChange={(event) => setInteractionValue(event.target.value)}
-                  placeholder="0.0"
-                />
+              <Field label="Your answer">
+                <input className={inputClass} value={interactionValue} onChange={(event) => setInteractionValue(event.target.value)} />
               </Field>
-              {interactionNote && (
-                <p role="alert" className="mt-4 text-[12px] text-signal-danger">
-                  {interactionNote}
-                </p>
-              )}
             </Panel>
-            <Button
-              className="w-full py-3 text-sm"
-              onClick={() =>
-                ['2.4', '2.40'].includes(interactionValue.trim())
-                  ? completeActivity(activity)
-                  : setInteractionNote('Multiply 0.12 L by 20 breaths/min.')
-              }
-            >
-              Check calculation
-            </Button>
+            <Button disabled className="w-full py-3 text-sm">Interactive grading coming soon</Button>
           </ScreenShell>
         )
       }
 
       case 'caseVignette': {
-        const activity = island.activities.find((item) => item.type === 'case')!
+        const activity = activityFor('case')
+        const content = activity.record.type === 'case_vignette' ? activity.record.content : null
         return (
           <ScreenShell title={activity.title} subtitle="Clinical case · SBAR" onBack={back}>
             <Panel className="p-5">
-              <div className="grid grid-cols-3 gap-2 text-center">
-                {[
-                  ['SpO₂', '86%'],
-                  ['PIP', '38'],
-                  ['Vt', '4 mL/kg'],
-                ].map(([label, value]) => (
-                  <div key={label} className="rounded-[var(--radius-chip)] bg-space-950/60 p-2">
-                    <span className="block text-lg font-extrabold text-white">{value}</span>
-                    <span className="text-[10px] text-hull-400">{label}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-hull-200">
-                Oxygenation worsened and peak pressure rose after repositioning. What is your first
-                action?
+              <p className="text-sm leading-relaxed text-hull-200">
+                {content?.scenario ?? 'The approved case payload is unavailable.'}
               </p>
-              <div className="mt-3 flex flex-col gap-2">
-                {[
-                  'Assess patient and circuit',
-                  'Increase tidal volume',
-                  'Silence alarm and leave',
-                ].map((option) => (
-                  <button
-                    key={option}
-                    type="button"
-                    aria-pressed={interactionValue === option}
-                    onClick={() => setInteractionValue(option)}
-                    className={`rounded-[var(--radius-button)] border px-3 py-3 text-left text-[13px] ${interactionValue === option ? 'border-ember-400 bg-ember-500/15 text-white' : 'border-space-600 text-hull-200'}`}
-                  >
-                    {option}
-                  </button>
-                ))}
-              </div>
-              <Field label="SBAR recommendation">
-                <textarea
-                  className={`${inputClass} mt-3 min-h-24 resize-y`}
-                  value={interactionNote}
-                  onChange={(event) => setInteractionNote(event.target.value)}
-                  placeholder="Situation, background, assessment, recommendation"
-                />
-              </Field>
+              {content && (
+                <>
+                  <div className="mt-4 flex flex-col gap-2">
+                    {content.decisions.map((decision) => (
+                      <button
+                        key={decision.id}
+                        type="button"
+                        aria-pressed={interactionValue === decision.id}
+                        onClick={() => setInteractionValue(decision.id)}
+                        className={`rounded-[var(--radius-button)] border px-3 py-3 text-left text-[13px] ${
+                          interactionValue === decision.id ? 'border-ember-400 bg-ember-500/15 text-white' : 'border-space-600 text-hull-200'
+                        }`}
+                      >
+                        {decision.text}
+                      </button>
+                    ))}
+                  </div>
+                  <Field label={content.sbar.prompt}>
+                    <textarea className={`${inputClass} mt-3 min-h-24 resize-y`} value={interactionNote} onChange={(event) => setInteractionNote(event.target.value)} />
+                  </Field>
+                </>
+              )}
             </Panel>
-            <Button
-              disabled={
-                interactionValue !== 'Assess patient and circuit' || !interactionNote.trim()
-              }
-              className="w-full py-3 text-sm"
-              onClick={() => completeActivity(activity)}
-            >
-              Submit handoff
-            </Button>
+            <Button disabled className="w-full py-3 text-sm">Instructor review required</Button>
           </ScreenShell>
         )
       }
 
       case 'quest': {
-        const activity = island.activities.find((item) => item.type === 'quest')!
-        const attested = interactionNote === 'attested'
+        const activity = activityFor('quest')
+        const content = activity.record.type === 'quest' ? activity.record.content : null
         return (
           <ScreenShell title={activity.title} subtitle="Supervised real-world quest" onBack={back}>
             <Panel className="p-5">
-              <h2 className="text-base font-extrabold text-white">
-                Practice bag-mask ventilation with an RT.
-              </h2>
-              <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-hull-200">
-                <li>Demonstrate positioning, seal, and a safe ventilation rate.</li>
-                <li>Ask for direct feedback.</li>
-                <li>Enter the supervisor confirmation code.</li>
-              </ol>
-              <Field label="Supervisor confirmation">
-                <input
-                  className={`${inputClass} mt-4`}
-                  value={interactionValue}
-                  onChange={(event) => setInteractionValue(event.target.value)}
-                  placeholder="Enter provided code"
-                />
-              </Field>
-              <button
-                type="button"
-                role="checkbox"
-                aria-checked={attested}
-                onClick={() => setInteractionNote(attested ? '' : 'attested')}
-                className="mt-4 flex min-h-11 w-full items-center gap-3 rounded-[var(--radius-button)] border border-space-600 px-3 text-left text-[13px] text-hull-200"
-              >
-                <span
-                  className={`grid size-5 place-items-center rounded border ${attested ? 'border-ember-400 bg-ember-500 text-white' : 'border-hull-500'}`}
-                >
-                  {attested && <CheckIcon className="size-3" />}
-                </span>
-                I completed this skill with direct supervision.
-              </button>
+              <p className="whitespace-pre-wrap text-sm leading-relaxed text-hull-200">
+                {content?.instructions ?? 'The approved quest payload is unavailable.'}
+              </p>
+              {content && (
+                <div className="mt-4 rounded-[var(--radius-chip)] border border-space-600 bg-space-950/50 p-3">
+                  <span className="block font-mono text-[10px] font-bold uppercase tracking-wide text-ember-300">
+                    Supervisor
+                  </span>
+                  <span className="mt-1 block text-sm text-white">{content.supervisorRole}</span>
+                  <span className="mt-2 block text-[11px] text-hull-400">
+                    Validation: {content.offlineValidation.method.replaceAll('_', ' ')}
+                  </span>
+                </div>
+              )}
             </Panel>
-            <Button
-              disabled={!interactionValue.trim() || !attested}
-              className="w-full py-3 text-sm"
-              onClick={() => completeActivity(activity)}
-            >
-              Validate quest
-            </Button>
+            <Button disabled className="w-full py-3 text-sm">Supervisor validation required</Button>
           </ScreenShell>
         )
       }
