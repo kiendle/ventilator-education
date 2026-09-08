@@ -17,14 +17,14 @@ graph TB
     end
 
     subgraph "Vercel"
-        SSR[Next.js SSR / RSC]
+        SSR["Next.js SSR / RSC"]
         API[API Routes - Route Handlers]
     end
 
     subgraph "Supabase"
         AUTH[Supabase Auth]
         DB[(PostgreSQL + RLS)]
-        STORAGE[Supabase Storage - Videos/Media]
+        STORAGE["Supabase Storage - Videos/Media"]
         RT[Realtime - Optional]
     end
 
@@ -44,12 +44,12 @@ graph TB
 graph LR
     subgraph "Next.js App"
         subgraph "API Layer (Route Handlers)"
-            A1[/api/auth/*]
-            A2[/api/content/*]
-            A3[/api/gamification/*]
-            A4[/api/progression/*]
-            A5[/api/quiz/*]
-            A6[/api/analytics/*]
+            A1["/api/auth/*"]
+            A2["/api/content/*"]
+            A3["/api/gamification/*"]
+            A4["/api/progression/*"]
+            A5["/api/quiz/*"]
+            A6["/api/analytics/*"]
         end
 
         subgraph "Module Layer"
