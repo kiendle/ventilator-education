@@ -21,6 +21,9 @@
 /build
 /storybook-static/
 
+# local curriculum media materialized by tools/materialize_curriculum_media.py
+/public/curriculum-media/
+
 # misc
 .DS_Store
 *.pem

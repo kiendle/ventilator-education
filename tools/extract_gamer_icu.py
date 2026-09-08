@@ -17,6 +17,7 @@ import re
 import shutil
 import struct
 import subprocess
+import tempfile
 import sys
 import unicodedata
 import urllib.parse
@@ -76,6 +77,8 @@ AUDIO_SUFFIXES = {
     ".wma",
 }
 IMAGE_SUFFIXES = {".bmp", ".gif", ".jpeg", ".jpg", ".svg", ".tif", ".tiff", ".webp"}
+CONVERTIBLE_MEDIA_SUFFIXES = {".wdp": "wdp", ".jxr": "wdp", ".emf": "emf", ".wmf": "wmf"}
+CONVERTER_SCRIPT = Path(__file__).with_name("convert_curriculum_media.js")
 TIMESTAMP_WORDS = ("date", "time", "created", "modified", "encoded", "creation")
 
 # OOXML namespace URIs used by both transitional and strict files.  Matching
@@ -232,17 +235,94 @@ def _status_for_content(content: Any, errors: list[str], missing: list[str], *, 
     return "ok"
 
 
-def _text_with_breaks(element: ET.Element, text_local: str, *, tab_local: str = "tab", break_local: str = "br") -> str:
+def _text_with_breaks(
+    element: ET.Element,
+    text_local: str,
+    *,
+    tab_local: str = "tab",
+    break_local: str = "br",
+    namespace_hint: str | None = None,
+) -> str:
     pieces: list[str] = []
     for child in element.iter():
         local = _local_name(child.tag)
-        if local == text_local and child.text:
+        if local == text_local and child.text and (namespace_hint is None or namespace_hint in _namespace(child.tag)):
             pieces.append(child.text)
-        elif local == tab_local:
+        elif local == tab_local and (namespace_hint is None or namespace_hint in _namespace(child.tag)):
             pieces.append("\t")
-        elif local in {break_local, "cr", "lineBreak"}:
+        elif local in {break_local, "cr", "lineBreak"} and (namespace_hint is None or namespace_hint in _namespace(child.tag)):
             pieces.append("\n")
     return _nfc("".join(pieces))
+
+
+def _xml_bool(parent: ET.Element, local: str, namespace_hint: str) -> bool:
+    return any(_is_xml(child, local, namespace_hint) for child in parent.iter())
+
+
+def _docx_run_record(run: ET.Element) -> dict[str, Any]:
+    record: dict[str, Any] = {
+        "text": _text_with_breaks(run, "t", namespace_hint=WORD_NS_HINT),
+    }
+    properties = next((child for child in list(run) if _is_xml(child, "rPr", WORD_NS_HINT)), None)
+    if properties is not None:
+        for key in ("b", "i", "strike", "smallCaps", "vanish"):
+            if _xml_bool(properties, key, WORD_NS_HINT):
+                record[key] = True
+        underline = next((child for child in properties.iter() if _is_xml(child, "u", WORD_NS_HINT)), None)
+        if underline is not None:
+            record["underline"] = _attribute(underline, "val") or True
+        vert_align = next((child for child in properties.iter() if _is_xml(child, "vertAlign", WORD_NS_HINT)), None)
+        if vert_align is not None:
+            record["vertAlign"] = _attribute(vert_align, "val")
+    return record
+
+
+def _docx_runs(paragraph: ET.Element) -> list[dict[str, Any]]:
+    return [_docx_run_record(run) for run in paragraph.iter() if _is_xml(run, "r", WORD_NS_HINT)]
+
+
+def _drawing_run_record(run: ET.Element) -> dict[str, Any]:
+    record: dict[str, Any] = {"text": _text_with_breaks(run, "t", namespace_hint=DRAWING_NS_HINT)}
+    if any(_is_xml(node, "b", DRAWING_NS_HINT) for node in run.iter()):
+        record["bold"] = True
+    if any(_is_xml(node, "i", DRAWING_NS_HINT) for node in run.iter()):
+        record["italic"] = True
+    return record
+
+
+def _drawing_paragraph_records(element: ET.Element) -> list[dict[str, Any]]:
+    records: list[dict[str, Any]] = []
+    for index, paragraph in enumerate(
+        (child for child in element.iter() if _is_xml(child, "p", DRAWING_NS_HINT))
+    ):
+        runs = [
+            _drawing_run_record(run)
+            for run in paragraph.iter()
+            if _is_xml(run, "r", DRAWING_NS_HINT)
+        ]
+        records.append(
+            {
+                "paragraphIndex": index,
+                "text": _nfc("".join(run["text"] for run in runs)),
+                "runs": runs,
+            }
+        )
+    return records
+
+
+def _answer_provenance(
+    runs: Iterable[dict[str, Any]],
+    *,
+    locator: dict[str, Any],
+) -> list[dict[str, Any]]:
+    candidates: list[dict[str, Any]] = []
+    for run in runs:
+        text = run.get("text", "")
+        if not text:
+            continue
+        if run.get("b") or run.get("bold") or re.search(r"\b(?:answer|correct)\b", text, re.IGNORECASE):
+            candidates.append({"text": text, "evidence": "format_or_label", **locator})
+    return candidates
 
 
 def _read_zip_xml(zf: zipfile.ZipFile, member: str) -> tuple[ET.Element | None, str | None]:
@@ -324,6 +404,84 @@ def _archive_media(
         if error:
             errors.append(error + ":" + member_path)
     return assets, errors
+def _convert_embedded_assets(
+    zf: zipfile.ZipFile,
+    assets: Iterable[dict[str, Any]],
+    *,
+    relative_path: str,
+) -> tuple[list[dict[str, Any]], list[str]]:
+    derived: list[dict[str, Any]] = []
+    errors: list[str] = []
+    if not CONVERTER_SCRIPT.is_file():
+        return [], ["missing_dependency:curriculum_media_converter"]
+    for asset in assets:
+        member_path = asset.get("memberPath")
+        if not isinstance(member_path, str):
+            continue
+        source_format = CONVERTIBLE_MEDIA_SUFFIXES.get(Path(member_path).suffix.lower())
+        if source_format is None:
+            continue
+        try:
+            source_bytes = zf.read(member_path)
+        except (KeyError, OSError, RuntimeError, zipfile.BadZipFile, zlib.error):
+            errors.append("conversion_source_read_error:" + member_path)
+            continue
+        try:
+            with tempfile.TemporaryDirectory(prefix="gamer-icu-media-") as directory:
+                directory_path = Path(directory)
+                input_path = directory_path / Path(member_path).name
+                output_path = directory_path / (Path(member_path).stem + ".png")
+                input_path.write_bytes(source_bytes)
+                result = subprocess.run(
+                    [
+                        "node",
+                        str(CONVERTER_SCRIPT),
+                        "--format",
+                        source_format,
+                        "--input",
+                        str(input_path),
+                        "--output",
+                        str(output_path),
+                    ],
+                    check=False,
+                    capture_output=True,
+                    text=True,
+                )
+                if result.returncode != 0 or not output_path.is_file():
+                    errors.append("conversion_failed:" + member_path)
+                    continue
+                converted = output_path.read_bytes()
+        except (OSError, ValueError):
+            errors.append("conversion_failed:" + member_path)
+            continue
+        digest = hashlib.sha256(converted).hexdigest()
+        derived.append(
+            {
+                "assetId": _asset_id(asset["sourceId"], member_path + "#browser-png", relative_path),
+                "sourceAssetId": asset["assetId"],
+                "sourceId": asset["sourceId"],
+                "relativePath": relative_path,
+                "memberPath": None,
+                "sourceMemberPath": member_path,
+                "kind": "image",
+                "byteSize": len(converted),
+                "sha256": digest,
+                "storageKey": "media/" + digest + ".png",
+                "status": "ok",
+                "browserCompatible": True,
+                "originalSha256": asset.get("sha256"),
+                "originalStorageKey": asset.get("storageKey"),
+                "conversion": {
+                    "sourceFormat": source_format,
+                    "outputFormat": "png",
+                    "tool": "tools/convert_curriculum_media.js",
+                    "jpegxr": "jpegxr@0.3.0" if source_format == "wdp" else None,
+                    "emfConverter": "emf-converter@2.0.2" if source_format in {"emf", "wmf"} else None,
+                    "canvas": "@napi-rs/canvas@1.0.5" if source_format in {"emf", "wmf"} else None,
+                },
+            }
+        )
+    return derived, errors
 
 
 def _parse_relationships(
@@ -349,17 +507,211 @@ def _parse_relationships(
     return relationships, []
 
 
-def _docx_table(table: ET.Element) -> dict[str, Any]:
+def _relationship_ids(element: ET.Element) -> list[str]:
+    ids: list[str] = []
+    for child in element.iter():
+        for key, value in child.attrib.items():
+            if _local_name(key) in {"embed", "link", "id"} and value.startswith("rId"):
+                if value not in ids:
+                    ids.append(value)
+    return ids
+
+
+def _docx_drawing_record(drawing: ET.Element) -> dict[str, Any]:
+    record: dict[str, Any] = {
+        "relationshipIds": _relationship_ids(drawing),
+        "xmlTag": _local_name(drawing.tag),
+    }
+    extent = next((node for node in drawing.iter() if _is_xml(node, "extent", "/wordprocessingDrawing/")), None)
+    if extent is not None:
+        record["extent"] = {
+            "cx": _attribute(extent, "cx"),
+            "cy": _attribute(extent, "cy"),
+        }
+    doc_pr = next((node for node in drawing.iter() if _is_xml(node, "docPr", "/wordprocessingDrawing/")), None)
+    if doc_pr is not None:
+        record["docPr"] = {
+            "id": _attribute(doc_pr, "id"),
+            "name": _attribute(doc_pr, "name"),
+            "descr": _attribute(doc_pr, "descr"),
+        }
+    return record
+def _docx_ordered_content(paragraph: ET.Element) -> list[dict[str, Any]]:
+    """Preserve the paragraph's text/drawing order from the OOXML tree.
+
+    Existing ``text``, ``runs``, and ``drawings`` fields remain aggregate
+    compatibility views. This sequence is the lossless learner-facing view
+    for paragraphs that interleave authored text and inline drawings.
+    """
+    ordered: list[dict[str, Any]] = []
+    consumed_drawings: set[int] = set()
+    run_index = 0
+    drawing_index = 0
+    for node in paragraph.iter():
+        if _is_xml(node, "r", WORD_NS_HINT):
+            run = _docx_run_record(node)
+            for child in node.iter():
+                if child is node:
+                    continue
+                if _is_xml(child, "drawing", WORD_NS_HINT):
+                    drawing = _docx_drawing_record(child)
+                    consumed_drawings.add(id(child))
+                    ordered.append(
+                        {
+                            "kind": "drawing",
+                            "runIndex": run_index,
+                            "drawingIndex": drawing_index,
+                            **drawing,
+                        }
+                    )
+                    drawing_index += 1
+                elif _is_xml(child, "t", WORD_NS_HINT) and child.text:
+                    ordered.append({"kind": "text", "text": _nfc(child.text), "runIndex": run_index})
+                elif _is_xml(child, "tab", WORD_NS_HINT):
+                    ordered.append({"kind": "text", "text": "\t", "runIndex": run_index})
+                elif _is_xml(child, "br", WORD_NS_HINT) or _is_xml(child, "cr", WORD_NS_HINT):
+                    ordered.append({"kind": "text", "text": "\n", "runIndex": run_index})
+            run_index += 1
+        elif _is_xml(node, "drawing", WORD_NS_HINT) and id(node) not in consumed_drawings:
+            ordered.append(
+                {
+                    "kind": "drawing",
+                    "runIndex": None,
+                    "drawingIndex": drawing_index,
+                    **_docx_drawing_record(node),
+                }
+            )
+            drawing_index += 1
+    return ordered
+
+
+def _docx_enrich_record_media(
+    record: dict[str, Any],
+    media_refs: Iterable[dict[str, Any]],
+    *,
+    block_index: int,
+) -> list[dict[str, Any]]:
+    references = list(media_refs)
+
+    def refs_for_ids(relationship_ids: Iterable[str]) -> list[dict[str, Any]]:
+        return [
+            {
+                **reference,
+                "blockIndex": block_index,
+                "relationshipId": relationship_id,
+            }
+            for relationship_id in relationship_ids
+            for reference in references
+            if reference["relationshipId"] == relationship_id
+        ]
+
+    collected: list[dict[str, Any]] = []
+    drawings = record.get("drawings")
+    if isinstance(drawings, list):
+        for drawing in drawings:
+            if isinstance(drawing, dict):
+                collected.extend(refs_for_ids(drawing.get("relationshipIds", [])))
+    ordered_content = record.get("orderedContent")
+    if isinstance(ordered_content, list):
+        enriched: list[dict[str, Any]] = []
+        for item in ordered_content:
+            if not isinstance(item, dict) or item.get("kind") != "drawing":
+                enriched.append(item)
+                continue
+            item_refs = refs_for_ids(item.get("relationshipIds", []))
+            enriched.append({**item, "mediaRefs": item_refs})
+        record["orderedContent"] = enriched
+    row_records = record.get("rowRecords")
+    if isinstance(row_records, list):
+        for row in row_records:
+            if not isinstance(row, dict):
+                continue
+            cells = row.get("cells")
+            if not isinstance(cells, list):
+                continue
+            for cell in cells:
+                if not isinstance(cell, dict):
+                    continue
+                paragraphs = cell.get("paragraphs")
+                if not isinstance(paragraphs, list):
+                    continue
+                for paragraph in paragraphs:
+                    if isinstance(paragraph, dict):
+                        collected.extend(_docx_enrich_record_media(paragraph, references, block_index=block_index))
+    if collected:
+        record["mediaRefs"] = collected
+    return collected
+
+
+
+
+
+
+def _docx_paragraph_record(
+    paragraph: ET.Element,
+    *,
+    block_index: int | None = None,
+    body_index: int | None = None,
+) -> dict[str, Any]:
+    runs = _docx_runs(paragraph)
+    record: dict[str, Any] = {
+        "kind": "paragraph",
+        "text": _text_with_breaks(paragraph, "t", namespace_hint=WORD_NS_HINT),
+        "runs": runs,
+        "drawings": [
+            _docx_drawing_record(drawing)
+            for drawing in paragraph.iter()
+            if _is_xml(drawing, "drawing", WORD_NS_HINT)
+        ],
+        "orderedContent": _docx_ordered_content(paragraph),
+    }
+    if block_index is not None:
+        record["blockIndex"] = block_index
+    if body_index is not None:
+        record["bodyIndex"] = body_index
+    answer_evidence = _answer_provenance(runs, locator={"kind": "body", "blockIndex": block_index})
+    if answer_evidence:
+        record["answerEvidence"] = answer_evidence
+    return record
+
+
+def _docx_table_record(
+    table: ET.Element,
+    *,
+    block_index: int | None = None,
+    body_index: int | None = None,
+) -> dict[str, Any]:
     rows: list[list[str]] = []
-    for row in list(table):
-        if _local_name(row.tag) != "tr":
-            continue
+    row_records: list[dict[str, Any]] = []
+    for row_index, row in enumerate(child for child in list(table) if _is_xml(child, "tr", WORD_NS_HINT)):
         cells: list[str] = []
-        for cell in list(row):
-            if _local_name(cell.tag) == "tc":
-                cells.append(_text_with_breaks(cell, "t"))
+        cell_records: list[dict[str, Any]] = []
+        for cell_index, cell in enumerate(child for child in list(row) if _is_xml(child, "tc", WORD_NS_HINT)):
+            text = _text_with_breaks(cell, "t", namespace_hint=WORD_NS_HINT)
+            cells.append(text)
+            cell_records.append(
+                {
+                    "cellIndex": cell_index,
+                    "text": text,
+                    "paragraphs": [
+                        _docx_paragraph_record(paragraph)
+                        for paragraph in cell.iter()
+                        if _is_xml(paragraph, "p", WORD_NS_HINT)
+                    ],
+                }
+            )
         rows.append(cells)
-    return {"kind": "table", "rows": rows}
+        row_records.append({"rowIndex": row_index, "cells": cell_records})
+    record: dict[str, Any] = {"kind": "table", "rows": rows, "rowRecords": row_records}
+    if block_index is not None:
+        record["blockIndex"] = block_index
+    if body_index is not None:
+        record["bodyIndex"] = body_index
+    return record
+
+
+def _docx_table(table: ET.Element) -> dict[str, Any]:
+    return _docx_table_record(table)
 
 
 def _parse_docx(
@@ -383,16 +735,6 @@ def _parse_docx(
             content = {"format": "docx", "blocks": [], "relationships": [], "mediaMembers": []}
             return "error", content, errors, missing, media_assets, media_refs
         assert root is not None
-        body = next((node for node in root.iter() if _is_xml(node, "body", WORD_NS_HINT)), None)
-        blocks: list[dict[str, Any]] = []
-        if body is None:
-            errors.append("missing_body")
-        else:
-            for child in list(body):
-                if _is_xml(child, "p", WORD_NS_HINT):
-                    blocks.append({"kind": "paragraph", "text": _text_with_breaks(child, "t")})
-                elif _is_xml(child, "tbl", WORD_NS_HINT):
-                    blocks.append(_docx_table(child))
         relationships, rel_errors = _parse_relationships(zf, "word/_rels/document.xml.rels")
         if rel_errors and "word/_rels/document.xml.rels" in info_map:
             errors.extend(rel_errors)
@@ -401,7 +743,10 @@ def _parse_docx(
             if relationship.get("targetMode", "").lower() == "external":
                 continue
             resolved = _resolve_member("word/document.xml", target)
-            if resolved and "/media/" in "/" + resolved:
+            if resolved:
+                relationship["resolvedMemberPath"] = resolved
+            rel_type = relationship.get("type", "").lower()
+            if resolved and ("/media/" in "/" + resolved or "image" in rel_type):
                 present = resolved in info_map
                 media_refs.append(
                     {
@@ -412,19 +757,81 @@ def _parse_docx(
                 )
                 if not present:
                     errors.append("missing_media_member:" + resolved)
+        body = next((node for node in root.iter() if _is_xml(node, "body", WORD_NS_HINT)), None)
+        blocks: list[dict[str, Any]] = []
+        answer_provenance: list[dict[str, Any]] = []
+        if body is None:
+            errors.append("missing_body")
+        else:
+            block_index = 0
+            for body_index, child in enumerate(list(body)):
+                if _is_xml(child, "p", WORD_NS_HINT):
+                    block = _docx_paragraph_record(
+                        child,
+                        block_index=block_index,
+                        body_index=body_index,
+                    )
+                elif _is_xml(child, "tbl", WORD_NS_HINT):
+                    block = _docx_table_record(
+                        child,
+                        block_index=block_index,
+                        body_index=body_index,
+                    )
+                else:
+                    continue
+                block["sourceId"] = source_id
+                block["relativePath"] = relative_path
+                block["documentKind"] = "docx"
+                block["orderedIndex"] = block_index
+                block["locator"] = {"kind": "body", "bodyIndex": body_index, "blockIndex": block_index}
+                _docx_enrich_record_media(block, media_refs, block_index=block_index)
+                for evidence in block.get("answerEvidence", []):
+                    answer_provenance.append(
+                        {
+                            **evidence,
+                            "relativePath": relative_path,
+                            "sourceId": source_id,
+                        }
+                    )
+                blocks.append(block)
+                block_index += 1
         media_assets, media_errors = _archive_media(zf, "word/media/", source_id, relative_path)
         errors.extend(media_errors)
+        derived_assets, conversion_errors = _convert_embedded_assets(zf, media_assets, relative_path=relative_path)
+        media_assets.extend(derived_assets)
+        errors.extend(conversion_errors)
+        asset_by_member = {asset["memberPath"]: asset for asset in media_assets if asset.get("memberPath")}
+        for reference in media_refs:
+            asset = asset_by_member.get(reference["memberPath"])
+            if asset is not None:
+                reference["assetId"] = asset["assetId"]
+        for block in blocks:
+            _docx_enrich_record_media(block, media_refs, block_index=block.get("blockIndex", -1))
+        for relationship in relationships:
+            asset = asset_by_member.get(relationship.get("resolvedMemberPath"))
+            if asset is not None:
+                relationship["assetId"] = asset["assetId"]
         content = {
             "format": "docx",
+            "documentKind": "docx",
             "blocks": blocks,
+            "orderedBlocks": blocks,
             "relationships": relationships,
             "mediaRefs": media_refs,
+            "answerProvenance": answer_provenance,
             "mediaMembers": [
                 {
+                    "assetId": asset["assetId"],
+                    "sourceAssetId": asset.get("sourceAssetId"),
                     "memberPath": asset["memberPath"],
+                    "sourceMemberPath": asset.get("sourceMemberPath"),
                     "kind": asset["kind"],
                     "byteSize": asset["byteSize"],
                     "sha256": asset["sha256"],
+                    "originalSha256": asset.get("originalSha256"),
+                    "storageKey": asset["storageKey"],
+                    "originalStorageKey": asset.get("originalStorageKey"),
+                    "conversion": asset.get("conversion"),
                     "status": asset["status"],
                 }
                 for asset in media_assets
@@ -435,11 +842,20 @@ def _parse_docx(
 
 
 def _drawing_text(paragraph: ET.Element) -> str:
-    return _text_with_breaks(paragraph, "t", tab_local="tab", break_local="br")
+    return _text_with_breaks(
+        paragraph,
+        "t",
+        tab_local="tab",
+        break_local="br",
+        namespace_hint=DRAWING_NS_HINT,
+    )
 
 
 def _drawing_paragraphs(element: ET.Element) -> list[str]:
-    return [_drawing_text(child) for child in element.iter() if _is_xml(child, "p", DRAWING_NS_HINT)]
+    return [
+        record["text"]
+        for record in _drawing_paragraph_records(element)
+    ]
 
 
 def _drawing_table(table: ET.Element) -> list[list[str]]:
@@ -455,6 +871,85 @@ def _drawing_table(table: ET.Element) -> list[list[str]]:
     return rows
 
 
+def _drawing_table_records(table: ET.Element) -> dict[str, Any]:
+    rows: list[list[str]] = []
+    row_records: list[dict[str, Any]] = []
+    for row_index, row in enumerate(child for child in list(table) if _is_xml(child, "tr", DRAWING_NS_HINT)):
+        cells: list[str] = []
+        cell_records: list[dict[str, Any]] = []
+        for cell_index, cell in enumerate(child for child in list(row) if _is_xml(child, "tc", DRAWING_NS_HINT)):
+            paragraphs = _drawing_paragraph_records(cell)
+            text = "\n".join(paragraph["text"] for paragraph in paragraphs)
+            cells.append(text)
+            cell_records.append({"cellIndex": cell_index, "text": text, "paragraphs": paragraphs})
+        rows.append(cells)
+        row_records.append({"rowIndex": row_index, "cells": cell_records})
+    return {"rows": rows, "rowRecords": row_records}
+
+
+def _numeric_attribute(value: str | None) -> int | float | None:
+    if value is None:
+        return None
+    try:
+        number = int(value)
+        return number
+    except ValueError:
+        try:
+            return float(value)
+        except ValueError:
+            return value
+
+
+def _shape_geometry(shape: ET.Element) -> dict[str, int | float | None]:
+    transform = next((node for node in shape.iter() if _is_xml(node, "xfrm", DRAWING_NS_HINT)), None)
+    if transform is None:
+        return {"x": None, "y": None, "w": None, "h": None}
+    offset = next((node for node in transform if _is_xml(node, "off", DRAWING_NS_HINT)), None)
+    extent = next((node for node in transform if _is_xml(node, "ext", DRAWING_NS_HINT)), None)
+    return {
+        "x": _numeric_attribute(_attribute(offset, "x")) if offset is not None else None,
+        "y": _numeric_attribute(_attribute(offset, "y")) if offset is not None else None,
+        "w": _numeric_attribute(_attribute(extent, "cx")) if extent is not None else None,
+        "h": _numeric_attribute(_attribute(extent, "cy")) if extent is not None else None,
+    }
+
+
+def _shape_identity(shape: ET.Element) -> dict[str, Any]:
+    properties = next((node for node in shape.iter() if _is_xml(node, "cNvPr", DRAWING_NS_HINT)), None)
+    return {
+        "shapeType": _local_name(shape.tag),
+        "shapeId": _attribute(properties, "id") if properties is not None else None,
+        "name": _attribute(properties, "name") if properties is not None else None,
+    }
+
+
+def _pptx_shape_record(shape: ET.Element, shape_index: int) -> dict[str, Any]:
+    paragraphs = _drawing_paragraph_records(shape)
+    tables = [
+        _drawing_table_records(table)
+        for table in shape.iter()
+        if _is_xml(table, "tbl", DRAWING_NS_HINT)
+    ]
+    text = "\n".join(paragraph["text"] for paragraph in paragraphs)
+    record = {
+        **_shape_identity(shape),
+        **_shape_geometry(shape),
+        "shapeIndex": shape_index,
+        "zOrder": shape_index,
+        "text": text,
+        "paragraphs": paragraphs,
+        "tables": tables,
+        "relationshipIds": _relationship_ids(shape),
+        "xml": _nfc(ET.tostring(shape, encoding="unicode")),
+    }
+    evidence = _answer_provenance(
+        [run for paragraph in paragraphs for run in paragraph["runs"]],
+        locator={"shapeIndex": shape_index},
+    )
+    if evidence:
+        record["answerEvidence"] = evidence
+    return record
+
 def _pptx_slide_record(
     zf: zipfile.ZipFile,
     slide_member: str,
@@ -467,35 +962,41 @@ def _pptx_slide_record(
     if xml_error:
         return {
             "slide": slide_index,
+            "slideIndex": slide_index,
             "memberPath": slide_member,
             "paragraphs": [],
             "tables": [],
+            "shapes": [],
+            "orderedBlocks": [],
             "text": "",
             "notes": None,
+            "relationships": [],
             "mediaRefs": [],
+            "answerProvenance": [],
         }, [xml_error], media_refs
     assert root is not None
-    paragraphs = _drawing_paragraphs(root)
-    tables = [_drawing_table(table) for table in root.iter() if _is_xml(table, "tbl", DRAWING_NS_HINT)]
+    shape_tree = next((node for node in root.iter() if _is_xml(node, "spTree", PRESENTATION_NS_HINT)), None)
+    shapes: list[dict[str, Any]] = []
+    if shape_tree is not None:
+        shape_children = list(shape_tree)
+        for xml_index, shape in enumerate(shape_children):
+            if _local_name(shape.tag) in {"nvGrpSpPr", "grpSpPr"}:
+                continue
+            shapes.append(_pptx_shape_record(shape, xml_index))
+    paragraphs = [paragraph["text"] for shape in shapes for paragraph in shape["paragraphs"]]
+    tables = [table["rows"] for shape in shapes for table in shape["tables"]]
     rel_member = posixpath.join(posixpath.dirname(slide_member), "_rels", Path(slide_member).name + ".rels")
     relationships, rel_errors = _parse_relationships(zf, _clean_member_name(rel_member))
     if rel_errors and _clean_member_name(rel_member) in info_map:
         errors.extend(rel_errors)
-    notes: dict[str, Any] | None = None
     for relationship in relationships:
         target = relationship.get("target", "")
         resolved = _resolve_member(slide_member, target)
+        if resolved:
+            relationship["resolvedMemberPath"] = resolved
         rel_type = relationship.get("type", "").lower()
-        if "noteslide" in rel_type:
-            if resolved is None:
-                errors.append("invalid_notes_member")
-                continue
-            notes_root, notes_error = _read_zip_xml(zf, resolved)
-            if notes_error:
-                errors.append(notes_error)
-            elif notes_root is not None:
-                notes_paragraphs = _drawing_paragraphs(notes_root)
-                notes = {"memberPath": resolved, "paragraphs": notes_paragraphs, "text": "\n".join(notes_paragraphs)}
+        if "notesslide" in rel_type or "noteslide" in rel_type:
+            continue
         if resolved and ("/media/" in "/" + resolved or "/image" in rel_type or "/media" in rel_type):
             present = resolved in info_map
             ref = {
@@ -506,18 +1007,72 @@ def _pptx_slide_record(
             media_refs.append(ref)
             if not present:
                 errors.append("missing_media_member:" + resolved)
+    for shape in shapes:
+        refs = []
+        for relationship_id in shape["relationshipIds"]:
+            refs.extend(
+                {
+                    **reference,
+                    "shapeIndex": shape["shapeIndex"],
+                    "relationshipId": relationship_id,
+                }
+                for reference in media_refs
+                if reference["relationshipId"] == relationship_id
+            )
+        if refs:
+            shape["mediaRefs"] = refs
+    notes: dict[str, Any] | None = None
+    notes_relationship = next(
+        (relationship for relationship in relationships if "notesslide" in relationship.get("type", "").lower() or "noteslide" in relationship.get("type", "").lower()),
+        None,
+    )
+    if notes_relationship is not None:
+        notes_member = notes_relationship.get("resolvedMemberPath")
+        if notes_member is None:
+            errors.append("invalid_notes_member")
+        else:
+            notes_root, notes_error = _read_zip_xml(zf, notes_member)
+            if notes_error:
+                errors.append(notes_error)
+            elif notes_root is not None:
+                note_records = _drawing_paragraph_records(notes_root)
+                notes = {
+                    "memberPath": notes_member,
+                    "paragraphs": [record["text"] for record in note_records],
+                    "paragraphRecords": note_records,
+                    "text": "\n".join(record["text"] for record in note_records),
+                }
+    answer_provenance: list[dict[str, Any]] = []
+    for shape in shapes:
+        for evidence in shape.get("answerEvidence", []):
+            answer_provenance.append({"slide": slide_index, **evidence})
+    if notes is not None:
+        answer_provenance.extend(
+            {
+                "slide": slide_index,
+                **evidence,
+                "kind": "speaker_note",
+            }
+            for evidence in _answer_provenance(
+                [run for paragraph in notes["paragraphRecords"] for run in paragraph["runs"]],
+                locator={"memberPath": notes["memberPath"]},
+            )
+        )
     slide = {
         "slide": slide_index,
+        "slideIndex": slide_index,
         "memberPath": slide_member,
         "paragraphs": paragraphs,
         "tables": tables,
+        "shapes": shapes,
+        "orderedBlocks": shapes,
         "text": "\n".join(paragraphs),
         "notes": notes,
+        "relationships": relationships,
         "mediaRefs": media_refs,
+        "answerProvenance": answer_provenance,
     }
     return slide, errors, media_refs
-
-
 def _parse_pptx(
     path: Path,
     source_id: str,
@@ -581,26 +1136,84 @@ def _parse_pptx(
         all_slide_relationships: list[dict[str, Any]] = []
         for index, member in enumerate(slide_members, start=1):
             slide, slide_errors, refs = _pptx_slide_record(zf, member, index, info_map)
+            slide["sourceId"] = source_id
+            slide["relativePath"] = relative_path
+            slide["documentKind"] = "pptx"
+            slide["pageOrSlideIndex"] = index
+            for shape in slide.get("shapes", []):
+                shape["sourceId"] = source_id
+                shape["relativePath"] = relative_path
+                shape["documentKind"] = "pptx"
+                shape["orderedIndex"] = shape.get("shapeIndex")
+                shape["locator"] = {
+                    "kind": "slide",
+                    "slide": index,
+                    "shapeIndex": shape.get("shapeIndex"),
+                }
+            for evidence in slide.get("answerProvenance", []):
+                evidence["sourceId"] = source_id
+                evidence["relativePath"] = relative_path
+                evidence["documentKind"] = "pptx"
             slides.append(slide)
             errors.extend(slide_errors)
             media_refs.extend({"slide": index, **ref} for ref in refs)
-            rel_member = _clean_member_name(posixpath.join(posixpath.dirname(member), "_rels", Path(member).name + ".rels"))
-            slide_rels, _ = _parse_relationships(zf, rel_member)
+            slide_rels = slide.get("relationships", [])
             all_slide_relationships.extend({"part": member, **item} for item in slide_rels)
         media_assets, media_errors = _archive_media(zf, "ppt/media/", source_id, relative_path)
         errors.extend(media_errors)
+        derived_assets, conversion_errors = _convert_embedded_assets(zf, media_assets, relative_path=relative_path)
+        media_assets.extend(derived_assets)
+        errors.extend(conversion_errors)
+        asset_by_member = {asset["memberPath"]: asset for asset in media_assets if asset.get("memberPath")}
+        for reference in media_refs:
+            asset = asset_by_member.get(reference["memberPath"])
+            if asset is not None:
+                reference["assetId"] = asset["assetId"]
+        for slide in slides:
+            for reference in slide.get("mediaRefs", []):
+                asset = asset_by_member.get(reference["memberPath"])
+                if asset is not None:
+                    reference["assetId"] = asset["assetId"]
+            for shape in slide.get("shapes", []):
+                for reference in shape.get("mediaRefs", []):
+                    asset = asset_by_member.get(reference["memberPath"])
+                    if asset is not None:
+                        reference["assetId"] = asset["assetId"]
+            for relationship in slide.get("relationships", []):
+                asset = asset_by_member.get(relationship.get("resolvedMemberPath"))
+                if asset is not None:
+                    relationship["assetId"] = asset["assetId"]
+        for relationship in presentation_rels:
+            resolved = _resolve_member("ppt/presentation.xml", relationship.get("target", ""))
+            asset = asset_by_member.get(resolved)
+            if asset is not None:
+                relationship["assetId"] = asset["assetId"]
         relationships = [{"part": "ppt/presentation.xml", **item} for item in presentation_rels] + all_slide_relationships
         content = {
             "format": "pptx",
+            "documentKind": "pptx",
             "slides": slides,
+            "orderedSlides": slides,
             "relationships": relationships,
             "mediaRefs": media_refs,
+            "answerProvenance": [
+                evidence
+                for slide in slides
+                for evidence in slide.get("answerProvenance", [])
+            ],
             "mediaMembers": [
                 {
+                    "assetId": asset["assetId"],
+                    "sourceAssetId": asset.get("sourceAssetId"),
                     "memberPath": asset["memberPath"],
+                    "sourceMemberPath": asset.get("sourceMemberPath"),
                     "kind": asset["kind"],
                     "byteSize": asset["byteSize"],
                     "sha256": asset["sha256"],
+                    "originalSha256": asset.get("originalSha256"),
+                    "storageKey": asset["storageKey"],
+                    "originalStorageKey": asset.get("originalStorageKey"),
+                    "conversion": asset.get("conversion"),
                     "status": asset["status"],
                 }
                 for asset in media_assets

@@ -11,6 +11,7 @@ import type { CurriculumActivity, CurriculumDatabase, CurriculumIsland } from '.
 
 export * from './types'
 export { gradeActivity, gradeQuizQuestion } from './grade'
+export { mediaAssets } from './generated-data'
 
 const islands: CurriculumIsland[] = [
   lakeMucosaIsland,

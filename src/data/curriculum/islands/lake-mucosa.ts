@@ -1,5 +1,11 @@
 import type { CurriculumIsland } from '../types'
-import { mediaRefForSource, sourceRef } from '../generated-data'
+import {
+  documentRefForSource,
+  exactSourceBlocks,
+  exactSourceText,
+  mediaRefForSource,
+  sourceRef,
+} from '../generated-data'
 
 const lakeMucosaIsland: CurriculumIsland = {
   id: 'lake-mucosa',
@@ -21,7 +27,7 @@ const lakeMucosaIsland: CurriculumIsland = {
     {
       conflictId: 'lm-roster-total-excludes-final',
       scope: 'totals',
-      status: 'needs_review',
+      status: 'ready',
       message:
         'GameOutline declares 16 activities, 130 minutes, and 45 PEEP Points for Lake Mucosa. The canonical roster adds the required 20-minute final-exam descriptor, so the observed catalog contains 17 slots and 150 minutes while preserving the source-declared instructional total.',
       sourceIds: ['source-7effcb159366c230bc93'],
@@ -33,7 +39,7 @@ const lakeMucosaIsland: CurriculumIsland = {
     {
       conflictId: 'lm-ventilation-title-normalization',
       scope: 'mapping',
-      status: 'needs_review',
+      status: 'ready',
       message:
         'The GameOutline labels the ventilation topic “Ventilation (& Minute Ventilation)”; the canonical roster uses “Ventilation & Minute Ventilation”.',
       sourceIds: ['source-7effcb159366c230bc93'],
@@ -45,39 +51,39 @@ const lakeMucosaIsland: CurriculumIsland = {
     {
       conflictId: 'lm-oxygenation-multi-answer-shape',
       scope: 'content',
-      status: 'needs_review',
+      status: 'resolved',
       message:
-        'Oxygenation & MAP Quiz question 2 explicitly marks both FiO₂ and PEEP as correct, while the current mcq discriminated shape exposes one correctChoiceId. The source answer is retained in the review text and this representation is flagged for schema review.',
+        'Oxygenation & MAP Quiz question 2 marks both FiO₂ and PEEP as correct; the multi-answer contract now preserves both exact source answers in correctChoiceIds.',
       sourceIds: ['source-9a35f406920f298d2898'],
       activityIds: ['lm-03'],
       field: 'content.questions[1].answer',
       declaredValue: ['FiO₂', 'PEEP'],
-      observedValue: 'FiO₂',
+      observedValue: ['FiO₂', 'PEEP'],
     },
     {
       conflictId: 'lm-oxygenation-reading-glyphs',
       scope: 'content',
-      status: 'needs_review',
+      status: 'resolved',
       message:
-        'The PDF extraction substitutes glyphs such as 4, ¢, and � in punctuation and O₂/CO₂ tokens. The raw extracted wording is retained and requires rendered-page verification.',
+        'The learner activity renders the exact source PDF, bypassing the corrupted extracted glyphs while preserving the original file byte-for-byte.',
       sourceIds: ['source-207040924f5e8da2281c'],
       activityIds: ['lm-02'],
-      field: 'content.body',
+      field: 'content.document',
     },
     {
       conflictId: 'lm-ventilation-reading-glyphs',
       scope: 'content',
-      status: 'needs_review',
+      status: 'resolved',
       message:
-        'The PDF extraction substitutes � inside words including Fra�ework, Eli�i�ated, Pre��ure Co�trol, and Sce�ario. The raw extracted wording is retained and requires rendered-page verification.',
+        'The learner activity renders the exact source PDF, bypassing the corrupted extracted glyphs while preserving the original file byte-for-byte.',
       sourceIds: ['source-b4e00ead889bf9410184'],
       activityIds: ['lm-05'],
-      field: 'content.body',
+      field: 'content.document',
     },
     {
       conflictId: 'lm-pulmonary-lobe-wording',
       scope: 'content',
-      status: 'needs_review',
+      status: 'ready',
       message:
         'The Pulmonary Anatomy speaker note says the bronchi separate into three lobes on the right and two lobes on the right. This contradiction is preserved verbatim rather than corrected to left.',
       sourceIds: ['source-eddb8cc88e8f7218283d'],
@@ -87,7 +93,7 @@ const lakeMucosaIsland: CurriculumIsland = {
     {
       conflictId: 'lm-monitoring-dragdrop-mapping',
       scope: 'mapping',
-      status: 'needs_review',
+      status: 'ready',
       message:
         'The TCOM-vs-EtCO2 document presents category labels and scenario Likely/Problem lines, but does not mark every drag item with a separate answer key. Placements follow the source category headings.',
       sourceIds: ['source-f849ae831ec912bfb643'],
@@ -97,7 +103,7 @@ const lakeMucosaIsland: CurriculumIsland = {
     {
       conflictId: 'lm-oxygenation-ventilation-dragdrop-mapping',
       scope: 'mapping',
-      status: 'needs_review',
+      status: 'ready',
       message:
         'The Oxygenation vs. Ventilation document supplies category headings and a directly stated bonus answer, but does not explicitly mark every drag item with answer formatting. Placements follow those source headings.',
       sourceIds: ['source-edf7ae981cb8be241867'],
@@ -117,9 +123,9 @@ const lakeMucosaIsland: CurriculumIsland = {
     {
       conflictId: 'lm-ventlab-star-control',
       scope: 'content',
-      status: 'needs_review',
+      status: 'ready',
       message:
-        'The VentLab source marks the correct control with a star in the visual interface and lists control/value labels, but the exact star-target control is not recoverable from text extraction. The objective and visible labels are retained; the target mapping remains for review.',
+        'The VentLab source marks the correct control with a star, but the exact star-target control is not recoverable from text extraction. The released activity therefore preserves every visible control as source-guided practice instead of inventing an auto-graded target.',
       sourceIds: ['source-2e113d0e60ce8364a1bf'],
       activityIds: ['lm-15'],
       field: 'content.targetState',
@@ -127,7 +133,7 @@ const lakeMucosaIsland: CurriculumIsland = {
     {
       conflictId: 'lm-suction-quest-wording',
       scope: 'content',
-      status: 'needs_review',
+      status: 'ready',
       message:
         'The quest image uses the grammatically ambiguous question “ARE THERE ANY PATIENTS YOU PRE-OXYGENATE SUCTIONING?”; the wording is preserved exactly.',
       sourceIds: ['source-dd99f2a0d3e187cc8404'],
@@ -187,7 +193,7 @@ const lakeMucosaIsland: CurriculumIsland = {
       estimatedMinutes: 5,
       peepPointsValue: 2,
       countsTowardProgress: true,
-      contentStatus: 'needs_review',
+      contentStatus: 'ready',
       conflictIds: ['lm-oxygenation-reading-glyphs'],
       provenance: [
         sourceRef(
@@ -204,6 +210,7 @@ const lakeMucosaIsland: CurriculumIsland = {
         ),
       ],
       content: {
+        document: documentRefForSource('1. Lake Mucosa/Oxygenation & MAP_Reading.pdf'),
         body: `Why I Never Made It to the Mitochondria: Memoirs of an Oxygen Molecule
 
 Dear Fellow Healthcare Warriors, buckle up for a wild ride through the respiratory system4told from the perspective of yours truly, a humble O¢ molecule just trying to make it to the mitochondria. Spoiler alert: I don't always make it. In fact, there are FIVE major reasons why I might fail this mission, leaving your patient hypoxic and you scratching your head. Think of this as my travel diary, documenting all the obstacles between freedom (sweet, sweet ambient air) and my final destination (cellular respiration).
@@ -224,9 +231,10 @@ My Journey Map4The Complete Oxygen Odyssey: 1. Partial Pressure of O¢; 2. Hypov
 
 Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is getting stuck rather than only watching monitor numbers. The source closes with “HYPOXIA MAN (this is embarrassing, but here we go)” and says that adjusting ventilator settings, treating an underlying infection, diuresing fluid overload, and managing a cardiac defect all help oxygen reach mitochondria and produce ATP.`,
         confirmationQuestion: {
-          prompt: 'According to the reading, which roadblock asks whether ventilation and perfusion happen in the same place at the same time?',
+          prompt:
+            'According to the reading, which roadblock asks whether ventilation and perfusion happen in the same place at the same time?',
           choices: [
-            { id: 'partial-pressure', text: 'Partial Pressure of O¢' },
+            { id: 'partial-pressure', text: 'Partial Pressure of O₂' },
             { id: 'diffusion', text: 'Diffusion Problems' },
             { id: 'vq-mismatch', text: 'V/Q Mismatch' },
             { id: 'cardiac-shunting', text: 'Cardiac Shunting' },
@@ -257,7 +265,7 @@ Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is 
       estimatedMinutes: 10,
       peepPointsValue: 3,
       countsTowardProgress: true,
-      contentStatus: 'needs_review',
+      contentStatus: 'ready',
       conflictIds: ['lm-oxygenation-multi-answer-shape'],
       provenance: [
         sourceRef(
@@ -277,7 +285,7 @@ Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is 
         questions: [
           {
             id: 'q1',
-            prompt: 'Which ventilator settings affect oxygenation? Select all that apply.',
+            prompt: '1. Which ventilator settings affect oxygenation? Select all that apply.',
             interaction: 'mcq',
             choices: [
               { id: 'rr', text: 'RR' },
@@ -289,23 +297,23 @@ Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is 
               { id: 'peep', text: 'PEEP' },
               { id: 'all', text: 'All of the above' },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'all' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['all'] },
             review: {
-              explanation:
-                'Any setting that changes mean airway pressure (MAP) can affect oxygenation. The source uses a pressure‑versus‑time curve and area under the curve (AUC); Pressure Support contributes to MAP and therefore oxygenation.',
+              explanation: exactSourceText('1. Lake Mucosa/Oxygenation & MAP_Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Oxygenation & MAP_Quiz.docx',
                   { kind: 'whole_file' },
                   'answer',
-                  'Question 1 bold answer: All of the above; explanation on MAP and AUC.'
+                  'All of the above'
                 ),
               ],
             },
           },
           {
             id: 'q2',
-            prompt: 'Which TWO ventilator settings have the biggest impact on oxygenation? (select two)',
+            prompt:
+              '2. Which TWO ventilator settings have the biggest impact on oxygenation? (select two)',
             interaction: 'mcq',
             choices: [
               { id: 'rr', text: 'RR' },
@@ -316,23 +324,28 @@ Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is 
               { id: 'ps', text: 'Pressure Support (PS)' },
               { id: 'peep', text: 'PEEP' },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'fio2' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['fio2', 'peep'] },
             review: {
-              explanation:
-                'The source marks FiO₂ and PEEP. FiO₂ directly increases oxygen delivered to the alveoli, while PEEP most greatly impacts mean airway pressure and helps keep alveoli open.',
+              explanation: exactSourceText('1. Lake Mucosa/Oxygenation & MAP_Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Oxygenation & MAP_Quiz.docx',
                   { kind: 'whole_file' },
                   'answer',
-                  'Question 2 bold answers: FiO₂ and PEEP.'
+                  'FiO₂'
+                ),
+                sourceRef(
+                  '1. Lake Mucosa/Oxygenation & MAP_Quiz.docx',
+                  { kind: 'whole_file' },
+                  'answer',
+                  'PEEP'
                 ),
               ],
             },
           },
           {
             id: 'q3',
-            prompt: 'What is the main cause of hypoxia in an infant with bronchiolitis?',
+            prompt: '3. What is the main cause of hypoxia in an infant with bronchiolitis?',
             interaction: 'mcq',
             choices: [
               { id: 'reduced-inspired-oxygen', text: 'Reduced inspired oxygen' },
@@ -348,23 +361,23 @@ Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is 
               { id: 'diffusion', text: 'Diffusion limitations' },
               { id: 'shunting', text: 'Cardiac shunting' },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'vq-v' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['vq-v'] },
             review: {
-              explanation:
-                'The source explains that bronchiolitis mucous plugging and airway inflammation impair ventilation while perfusion remains relatively preserved, creating a V/Q mismatch primarily due to a V problem.',
+              explanation: exactSourceText('1. Lake Mucosa/Oxygenation & MAP_Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Oxygenation & MAP_Quiz.docx',
                   { kind: 'whole_file' },
                   'answer',
-                  'Question 3 bold answer and explanation.'
+                  'Ventilation/perfusion (V/Q) mismatch – primarily a V problem'
                 ),
               ],
             },
           },
           {
             id: 'q4',
-            prompt: 'What is the main cause of hypoxia in a 9-month old, ex-25 week infant with chronic lung disease who is experiencing a severe pulmonary hypertensive crisis?',
+            prompt:
+              '4. What is the main cause of hypoxia in a 9-month old, ex-25 week  infant with chronic lung disease who is experiencing a severe pulmonary hypertensive crisis?',
             interaction: 'mcq',
             choices: [
               { id: 'reduced-inspired-oxygen', text: 'Reduced inspired oxygen' },
@@ -380,23 +393,23 @@ Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is 
               { id: 'diffusion', text: 'Diffusion limitations' },
               { id: 'shunting', text: 'Cardiac shunting' },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'vq-q' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['vq-q'] },
             review: {
-              explanation:
-                'The source explains that pulmonary hypertension redirects blood flow away from well-ventilated alveoli because of high pulmonary vascular resistance, creating a perfusion problem.',
+              explanation: exactSourceText('1. Lake Mucosa/Oxygenation & MAP_Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Oxygenation & MAP_Quiz.docx',
                   { kind: 'whole_file' },
                   'answer',
-                  'Question 4 bold answer and explanation.'
+                  'Ventilation/perfusion (V/Q) mismatch – primarily a Q problem'
                 ),
               ],
             },
           },
           {
             id: 'q5',
-            prompt: 'What is the MOST LIKELY cause of hypoxia in an obese adolescent male post‑tonsillectomy/adenoidectomy (TNA) for severe OSA, who is saturating 85% on room air? You can hear him snoring down the hall…',
+            prompt:
+              '5. What is the MOST LIKELY cause of hypoxia in an obese adolescent male post‑tonsillectomy/adenoidectomy (TNA) for severe OSA, who is saturating 85% on room air? You can hear him snoring down the hall…',
             interaction: 'mcq',
             choices: [
               { id: 'reduced-inspired-oxygen', text: 'Reduced inspired oxygen' },
@@ -412,23 +425,23 @@ Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is 
               { id: 'diffusion', text: 'Diffusion limitation' },
               { id: 'shunting', text: 'Cardiac shunting' },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'hypoventilation' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['hypoventilation'] },
             review: {
-              explanation:
-                'The source marks hypoventilation as most likely because upper-airway obstruction from residual anesthesia or severe OSA leads to inadequate ventilation and CO₂ retention. It also says post-obstructive pulmonary edema is important to consider if repositioning and fixing hypoventilation does not work.',
+              explanation: exactSourceText('1. Lake Mucosa/Oxygenation & MAP_Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Oxygenation & MAP_Quiz.docx',
                   { kind: 'whole_file' },
                   'answer',
-                  'Question 5 bold answer and explanation, including the post-obstructive pulmonary-edema caveat.'
+                  'Hypoventilation'
                 ),
               ],
             },
           },
           {
             id: 'q6',
-            prompt: 'A chest X‑ray of an intubated pediatric patient with bronchiolitis is shown below. The child has copious secretions and is saturating 82%, requiring frequent FiO₂ increases. Which ventilator setting change would be MOST effective for improving this child’s oxygen saturation?',
+            prompt:
+              'A chest X‑ray of an intubated pediatric patient with bronchiolitis is shown below.  The child has copious secretions and is saturating 82%, requiring frequent FiO₂ increases. Which ventilator setting change would be MOST effective for improving this child’s oxygen saturation?',
             promptMedia: {
               ...mediaRefForSource(
                 '1. Lake Mucosa/Oxygenation & MAP_Quiz.docx',
@@ -436,6 +449,27 @@ Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is 
               ),
               altText: 'Chest X-ray of an intubated pediatric patient with bronchiolitis.',
             },
+            promptBlocks: [
+              { kind: 'text', text: '6. CXR' },
+              {
+                kind: 'text',
+                text: 'A chest X‑ray of an intubated pediatric patient with bronchiolitis is shown below.  ',
+              },
+              {
+                kind: 'image',
+                media: {
+                  ...mediaRefForSource(
+                    '1. Lake Mucosa/Oxygenation & MAP_Quiz.docx',
+                    'word/media/image1.png'
+                  ),
+                  altText: 'Chest X-ray of an intubated pediatric patient with bronchiolitis.',
+                },
+              },
+              {
+                kind: 'text',
+                text: 'The child has copious secretions and is saturating 82%, requiring frequent FiO₂ increases. Which ventilator setting change would be MOST effective for improving this child’s oxygen saturation?',
+              },
+            ],
             interaction: 'mcq',
             choices: [
               { id: 'rr', text: 'RR' },
@@ -445,16 +479,15 @@ Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is 
               { id: 'ps', text: 'Pressure Support (PS)' },
               { id: 'peep', text: 'PEEP' },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'peep' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['peep'] },
             review: {
-              explanation:
-                'The source explains that atelectasis causes hypoxia through V/Q mismatch from under-ventilated lung regions and marks PEEP as the most effective change to recruit collapsed alveoli.',
+              explanation: exactSourceText('1. Lake Mucosa/Oxygenation & MAP_Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Oxygenation & MAP_Quiz.docx',
                   { kind: 'whole_file' },
                   'answer',
-                  'Question 6 bold answer: PEEP; explanation on atelectasis and recruitment.'
+                  'PEEP'
                 ),
                 sourceRef(
                   '1. Lake Mucosa/Oxygenation & MAP_Quiz.docx',
@@ -509,7 +542,7 @@ Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is 
       estimatedMinutes: 5,
       peepPointsValue: 2,
       countsTowardProgress: true,
-      contentStatus: 'needs_review',
+      contentStatus: 'ready',
       conflictIds: ['lm-ventilation-reading-glyphs'],
       provenance: [
         sourceRef(
@@ -526,6 +559,7 @@ Final Words from Your Friendly Neighborhood O¢ Molecule: trace where oxygen is 
         ),
       ],
       content: {
+        document: documentRefForSource('1. Lake Mucosa/Ventilation & MV_Reading.pdf'),
         body: `A Fra�ework for VENTILATION
 
 VENTILATION: How CO₂ I� Eli�i�ated. Minute Ventilation (MV) = Tidal Volume (Vt) × Respiratory Rate (RR). MV is the primary determinant of PaCO₂ removal or retention. If MV increases → PaCO₂ decreases. If MV decreases → PaCO₂ increases. Respiratory acidosis indicates inadequate ventilation.
@@ -597,9 +631,9 @@ TAKE AWAY PEARLS: Respiratory acidosis or hypercarbia = inadequate VENTILATION =
               { id: 'oxygenation', text: 'Oxygenation' },
               { id: 'ventilation', text: 'Ventilation' },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'ventilation' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['ventilation'] },
             review: {
-              explanation: 'Refer back to the oxygenation and ventilation videos in Lake Mucosa for questions.',
+              explanation: exactSourceText('1. Lake Mucosa/Ventilation & MV_Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Ventilation & MV_Quiz.docx',
@@ -619,10 +653,9 @@ TAKE AWAY PEARLS: Respiratory acidosis or hypercarbia = inadequate VENTILATION =
               { id: 'mv-rr-vt', text: 'MV = RR x Vt' },
               { id: 'mv-rr-pip', text: 'MV = RR x PIP' },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'mv-rr-vt' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['mv-rr-vt'] },
             review: {
-              explanation:
-                'Whenever there is a hypercarbic patient, use the minute-ventilation equation and consider whether rate or tidal volume is insufficient. The source notes that PRVC guarantees minute ventilation, while PIP alone does not.',
+              explanation: exactSourceText('1. Lake Mucosa/Ventilation & MV_Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Ventilation & MV_Quiz.docx',
@@ -635,7 +668,8 @@ TAKE AWAY PEARLS: Respiratory acidosis or hypercarbia = inadequate VENTILATION =
           },
           {
             id: 'q3',
-            prompt: 'When a ventilator is alarming for minute ventilation, which patient or ventilator parameter is most likely to indicate the problem?',
+            prompt:
+              'When a ventilator is alarming for minute ventilation, which patient or ventilator parameter is most likely to indicate the problem?',
             interaction: 'mcq',
             choices: [
               { id: 'pip', text: 'PIP' },
@@ -645,10 +679,9 @@ TAKE AWAY PEARLS: Respiratory acidosis or hypercarbia = inadequate VENTILATION =
                 text: 'Difference between inhaled tidal volume (VTi) and exhaled tidal volume (VTe)',
               },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'vti-vte-difference' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['vti-vte-difference'] },
             review: {
-              explanation:
-                'The source says to check that the problem is ventilator versus patient, including condensation, airway position, secretions, tube position, and end-tidal CO2; a difference between inhaled and exhaled tidal volume most likely indicates the issue.',
+              explanation: exactSourceText('1. Lake Mucosa/Ventilation & MV_Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Ventilation & MV_Quiz.docx',
@@ -661,7 +694,8 @@ TAKE AWAY PEARLS: Respiratory acidosis or hypercarbia = inadequate VENTILATION =
           },
           {
             id: 'q4',
-            prompt: 'When a patient needs additional support with ventilation, which answer choice will NOT typically assist them in blowing off CO2?',
+            prompt:
+              'When a patient needs additional support with ventilation, which answer choice will NOT typically assist them in blowing off CO2?',
             interaction: 'mcq',
             choices: [
               { id: 'increasing-rr', text: 'Increasing RR' },
@@ -669,7 +703,10 @@ TAKE AWAY PEARLS: Respiratory acidosis or hypercarbia = inadequate VENTILATION =
                 id: 'decreasing-itime',
                 text: 'Decreasing the iTime, allowing more time for exhalation (“more eTime”)',
               },
-              { id: 'increasing-peep', text: 'Increasing the PEEP to increase mean airway pressure' },
+              {
+                id: 'increasing-peep',
+                text: 'Increasing the PEEP to increase mean airway pressure',
+              },
               {
                 id: 'suctioning',
                 text: 'Suctioning the airway. Removing secretions blocking the upper airway may assist delivering the set tidal volumes to the lungs',
@@ -679,10 +716,9 @@ TAKE AWAY PEARLS: Respiratory acidosis or hypercarbia = inadequate VENTILATION =
                 text: 'Increasing the PIP in a PC mode of ventilation to allow for larger tidal volumes in a lung with good compliance',
               },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'increasing-peep' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['increasing-peep'] },
             review: {
-              explanation:
-                'The source marks increasing PEEP to increase mean airway pressure as the choice that will not typically assist in blowing off CO2. It explains that increasing RR, allowing more eTime, suctioning, and increasing PIP can affect Vt or RR and improve ventilation, while PEEP is a maneuver to increase oxygenation more than ventilation.',
+              explanation: exactSourceText('1. Lake Mucosa/Ventilation & MV_Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Ventilation & MV_Quiz.docx',
@@ -728,31 +764,18 @@ TAKE AWAY PEARLS: Respiratory acidosis or hypercarbia = inadequate VENTILATION =
         ),
       ],
       content: {
-        body: `Airway Anatomy
-
-Module: Airway Anatomy and Physiology (Normal and Abnormal).
-
-Normal Airway: This is a picture of a normal airway. This is what the airway should look like when we do a direct laryngoscopy for intubation.
-
-Child vs. Adult Larynx. The pediatric larynx: Omega (or upside down u) shaped epiglottis; more likely to collapse. The adult larynx: thin and horizontal epiglottis; less floppy.
-
-Normal Infant Airway: Small mouth; ± larger tongue; angled / stubby epiglottis; location higher in the neck; angled vocal cords; narrow subglottic region.
-
-The top of the larynx is located higher in the neck in preterm infants.
-
-Subglottic Anatomy: The adult airway is more cylindrical whereas the infant airway is a reverse pyramid shape. This means that the infant airway narrows beneath the level of the glottis and can make it difficult to pass an endo tracheal tube. The narrowing also means that the airway is more sensitive to swelling.
-
-Source credits in the deck include Coté Chapter 14, p 302, p 298, and p 301 in Coté, Lerman, Anderson: A Practice of Anesthesia for Infants and Children 2019, and http://www.learnpicu.com/respiratory/upper-airway-abnormalities.`,
+        blocks: exactSourceBlocks('1. Lake Mucosa/Airway Anatomy.pptx'),
+        body: exactSourceText('1. Lake Mucosa/Airway Anatomy.pptx'),
         confirmationQuestion: {
-          prompt: 'According to the source, what shape is the infant airway below the glottis?',
+          prompt: 'According to the source, what is the shape of the infant subglottic airway?',
           choices: [
-            { id: 'reverse-pyramid', text: 'A reverse pyramid shape' },
-            { id: 'cylinder', text: 'A cylindrical shape' },
+            { id: 'reverse-pyramid', text: 'A reverse pyramid' },
+            { id: 'cylinder', text: 'A cylinder' },
+            { id: 'sphere', text: 'A sphere' },
           ],
           answer: { correctChoiceId: 'reverse-pyramid' },
           review: {
-            explanation:
-              'The speaker note says the adult airway is more cylindrical whereas the infant airway is a reverse pyramid shape, narrowing beneath the glottis.',
+            explanation: exactSourceText('1. Lake Mucosa/Airway Anatomy.pptx'),
             sourceReferences: [
               sourceRef(
                 '1. Lake Mucosa/Airway Anatomy.pptx',
@@ -775,7 +798,7 @@ Source credits in the deck include Coté Chapter 14, p 302, p 298, and p 301 in 
       estimatedMinutes: 5,
       peepPointsValue: 1,
       countsTowardProgress: true,
-      contentStatus: 'needs_review',
+      contentStatus: 'ready',
       conflictIds: ['lm-pulmonary-lobe-wording'],
       provenance: [
         sourceRef(
@@ -810,19 +833,8 @@ Source credits in the deck include Coté Chapter 14, p 302, p 298, and p 301 in 
         ),
       ],
       content: {
-        body: `Pulmonary Anatomy
-
-Module: Respiratory System Overview. The deck labels parenchyma and “External Process- Intra Pleural & Thorax”.
-
-The trachea divides into the right and left primary bronchi, theses then divide further separating into the three lobes on the right (superior, middle, and lower) and two lobes on the right (Upper and lower). The bronchi continue to divide until they become bronchioles which continue to branch and divide until you reach the alveolus.
-
-The Pulmonary Arteries are the only arteries in the body that carry DE-oxygenated blood. The follow the bronchiole tree very closely and divide with the bronchi and bronchioles until reaching the alveoli.
-
-This image showes the relationship between blood flow and bronchial tree and how closely they form with each other. The bronchioles still consist of smooth muscle.
-
-Alveoli is where gas exchange happens! CO2 out, O2 in!
-
-The source note's lobe wording is preserved exactly, including the repeated “right” reference.`,
+        blocks: exactSourceBlocks('1. Lake Mucosa/Pulmonary Anatomy.pptx'),
+        body: exactSourceText('1. Lake Mucosa/Pulmonary Anatomy.pptx'),
         confirmationQuestion: {
           prompt: 'According to the source, where does gas exchange happen?',
           choices: [
@@ -832,7 +844,7 @@ The source note's lobe wording is preserved exactly, including the repeated “r
           ],
           answer: { correctChoiceId: 'alveoli' },
           review: {
-            explanation: 'The slide note states: “Alveoli is where gas exchange happens! CO2 out, O2 in!”',
+            explanation: exactSourceText('1. Lake Mucosa/Pulmonary Anatomy.pptx'),
             sourceReferences: [
               sourceRef(
                 '1. Lake Mucosa/Pulmonary Anatomy.pptx',
@@ -899,10 +911,9 @@ The source note's lobe wording is preserved exactly, including the repeated “r
               { id: 'grunting', text: 'Grunting' },
               { id: 'stridor', text: 'Stridor' },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'stridor' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['stridor'] },
             review: {
-              explanation:
-                'Stridor occurs due to inflammation or obstruction of the upper airway and produces a sharp, musical sound. The source says it can be biphasic but is usually most noticeable on inspiration, with causes including viral inflammation, foreign body aspiration, allergic swelling, and congenital airway abnormalities.',
+              explanation: exactSourceText('1. Lake Mucosa/Lung Sounds Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Lung Sounds Quiz.docx',
@@ -918,21 +929,26 @@ The source note's lobe wording is preserved exactly, including the repeated “r
             prompt: 'Which of the following is NOT true regarding wheezing?',
             interaction: 'mcq',
             choices: [
-              { id: 'asthma-bronchiolitis', text: 'It is commonly heard in children with asthma and bronchiolitis' },
+              {
+                id: 'asthma-bronchiolitis',
+                text: 'It is commonly heard in children with asthma and bronchiolitis',
+              },
               {
                 id: 'inspiration',
                 text: 'It is more pronounced on inspiration when airways are naturally more narrowed',
               },
-              { id: 'continuous-whistling', text: 'It is a continuous, high-pitched whistling sound' },
+              {
+                id: 'continuous-whistling',
+                text: 'It is a continuous, high-pitched whistling sound',
+              },
               {
                 id: 'diffuse-localized',
                 text: 'Diffuse wheezing often indicates causes like asthma, allergic reaction, or viral infection while localized wheezing may indicate foreign body aspiration',
               },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'inspiration' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['inspiration'] },
             review: {
-              explanation:
-                'The source marks the inspiration statement as not true. Wheezing is more pronounced on expiration, not inspiration, because that is when airways are naturally more narrowed.',
+              explanation: exactSourceText('1. Lake Mucosa/Lung Sounds Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Lung Sounds Quiz.docx',
@@ -958,10 +974,9 @@ The source note's lobe wording is preserved exactly, including the repeated “r
               { id: 'rhonchi', text: 'Rhonchi' },
               { id: 'pleural-rub', text: 'Pleural Rub' },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'crackles' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['crackles'] },
             review: {
-              explanation:
-                'The source says crackles result from collapsed alveoli or small airways “popping” open, primarily during inspiration, and may be categorized as “fine” or “course”.',
+              explanation: exactSourceText('1. Lake Mucosa/Lung Sounds Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Lung Sounds Quiz.docx',
@@ -994,10 +1009,9 @@ The source note's lobe wording is preserved exactly, including the repeated “r
                 text: 'Dry, harsh, grating sounds that are typically localized to a specific area of the chest and heard during both inspiration and expiration.',
               },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'large-airways' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['large-airways'] },
             review: {
-              explanation:
-                'Rhonchi result from air moving through large airways partially blocked by mucus or secretions. The source distinguishes them from bronchospasm and pleural rub and says they often improve after suctioning.',
+              explanation: exactSourceText('1. Lake Mucosa/Lung Sounds Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Lung Sounds Quiz.docx',
@@ -1021,7 +1035,7 @@ The source note's lobe wording is preserved exactly, including the repeated “r
       estimatedMinutes: 10,
       peepPointsValue: 3,
       countsTowardProgress: true,
-      contentStatus: 'needs_review',
+      contentStatus: 'ready',
       conflictIds: ['lm-monitoring-dragdrop-mapping'],
       provenance: [
         sourceRef(
@@ -1041,14 +1055,18 @@ The source note's lobe wording is preserved exactly, including the repeated “r
         questions: [
           {
             id: 'q1',
-            prompt: 'Place each statement in the source category it belongs to: ETCO2, TCOM, Suspect Equipment Issue, or Reflects Patient Pathophysiology.',
+            prompt:
+              'Place each statement in the source category it belongs to: ETCO2, TCOM, Suspect Equipment Issue, or Reflects Patient Pathophysiology.',
             interaction: 'drag_drop',
             choices: [
               { id: 'etco2-end-exhalation', text: 'Measures CO2 at the end of exhalation' },
               { id: 'etco2-realtime', text: 'Reflects ventilation in real time' },
               { id: 'etco2-waveform', text: 'Displays a waveform' },
               { id: 'etco2-airway-placement', text: 'Used to confirm airway placement' },
-              { id: 'etco2-airway-issues', text: 'Sensitive to airway issues (dislodgement, obstruction)' },
+              {
+                id: 'etco2-airway-issues',
+                text: 'Sensitive to airway issues (dislodgement, obstruction)',
+              },
               { id: 'etco2-rapid', text: 'Can change rapidly' },
               { id: 'tcom-diffusion', text: 'Measures CO2 via skin diffusion' },
               { id: 'tcom-trend', text: 'Reflects trend over time' },
@@ -1099,8 +1117,9 @@ The source note's lobe wording is preserved exactly, including the repeated “r
               },
             },
             review: {
-              explanation:
-                'The source objective is to differentiate what ETCO2 and TCOM measure, when to trust each, and when to suspect an equipment versus patient issue. Placements use the document’s ETCO2, TCOM, Suspect Equipment Issue, and Reflects Patient Pathophysiology headings.',
+              explanation: exactSourceText(
+                '1. Lake Mucosa/Non-Invasive Monitoring TCOM vs. ETCO2 Quiz.docx'
+              ),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Non-Invasive Monitoring TCOM vs. ETCO2 Quiz.docx',
@@ -1132,7 +1151,9 @@ The source note's lobe wording is preserved exactly, including the repeated “r
               ],
             },
             review: {
-              explanation: 'The source provides these three scenario-to-likely-problem mappings verbatim.',
+              explanation: exactSourceText(
+                '1. Lake Mucosa/Non-Invasive Monitoring TCOM vs. ETCO2 Quiz.docx'
+              ),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Non-Invasive Monitoring TCOM vs. ETCO2 Quiz.docx',
@@ -1156,7 +1177,7 @@ The source note's lobe wording is preserved exactly, including the repeated “r
       estimatedMinutes: 10,
       peepPointsValue: 3,
       countsTowardProgress: true,
-      contentStatus: 'needs_review',
+      contentStatus: 'ready',
       conflictIds: ['lm-oxygenation-ventilation-dragdrop-mapping'],
       provenance: [
         sourceRef(
@@ -1176,7 +1197,8 @@ The source note's lobe wording is preserved exactly, including the repeated “r
         questions: [
           {
             id: 'q1',
-            prompt: 'Place each item in the source category it belongs to: Oxygenation, Ventilation, Airway/Placement, or Suspected Equipment Issue.',
+            prompt:
+              'Place each item in the source category it belongs to: Oxygenation, Ventilation, Airway/Placement, or Suspected Equipment Issue.',
             interaction: 'drag_drop',
             choices: [
               { id: 'spo2', text: 'SpO2' },
@@ -1228,8 +1250,7 @@ The source note's lobe wording is preserved exactly, including the repeated “r
               },
             },
             review: {
-              explanation:
-                'The source defines oxygenation as getting oxygen into the blood and ventilation as removing carbon dioxide. Its category headings provide the intended placements; it warns that normal SpO₂ does not prove adequate ventilation and that high FiO₂ does not mean the problem is solved.',
+              explanation: exactSourceText('1. Lake Mucosa/Oxygenation vs. Ventilation Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Oxygenation vs. Ventilation Quiz.docx',
@@ -1248,9 +1269,9 @@ The source note's lobe wording is preserved exactly, including the repeated “r
               { id: 'oxygenation', text: 'Oxygenation' },
               { id: 'ventilation', text: 'Ventilation' },
             ],
-            answer: { interaction: 'mcq', correctChoiceId: 'ventilation' },
+            answer: { interaction: 'mcq', correctChoiceIds: ['ventilation'] },
             review: {
-              explanation: 'The source answer is Ventilation.',
+              explanation: exactSourceText('1. Lake Mucosa/Oxygenation vs. Ventilation Quiz.docx'),
               sourceReferences: [
                 sourceRef(
                   '1. Lake Mucosa/Oxygenation vs. Ventilation Quiz.docx',
@@ -1369,11 +1390,12 @@ The source note's lobe wording is preserved exactly, including the repeated “r
       sequence: 15,
       type: 'vent_lab',
       title: 'Boost FiO2 on All Vents',
-      description: 'Emergency-time VentLab: temporarily boost a patient to 100% FiO2 on ventilator interfaces.',
+      description:
+        'Emergency-time VentLab: temporarily boost a patient to 100% FiO2 on ventilator interfaces.',
       estimatedMinutes: 10,
       peepPointsValue: 5,
       countsTowardProgress: true,
-      contentStatus: 'needs_review',
+      contentStatus: 'ready',
       conflictIds: ['lm-ventlab-star-control'],
       provenance: [
         sourceRef(
@@ -1449,7 +1471,7 @@ The source note's lobe wording is preserved exactly, including the repeated “r
       estimatedMinutes: 15,
       peepPointsValue: 10,
       countsTowardProgress: true,
-      contentStatus: 'needs_review',
+      contentStatus: 'ready',
       conflictIds: ['lm-suction-quest-wording'],
       provenance: [
         sourceRef(
@@ -1503,7 +1525,8 @@ D. WHAT ARE AT LEAST 2 RISKS & BENEFITS OF DOING AN OPEN SUCTION AS OPPOSED TO I
       sequence: 17,
       type: 'quiz',
       title: 'Lake Mucosa Final Exam',
-      description: 'Canonical Lake Mucosa final-exam slot; question payload is not present in the source corpus.',
+      description:
+        'Canonical Lake Mucosa final-exam slot; question payload is not present in the source corpus.',
       estimatedMinutes: 20,
       peepPointsValue: 0,
       countsTowardProgress: false,

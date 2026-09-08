@@ -15,16 +15,19 @@ it('assembles the canonical curriculum catalog with resolvable references', () =
 
   const { islands, sources, mediaAssets } = curriculumDatabase
   expect(islands.map(({ id, order }) => ({ id, order }))).toEqual(
-    ISLAND_IDS.map((id, index) => ({ id, order: index + 1 })),
+    ISLAND_IDS.map((id, index) => ({ id, order: index + 1 }))
   )
   for (const island of islands) {
-    expect(island.activities.map(({ activityId }) => activityId)).toEqual(ROSTER_ACTIVITY_IDS[island.id])
+    expect(island.activities.map(({ activityId }) => activityId)).toEqual(
+      ROSTER_ACTIVITY_IDS[island.id]
+    )
   }
 
   const activities = islands.flatMap(({ activities: islandActivities }) => islandActivities)
   expect(activities).toHaveLength(86)
   expect(activities.filter(({ countsTowardProgress }) => countsTowardProgress)).toHaveLength(80)
   expect(activities.filter(({ activityId }) => activityId.endsWith('-final-exam'))).toHaveLength(6)
+  expect(activities.filter(({ contentStatus }) => contentStatus === 'needs_review')).toEqual([])
 
   expect(sources).toHaveLength(76)
   expect(curriculumDatabase.metadata.sourceFileCount).toBe(76)
@@ -34,8 +37,8 @@ it('assembles the canonical curriculum catalog with resolvable references', () =
       Object.keys(EXPECTED_SOURCE_FORMAT_COUNTS).map((format) => [
         format,
         sources.filter((source) => source.kind === format).length,
-      ]),
-    ),
+      ])
+    )
   ).toEqual(EXPECTED_SOURCE_FORMAT_COUNTS)
 
   const sourceById = new Map(sources.map((source) => [source.sourceId, source]))
@@ -54,14 +57,15 @@ it('assembles the canonical curriculum catalog with resolvable references', () =
     if (activity.contentStatus === 'ready') expect(activity.content).not.toBeNull()
 
     if (!activity.content) continue
-    const media = activity.type === 'video'
-      ? [activity.content.media]
-      : activity.type === 'quiz'
-        ? activity.content.questions.flatMap((question) => [
-            ...(question.promptMedia ? [question.promptMedia] : []),
-            ...question.choices.flatMap((choice) => choice.media ? [choice.media] : []),
-          ])
-        : []
+    const media =
+      activity.type === 'video'
+        ? [activity.content.media]
+        : activity.type === 'quiz'
+          ? activity.content.questions.flatMap((question) => [
+              ...(question.promptMedia ? [question.promptMedia] : []),
+              ...question.choices.flatMap((choice) => (choice.media ? [choice.media] : [])),
+            ])
+          : []
     for (const reference of media) expect(mediaById.has(reference.assetId)).toBe(true)
   }
 

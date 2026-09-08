@@ -499,6 +499,18 @@ erDiagram
 | `activities` | All authenticated users can read | `auth.role() = 'authenticated'` |
 | `user_daily_activity` | Users read/write own daily logs | `auth.uid() = user_id` |
 
+### Local curriculum media (dev & Storybook)
+
+Lesson videos play from `/curriculum-media/<storage filename>`, served out of
+gitignored `public/curriculum-media/`. Materialize mapped videos without
+copying the corpus (symlinks; zip-embedded clips are extracted):
+
+```bash
+npm run media:local   # --root defaults to ~/Downloads/Game-extracted/Game
+```
+
+Smoke target: Lake Mucosa activity `lm-01` (`1. Lake Mucosa/Oxygenation & MAP_Video.mp4`).
+
 ### Content JSON Schemas (stored in `activities.content` JSONB column)
 
 **Video:**

@@ -6,7 +6,6 @@ import type {
   QuizResponse,
 } from './types'
 
-
 function unavailable(activity: CurriculumActivity, reason: string): ActivityGrade {
   return {
     activityId: activity.activityId,
@@ -25,7 +24,11 @@ export function gradeQuizQuestion(question: QuizQuestion, response?: QuizRespons
 
   switch (question.interaction) {
     case 'mcq':
-      return response.interaction === 'mcq' && response.choiceId === question.answer.correctChoiceId
+      if (response.interaction !== 'mcq') return false
+      return (
+        response.choiceIds.length === question.answer.correctChoiceIds.length &&
+        response.choiceIds.every((choiceId) => question.answer.correctChoiceIds.includes(choiceId))
+      )
     case 'drag_drop': {
       if (response.interaction !== 'drag_drop') return false
       const expected = question.answer.placements
@@ -37,9 +40,15 @@ export function gradeQuizQuestion(question: QuizQuestion, response?: QuizRespons
       )
     }
     case 'matching': {
-      if (response.interaction !== 'matching' || response.pairs.length !== question.answer.pairs.length) return false
+      if (
+        response.interaction !== 'matching' ||
+        response.pairs.length !== question.answer.pairs.length
+      )
+        return false
       const submitted = new Set(
-        response.pairs.map(({ leftChoiceId, rightChoiceId }) => `${leftChoiceId}\u0000${rightChoiceId}`)
+        response.pairs.map(
+          ({ leftChoiceId, rightChoiceId }) => `${leftChoiceId}\u0000${rightChoiceId}`
+        )
       )
       return question.answer.pairs.every(({ leftChoiceId, rightChoiceId }) =>
         submitted.has(`${leftChoiceId}\u0000${rightChoiceId}`)
@@ -100,14 +109,16 @@ export function gradeActivity(
         totalCount: 1,
         pointsEarned: passed ? activity.peepPointsValue : 0,
         maxPoints: activity.peepPointsValue,
-        items: [{
-          itemId: activity.activityId,
-          correct: passed,
-          feedback:
-            question.review?.feedback ??
-            question.review?.explanation ??
-            question.review?.rationale,
-        }],
+        items: [
+          {
+            itemId: activity.activityId,
+            correct: passed,
+            feedback:
+              question.review?.feedback ??
+              question.review?.explanation ??
+              question.review?.rationale,
+          },
+        ],
       }
     }
     case 'quiz': {
@@ -116,9 +127,7 @@ export function gradeActivity(
         itemId: question.id,
         correct: gradeQuizQuestion(question, submission.answers[question.id]),
         feedback:
-          question.review?.feedback ??
-          question.review?.explanation ??
-          question.review?.rationale,
+          question.review?.feedback ?? question.review?.explanation ?? question.review?.rationale,
       }))
       const correctCount = items.filter(({ correct }) => correct).length
       const totalCount = items.length
@@ -127,22 +136,20 @@ export function gradeActivity(
         status: totalCount > 0 && correctCount === totalCount ? 'passed' : 'failed',
         correctCount,
         totalCount,
-        pointsEarned: totalCount > 0 ? Math.floor((activity.peepPointsValue * correctCount) / totalCount) : 0,
+        pointsEarned:
+          totalCount > 0 ? Math.floor((activity.peepPointsValue * correctCount) / totalCount) : 0,
         maxPoints: activity.peepPointsValue,
         items,
       }
     }
     case 'vent_lab': {
-      if (submission.type !== 'vent_lab') return unavailable(activity, 'Invalid Vent Lab submission')
-      if (!activity.content.targetState) {
-        return {
-          ...unavailable(activity, 'Vent Lab requires manual review'),
-          status: 'pending_manual',
-        }
-      }
-      const passed = Object.entries(activity.content.targetState).every(
-        ([key, value]) => submission.state[key] === value
-      )
+      if (submission.type !== 'vent_lab')
+        return unavailable(activity, 'Invalid Vent Lab submission')
+      const passed = activity.content.targetState
+        ? Object.entries(activity.content.targetState).every(
+            ([key, value]) => submission.state[key] === value
+          )
+        : true
       return {
         activityId: activity.activityId,
         status: passed ? 'passed' : 'failed',
@@ -154,16 +161,51 @@ export function gradeActivity(
           {
             itemId: activity.activityId,
             correct: passed,
-            feedback: passed ? activity.content.feedback.success : activity.content.feedback.incorrect,
+            feedback: passed
+              ? activity.content.feedback.success
+              : activity.content.feedback.incorrect,
           },
         ],
       }
     }
-    case 'case_vignette':
-    case 'quest':
+    case 'case_vignette': {
+      if (submission.type !== 'case_vignette')
+        return unavailable(activity, 'Invalid case submission')
+      const accepted = activity.content.answer?.acceptedDecisionIds
+      const passed =
+        submission.decisionIds.length > 0 &&
+        submission.sbar.trim().length > 0 &&
+        (!accepted?.length || submission.decisionIds.every((id) => accepted.includes(id)))
       return {
-        ...unavailable(activity, `${activity.type} requires manual review`),
-        status: 'pending_manual',
+        activityId: activity.activityId,
+        status: passed ? 'passed' : 'failed',
+        correctCount: Number(passed),
+        totalCount: 1,
+        pointsEarned: passed ? activity.peepPointsValue : 0,
+        maxPoints: activity.peepPointsValue,
+        items: [
+          {
+            itemId: activity.activityId,
+            correct: passed,
+            feedback: activity.content.answer?.rationale,
+          },
+        ],
       }
+    }
+    case 'quest': {
+      if (submission.type !== 'quest') return unavailable(activity, 'Invalid quest submission')
+      const passed = Object.values(submission.evidence).some((value) =>
+        typeof value === 'string' ? value.trim().length > 0 : value
+      )
+      return {
+        activityId: activity.activityId,
+        status: passed ? 'passed' : 'failed',
+        correctCount: Number(passed),
+        totalCount: 1,
+        pointsEarned: passed ? activity.peepPointsValue : 0,
+        maxPoints: activity.peepPointsValue,
+        items: [{ itemId: activity.activityId, correct: passed }],
+      }
+    }
   }
 }

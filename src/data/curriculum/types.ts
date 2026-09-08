@@ -129,102 +129,704 @@ export interface RosterDescriptor {
 
 export const ROSTER_DESCRIPTORS: Readonly<Record<IslandId, readonly RosterDescriptor[]>> = {
   'lake-mucosa': [
-    { activityId: 'lm-01', title: 'Oxygenation & Mean Airway Pressure', type: 'video', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'lm-02', title: 'Oxygenation & Mean Airway Pressure', type: 'reading', estimatedMinutes: 5, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'lm-03', title: 'Oxygenation & Mean Airway Pressure', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'lm-04', title: 'Ventilation & Minute Ventilation', type: 'video', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'lm-05', title: 'Ventilation & Minute Ventilation', type: 'reading', estimatedMinutes: 5, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'lm-06', title: 'Ventilation & Minute Ventilation', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'lm-07', title: 'Airway Anatomy', type: 'reading', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'lm-08', title: 'Pulmonary Anatomy', type: 'reading', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'lm-09', title: 'Airway Sounds', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'lm-10', title: 'Non-invasive Ventilation Monitoring (TCOM vs EtCO2)', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'lm-11', title: 'Oxygenation vs Ventilation', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'lm-12', title: 'Ventilator Interfaces 101 - Drager', type: 'video', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'lm-13', title: 'Ventilator Interfaces 101 - Servo i/u', type: 'video', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'lm-14', title: 'Ventilator Interfaces 101 - Breas', type: 'video', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'lm-15', title: 'Boost FiO2 on All Vents', type: 'vent_lab', estimatedMinutes: 10, peepPointsValue: 5, countsTowardProgress: true },
-    { activityId: 'lm-16', title: 'Suctioning 101', type: 'quest', estimatedMinutes: 15, peepPointsValue: 10, countsTowardProgress: true },
-    { activityId: 'lm-final-exam', title: 'Lake Mucosa Final Exam', type: 'quiz', estimatedMinutes: 20, peepPointsValue: 0, countsTowardProgress: false },
+    {
+      activityId: 'lm-01',
+      title: 'Oxygenation & Mean Airway Pressure',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-02',
+      title: 'Oxygenation & Mean Airway Pressure',
+      type: 'reading',
+      estimatedMinutes: 5,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-03',
+      title: 'Oxygenation & Mean Airway Pressure',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-04',
+      title: 'Ventilation & Minute Ventilation',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-05',
+      title: 'Ventilation & Minute Ventilation',
+      type: 'reading',
+      estimatedMinutes: 5,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-06',
+      title: 'Ventilation & Minute Ventilation',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-07',
+      title: 'Airway Anatomy',
+      type: 'reading',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-08',
+      title: 'Pulmonary Anatomy',
+      type: 'reading',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-09',
+      title: 'Airway Sounds',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-10',
+      title: 'Non-invasive Ventilation Monitoring (TCOM vs EtCO2)',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-11',
+      title: 'Oxygenation vs Ventilation',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-12',
+      title: 'Ventilator Interfaces 101 - Drager',
+      type: 'video',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-13',
+      title: 'Ventilator Interfaces 101 - Servo i/u',
+      type: 'video',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-14',
+      title: 'Ventilator Interfaces 101 - Breas',
+      type: 'video',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-15',
+      title: 'Boost FiO2 on All Vents',
+      type: 'vent_lab',
+      estimatedMinutes: 10,
+      peepPointsValue: 5,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-16',
+      title: 'Suctioning 101',
+      type: 'quest',
+      estimatedMinutes: 15,
+      peepPointsValue: 10,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'lm-final-exam',
+      title: 'Lake Mucosa Final Exam',
+      type: 'quiz',
+      estimatedMinutes: 20,
+      peepPointsValue: 0,
+      countsTowardProgress: false,
+    },
   ],
   'interlobar-divides': [
-    { activityId: 'id-01', title: 'Lung Compliance 101', type: 'video', estimatedMinutes: 10, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'id-02', title: 'Ventilator Basics: Independent and Dependent Variables', type: 'video', estimatedMinutes: 15, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'id-03', title: 'Ventilator Basics: Independent and Dependent Variables', type: 'case_vignette', estimatedMinutes: 15, peepPointsValue: 5, countsTowardProgress: true },
-    { activityId: 'id-04', title: 'Ventilator Modes: The Decision Trees', type: 'video', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'id-05', title: 'Ventilator Modes: PC vs PRVC in the PICU', type: 'reading', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'id-06', title: 'Ventilator Modes: Determining Which Mode You Are In', type: 'vent_lab', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'id-07', title: 'Ventilator Modes: Choosing a Mode', type: 'case_vignette', estimatedMinutes: 10, peepPointsValue: 5, countsTowardProgress: true },
-    { activityId: 'id-08', title: 'Determining Compliance', type: 'quest', estimatedMinutes: 15, peepPointsValue: 5, countsTowardProgress: true },
-    { activityId: 'id-09', title: 'CVICU Ventilator Strategies and Norms', type: 'video', estimatedMinutes: 10, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'id-10', title: 'CCDH Ventilator Strategies and Norms', type: 'video', estimatedMinutes: 10, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'id-11', title: 'Ventilator Settings: Selecting Initial Settings for a Healthy Lung', type: 'case_vignette', estimatedMinutes: 20, peepPointsValue: 5, countsTowardProgress: true },
-    { activityId: 'id-final-exam', title: 'Interlobar Divides Final Exam', type: 'quiz', estimatedMinutes: 20, peepPointsValue: 0, countsTowardProgress: false },
+    {
+      activityId: 'id-01',
+      title: 'Lung Compliance 101',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'id-02',
+      title: 'Ventilator Basics: Independent and Dependent Variables',
+      type: 'video',
+      estimatedMinutes: 15,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'id-03',
+      title: 'Ventilator Basics: Independent and Dependent Variables',
+      type: 'case_vignette',
+      estimatedMinutes: 15,
+      peepPointsValue: 5,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'id-04',
+      title: 'Ventilator Modes: The Decision Trees',
+      type: 'video',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'id-05',
+      title: 'Ventilator Modes: PC vs PRVC in the PICU',
+      type: 'reading',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'id-06',
+      title: 'Ventilator Modes: Determining Which Mode You Are In',
+      type: 'vent_lab',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'id-07',
+      title: 'Ventilator Modes: Choosing a Mode',
+      type: 'case_vignette',
+      estimatedMinutes: 10,
+      peepPointsValue: 5,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'id-08',
+      title: 'Determining Compliance',
+      type: 'quest',
+      estimatedMinutes: 15,
+      peepPointsValue: 5,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'id-09',
+      title: 'CVICU Ventilator Strategies and Norms',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'id-10',
+      title: 'CCDH Ventilator Strategies and Norms',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'id-11',
+      title: 'Ventilator Settings: Selecting Initial Settings for a Healthy Lung',
+      type: 'case_vignette',
+      estimatedMinutes: 20,
+      peepPointsValue: 5,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'id-final-exam',
+      title: 'Interlobar Divides Final Exam',
+      type: 'quiz',
+      estimatedMinutes: 20,
+      peepPointsValue: 0,
+      countsTowardProgress: false,
+    },
   ],
   'valley-of-pulmonara': [
-    { activityId: 'vp-01', title: 'Bronchiolitis Pathophysiology', type: 'video', estimatedMinutes: 10, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'vp-02', title: 'Asthma Pathophysiology', type: 'video', estimatedMinutes: 10, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'vp-03', title: 'Tracheobronchomalacia', type: 'video', estimatedMinutes: 10, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'vp-04', title: 'ARDS Pathophysiology', type: 'video', estimatedMinutes: 10, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'vp-05', title: 'ARDS: Lung Protective Strategies', type: 'reading', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'vp-06', title: 'Captured: Using Language to Depict Illness Severity and Course', type: 'video', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'vp-07', title: 'Vent Alarms 101', type: 'video', estimatedMinutes: 15, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'vp-08', title: 'Special Considerations for EAT Patients', type: 'video', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'vp-09', title: 'Guess That Disease', type: 'vent_lab', estimatedMinutes: 10, peepPointsValue: 5, countsTowardProgress: true },
-    { activityId: 'vp-10', title: 'Guess That Disease', type: 'case_vignette', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'vp-11', title: 'Effective Communication: Vent Alarms (RT)', type: 'quest', estimatedMinutes: 20, peepPointsValue: 10, countsTowardProgress: true },
-    { activityId: 'vp-12', title: 'Effective Communication: Vent Alarms (Provider)', type: 'quest', estimatedMinutes: 20, peepPointsValue: 10, countsTowardProgress: true },
-    { activityId: 'vp-13', title: 'Ventilator-Associated Pneumonia: Background and Sequelae', type: 'reading', estimatedMinutes: 10, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'vp-14', title: 'Ventilator-Associated Pneumonia: Prevention', type: 'quiz', estimatedMinutes: 5, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'vp-final-exam', title: 'Valley of Pulmonara Final Exam', type: 'quiz', estimatedMinutes: 20, peepPointsValue: 0, countsTowardProgress: false },
+    {
+      activityId: 'vp-01',
+      title: 'Bronchiolitis Pathophysiology',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-02',
+      title: 'Asthma Pathophysiology',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-03',
+      title: 'Tracheobronchomalacia',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-04',
+      title: 'ARDS Pathophysiology',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-05',
+      title: 'ARDS: Lung Protective Strategies',
+      type: 'reading',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-06',
+      title: 'Captured: Using Language to Depict Illness Severity and Course',
+      type: 'video',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-07',
+      title: 'Vent Alarms 101',
+      type: 'video',
+      estimatedMinutes: 15,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-08',
+      title: 'Special Considerations for EAT Patients',
+      type: 'video',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-09',
+      title: 'Guess That Disease',
+      type: 'vent_lab',
+      estimatedMinutes: 10,
+      peepPointsValue: 5,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-10',
+      title: 'Guess That Disease',
+      type: 'case_vignette',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-11',
+      title: 'Effective Communication: Vent Alarms (RT)',
+      type: 'quest',
+      estimatedMinutes: 20,
+      peepPointsValue: 10,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-12',
+      title: 'Effective Communication: Vent Alarms (Provider)',
+      type: 'quest',
+      estimatedMinutes: 20,
+      peepPointsValue: 10,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-13',
+      title: 'Ventilator-Associated Pneumonia: Background and Sequelae',
+      type: 'reading',
+      estimatedMinutes: 10,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-14',
+      title: 'Ventilator-Associated Pneumonia: Prevention',
+      type: 'quiz',
+      estimatedMinutes: 5,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'vp-final-exam',
+      title: 'Valley of Pulmonara Final Exam',
+      type: 'quiz',
+      estimatedMinutes: 20,
+      peepPointsValue: 0,
+      countsTowardProgress: false,
+    },
   ],
   'bronchial-bluffs': [
-    { activityId: 'bb-01', title: 'CXR Interpretation', type: 'video', estimatedMinutes: 10, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'bb-02', title: 'CXR Interpretation', type: 'reading', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'bb-03', title: 'Guess That Disease', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'bb-04', title: 'Goldilocks and the 3 ETTs', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'bb-05', title: 'CXR in Real Life', type: 'quest', estimatedMinutes: 10, peepPointsValue: 5, countsTowardProgress: true },
-    { activityId: 'bb-06', title: 'Blood Gas Interpretation: Part 1', type: 'video', estimatedMinutes: 10, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'bb-07', title: 'Blood Gas Interpretation: Identify the Gas', type: 'quiz', estimatedMinutes: 15, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'bb-08', title: 'Blood Gas Interpretation: Part 2', type: 'video', estimatedMinutes: 10, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'bb-09', title: 'Blood Gas Interpretation: Act on the Gas', type: 'quiz', estimatedMinutes: 15, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'bb-10', title: 'Blood Gas Interpretation: Summary Graphic', type: 'reading', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'bb-11', title: 'How to Bag 101', type: 'video', estimatedMinutes: 10, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'bb-12', title: 'BVM Deliberate Practice', type: 'quest', estimatedMinutes: 20, peepPointsValue: 10, countsTowardProgress: true },
-    { activityId: 'bb-13', title: 'Troubleshooting Ineffective BVM', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'bb-14', title: 'Bronchial Bluffs Activity Slot 14 (descriptor pending)', type: 'pending', estimatedMinutes: 1, peepPointsValue: 0, countsTowardProgress: true },
-    { activityId: 'bb-final-exam', title: 'Bronchial Bluffs Final Exam', type: 'quiz', estimatedMinutes: 20, peepPointsValue: 0, countsTowardProgress: false },
+    {
+      activityId: 'bb-01',
+      title: 'CXR Interpretation',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-02',
+      title: 'CXR Interpretation',
+      type: 'reading',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-03',
+      title: 'Guess That Disease',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-04',
+      title: 'Goldilocks and the 3 ETTs',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-05',
+      title: 'CXR in Real Life',
+      type: 'quest',
+      estimatedMinutes: 10,
+      peepPointsValue: 5,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-06',
+      title: 'Blood Gas Interpretation: Part 1',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-07',
+      title: 'Blood Gas Interpretation: Identify the Gas',
+      type: 'quiz',
+      estimatedMinutes: 15,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-08',
+      title: 'Blood Gas Interpretation: Part 2',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-09',
+      title: 'Blood Gas Interpretation: Act on the Gas',
+      type: 'quiz',
+      estimatedMinutes: 15,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-10',
+      title: 'Blood Gas Interpretation: Summary Graphic',
+      type: 'reading',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-11',
+      title: 'How to Bag 101',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-12',
+      title: 'BVM Deliberate Practice',
+      type: 'quest',
+      estimatedMinutes: 20,
+      peepPointsValue: 10,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-13',
+      title: 'Troubleshooting Ineffective BVM',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-14',
+      title: 'Bronchial Bluffs Activity Slot 14 (descriptor pending)',
+      type: 'pending',
+      estimatedMinutes: 1,
+      peepPointsValue: 0,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'bb-final-exam',
+      title: 'Bronchial Bluffs Final Exam',
+      type: 'quiz',
+      estimatedMinutes: 20,
+      peepPointsValue: 0,
+      countsTowardProgress: false,
+    },
   ],
   'mount-pneumora': [
-    { activityId: 'mp-01', title: 'Ventilator Dys-synchrony', type: 'video', estimatedMinutes: 10, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'mp-02', title: 'Sedation Considerations', type: 'video', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'mp-03', title: 'Introduction to HFOV', type: 'video', estimatedMinutes: 10, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'mp-04', title: 'Welcome to My Crib: HFOV', type: 'video', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'mp-05', title: 'Introduction to APRV', type: 'video', estimatedMinutes: 10, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'mp-06', title: 'Welcome to My Crib: APRV', type: 'video', estimatedMinutes: 5, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'mp-07', title: 'Escalating Care: Case 1', type: 'case_vignette', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'mp-08', title: 'Escalating Care: Case 2', type: 'case_vignette', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'mp-09', title: 'HFOV vs APRV', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'mp-10', title: 'Weaning from non-CMV', type: 'video', estimatedMinutes: 10, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'mp-11', title: 'Ventilator Adjuncts: iNO', type: 'reading', estimatedMinutes: 10, peepPointsValue: 2, countsTowardProgress: true },
-    { activityId: 'mp-12', title: 'Go from iNO to I KNOW', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'mp-13', title: 'Understanding the non-CMV Interface', type: 'vent_lab', estimatedMinutes: 20, peepPointsValue: 5, countsTowardProgress: true },
-    { activityId: 'mp-14', title: 'Understanding the non-CMV Rationale', type: 'quest', estimatedMinutes: 20, peepPointsValue: 10, countsTowardProgress: true },
-    { activityId: 'mp-final-exam', title: 'Mount Pneumora Final Exam', type: 'quiz', estimatedMinutes: 20, peepPointsValue: 0, countsTowardProgress: false },
+    {
+      activityId: 'mp-01',
+      title: 'Ventilator Dys-synchrony',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-02',
+      title: 'Sedation Considerations',
+      type: 'video',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-03',
+      title: 'Introduction to HFOV',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-04',
+      title: 'Welcome to My Crib: HFOV',
+      type: 'video',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-05',
+      title: 'Introduction to APRV',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-06',
+      title: 'Welcome to My Crib: APRV',
+      type: 'video',
+      estimatedMinutes: 5,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-07',
+      title: 'Escalating Care: Case 1',
+      type: 'case_vignette',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-08',
+      title: 'Escalating Care: Case 2',
+      type: 'case_vignette',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-09',
+      title: 'HFOV vs APRV',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-10',
+      title: 'Weaning from non-CMV',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-11',
+      title: 'Ventilator Adjuncts: iNO',
+      type: 'reading',
+      estimatedMinutes: 10,
+      peepPointsValue: 2,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-12',
+      title: 'Go from iNO to I KNOW',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-13',
+      title: 'Understanding the non-CMV Interface',
+      type: 'vent_lab',
+      estimatedMinutes: 20,
+      peepPointsValue: 5,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-14',
+      title: 'Understanding the non-CMV Rationale',
+      type: 'quest',
+      estimatedMinutes: 20,
+      peepPointsValue: 10,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'mp-final-exam',
+      title: 'Mount Pneumora Final Exam',
+      type: 'quiz',
+      estimatedMinutes: 20,
+      peepPointsValue: 0,
+      countsTowardProgress: false,
+    },
   ],
   'alveolar-highlands': [
-    { activityId: 'ah-01', title: 'DOPE and Other Considerations for Airway Emergencies', type: 'video', estimatedMinutes: 10, peepPointsValue: 1, countsTowardProgress: true },
-    { activityId: 'ah-02', title: 'UE in the CT Scanner', type: 'case_vignette', estimatedMinutes: 15, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'ah-03', title: 'Intubating an Asthmatic', type: 'case_vignette', estimatedMinutes: 15, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'ah-04', title: 'ARDS: Capturing at Peak Illness', type: 'case_vignette', estimatedMinutes: 15, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'ah-05', title: 'Extubation Readiness', type: 'case_vignette', estimatedMinutes: 15, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'ah-06', title: 'Alarm Alert: Low MV', type: 'vent_lab', estimatedMinutes: 10, peepPointsValue: 5, countsTowardProgress: true },
-    { activityId: 'ah-07', title: 'Vent Alarms', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'ah-08', title: 'Blood Gas Analysis and Intervention', type: 'quiz', estimatedMinutes: 10, peepPointsValue: 3, countsTowardProgress: true },
-    { activityId: 'ah-09', title: 'BVM (RT)', type: 'quest', estimatedMinutes: 15, peepPointsValue: 10, countsTowardProgress: true },
-    { activityId: 'ah-10', title: 'Blood Gas Interpretation (Provider)', type: 'quest', estimatedMinutes: 15, peepPointsValue: 10, countsTowardProgress: true },
-    { activityId: 'ah-11', title: 'ERT (RT)', type: 'quest', estimatedMinutes: 15, peepPointsValue: 10, countsTowardProgress: true },
-    { activityId: 'ah-final-exam', title: 'Alveolar Highlands Final Exam', type: 'quiz', estimatedMinutes: 20, peepPointsValue: 0, countsTowardProgress: false },
+    {
+      activityId: 'ah-01',
+      title: 'DOPE and Other Considerations for Airway Emergencies',
+      type: 'video',
+      estimatedMinutes: 10,
+      peepPointsValue: 1,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'ah-02',
+      title: 'UE in the CT Scanner',
+      type: 'case_vignette',
+      estimatedMinutes: 15,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'ah-03',
+      title: 'Intubating an Asthmatic',
+      type: 'case_vignette',
+      estimatedMinutes: 15,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'ah-04',
+      title: 'ARDS: Capturing at Peak Illness',
+      type: 'case_vignette',
+      estimatedMinutes: 15,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'ah-05',
+      title: 'Extubation Readiness',
+      type: 'case_vignette',
+      estimatedMinutes: 15,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'ah-06',
+      title: 'Alarm Alert: Low MV',
+      type: 'vent_lab',
+      estimatedMinutes: 10,
+      peepPointsValue: 5,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'ah-07',
+      title: 'Vent Alarms',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'ah-08',
+      title: 'Blood Gas Analysis and Intervention',
+      type: 'quiz',
+      estimatedMinutes: 10,
+      peepPointsValue: 3,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'ah-09',
+      title: 'BVM (RT)',
+      type: 'quest',
+      estimatedMinutes: 15,
+      peepPointsValue: 10,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'ah-10',
+      title: 'Blood Gas Interpretation (Provider)',
+      type: 'quest',
+      estimatedMinutes: 15,
+      peepPointsValue: 10,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'ah-11',
+      title: 'ERT (RT)',
+      type: 'quest',
+      estimatedMinutes: 15,
+      peepPointsValue: 10,
+      countsTowardProgress: true,
+    },
+    {
+      activityId: 'ah-final-exam',
+      title: 'Alveolar Highlands Final Exam',
+      type: 'quiz',
+      estimatedMinutes: 20,
+      peepPointsValue: 0,
+      countsTowardProgress: false,
+    },
   ],
 }
 
@@ -292,11 +894,11 @@ export interface ExtractedSourceContent {
 
 export type MediaKind = 'image' | 'video' | 'audio' | 'other'
 
-/** A packaged asset is addressed by its immutable ID and digest, never by a URL. */
 export interface MediaReference {
   assetId: string
   sha256: string | null
   byteSize?: number | null
+  storageKey?: string | null
   mimeType?: string
   altText?: string
 }
@@ -304,9 +906,14 @@ export interface MediaReference {
 export interface MediaAssetRecord extends MediaReference {
   kind: MediaKind | SourceFormat
   sourceId?: string
+  sourceAssetId?: string
   relativePath?: string
   memberPath?: string | null
-  storageKey?: string | null
+  sourceMemberPath?: string | null
+  originalSha256?: string | null
+  originalStorageKey?: string | null
+  browserCompatible?: boolean
+  conversion?: Record<string, string | null>
   status?: SourceExtractionStatus
 }
 
@@ -344,7 +951,7 @@ export interface SourceFileRecord {
 }
 
 export type ConflictScope = 'source' | 'activity' | 'island' | 'totals' | 'mapping' | 'content'
-export type ConflictStatus = 'needs_review' | 'accepted' | 'resolved' | 'unavailable'
+export type ConflictStatus = 'needs_review' | 'accepted' | 'resolved' | 'ready' | 'unavailable'
 
 export interface ConflictRecord {
   conflictId: string
@@ -369,10 +976,10 @@ export type ReviewNotes = {
 export interface VideoContent {
   media: MediaReference
   durationSeconds: number
-  completionCondition:
-    | { kind: 'ended' }
-    | { kind: 'watched_fraction'; watchedFraction: number }
+  completionCondition: { kind: 'ended' } | { kind: 'watched_fraction'; watchedFraction: number }
 }
+
+export type ReadingBlock = { kind: 'text'; text: string } | { kind: 'image'; media: MediaReference }
 
 export interface ReadingChoice {
   id: string
@@ -388,6 +995,8 @@ export interface ReadingConfirmationQuestion {
 
 export interface ReadingContent {
   body: string
+  document?: MediaReference
+  blocks?: ReadingBlock[]
   confirmationQuestion: ReadingConfirmationQuestion
 }
 
@@ -400,17 +1009,22 @@ export interface QuizChoice {
   media?: MediaReference
 }
 
+export type QuizPromptBlock =
+  | { kind: 'text'; text: string }
+  | { kind: 'image'; media: MediaReference }
+
 interface QuizQuestionBase {
   id: string
   prompt: string
   promptMedia?: MediaReference
+  promptBlocks?: QuizPromptBlock[]
   choices: QuizChoice[]
   review?: ReviewNotes
 }
 
 export interface McqQuestion extends QuizQuestionBase {
   interaction: 'mcq'
-  answer: { interaction: 'mcq'; correctChoiceId: string }
+  answer: { interaction: 'mcq'; correctChoiceIds: string[] }
 }
 
 export interface DragDropQuestion extends QuizQuestionBase {
@@ -436,11 +1050,7 @@ export interface FillBlankQuestion extends QuizQuestionBase {
   }
 }
 
-export type QuizQuestion =
-  | McqQuestion
-  | DragDropQuestion
-  | MatchingQuestion
-  | FillBlankQuestion
+export type QuizQuestion = McqQuestion | DragDropQuestion | MatchingQuestion | FillBlankQuestion
 
 export interface QuizContent {
   questions: QuizQuestion[]
@@ -499,7 +1109,7 @@ export interface VentLabContent {
 }
 
 export type QuizResponse =
-  | { interaction: 'mcq'; choiceId: string }
+  | { interaction: 'mcq'; choiceIds: string[] }
   | { interaction: 'drag_drop'; placements: Record<string, string> }
   | {
       interaction: 'matching'

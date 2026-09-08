@@ -3,12 +3,12 @@
 import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ChangeEvent, FormEvent, ReactNode } from 'react'
-import { gradeActivity } from '@/data/curriculum'
+import { gradeActivity, mediaAssets } from '@/data/curriculum'
+import { curriculumMediaUrl, resolveVideoUrl, videoCompletionMet } from './lessonVideo'
 import type {
   ActivitySubmission,
   CurriculumActivity,
   CurriculumIsland,
-  QuizQuestion,
   QuizResponse,
 } from '@/data/curriculum'
 import { Button } from './Button'
@@ -17,17 +17,7 @@ import { Badge } from './Badge'
 import { HudProfile, HudStat } from './Hud'
 import { ProgressMeter } from './ProgressMeter'
 import { BottomNav } from './BottomNav'
-import { MediaFrame } from './MediaFrame'
-import {
-  FlameIcon,
-  StarIcon,
-  MapIcon,
-  PlayIcon,
-  BookIcon,
-  QuizIcon,
-  UserIcon,
-  BoxIcon,
-} from './icons'
+import { StarIcon, MapIcon, PlayIcon, BookIcon, QuizIcon, UserIcon, BoxIcon } from './icons'
 
 /* ------------------------------------------------------------------ */
 /* Screen contract — 22 named states                                   */
@@ -167,8 +157,10 @@ function projectIsland(record: CurriculumIsland): Island {
   return {
     id: record.id,
     name: record.name,
-    tagline: record.description,
-    activities: record.activities.filter((activity) => activity.countsTowardProgress).map(projectActivity),
+    tagline: record.description ?? record.name,
+    activities: record.activities
+      .filter((activity) => activity.countsTowardProgress)
+      .map(projectActivity),
     finalExam,
   }
 }
@@ -196,7 +188,6 @@ const RESEARCH_ROWS = [
   { island: 'Mount Pneumora', enrolled: 17, completion: 35, avgScore: 74, medianMin: 41 },
   { island: 'Alveolar Highlands', enrolled: 11, completion: 27, avgScore: 72, medianMin: 33 },
 ]
-
 
 /* ------------------------------------------------------------------ */
 /* Small local icons (kept in-file; icon set is intentionally minimal) */
@@ -273,82 +264,86 @@ const activityIcon: Record<ActivityType, (p: IconProps) => ReactNode> = {
 }
 
 function MissionCrawl() {
-  const crawlRef = useRef<HTMLDivElement>(null);
-  const progressRef = useRef<HTMLInputElement>(null);
-  const [playing, setPlaying] = useState(true);
-  const [canAnimate, setCanAnimate] = useState(true);
+  const crawlRef = useRef<HTMLDivElement>(null)
+  const progressRef = useRef<HTMLInputElement>(null)
+  const [playing, setPlaying] = useState(true)
+  const [canAnimate, setCanAnimate] = useState(true)
 
   useEffect(() => {
-    const animation = crawlRef.current?.getAnimations()[0];
-    const progress = progressRef.current;
+    const animation = crawlRef.current?.getAnimations()[0]
+    const progress = progressRef.current
 
     if (!animation || !progress) {
-      setCanAnimate(false);
-      setPlaying(false);
-      return;
+      const timer = window.setTimeout(() => {
+        setCanAnimate(false)
+        setPlaying(false)
+      }, 0)
+      return () => window.clearTimeout(timer)
     }
 
     const syncProgress = () => {
-      const duration = Number(animation.effect?.getTiming().duration) || 1;
-      const percent = Math.min(100, (Number(animation.currentTime) / duration) * 100);
-      progress.value = String(percent);
-      progress.setAttribute("aria-valuetext", `${Math.round(percent)}%`);
-    };
-
-    animation.onfinish = () => setPlaying(false);
-    syncProgress();
-    const timer = window.setInterval(syncProgress, 100);
-
-    return () => {
-      animation.onfinish = null;
-      window.clearInterval(timer);
-    };
-  }, []);
-
-  function togglePlayback() {
-    const animation = crawlRef.current?.getAnimations()[0];
-    if (!animation) return;
-
-    if (animation.playState === "running") {
-      animation.pause();
-      setPlaying(false);
-      return;
+      const duration = Number(animation.effect?.getTiming().duration) || 1
+      const percent = Math.min(100, (Number(animation.currentTime) / duration) * 100)
+      progress.value = String(percent)
+      progress.setAttribute('aria-valuetext', `${Math.round(percent)}%`)
     }
 
-    const duration = Number(animation.effect?.getTiming().duration) || 1;
-    if (Number(animation.currentTime) >= duration) animation.currentTime = 0;
-    animation.play();
-    setPlaying(true);
+    animation.onfinish = () => setPlaying(false)
+    syncProgress()
+    const timer = window.setInterval(syncProgress, 100)
+
+    return () => {
+      animation.onfinish = null
+      window.clearInterval(timer)
+    }
+  }, [])
+
+  function togglePlayback() {
+    const animation = crawlRef.current?.getAnimations()[0]
+    if (!animation) return
+
+    if (animation.playState === 'running') {
+      animation.pause()
+      setPlaying(false)
+      return
+    }
+
+    const duration = Number(animation.effect?.getTiming().duration) || 1
+    if (Number(animation.currentTime) >= duration) animation.currentTime = 0
+    animation.play()
+    setPlaying(true)
   }
 
   function seek(event: ChangeEvent<HTMLInputElement>) {
-    const animation = crawlRef.current?.getAnimations()[0];
-    if (!animation) return;
+    const animation = crawlRef.current?.getAnimations()[0]
+    if (!animation) return
 
-    const duration = Number(animation.effect?.getTiming().duration) || 1;
-    animation.currentTime = (Number(event.currentTarget.value) / 100) * duration;
-    if (playing) animation.play();
-    else animation.pause();
+    const duration = Number(animation.effect?.getTiming().duration) || 1
+    animation.currentTime = (Number(event.currentTarget.value) / 100) * duration
+    if (playing) animation.play()
+    else animation.pause()
   }
 
   function restart() {
-    const animation = crawlRef.current?.getAnimations()[0];
-    if (!animation) return;
-    animation.currentTime = 0;
-    animation.play();
-    setPlaying(true);
+    const animation = crawlRef.current?.getAnimations()[0]
+    if (!animation) return
+    animation.currentTime = 0
+    animation.play()
+    setPlaying(true)
   }
 
   return (
     <div className="flex flex-col gap-3">
       <div className="mission-crawl-stage">
         <div ref={crawlRef} className="mission-crawl">
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.28em]">Mission briefing</p>
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.28em]">
+            Mission briefing
+          </p>
           <h2 className="my-5 text-3xl font-black uppercase tracking-wide">Your orders, Nurse</h2>
           <p>
-            Atelecta Prime is in respiratory distress. Across six islands you will master the RN
-            IMV competency domains: airway and interfaces, alarms and troubleshooting, waveforms,
-            blood gases, advanced modes, and weaning.
+            Atelecta Prime is in respiratory distress. Across six islands you will master the RN IMV
+            competency domains: airway and interfaces, alarms and troubleshooting, waveforms, blood
+            gases, advanced modes, and weaning.
           </p>
           <ol className="my-7 flex flex-col gap-4 font-bold">
             <li>Complete every activity on an island to unlock its final exam.</li>
@@ -365,7 +360,7 @@ function MissionCrawl() {
           disabled={!canAnimate}
           className="min-w-14 rounded-[var(--radius-chip)] bg-pastel-cream px-3 py-2 font-mono text-[10px] font-bold text-space-900 disabled:opacity-50"
         >
-          {playing ? "Pause" : "Play"}
+          {playing ? 'Pause' : 'Play'}
         </button>
         <input
           ref={progressRef}
@@ -390,7 +385,7 @@ function MissionCrawl() {
         </button>
       </div>
     </div>
-  );
+  )
 }
 
 /* ------------------------------------------------------------------ */
@@ -676,8 +671,8 @@ export function AppFlow({
   const [avatar, setAvatar] = useState<string | null>(null)
   const [points, setPoints] = useState(2450)
   const [streak] = useState(7)
-  const [completed, setCompleted] = useState<Record<string, boolean>>({ 'lm-01': true })
-  const [unlockedIslands, setUnlockedIslands] = useState(1)
+  const [completed, setCompleted] = useState<Record<string, boolean>>({})
+  const unlockedIslands = islands.length
   const [currentIslandIdx, setCurrentIslandIdx] = useState(0)
   const [dashboardView, setDashboardView] = useState<'map' | 'list'>('map')
   const dashboardGesture = useRef({ y: 0, listAtTop: true })
@@ -691,12 +686,15 @@ export function AppFlow({
   const [quizQuestionIndex, setQuizQuestionIndex] = useState(0)
   const [quizResponses, setQuizResponses] = useState<Record<string, QuizResponse>>({})
 
-  // Vent sim state
-  const [fio2, setFio2] = useState(60)
-  const [peep, setPeep] = useState(8)
-  const [rate, setRate] = useState(24)
-  const [mode, setMode] = useState<'AC/VC' | 'AC/PC' | 'SIMV'>('AC/VC')
-
+  // Lesson-video playback state. Refs accumulate the watched timeline and
+  // latch the completion gate; state only mirrors the latch for rendering.
+  const [videoEnded, setVideoEnded] = useState(false)
+  const [videoErrored, setVideoErrored] = useState(false)
+  const [videoReady, setVideoReady] = useState(false)
+  const videoElementRef = useRef<HTMLVideoElement | null>(null)
+  const videoSegmentsRef = useRef<Array<[number, number]>>([])
+  const videoLastTimeRef = useRef(0)
+  const videoGateLatchedRef = useRef(false)
 
   // Settings / role / connectivity
   const [soundOn, setSoundOn] = useState(true)
@@ -708,6 +706,7 @@ export function AppFlow({
   const [profileSaved, setProfileSaved] = useState(false)
   const [interactionValue, setInteractionValue] = useState('')
   const [interactionNote, setInteractionNote] = useState('')
+  const [ventLabState, setVentLabState] = useState<Record<string, string | number | boolean>>({})
 
   const ISLANDS = useMemo(() => islands.map(projectIsland), [islands])
   if (ISLANDS.length === 0) throw new Error('AppFlow requires at least one curriculum island')
@@ -717,16 +716,17 @@ export function AppFlow({
   const activityFor = (...types: ActivityType[]) =>
     selectedActivity && types.includes(selectedActivity.type)
       ? selectedActivity
-      : island.activities.find((activity) => types.includes(activity.type) && activity.available) ??
+      : (island.activities.find(
+          (activity) => types.includes(activity.type) && activity.available
+        ) ??
         island.activities.find((activity) => types.includes(activity.type)) ??
-        island.activities[0]
+        island.activities[0])
   const islandDone = island.activities.filter((activity) => completed[activity.id]).length
   const totalActivities = ISLANDS.reduce((total, item) => total + item.activities.length, 0)
   const totalDone = ISLANDS.reduce(
     (total, item) => total + item.activities.filter((activity) => completed[activity.id]).length,
     0
   )
-  const overallPct = Math.round((totalDone / totalActivities) * 100)
   const allIslandsPassed = ISLANDS.every((item) => passedIslands[item.id])
 
   function go(next: AppScreen) {
@@ -772,7 +772,9 @@ export function AppFlow({
     }
     if (grade.status === 'failed' && a.record.type !== 'quiz') {
       setInteractionNote(
-        grade.items.find((item) => !item.correct)?.feedback ?? grade.reason ?? 'Review and try again.'
+        grade.items.find((item) => !item.correct)?.feedback ??
+          grade.reason ??
+          'Review and try again.'
       )
       return
     }
@@ -792,15 +794,35 @@ export function AppFlow({
     setQuizChoice(null)
     setQuizQuestionIndex(0)
     setQuizResponses({})
-    if (a.type === 'reading') go('lessonReading')
+    setVentLabState(
+      a.record.type === 'vent_lab' && a.record.content
+        ? {
+            ...Object.fromEntries(
+              a.record.content.controls.map((control) => [
+                control.id,
+                control.kind === 'select'
+                  ? (control.options?.[0] ?? '')
+                  : control.kind === 'number'
+                    ? (control.min ?? 0)
+                    : false,
+              ])
+            ),
+            ...a.record.content.initialState,
+          }
+        : {}
+    )
+    videoSegmentsRef.current = []
+    videoLastTimeRef.current = 0
+    videoGateLatchedRef.current = false
+    setVideoEnded(false)
+    setVideoErrored(false)
+    setVideoReady(false)
+    if (a.record.type === 'quiz') go('quiz')
+    else if (a.type === 'reading') go('lessonReading')
     else if (a.type === 'video') go('lessonVideo')
     else if (a.type === 'sim') go('ventSim')
-    else if (a.type === 'matching') go('quizMatch')
-    else if (a.type === 'ordering') go('quizDrag')
-    else if (a.type === 'fill') go('quizFill')
     else if (a.type === 'case') go('caseVignette')
     else if (a.type === 'quest') go('quest')
-    else go('quiz')
   }
 
   function downloadCsv() {
@@ -1277,8 +1299,10 @@ export function AppFlow({
                           </span>
 
                           <span
-                            className={`mt-3 block h-2 overflow-hidden rounded-full ${
-                              locked ? 'bg-space-700' : 'bg-white/70'
+                            className={`mt-3 block h-2.5 overflow-hidden rounded-full ring-1 ring-inset ${
+                              locked
+                                ? 'bg-space-700 ring-hull-300/30'
+                                : 'bg-space-950/20 ring-space-950/15'
                             }`}
                           >
                             <span
@@ -1323,7 +1347,7 @@ export function AppFlow({
         return (
           <ScreenShell
             title={island.name}
-            subtitle={`Island ${currentIslandIdx + 1} of 6`}
+            subtitle={`Island ${currentIslandIdx + 1} of ${ISLANDS.length}`}
             onBack={() => resetTo('dashboard', 'back')}
             headerRight={
               passedIslands[island.id] ? (
@@ -1338,7 +1362,7 @@ export function AppFlow({
               <ProgressMeter
                 label="Island progress"
                 value={Math.round((islandDone / island.activities.length) * 100)}
-                className="mt-3"
+                className="mt-4 rounded-[var(--radius-button)] bg-white/50 p-3 shadow-[inset_0_0_0_1px_rgb(2_13_24_/_0.12)] [&_[role=progressbar]]:h-4 [&_[role=progressbar]]:border-space-900/35 [&_[role=progressbar]]:bg-space-900/20 [&_[role=progressbar]]:shadow-inner"
               />
             </Panel>
 
@@ -1349,25 +1373,38 @@ export function AppFlow({
                 return (
                   <div
                     key={a.id}
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => openActivity(a)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault()
-                        openActivity(a)
-                      }
-                    }}
-                    className="cursor-pointer"
-                    aria-label={`${a.title}, ${a.type}, ${a.points} PEEP points${isDone ? ', completed' : ''}`}
+                    role={a.available ? 'button' : undefined}
+                    tabIndex={a.available ? 0 : -1}
+                    onClick={a.available ? () => openActivity(a) : undefined}
+                    onKeyDown={
+                      a.available
+                        ? (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault()
+                              openActivity(a)
+                            }
+                          }
+                        : undefined
+                    }
+                    className={a.available ? 'cursor-pointer' : 'cursor-not-allowed'}
+                    aria-disabled={!a.available}
+                    aria-label={`${a.title}, ${a.type}, ${a.points} PEEP points${isDone ? ', completed' : ''}${a.available ? '' : `, ${a.record.contentStatus.replace('_', ' ')}`}`}
                   >
                     <ActivityCard
                       title={a.title}
                       points={a.points}
                       minutes={a.minutes}
                       completed={isDone}
+                      unavailable={!a.available}
                       icon={<Icon className="size-4" />}
                     />
+                    {!a.available && (
+                      <p className="-mt-2 px-3 pb-1 font-mono text-[10px] font-bold uppercase tracking-wide text-space-700">
+                        {a.record.contentStatus === 'needs_review'
+                          ? 'Needs clinical review'
+                          : 'Coming soon'}
+                      </p>
+                    )}
                   </div>
                 )
               })}
@@ -1375,14 +1412,20 @@ export function AppFlow({
 
             <div className="mt-2">
               {islandDone === island.activities.length && !passedIslands[island.id] ? (
-                <Button onClick={() => go('finalExamIntro')} className="w-full py-3 text-sm">
-                  Take the island final exam
-                </Button>
+                island.finalExam.contentStatus === 'ready' && island.finalExam.content ? (
+                  <Button onClick={() => go('finalExamIntro')} className="w-full py-3 text-sm">
+                    Take the island final exam
+                  </Button>
+                ) : (
+                  <Button disabled className="w-full py-3 text-sm">
+                    Final exam coming soon
+                  </Button>
+                )
               ) : (
                 <p className="text-center font-mono text-[10px] font-bold text-hull-400">
                   {passedIslands[island.id]
                     ? 'Exam cleared — the next island is charted.'
-                    : `Finish ${island.activities.length - islandDone} more ${island.activities.length - islandDone === 1 ? 'activity' : 'activities'} to unlock the final exam.`}
+                    : `${island.activities.filter((activity) => !activity.available).length} activities are awaiting approved content; complete the available activities in the meantime.`}
                 </p>
               )}
             </div>
@@ -1395,18 +1438,69 @@ export function AppFlow({
         if (!content) {
           return (
             <ScreenShell title={a.title} subtitle="Reading unavailable" onBack={back}>
-              <Panel className="p-5 text-sm text-hull-200">This reading is not available in the approved catalog.</Panel>
+              <Panel className="p-5 text-sm text-hull-200">
+                This reading is not available in the approved catalog.
+              </Panel>
             </ScreenShell>
           )
         }
+        const readingMediaUrl = (media: { assetId: string; storageKey?: string | null }) => {
+          const storageKey =
+            media.storageKey ??
+            mediaAssets.find((asset) => asset.assetId === media.assetId)?.storageKey ??
+            null
+          return storageKey ? curriculumMediaUrl(storageKey) : null
+        }
         const question = content.confirmationQuestion
+        const documentUrl = content.document ? readingMediaUrl(content.document) : null
         return (
           <ScreenShell title={a.title} subtitle={`Reading · ~${a.minutes} min`} onBack={back}>
             <Panel className="p-5">
               <Badge tone="reading" icon={<BookIcon className="size-3" />} className="mb-3">
                 reading
               </Badge>
-              <p className="whitespace-pre-wrap text-sm leading-relaxed text-hull-200">{content.body}</p>
+              {documentUrl ? (
+                <object
+                  data={documentUrl}
+                  type="application/pdf"
+                  aria-label={`${a.title} source document`}
+                  className="h-[65vh] min-h-[32rem] w-full rounded-lg bg-white"
+                >
+                  <a
+                    href={documentUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm text-ember-300 underline"
+                  >
+                    Open the exact source PDF
+                  </a>
+                </object>
+              ) : content.blocks && content.blocks.length > 0 ? (
+                <div className="flex flex-col gap-4">
+                  {content.blocks.map((block, index) =>
+                    block.kind === 'text' ? (
+                      <p
+                        key={`${block.kind}-${index}`}
+                        className="whitespace-pre-wrap text-sm leading-relaxed text-hull-200"
+                      >
+                        {block.text}
+                      </p>
+                    ) : readingMediaUrl(block.media) ? (
+                      <img
+                        key={`${block.kind}-${index}`}
+                        src={readingMediaUrl(block.media) ?? ''}
+                        alt={block.media.altText ?? ''}
+                        className="max-h-[28rem] w-full rounded-lg object-contain"
+                        loading="lazy"
+                      />
+                    ) : null
+                  )}
+                </div>
+              ) : (
+                <p className="whitespace-pre-wrap text-sm leading-relaxed text-hull-200">
+                  {content.body}
+                </p>
+              )}
             </Panel>
             <Panel className="p-5">
               <h2 className="text-sm font-bold leading-relaxed text-white">{question.prompt}</h2>
@@ -1430,7 +1524,11 @@ export function AppFlow({
                   </button>
                 ))}
               </div>
-              {interactionNote && <p role="alert" className="mt-4 text-[12px] text-solar-400">{interactionNote}</p>}
+              {interactionNote && (
+                <p role="alert" className="mt-4 text-[12px] text-solar-400">
+                  {interactionNote}
+                </p>
+              )}
             </Panel>
             <Button
               disabled={!quizChoice}
@@ -1449,23 +1547,120 @@ export function AppFlow({
         if (!content) {
           return (
             <ScreenShell title={a.title} subtitle="Video unavailable" onBack={back}>
-              <Panel className="p-5 text-sm text-hull-200">This video is not available in the approved catalog.</Panel>
+              <Panel className="p-5 text-sm text-hull-200">
+                This video is not available in the approved catalog.
+              </Panel>
             </ScreenShell>
           )
         }
+        const condition = content.completionCondition
+        const videoUrl = resolveVideoUrl(content, mediaAssets)
+        const duration =
+          Number.isFinite(content.durationSeconds) && content.durationSeconds > 0
+            ? content.durationSeconds
+            : 0
+
+        // Watched fraction = union of played timeline segments / duration.
+        // Seeking backwards and replaying already-watched ranges never
+        // increases it, so points can only be earned once per watch-through.
+        const watchedFraction = () => {
+          if (duration <= 0) return 0
+          const segments = videoSegmentsRef.current
+          if (segments.length === 0) return 0
+          const sorted = [...segments].sort((x, y) => x[0] - y[0])
+          let covered = 0
+          let [segStart, segEnd] = sorted[0]
+          for (const [s, e] of sorted.slice(1)) {
+            if (s > segEnd) {
+              covered += segEnd - segStart
+              segStart = s
+            }
+            segEnd = Math.max(segEnd, e)
+          }
+          covered += segEnd - segStart
+          return Math.min(1, covered / duration)
+        }
+
+        const latchVideoGate = (ended: boolean) => {
+          if (videoGateLatchedRef.current) return
+          if (videoCompletionMet(condition, ended, watchedFraction())) {
+            videoGateLatchedRef.current = true
+            setVideoReady(true)
+          }
+        }
+
+        const handleTimeUpdate = () => {
+          const el = videoElementRef.current
+          if (!el) return
+          const current = el.currentTime
+          const previous = videoLastTimeRef.current
+          videoLastTimeRef.current = current
+          // Only accumulate natural forward playback; anything else is a seek.
+          if (current > previous && current - previous <= 1.5) {
+            videoSegmentsRef.current.push([previous, current])
+          }
+          latchVideoGate(false)
+        }
+
+        const handleEnded = () => {
+          const el = videoElementRef.current
+          if (el) {
+            const end = duration > 0 ? duration : el.duration
+            if (Number.isFinite(end) && end > videoLastTimeRef.current) {
+              videoSegmentsRef.current.push([videoLastTimeRef.current, end])
+              videoLastTimeRef.current = end
+            }
+          }
+          setVideoEnded(true)
+          latchVideoGate(true)
+        }
+
+        const requirement =
+          condition.kind === 'ended'
+            ? 'Watch to the end to complete this activity.'
+            : `Watch at least ${Math.round(condition.watchedFraction * 100)}% to complete this activity.`
+
         return (
           <ScreenShell title={a.title} subtitle={`Video · ~${a.minutes} min`} onBack={back}>
             <Panel variant="outline" className="overflow-hidden">
-              <div className="grid aspect-video place-items-center bg-space-950">
-                <span className="grid size-16 place-items-center rounded-full bg-gradient-to-br from-nebula-400 to-nebula-600 text-white shadow-[var(--shadow-fab)]" aria-hidden="true">
-                  <PlayIcon className="size-7" />
-                </span>
-              </div>
+              {videoUrl && !videoErrored ? (
+                <video
+                  ref={videoElementRef}
+                  src={videoUrl}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  aria-label={content.media.altText ?? a.title}
+                  className="aspect-video w-full bg-space-950"
+                  onPlay={() => {
+                    videoLastTimeRef.current = videoElementRef.current?.currentTime ?? 0
+                  }}
+                  onSeeked={() => {
+                    videoLastTimeRef.current = videoElementRef.current?.currentTime ?? 0
+                  }}
+                  onTimeUpdate={handleTimeUpdate}
+                  onEnded={handleEnded}
+                  onError={() => setVideoErrored(true)}
+                />
+              ) : (
+                <div
+                  role="status"
+                  className="grid aspect-video place-items-center bg-space-950 px-6 text-center"
+                >
+                  <p className="max-w-xs text-[13px] leading-relaxed text-hull-200">
+                    {videoUrl
+                      ? 'This video could not be loaded. The local media file may be missing or corrupted — run `npm run media:local` against the extracted corpus and retry.'
+                      : 'This video has no playable media file in the approved catalog.'}
+                  </p>
+                </div>
+              )}
               <div className="flex items-center justify-between gap-3 px-4 py-3">
                 <span className="min-w-0 truncate font-mono text-[10px] font-bold text-hull-300">
                   {content.media.assetId} · {Math.ceil(content.durationSeconds / 60)} min
                 </span>
-                <Badge tone="video" icon={<PlayIcon className="size-3" />}>video</Badge>
+                <Badge tone="video" icon={<PlayIcon className="size-3" />}>
+                  video
+                </Badge>
               </div>
             </Panel>
             <Panel className="p-4">
@@ -1474,11 +1669,26 @@ export function AppFlow({
                 {content.media.altText ?? a.blurb}
               </p>
               <p className="mt-3 font-mono text-[10px] font-bold uppercase tracking-wide text-solar-400">
-                Media package is not included in this web build.
+                {requirement}
               </p>
+              {interactionNote && (
+                <p role="alert" className="mt-3 text-[12px] text-solar-400">
+                  {interactionNote}
+                </p>
+              )}
             </Panel>
-            <Button disabled className="w-full py-3 text-sm">
-              Video playback coming soon
+            <Button
+              disabled={!videoReady}
+              onClick={() =>
+                completeActivity(a, {
+                  type: 'video',
+                  ended: videoEnded,
+                  watchedFraction: watchedFraction(),
+                })
+              }
+              className="w-full py-3 text-sm"
+            >
+              {videoReady ? `Complete activity · ${a.points} PEEP` : requirement}
             </Button>
           </ScreenShell>
         )
@@ -1488,96 +1698,370 @@ export function AppFlow({
         const activity = activityFor('sim')
         const content = activity.record.type === 'vent_lab' ? activity.record.content : null
         return (
-          <ScreenShell title={activity.title} subtitle={`Vent Lab · ~${activity.minutes} min`} onBack={back}>
+          <ScreenShell
+            title={activity.title}
+            subtitle={`Vent Lab · ~${activity.minutes} min`}
+            onBack={back}
+          >
             <Panel className="p-5">
-              <Badge tone="quiz" icon={<WaveIcon className="size-3" />}>vent lab</Badge>
+              <Badge tone="quiz" icon={<WaveIcon className="size-3" />}>
+                vent lab
+              </Badge>
               {content ? (
                 <>
                   <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-hull-200">
-                    {content.objectives.map((objective) => <li key={objective}>{objective}</li>)}
+                    {content.objectives.map((objective) => (
+                      <li key={objective}>{objective}</li>
+                    ))}
                   </ul>
-                  <div className="mt-4 grid grid-cols-2 gap-2">
+                  <div className="mt-4 grid gap-3">
                     {content.controls.map((control) => (
-                      <div key={control.id} className="rounded-[var(--radius-chip)] border border-space-600 bg-space-950/50 p-3">
-                        <span className="block text-[12px] font-bold text-white">{control.label}</span>
-                        <span className="mt-1 block font-mono text-[10px] text-hull-400">
-                          {control.options?.join(' / ') ?? [control.min, control.max].filter((value) => value !== undefined).join('–')}{control.unit ? ` ${control.unit}` : ''}
-                        </span>
+                      <div
+                        key={control.id}
+                        className="rounded-[var(--radius-chip)] border border-space-600 bg-space-950/50 p-3"
+                      >
+                        <label
+                          className="block text-[12px] font-bold text-white"
+                          htmlFor={control.id}
+                        >
+                          {control.label}
+                        </label>
+                        {control.kind === 'number' ? (
+                          <input
+                            id={control.id}
+                            type="number"
+                            min={control.min}
+                            max={control.max}
+                            value={String(ventLabState[control.id] ?? '')}
+                            onChange={(event) =>
+                              setVentLabState((current) => ({
+                                ...current,
+                                [control.id]: Number(event.target.value),
+                              }))
+                            }
+                            className={`${inputClass} mt-2`}
+                          />
+                        ) : control.kind === 'select' ? (
+                          <select
+                            id={control.id}
+                            value={String(ventLabState[control.id] ?? '')}
+                            onChange={(event) =>
+                              setVentLabState((current) => ({
+                                ...current,
+                                [control.id]: event.target.value,
+                              }))
+                            }
+                            className={`${inputClass} mt-2`}
+                          >
+                            {control.options?.map((option) => (
+                              <option key={option}>{option}</option>
+                            ))}
+                          </select>
+                        ) : control.kind === 'toggle' ? (
+                          <input
+                            id={control.id}
+                            type="checkbox"
+                            checked={Boolean(ventLabState[control.id])}
+                            onChange={(event) =>
+                              setVentLabState((current) => ({
+                                ...current,
+                                [control.id]: event.target.checked,
+                              }))
+                            }
+                            className="mt-3 size-5 accent-ember-500"
+                          />
+                        ) : (
+                          <button
+                            id={control.id}
+                            type="button"
+                            aria-pressed={Boolean(ventLabState[control.id])}
+                            onClick={() =>
+                              setVentLabState((current) => ({ ...current, [control.id]: true }))
+                            }
+                            className="mt-2 rounded-[var(--radius-button)] border border-space-600 px-3 py-2 text-xs text-white"
+                          >
+                            {ventLabState[control.id] ? 'Applied' : 'Apply'}
+                          </button>
+                        )}
+                        {(control.unit ||
+                          control.min !== undefined ||
+                          control.max !== undefined) && (
+                          <span className="mt-2 block font-mono text-[10px] text-hull-400">
+                            {[control.min, control.max]
+                              .filter((value) => value !== undefined)
+                              .join('–')}
+                            {control.unit ? ` ${control.unit}` : ''}
+                          </span>
+                        )}
                       </div>
                     ))}
                   </div>
                 </>
               ) : (
-                <p className="mt-4 text-sm text-hull-200">The approved simulation payload is unavailable.</p>
+                <p className="mt-4 text-sm text-hull-200">
+                  The approved simulation payload is unavailable.
+                </p>
               )}
             </Panel>
-            <Button disabled className="w-full py-3 text-sm">Interactive Vent Lab coming soon</Button>
+            <Button
+              disabled={!content}
+              onClick={() =>
+                completeActivity(activity, {
+                  type: 'vent_lab',
+                  state: ventLabState,
+                })
+              }
+              className="w-full py-3 text-sm"
+            >
+              Complete practice · {activity.points} PEEP
+            </Button>
           </ScreenShell>
         )
       }
 
       case 'quiz': {
-        const a = activityFor('quiz')
+        const a =
+          selectedActivity?.record.type === 'quiz'
+            ? selectedActivity
+            : (island.activities.find(
+                (activity) => activity.record.type === 'quiz' && activity.available
+              ) ?? activityFor('quiz', 'matching', 'ordering', 'fill'))
         const questions =
-          a.record.type === 'quiz' && a.record.content
-            ? a.record.content.questions.filter(
-                (question): question is Extract<QuizQuestion, { interaction: 'mcq' }> =>
-                  question.interaction === 'mcq'
-              )
-            : []
+          a.record.type === 'quiz' && a.record.content ? a.record.content.questions : []
         const question = questions[quizQuestionIndex]
         if (!question) {
           return (
             <ScreenShell title={a.title} subtitle="Quiz unavailable" onBack={back}>
-              <Panel className="p-5 text-sm text-hull-200">No approved multiple-choice question is available for this activity.</Panel>
+              <Panel className="p-5 text-sm text-hull-200">
+                No approved question is available for this activity.
+              </Panel>
             </ScreenShell>
           )
         }
+
+        const response = quizResponses[question.id]
+        const leftIds =
+          question.interaction === 'matching'
+            ? Array.from(new Set(question.answer.pairs.map((pair) => pair.leftChoiceId)))
+            : []
+        const rightIds =
+          question.interaction === 'matching'
+            ? Array.from(new Set(question.answer.pairs.map((pair) => pair.rightChoiceId)))
+            : []
+        const choiceText = (choiceId: string) =>
+          question.choices.find((choice) => choice.id === choiceId)?.text ?? choiceId
+        const mediaStorageKey = (media: { assetId: string; storageKey?: string | null }) =>
+          media.storageKey ??
+          mediaAssets.find((asset) => asset.assetId === media.assetId)?.storageKey ??
+          null
+        const mediaUrl = (media: { assetId: string; storageKey?: string | null }) => {
+          const storageKey = mediaStorageKey(media)
+          return storageKey ? curriculumMediaUrl(storageKey) : null
+        }
+        const promptMediaStorageKey = question.promptMedia
+          ? mediaStorageKey(question.promptMedia)
+          : null
+        const answered =
+          (question.interaction === 'mcq' &&
+            response?.interaction === 'mcq' &&
+            response.choiceIds.length > 0) ||
+          (question.interaction === 'fill_blank' &&
+            response?.interaction === 'fill_blank' &&
+            response.value.trim().length > 0) ||
+          (question.interaction === 'drag_drop' &&
+            response?.interaction === 'drag_drop' &&
+            Object.keys(response.placements).length === question.choices.length) ||
+          (question.interaction === 'matching' &&
+            response?.interaction === 'matching' &&
+            response.pairs.length === leftIds.length)
+        const saveResponse = (nextResponse: QuizResponse) =>
+          setQuizResponses((current) => ({ ...current, [question.id]: nextResponse }))
+
         return (
           <ScreenShell
             title={a.title}
-            subtitle={`Question ${quizQuestionIndex + 1} of ${questions.length} · checkpoint`}
+            subtitle={`Question ${quizQuestionIndex + 1} of ${questions.length} · ${question.interaction.replace('_', ' ')}`}
             onBack={back}
           >
-            <ProgressMeter label="Quiz progress" value={Math.round((quizQuestionIndex / questions.length) * 100)} />
+            <ProgressMeter
+              label="Quiz progress"
+              value={Math.round((quizQuestionIndex / questions.length) * 100)}
+            />
             <Panel className="p-5">
               <Badge tone="quiz" icon={<QuizIcon className="size-3" />} className="mb-3">
                 checkpoint quiz
               </Badge>
-              <h2 className="text-sm font-bold leading-relaxed text-white">{question.prompt}</h2>
-              <div className="mt-4 flex flex-col gap-2">
-                {question.choices.map((choice) => {
-                  const selected = quizChoice === choice.id
-                  return (
-                    <button
-                      key={choice.id}
-                      type="button"
-                      onClick={() => setQuizChoice(choice.id)}
-                      aria-pressed={selected}
-                      className={`flex items-center gap-3 rounded-[var(--radius-button)] border px-4 py-3 text-left text-[13px] ${
-                        selected
-                          ? 'border-ember-400 bg-ember-500/15 text-white'
-                          : 'border-space-600 bg-space-950/50 text-hull-200 hover:bg-space-700'
-                      }`}
-                    >
-                      {choice.text}
-                    </button>
-                  )
-                })}
-              </div>
+              {question.promptBlocks ? (
+                <div className="mt-4 flex flex-col gap-3">
+                  {question.promptBlocks.map((block, index) =>
+                    block.kind === 'text' ? (
+                      <p
+                        key={`${block.kind}-${index}`}
+                        className="text-sm font-bold leading-relaxed text-white"
+                      >
+                        {block.text}
+                      </p>
+                    ) : mediaUrl(block.media) ? (
+                      <img
+                        key={`${block.kind}-${index}`}
+                        src={mediaUrl(block.media) ?? ''}
+                        alt={block.media.altText ?? ''}
+                        className="max-h-80 w-full rounded-lg object-contain"
+                      />
+                    ) : null
+                  )}
+                </div>
+              ) : (
+                <>
+                  {promptMediaStorageKey &&
+                    (question.promptMedia?.mimeType?.startsWith('audio/') ||
+                    /\.(?:mp3|wav|ogg)$/i.test(promptMediaStorageKey) ? (
+                      <audio
+                        className="mt-4 w-full"
+                        controls
+                        src={mediaUrl(question.promptMedia!) ?? ''}
+                      />
+                    ) : (
+                      <img
+                        className="mt-4 max-h-80 w-full rounded-lg object-contain"
+                        src={mediaUrl(question.promptMedia!) ?? ''}
+                        alt={question.promptMedia?.altText ?? ''}
+                      />
+                    ))}
+                  <h2 className="text-sm font-bold leading-relaxed text-white">
+                    {question.prompt}
+                  </h2>
+                </>
+              )}
+
+              {question.interaction === 'mcq' && (
+                <div className="mt-4 flex flex-col gap-2">
+                  {question.choices.map((choice) => {
+                    const selected =
+                      response?.interaction === 'mcq' && response.choiceIds.includes(choice.id)
+                    return (
+                      <button
+                        key={choice.id}
+                        type="button"
+                        onClick={() => {
+                          const choiceIds =
+                            response?.interaction === 'mcq' ? response.choiceIds : []
+                          saveResponse({
+                            interaction: 'mcq',
+                            choiceIds: choiceIds.includes(choice.id)
+                              ? choiceIds.filter((choiceId) => choiceId !== choice.id)
+                              : [...choiceIds, choice.id],
+                          })
+                        }}
+                        aria-pressed={selected}
+                        className={`rounded-[var(--radius-button)] border px-4 py-3 text-left text-[13px] ${
+                          selected
+                            ? 'border-ember-400 bg-ember-500/15 text-white'
+                            : 'border-space-600 bg-space-950/50 text-hull-200 hover:bg-space-700'
+                        }`}
+                      >
+                        {choice.media && mediaUrl(choice.media) && (
+                          <img
+                            className="mb-2 max-h-48 w-full rounded-lg object-contain"
+                            src={mediaUrl(choice.media) ?? ''}
+                            alt={choice.media.altText ?? ''}
+                          />
+                        )}
+                        {choice.text}
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
+
+              {question.interaction === 'fill_blank' && (
+                <Field label="Your answer">
+                  <input
+                    className={inputClass}
+                    value={response?.interaction === 'fill_blank' ? response.value : ''}
+                    onChange={(event) =>
+                      saveResponse({ interaction: 'fill_blank', value: event.target.value })
+                    }
+                  />
+                </Field>
+              )}
+
+              {question.interaction === 'drag_drop' && (
+                <div className="mt-4 flex flex-col gap-3">
+                  {question.choices.map((choice) => (
+                    <Field key={choice.id} label={choice.text}>
+                      <select
+                        className={inputClass}
+                        value={
+                          response?.interaction === 'drag_drop'
+                            ? (response.placements[choice.id] ?? '')
+                            : ''
+                        }
+                        onChange={(event) =>
+                          saveResponse({
+                            interaction: 'drag_drop',
+                            placements: {
+                              ...(response?.interaction === 'drag_drop' ? response.placements : {}),
+                              [choice.id]: event.target.value,
+                            },
+                          })
+                        }
+                      >
+                        <option value="">Choose target</option>
+                        {question.targets.map((target) => (
+                          <option key={target.id} value={target.id}>
+                            {target.text}
+                          </option>
+                        ))}
+                      </select>
+                    </Field>
+                  ))}
+                </div>
+              )}
+
+              {question.interaction === 'matching' && (
+                <div className="mt-4 flex flex-col gap-3">
+                  {leftIds.map((leftChoiceId) => (
+                    <Field key={leftChoiceId} label={choiceText(leftChoiceId)}>
+                      <select
+                        className={inputClass}
+                        value={
+                          response?.interaction === 'matching'
+                            ? (response.pairs.find((pair) => pair.leftChoiceId === leftChoiceId)
+                                ?.rightChoiceId ?? '')
+                            : ''
+                        }
+                        onChange={(event) => {
+                          const pairs =
+                            response?.interaction === 'matching'
+                              ? response.pairs.filter((pair) => pair.leftChoiceId !== leftChoiceId)
+                              : []
+                          if (event.target.value) {
+                            pairs.push({ leftChoiceId, rightChoiceId: event.target.value })
+                          }
+                          saveResponse({ interaction: 'matching', pairs })
+                        }}
+                      >
+                        <option value="">Choose match</option>
+                        {rightIds.map((rightChoiceId) => (
+                          <option key={rightChoiceId} value={rightChoiceId}>
+                            {choiceText(rightChoiceId)}
+                          </option>
+                        ))}
+                      </select>
+                    </Field>
+                  ))}
+                </div>
+              )}
             </Panel>
             <Button
-              disabled={!quizChoice}
+              disabled={!answered}
               onClick={() => {
-                if (!quizChoice) return
-                const responses = {
-                  ...quizResponses,
-                  [question.id]: { interaction: 'mcq' as const, choiceId: quizChoice },
+                if (quizQuestionIndex + 1 < questions.length) {
+                  setQuizQuestionIndex((index) => index + 1)
+                } else {
+                  go('quizFeedback')
                 }
-                setQuizResponses(responses)
-                setQuizChoice(null)
-                if (quizQuestionIndex + 1 < questions.length) setQuizQuestionIndex((index) => index + 1)
-                else go('quizFeedback')
               }}
               className="w-full py-3 text-sm"
             >
@@ -1588,7 +2072,12 @@ export function AppFlow({
       }
 
       case 'quizFeedback': {
-        const a = activityFor('quiz')
+        const a =
+          selectedActivity?.record.type === 'quiz'
+            ? selectedActivity
+            : (island.activities.find(
+                (activity) => activity.record.type === 'quiz' && activity.available
+              ) ?? activityFor('quiz', 'matching', 'ordering', 'fill'))
         const grade =
           a.record.type === 'quiz'
             ? gradeActivity(a.record, { type: 'quiz', answers: quizResponses })
@@ -1598,19 +2087,31 @@ export function AppFlow({
           <ScreenShell title="Quiz results" subtitle={a.title} onBack={back}>
             <Panel className={`p-5 ${passed ? '' : 'border-signal-danger/60'}`}>
               <div className="mb-3 flex items-center gap-2">
-                <span className={`grid size-10 place-items-center rounded-full ${passed ? 'bg-signal-success/20 text-signal-success' : 'bg-signal-danger/20 text-signal-danger'}`} aria-hidden="true">
+                <span
+                  className={`grid size-10 place-items-center rounded-full ${passed ? 'bg-signal-success/20 text-signal-success' : 'bg-signal-danger/20 text-signal-danger'}`}
+                  aria-hidden="true"
+                >
                   {passed ? <CheckIcon className="size-5" /> : <QuizIcon className="size-5" />}
                 </span>
                 <h2 className="text-base font-extrabold text-white">
-                  {grade ? `${grade.correctCount} of ${grade.totalCount} correct` : 'Unable to score'}
+                  {grade
+                    ? `${grade.correctCount} of ${grade.totalCount} correct`
+                    : 'Unable to score'}
                 </h2>
               </div>
               <p className="text-sm leading-relaxed text-hull-200">
-                {grade ? `${grade.pointsEarned} of ${grade.maxPoints} PEEP points earned.` : 'The selected activity is not an approved quiz.'}
+                {grade
+                  ? `${grade.pointsEarned} of ${grade.maxPoints} PEEP points earned.`
+                  : 'The selected activity is not an approved quiz.'}
               </p>
-              {grade?.items.map((item) => item.feedback && (
-                <p key={item.itemId} className="mt-3 text-[12px] leading-relaxed text-hull-300">{item.feedback}</p>
-              ))}
+              {grade?.items.map(
+                (item) =>
+                  item.feedback && (
+                    <p key={item.itemId} className="mt-3 text-[12px] leading-relaxed text-hull-300">
+                      {item.feedback}
+                    </p>
+                  )
+              )}
             </Panel>
             <Button
               disabled={!grade}
@@ -1638,14 +2139,19 @@ export function AppFlow({
               {question && (
                 <ul className="mt-4 space-y-2 text-[13px] text-hull-200">
                   {question.choices.map((choice) => (
-                    <li key={choice.id} className="rounded-[var(--radius-chip)] border border-space-600 px-3 py-2">
+                    <li
+                      key={choice.id}
+                      className="rounded-[var(--radius-chip)] border border-space-600 px-3 py-2"
+                    >
                       {choice.text}
                     </li>
                   ))}
                 </ul>
               )}
             </Panel>
-            <Button disabled className="w-full py-3 text-sm">Interactive matching coming soon</Button>
+            <Button disabled className="w-full py-3 text-sm">
+              Interactive matching coming soon
+            </Button>
           </ScreenShell>
         )
       }
@@ -1666,7 +2172,10 @@ export function AppFlow({
                 <>
                   <div className="mt-4 flex flex-col gap-2">
                     {question.choices.map((choice) => (
-                      <div key={choice.id} className="rounded-[var(--radius-chip)] border border-space-600 px-3 py-2 text-[13px] text-hull-200">
+                      <div
+                        key={choice.id}
+                        className="rounded-[var(--radius-chip)] border border-space-600 px-3 py-2 text-[13px] text-hull-200"
+                      >
                         {choice.text}
                       </div>
                     ))}
@@ -1677,7 +2186,9 @@ export function AppFlow({
                 </>
               )}
             </Panel>
-            <Button disabled className="w-full py-3 text-sm">Interactive sorting coming soon</Button>
+            <Button disabled className="w-full py-3 text-sm">
+              Interactive sorting coming soon
+            </Button>
           </ScreenShell>
         )
       }
@@ -1695,10 +2206,16 @@ export function AppFlow({
                 {question?.prompt ?? 'The approved fill-in prompt is unavailable.'}
               </p>
               <Field label="Your answer">
-                <input className={inputClass} value={interactionValue} onChange={(event) => setInteractionValue(event.target.value)} />
+                <input
+                  className={inputClass}
+                  value={interactionValue}
+                  onChange={(event) => setInteractionValue(event.target.value)}
+                />
               </Field>
             </Panel>
-            <Button disabled className="w-full py-3 text-sm">Interactive grading coming soon</Button>
+            <Button disabled className="w-full py-3 text-sm">
+              Interactive grading coming soon
+            </Button>
           </ScreenShell>
         )
       }
@@ -1722,7 +2239,9 @@ export function AppFlow({
                         aria-pressed={interactionValue === decision.id}
                         onClick={() => setInteractionValue(decision.id)}
                         className={`rounded-[var(--radius-button)] border px-3 py-3 text-left text-[13px] ${
-                          interactionValue === decision.id ? 'border-ember-400 bg-ember-500/15 text-white' : 'border-space-600 text-hull-200'
+                          interactionValue === decision.id
+                            ? 'border-ember-400 bg-ember-500/15 text-white'
+                            : 'border-space-600 text-hull-200'
                         }`}
                       >
                         {decision.text}
@@ -1730,12 +2249,28 @@ export function AppFlow({
                     ))}
                   </div>
                   <Field label={content.sbar.prompt}>
-                    <textarea className={`${inputClass} mt-3 min-h-24 resize-y`} value={interactionNote} onChange={(event) => setInteractionNote(event.target.value)} />
+                    <textarea
+                      className={`${inputClass} mt-3 min-h-24 resize-y`}
+                      value={interactionNote}
+                      onChange={(event) => setInteractionNote(event.target.value)}
+                    />
                   </Field>
                 </>
               )}
             </Panel>
-            <Button disabled className="w-full py-3 text-sm">Instructor review required</Button>
+            <Button
+              disabled={!content || !interactionValue || !interactionNote.trim()}
+              onClick={() =>
+                completeActivity(activity, {
+                  type: 'case_vignette',
+                  decisionIds: [interactionValue],
+                  sbar: interactionNote,
+                })
+              }
+              className="w-full py-3 text-sm"
+            >
+              Submit case · {activity.points} PEEP
+            </Button>
           </ScreenShell>
         )
       }
@@ -1758,10 +2293,32 @@ export function AppFlow({
                   <span className="mt-2 block text-[11px] text-hull-400">
                     Validation: {content.offlineValidation.method.replaceAll('_', ' ')}
                   </span>
+                  <label className="mt-4 flex items-start gap-3 text-sm text-white">
+                    <input
+                      type="checkbox"
+                      checked={interactionValue === 'confirmed'}
+                      onChange={(event) =>
+                        setInteractionValue(event.target.checked ? 'confirmed' : '')
+                      }
+                      className="mt-0.5 size-5 shrink-0 accent-ember-500"
+                    />
+                    I completed this quest with the named supervisor.
+                  </label>
                 </div>
               )}
             </Panel>
-            <Button disabled className="w-full py-3 text-sm">Supervisor validation required</Button>
+            <Button
+              disabled={!content || interactionValue !== 'confirmed'}
+              onClick={() =>
+                completeActivity(activity, {
+                  type: 'quest',
+                  evidence: { supervisorConfirmed: true },
+                })
+              }
+              className="w-full py-3 text-sm"
+            >
+              Record completion · {activity.points} PEEP
+            </Button>
           </ScreenShell>
         )
       }
@@ -1804,9 +2361,15 @@ export function AppFlow({
             />
             <div className="completion-actions flex w-full flex-col gap-2">
               {islandDone === island.activities.length && !passedIslands[island.id] ? (
-                <Button onClick={() => go('finalExamIntro')} className="w-full py-3 text-sm">
-                  Island cleared — take the final exam
-                </Button>
+                island.finalExam.contentStatus === 'ready' && island.finalExam.content ? (
+                  <Button onClick={() => go('finalExamIntro')} className="w-full py-3 text-sm">
+                    Island cleared — take the final exam
+                  </Button>
+                ) : (
+                  <Button disabled className="w-full py-3 text-sm">
+                    Final exam coming soon
+                  </Button>
+                )
               ) : (
                 <Button onClick={() => resetTo('island', 'back')} className="w-full py-3 text-sm">
                   Back to {island.name}
@@ -1824,213 +2387,59 @@ export function AppFlow({
         )
 
       case 'finalExamIntro':
+      case 'finalExamQuestion':
+      case 'examResults':
         return (
           <ScreenShell
             title={`${island.name} final exam`}
-            subtitle="Proctored checkpoint · 3 questions"
+            subtitle="Assessment unavailable"
             onBack={back}
           >
             <Panel className="p-5">
-              <h2 className="mb-2 text-base font-extrabold text-white">Before you begin</h2>
-              <ul className="flex flex-col gap-2 text-sm text-hull-200">
-                <li className="flex gap-2">
-                  <CheckIcon className="mt-0.5 size-4 shrink-0 text-ember-400" />
-                  {EXAM_QUESTIONS.length} scenario questions drawn from this island.
-                </li>
-                <li className="flex gap-2">
-                  <CheckIcon className="mt-0.5 size-4 shrink-0 text-ember-400" />
-                  Score at least {PASS_MARK}/{EXAM_QUESTIONS.length} to chart the next island.
-                </li>
-                <li className="flex gap-2">
-                  <CheckIcon className="mt-0.5 size-4 shrink-0 text-ember-400" />
-                  Passing awards +200 PEEP bonus points.
-                </li>
-              </ul>
-            </Panel>
-            <Button
-              onClick={() => {
-                setExamIdx(0)
-                setExamAnswers([])
-                setExamChoice(null)
-                go('finalExamQuestion')
-              }}
-              className="w-full py-3 text-sm"
-            >
-              Start exam
-            </Button>
-          </ScreenShell>
-        )
-
-      case 'finalExamQuestion': {
-        const q = EXAM_QUESTIONS[examIdx]
-        return (
-          <ScreenShell
-            title="Final exam"
-            subtitle={`Question ${examIdx + 1} of ${EXAM_QUESTIONS.length}`}
-            onBack={back}
-          >
-            <ProgressMeter
-              label="Exam progress"
-              value={Math.round((examIdx / EXAM_QUESTIONS.length) * 100)}
-            />
-            <Panel className="p-5">
-              <h2 className="text-sm font-bold leading-relaxed text-white">{q.prompt}</h2>
-              <div className="mt-4 flex flex-col gap-2">
-                {q.options.map((opt, i) => {
-                  const selected = examChoice === i
-                  return (
-                    <button
-                      key={opt}
-                      type="button"
-                      onClick={() => setExamChoice(i)}
-                      aria-pressed={selected}
-                      className={`rounded-[var(--radius-button)] border px-4 py-3 text-left text-[13px] ${
-                        selected
-                          ? 'border-ember-400 bg-ember-500/15 text-white'
-                          : 'border-space-600 bg-space-950/50 text-hull-200 hover:bg-space-700'
-                      }`}
-                    >
-                      {opt}
-                    </button>
-                  )
-                })}
-              </div>
-            </Panel>
-            <Button
-              disabled={examChoice === null}
-              onClick={submitExamAnswer}
-              className="w-full py-3 text-sm"
-            >
-              {examIdx + 1 === EXAM_QUESTIONS.length ? 'Submit exam' : 'Next question'}
-            </Button>
-          </ScreenShell>
-        )
-      }
-
-      case 'examResults':
-        return (
-          <ScreenShell title="Exam results" subtitle={island.name}>
-            <Panel className="items-center p-6 text-center">
-              <span
-                className={`mx-auto mb-3 grid size-16 place-items-center rounded-full ${
-                  examPassed
-                    ? 'bg-signal-success/15 text-signal-success'
-                    : 'bg-signal-danger/15 text-signal-danger'
-                }`}
-                aria-hidden="true"
-              >
-                {examPassed ? <CheckIcon className="size-8" /> : <QuizIcon className="size-8" />}
-              </span>
-              <h1 className="text-xl font-extrabold text-white">
-                {examPassed ? 'Island cleared' : 'Not yet, Nurse'}
-              </h1>
-              <p className="mt-1 text-sm text-hull-300">
-                You scored {examScore} of {EXAM_QUESTIONS.length} — {PASS_MARK} needed to pass.
+              <Badge tone="neutral" className="mb-3">
+                coming soon
+              </Badge>
+              <h2 className="text-base font-extrabold text-white">{island.finalExam.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-hull-200">
+                The source corpus does not contain an approved final-exam question bank for this
+                island. No synthetic questions or points will be used.
               </p>
-              <div className="mx-auto mt-4 flex w-full max-w-56 justify-center gap-2">
-                {EXAM_QUESTIONS.map((q, i) => (
-                  <span
-                    key={q.prompt}
-                    className={`grid size-9 place-items-center rounded-[var(--radius-chip)] font-mono text-[11px] font-bold ${
-                      examAnswers[i] === q.answer
-                        ? 'bg-signal-success/20 text-signal-success'
-                        : 'bg-signal-danger/20 text-signal-danger'
-                    }`}
-                    aria-label={`Question ${i + 1} ${examAnswers[i] === q.answer ? 'correct' : 'incorrect'}`}
-                  >
-                    {i + 1}
-                  </span>
-                ))}
-              </div>
             </Panel>
-            <div className="flex flex-col gap-2">
-              <Button onClick={finishExam} className="w-full py-3 text-sm">
-                {examPassed ? 'Claim island & continue' : 'Review island & retry'}
-              </Button>
-              {!examPassed && (
-                <Button
-                  variant="secondary"
-                  onClick={() => resetTo('dashboard', 'back')}
-                  className="w-full"
-                >
-                  Return to planet map
-                </Button>
-              )}
-            </div>
+            <Button
+              variant="secondary"
+              onClick={() => resetTo('island', 'back')}
+              className="w-full"
+            >
+              Return to {island.name}
+            </Button>
           </ScreenShell>
         )
 
       case 'islandComplete':
         return (
           <OutcomeShell>
-            <Badge tone="quiz" icon={<MapIcon className="size-3" />}>
-              island secured
-            </Badge>
-            <h1 className="text-3xl font-extrabold leading-tight text-white">
-              {island.name}
-              <br />
-              <span className="text-ember-400">is behind you.</span>
-            </h1>
+            <Badge tone="neutral">assessment pending</Badge>
+            <h1 className="text-3xl font-extrabold leading-tight text-white">{island.name}</h1>
             <p className="max-w-xs text-sm leading-relaxed text-hull-300">
-              Exam passed, +200 PEEP banked.{' '}
-              {currentIslandIdx + 1 < ISLANDS.length
-                ? `${ISLANDS[currentIslandIdx + 1].name} is now charted on the planet map.`
-                : 'Every island on Atelecta Prime is cleared.'}
+              Island completion cannot be recorded until its approved final exam is available.
             </p>
-            <div className="flex w-full flex-col gap-2">
-              {currentIslandIdx + 1 < ISLANDS.length ? (
-                <Button
-                  onClick={() => {
-                    setCurrentIslandIdx((i) => Math.min(ISLANDS.length - 1, i + 1))
-                    resetTo('island')
-                  }}
-                  className="w-full py-3 text-sm"
-                >
-                  Travel to {ISLANDS[currentIslandIdx + 1].name}
-                </Button>
-              ) : (
-                <Button onClick={() => go('courseComplete')} className="w-full py-3 text-sm">
-                  Finish the course
-                </Button>
-              )}
-              <Button
-                variant="secondary"
-                onClick={() => resetTo('dashboard', 'back')}
-                className="w-full"
-              >
-                Return to planet map
-              </Button>
-            </div>
+            <Button onClick={() => resetTo('dashboard', 'back')} className="w-full py-3 text-sm">
+              Return to planet map
+            </Button>
           </OutcomeShell>
         )
 
       case 'courseComplete':
         return (
           <OutcomeShell>
-            <span
-              className="grid size-24 place-items-center rounded-full bg-gradient-to-br from-solar-400 to-ember-500 text-space-950 shadow-[var(--shadow-raise-ember)]"
-              aria-hidden="true"
-            >
-              <StarIcon className="size-12" />
-            </span>
-            <div>
-              <p className="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-ember-300">
-                GAMER-ICU graduate
-              </p>
-              <h1 className="mt-2 text-3xl font-extrabold text-white">{displayName}</h1>
-              <p className="mt-2 max-w-xs text-sm leading-relaxed text-hull-300">
-                All six islands cleared. Pediatric IMV competency domains complete — airway, alarms,
-                waveforms, gases, advanced modes, and weaning.
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <Badge tone="points" icon={<StarIcon className="size-3" />}>
-                {points.toLocaleString()} PEEP
-              </Badge>
-              <Badge tone="streak" icon={<FlameIcon className="size-3" />}>
-                {streak}-day streak
-              </Badge>
-            </div>
+            <Badge tone="neutral">course completion pending</Badge>
+            <h1 className="text-3xl font-extrabold leading-tight text-white">
+              Final assessments unavailable
+            </h1>
+            <p className="max-w-xs text-sm leading-relaxed text-hull-300">
+              Graduation remains locked until all six approved final-exam banks are supplied and
+              passed.
+            </p>
             <Button onClick={() => resetTo('dashboard', 'back')} className="w-full py-3 text-sm">
               Back to the planet
             </Button>

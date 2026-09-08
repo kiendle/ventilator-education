@@ -13,6 +13,7 @@
     "format": "prettier --write .",
     "spec:validate": "openspec validate --all --strict --no-interactive",
     "data:extract": "python3 tools/extract_gamer_icu.py --root \"$HOME/Downloads/Game-extracted/Game\" --out src/data/curriculum/generated",
+    "media:local": "python3 tools/materialize_curriculum_media.py --root \"$HOME/Downloads/Game-extracted/Game\"",
     "storybook": "storybook dev -p 6007 --disable-telemetry",
     "build-storybook": "storybook build --disable-telemetry"
   },
@@ -27,6 +28,10 @@
   },
   "devDependencies": {
     "@fission-ai/openspec": "^1.8.0",
+    "@napi-rs/canvas": "^1.0.5",
+    "@storybook/addon-a11y": "^10.5.7",
+    "@storybook/addon-docs": "^10.5.7",
+    "@storybook/nextjs-vite": "^10.5.7",
     "@tailwindcss/postcss": "^4",
     "@types/babel__generator": "^7.27.0",
     "@types/node": "^20",
@@ -34,18 +39,17 @@
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^5.1.4",
     "babel-plugin-react-compiler": "1.0.0",
+    "emf-converter": "^2.0.2",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "eslint-config-prettier": "^10.1.8",
     "fast-check": "^4.5.3",
+    "jpegxr": "^0.3.0",
     "prettier": "^3.8.1",
+    "storybook": "^10.5.7",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vitest": "^4.0.18",
-    "storybook": "^10.5.7",
-    "@storybook/nextjs-vite": "^10.5.7",
-    "@storybook/addon-a11y": "^10.5.7",
-    "@storybook/addon-docs": "^10.5.7",
-    "vite": "latest"
+    "vite": "latest",
+    "vitest": "^4.0.18"
   }
 }

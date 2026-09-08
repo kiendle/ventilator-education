@@ -26,7 +26,7 @@ const EXTRACTION_STATUSES = new Set([
   'missing_dependency', 'unsupported', 'error', 'missing',
 ])
 const CONTENT_STATUSES = new Set(['ready', 'needs_review', 'unavailable'])
-const CONFLICT_STATUSES = new Set(['needs_review', 'accepted', 'resolved', 'unavailable'])
+const CONFLICT_STATUSES = new Set(['needs_review', 'accepted', 'resolved', 'ready', 'unavailable'])
 const CONFLICT_SCOPES = new Set(['source', 'activity', 'island', 'totals', 'mapping', 'content'])
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -254,10 +254,27 @@ function checkActivityPayload(
           }
         }
         if (question.promptMedia) checkMediaReference(question.promptMedia, `${qContext}.promptMedia`, assets, sourceIds, status, errors)
+        if (question.promptBlocks !== undefined) {
+          if (!Array.isArray(question.promptBlocks) || question.promptBlocks.length === 0) errors.push(`${qContext}.promptBlocks must be a nonempty array`)
+          else question.promptBlocks.forEach((block: unknown, blockIndex: number) => {
+            if (!isRecord(block) || (block.kind !== 'text' && block.kind !== 'image')) errors.push(`${qContext}.promptBlocks[${blockIndex}].kind is invalid`)
+            else if (block.kind === 'text' && typeof block.text !== 'string') errors.push(`${qContext}.promptBlocks[${blockIndex}].text is required`)
+            else if (block.kind === 'image') checkMediaReference(block.media, `${qContext}.promptBlocks[${blockIndex}].media`, assets, sourceIds, status, errors)
+          })
+        }
         const answer = question.answer
         if (!isRecord(answer) || answer.interaction !== question.interaction) errors.push(`${qContext}.answer.interaction must match question interaction`)
-        else if (question.interaction === 'mcq' && (!isNonemptyString(answer.correctChoiceId) || !choiceIds.has(answer.correctChoiceId))) errors.push(`${qContext}.answer.correctChoiceId must name a listed choice`)
-        else if (question.interaction === 'matching') {
+        else if (question.interaction === 'mcq') {
+          if (!Array.isArray(answer.correctChoiceIds) || answer.correctChoiceIds.length === 0) errors.push(`${qContext}.answer.correctChoiceIds must be a nonempty array`)
+          else {
+            const answerIds = new Set<string>()
+            answer.correctChoiceIds.forEach((choiceId: unknown) => {
+              if (!isNonemptyString(choiceId) || !choiceIds.has(choiceId)) errors.push(`${qContext}.answer.correctChoiceIds must name listed choices`)
+              else if (answerIds.has(choiceId)) errors.push(`${qContext}.answer.correctChoiceIds must not contain duplicates`)
+              else answerIds.add(choiceId)
+            })
+          }
+        } else if (question.interaction === 'matching') {
           if (!Array.isArray(answer.pairs) || answer.pairs.length === 0) errors.push(`${qContext}.answer.pairs must be nonempty`)
           if (Array.isArray(answer.pairs)) {
             answer.pairs.forEach((pair: unknown) => {
