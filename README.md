@@ -4,6 +4,32 @@
 
 GAMER-ICU is a gamified PWA for pediatric ICU nurses to learn invasive mechanical ventilation over a 90-day curriculum. The app is built with Next.js (App Router) deployed on Vercel, using Supabase for database, authentication, and file storage. The backend follows a modular monolith pattern where each domain (auth, content, gamification, progression, quiz, analytics) is a self-contained module with clear interfaces. The frontend is a mobile-first PWA with a sci-fi themed planet map, activity renderers for 6 content types, and a gamification HUD. Two developers work in parallel: Kien on backend/architecture/deployment and Jenifer on frontend/design/media.
 
+## Source outline reconciliation
+
+Convert the original `GameOutline.docx` into a source-derived roster before matching lesson files or changing the learner catalog:
+
+```sh
+npm run data:outline
+```
+
+The default input is `$HOME/Downloads/Game-extracted/Game/GameOutline.docx`. For another location:
+
+```sh
+python3 tools/extract_curriculum_outline.py --source /path/to/GameOutline.docx --out src/data/curriculum/generated/outline-roster.json
+```
+
+The output preserves island order, one record per activity-table row, original cell text/status markings, body paragraphs, source SHA-256, and table/row locators. Normalized fields include title, activity type, minutes, and PEEP points. Ambiguous values remain `null` with review issues; declared totals remain separate from computed row totals. Repeated quests are not expanded, missing activities/exams are not invented, and source markings do not establish clinical approval or asset availability.
+
+`rowId` identifies a source row within the recorded document revision, not an existing application activity ID. Use it together with `source.sha256` for reconciliation. This JSON is **not imported into the learner application** and does not replace the current curriculum or source manifests. It extracts roster/text data, not embedded document images.
+
+Accepted source-organization decisions are recorded separately in [`src/data/curriculum/outline-resolutions.json`](src/data/curriculum/outline-resolutions.json), tied to the original outline hash and source row IDs. They do not rewrite the generated source evidence or automatically update the learner application. The first decision uses the whole `VentInterfacesLakeMucosa.pptx` deck as one combined lesson reference instead of three separate device tours; publishing metadata remains unresolved.
+
+Run the converter's regression checks with:
+
+```sh
+python3 -B -m unittest discover -s tools -p test_extract_curriculum_outline.py -v
+```
+
 ## Architecture
 
 ### High-Level Architecture
@@ -510,6 +536,53 @@ npm run media:local   # --root defaults to ~/Downloads/Game-extracted/Game
 ```
 
 Smoke target: Lake Mucosa activity `lm-01` (`1. Lake Mucosa/Oxygenation & MAP_Video.mp4`).
+
+### Storybook design review
+
+Run `npm run storybook` and open `http://localhost:6007`. Use
+`npm run build-storybook` for the static component catalog.
+
+- **Design System / Foundations** documents the live CSS tokens, typography,
+  spacing, and shape rules: a deep navy shell, warm cream content, peach headers,
+  and raised orange actions and selections. Mint and rose distinguish successful
+  and unsuccessful outcomes without recoloring clinical source media.
+- **Buttons** exposes primary, secondary, quiet, disabled, loading, and long-label
+  states. Buttons are at least 48px high; compact icon actions retain 44px targets.
+- **Cards & Containers** demonstrates wrapping lesson titles, activity-type labels,
+  duration/reward metadata, and completed/unavailable states.
+- **Application / Screens** covers all 29 screen states. Matching and sorting use
+  the real quiz renderer. The Activity Complete story earns its state through an
+  approved reading and its confirmation answer rather than fabricated rewards.
+- **Mission Intro** retains the original 32-second perspective crawl with pause,
+  seek, and restart controls. Reduced motion presents the complete briefing as
+  static, unclipped text. Page switches retain full-width directional travel and
+  the original rebound; the navigation bar has no raised bottom-edge highlight.
+- **Application / Screens / Island** sets the shared visual direction:
+  original island artwork, warm cream surfaces, and tactile peach actions.
+  Consecutive activities sharing a title are grouped into topics without changing
+  curriculum order or access; the first available unfinished activity is highlighted.
+  The cream learning path extends through the bottom safe area without an unused
+  navigation gap.
+- **Lesson screens** use large outlined choices and a bottom action bar that
+  reserves space for its content. Reading feedback stays visible above the action;
+  quiz explanations are expandable, with identical source excerpts shown once.
+  PDFs include a full-size reading link. Clinical content and grading are unchanged.
+- **Profile, Settings, Login, and Register** share the orange/peach identity,
+  readable cream forms, grouped preference rows, and raised primary actions.
+- **Application / Full Flow** exercises the complete preview journey. State is
+  held in memory and resets on reload, story changes, or changes to the
+  `initialScreen` control. Authentication, account persistence, and
+  server synchronization are not connected in this preview. Final exams and fill-in
+  questions remain unavailable where no approved content exists.
+
+The design principles from
+[Appllama's app design skill](https://github.com/Appllama/appllama-skills/tree/main/skills/appllama-app-design-skill)
+are adapted to the existing Next.js web application, not a native framework.
+Public [Duolingo lesson and feedback references](https://blog.duolingo.com/duolingo-101-how-to-learn-a-language-on-duolingo/)
+and [profile/settings references](https://blog.duolingo.com/add-new-course/) inform
+the control hierarchy and screen structure, not the palette or reward rules.
+Check narrow/mobile and desktop canvases, keyboard focus, reduced motion, and
+the complete answer → feedback → completion cycle when changing shared components.
 
 ### Content JSON Schemas (stored in `activities.content` JSONB column)
 

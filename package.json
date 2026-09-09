@@ -13,6 +13,7 @@
     "format": "prettier --write .",
     "spec:validate": "openspec validate --all --strict --no-interactive",
     "data:extract": "python3 tools/extract_gamer_icu.py --root \"$HOME/Downloads/Game-extracted/Game\" --out src/data/curriculum/generated",
+    "data:outline": "python3 tools/extract_curriculum_outline.py --source \"$HOME/Downloads/Game-extracted/Game/GameOutline.docx\" --out src/data/curriculum/generated/outline-roster.json",
     "media:local": "python3 tools/materialize_curriculum_media.py --root \"$HOME/Downloads/Game-extracted/Game\"",
     "storybook": "storybook dev -p 6007 --disable-telemetry",
     "build-storybook": "storybook build --disable-telemetry"

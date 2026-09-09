@@ -20,7 +20,7 @@ import { BottomNav } from './BottomNav'
 import { StarIcon, MapIcon, PlayIcon, BookIcon, QuizIcon, UserIcon, BoxIcon } from './icons'
 
 /* ------------------------------------------------------------------ */
-/* Screen contract — 22 named states                                   */
+/* Screen contract                                                     */
 /* ------------------------------------------------------------------ */
 
 export type AppScreen =
@@ -262,8 +262,19 @@ const activityIcon: Record<ActivityType, (p: IconProps) => ReactNode> = {
   case: StarIcon,
   quest: UserIcon,
 }
+const activityKindLabel: Record<ActivityType, string> = {
+  reading: 'Reading',
+  video: 'Video',
+  quiz: 'Quiz',
+  sim: 'Vent lab',
+  matching: 'Matching',
+  ordering: 'Ordering',
+  fill: 'Fill in the blank',
+  case: 'Clinical case',
+  quest: 'Quest',
+}
 
-function MissionCrawl() {
+function MissionBriefing() {
   const crawlRef = useRef<HTMLDivElement>(null)
   const progressRef = useRef<HTMLInputElement>(null)
   const [playing, setPlaying] = useState(true)
@@ -301,13 +312,11 @@ function MissionCrawl() {
   function togglePlayback() {
     const animation = crawlRef.current?.getAnimations()[0]
     if (!animation) return
-
     if (animation.playState === 'running') {
       animation.pause()
       setPlaying(false)
       return
     }
-
     const duration = Number(animation.effect?.getTiming().duration) || 1
     if (Number(animation.currentTime) >= duration) animation.currentTime = 0
     animation.play()
@@ -317,7 +326,6 @@ function MissionCrawl() {
   function seek(event: ChangeEvent<HTMLInputElement>) {
     const animation = crawlRef.current?.getAnimations()[0]
     if (!animation) return
-
     const duration = Number(animation.effect?.getTiming().duration) || 1
     animation.currentTime = (Number(event.currentTarget.value) / 100) * duration
     if (playing) animation.play()
@@ -334,7 +342,7 @@ function MissionCrawl() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="mission-crawl-stage">
+      <div className="mission-crawl-stage" data-static={!canAnimate}>
         <div ref={crawlRef} className="mission-crawl">
           <p className="font-mono text-xs font-bold uppercase tracking-[0.28em]">
             Mission briefing
@@ -353,12 +361,12 @@ function MissionCrawl() {
           <p className="font-bold uppercase tracking-widest">The patient is waiting.</p>
         </div>
       </div>
-      <div className="flex items-center gap-3 rounded-[var(--radius-panel)] border border-space-600 bg-space-950/90 px-3 py-3 shadow-[var(--shadow-panel)] backdrop-blur-sm">
+      <div className="flex items-center gap-3 rounded-[var(--radius-panel)] border border-space-600 bg-space-950/90 px-3 py-3 backdrop-blur-sm">
         <button
           type="button"
           onClick={togglePlayback}
           disabled={!canAnimate}
-          className="min-w-14 rounded-[var(--radius-chip)] bg-pastel-cream px-3 py-2 font-mono text-[10px] font-bold text-space-900 disabled:opacity-50"
+          className="min-h-11 min-w-14 rounded-[var(--radius-chip)] bg-pastel-cream px-3 py-2 text-xs font-bold text-space-900 disabled:opacity-50"
         >
           {playing ? 'Pause' : 'Play'}
         </button>
@@ -373,17 +381,20 @@ function MissionCrawl() {
           disabled={!canAnimate}
           aria-label="Mission crawl progress"
           aria-valuetext="0%"
-          className="h-1 min-w-0 flex-1 cursor-pointer accent-ember-500 disabled:cursor-not-allowed"
+          className="min-h-11 min-w-0 flex-1 cursor-pointer accent-ember-500 disabled:cursor-not-allowed"
         />
         <button
           type="button"
           onClick={restart}
           disabled={!canAnimate}
-          className="rounded-[var(--radius-chip)] border border-space-600 px-3 py-2 font-mono text-[10px] font-bold text-hull-200 disabled:opacity-50"
+          className="min-h-11 rounded-[var(--radius-chip)] border border-space-600 px-3 py-2 text-xs font-bold text-hull-200 disabled:opacity-50"
         >
           Restart
         </button>
       </div>
+      <p className="text-xs leading-5 text-hull-300">
+        Final assessments stay unavailable until their approved question banks are supplied.
+      </p>
     </div>
   )
 }
@@ -399,6 +410,7 @@ function ScreenShell({
   headerRight,
   children,
   footer,
+  reserveNavSpace = true,
 }: {
   title?: string
   subtitle?: string
@@ -406,37 +418,48 @@ function ScreenShell({
   headerRight?: ReactNode
   children: ReactNode
   footer?: ReactNode
+  reserveNavSpace?: boolean
 }) {
   return (
-    <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-md flex-col pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-[calc(1.25rem+env(safe-area-inset-top,0px))]">
+    <div
+      className={`relative z-10 mx-auto flex min-h-dvh w-full max-w-md flex-col pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-[calc(1.5rem+env(safe-area-inset-top,0px))] sm:pl-[max(1.25rem,env(safe-area-inset-left,0px))] sm:pr-[max(1.25rem,env(safe-area-inset-right,0px))] ${footer || !reserveNavSpace ? 'pb-0' : 'pb-[calc(7rem+env(safe-area-inset-bottom,0px))]'}`}
+    >
       {(title || onBack) && (
-        <header className="mb-4 flex items-center gap-3">
+        <header className="mb-5 flex items-start gap-3">
           {onBack && (
             <button
               type="button"
               onClick={onBack}
               aria-label="Go back"
-              className="grid size-10 shrink-0 place-items-center rounded-full border-2 border-ember-200 bg-pastel-cream text-space-900 shadow-[0_3px_0_#d87b01] hover:bg-ember-100"
+              className="raise grid size-11 min-h-11 min-w-11 shrink-0 place-items-center rounded-[var(--radius-button)] border-2 border-ember-300 bg-pastel-peach text-space-900 shadow-[var(--shadow-raise-card)] transition-colors hover:bg-ember-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-500 focus-visible:ring-offset-2 focus-visible:ring-offset-space-950"
             >
               <BackIcon className="size-5" />
             </button>
           )}
           <div className="min-w-0 flex-1">
-            {title && <h1 className="truncate text-lg font-extrabold text-white">{title}</h1>}
-            {subtitle && <p className="truncate text-[11px] text-hull-300">{subtitle}</p>}
+            {title && (
+              <h1 className="break-words text-xl font-extrabold leading-snug text-white">
+                {title}
+              </h1>
+            )}
+            {subtitle && (
+              <p className="mt-1 break-words text-xs font-medium leading-5 text-ember-200">
+                {subtitle}
+              </p>
+            )}
           </div>
           {headerRight}
         </header>
       )}
-      <div className="flex flex-1 flex-col gap-4">{children}</div>
-      {footer && <footer className="mt-6">{footer}</footer>}
+      <div className="min-w-0 flex flex-1 flex-col gap-4">{children}</div>
+      {footer && <footer className="lesson-actions learning-surface">{footer}</footer>}
     </div>
   )
 }
 
 function OutcomeShell({ children }: { children: ReactNode }) {
   return (
-    <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-md items-center pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-[calc(2rem+env(safe-area-inset-top,0px))] pb-[calc(2rem+env(safe-area-inset-bottom,0px))]">
+    <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-md items-center pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-[calc(2rem+env(safe-area-inset-top,0px))] pb-[calc(7rem+env(safe-area-inset-bottom,0px))] sm:pl-[max(1.25rem,env(safe-area-inset-left,0px))] sm:pr-[max(1.25rem,env(safe-area-inset-right,0px))]">
       <Panel className="flex w-full flex-col items-center gap-5 p-6 text-center">{children}</Panel>
     </div>
   )
@@ -472,30 +495,12 @@ function EarnedPointsCount({ value }: { value: number }) {
   return displayed
 }
 
-function Field({
-  label,
-  hint,
-  tone = 'space',
-  children,
-}: {
-  label: string
-  hint?: string
-  tone?: 'space' | 'warm'
-  children: ReactNode
-}) {
-  const warm = tone === 'warm'
-
+function Field({ label, hint, children }: { label: string; hint?: string; children: ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block font-mono text-[11px] font-bold uppercase tracking-wider text-space-900">
-        {label}
-      </span>
+      <span className="mb-2 block text-sm font-semibold leading-6 text-space-800">{label}</span>
       {children}
-      {hint && (
-        <span className={`mt-1.5 block text-[11px] ${warm ? 'text-ember-700' : 'text-space-600'}`}>
-          {hint}
-        </span>
-      )}
+      {hint && <span className="mt-1.5 block text-xs leading-5 text-space-600">{hint}</span>}
     </label>
   )
 }
@@ -514,14 +519,10 @@ function AuthShell({
   const signup = mode === 'register'
 
   return (
-    <div className="relative z-10 min-h-dvh overflow-hidden pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-[calc(1.25rem+env(safe-area-inset-top,0px))] pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] sm:pl-[max(2rem,env(safe-area-inset-left,0px))] sm:pr-[max(2rem,env(safe-area-inset-right,0px))] sm:pt-[calc(2rem+env(safe-area-inset-top,0px))] sm:pb-[calc(2rem+env(safe-area-inset-bottom,0px))]">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgb(95_225_218_/_0.13),transparent_24%),radial-gradient(circle_at_88%_76%,rgb(255_116_0_/_0.14),transparent_26%)]"
-      />
-      <div className="relative mx-auto grid min-h-[calc(100dvh-2.5rem-env(safe-area-inset-top,0px)-env(safe-area-inset-bottom,0px))] sm:min-h-[calc(100dvh-4rem-env(safe-area-inset-top,0px)-env(safe-area-inset-bottom,0px))] max-w-5xl items-center gap-12 lg:grid-cols-[1fr_25rem]">
+    <div className="relative z-10 min-h-dvh pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-[calc(1.5rem+env(safe-area-inset-top,0px))] pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] sm:pl-[max(2rem,env(safe-area-inset-left,0px))] sm:pr-[max(2rem,env(safe-area-inset-right,0px))] sm:pt-[calc(2rem+env(safe-area-inset-top,0px))] sm:pb-[calc(2rem+env(safe-area-inset-bottom,0px))]">
+      <div className="relative mx-auto grid min-h-[calc(100dvh-3rem-env(safe-area-inset-top,0px)-env(safe-area-inset-bottom,0px))] max-w-5xl items-center gap-12 sm:min-h-[calc(100dvh-4rem-env(safe-area-inset-top,0px)-env(safe-area-inset-bottom,0px))] lg:grid-cols-[1fr_25rem]">
         <section className="hidden max-w-xl lg:block">
-          <p className="mb-6 font-mono text-xs font-bold uppercase tracking-[0.28em] text-aqua-300">
+          <p className="mb-6 font-mono text-xs font-bold uppercase tracking-[0.28em] text-ember-300">
             GAMER-ICU · Flight academy
           </p>
           <h1 className="text-5xl font-extrabold leading-[1.05] text-white">
@@ -529,17 +530,17 @@ function AuthShell({
             <br />
             for the moments
             <br />
-            <span className="text-warm">that matter.</span>
+            <span className="text-ember-300">that matter.</span>
           </h1>
           <p className="mt-6 max-w-md text-base leading-7 text-hull-300">
-            Build pediatric ventilation confidence across six evidence-guided islands. Your mission
-            record keeps every checkpoint in one place.
+            Build pediatric ventilation confidence across six evidence-guided islands. Track every
+            checkpoint in this session.
           </p>
           <div className="mt-8 flex gap-3 font-mono text-[10px] font-bold uppercase tracking-wider text-hull-300">
-            <span className="rounded-full border border-aqua-400/40 bg-aqua-400/10 px-3 py-2">
+            <span className="rounded-full border border-ember-300/50 bg-ember-500/10 px-3 py-2">
               6 islands
             </span>
-            <span className="rounded-full border border-ember-400/40 bg-ember-400/10 px-3 py-2">
+            <span className="rounded-full border border-ember-300/50 bg-ember-500/10 px-3 py-2">
               1 mission
             </span>
           </div>
@@ -550,49 +551,53 @@ function AuthShell({
             type="button"
             onClick={onBack}
             aria-label="Go back"
-            className="absolute left-0 top-0 grid size-11 place-items-center rounded-full border border-white/15 bg-space-950/50 text-white backdrop-blur hover:bg-space-800"
+            className="absolute left-0 top-0 grid size-11 min-h-11 min-w-11 place-items-center rounded-[var(--radius-button)] border border-ember-300 bg-space-900 text-white shadow-none hover:bg-space-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-500"
           >
             <BackIcon className="size-5" />
           </button>
 
-          <div className="relative rounded-[2rem] border border-ember-200/70 bg-warm px-6 pb-7 pt-24 text-space-950 shadow-[0_9px_0_#d87b01,0_22px_50px_rgb(2_13_24_/_0.38)] sm:px-8">
-            <Image
-              src="/auth-astronaut.png"
-              alt=""
-              width={159}
-              height={183}
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-24 right-1 h-auto w-40 drop-shadow-[0_12px_14px_rgb(2_13_24_/_0.24)]"
-            />
-
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-ember-700">
-              Coughulus-81 crew manifest
-            </p>
-            <h1 className="mt-2 text-3xl font-extrabold leading-tight text-space-950">
-              {signup ? 'Join the mission' : 'Welcome back, explorer'}
-            </h1>
-            <p className="mt-2 text-sm leading-6 text-space-800">
-              {signup
-                ? 'Create your learner identity and prepare for launch.'
-                : 'Sign in to continue from your latest checkpoint.'}
-            </p>
-
-            <div className="mt-7">{children}</div>
-
-            <p className="mt-7 text-center text-xs text-space-800">
-              {signup ? 'Already have a mission record?' : 'New to the crew?'}{' '}
-              <button
-                type="button"
-                onClick={onSwitch}
-                className="font-bold text-ember-700 underline decoration-2 underline-offset-4 hover:text-space-950"
-              >
-                {signup ? 'Sign in' : 'Create an account'}
-              </button>
-            </p>
+          <div className="learning-surface overflow-hidden rounded-[var(--radius-card)] border-2 border-ember-300 bg-pastel-cream shadow-[var(--shadow-panel)]">
+            <div className="flex items-center gap-3 border-b-2 border-ember-300 bg-pastel-peach px-5 py-5 sm:px-7">
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-bold tracking-wide text-space-800">
+                  GAMER-ICU · Flight academy
+                </p>
+                <h1 className="mt-2 text-2xl font-extrabold leading-tight text-space-950">
+                  {signup ? 'Join the mission' : 'Welcome back, explorer'}
+                </h1>
+              </div>
+              <Image
+                src="/welcome-astronaut.png"
+                alt=""
+                width={80}
+                height={108}
+                className="h-28 w-20 shrink-0 object-contain"
+                priority
+              />
+            </div>
+            <div className="px-5 pb-6 pt-5 sm:px-7">
+              <p className="text-sm leading-6 text-space-700">
+                {signup
+                  ? 'Create a learner identity for this session.'
+                  : 'Use the demo fields to continue this session.'}
+              </p>
+              <div className="mt-5">{children}</div>
+              <p className="mt-6 border-t border-ember-200 pt-3 text-center text-xs leading-5 text-space-700">
+                {signup ? 'Already have a session identity?' : 'New to this session?'}{' '}
+                <button
+                  type="button"
+                  onClick={onSwitch}
+                  className="inline-flex min-h-11 items-center font-bold text-ember-700 underline decoration-2 underline-offset-4 hover:text-space-950"
+                >
+                  {signup ? 'Use the sign-in form' : 'Create an identity'}
+                </button>
+              </p>
+            </div>
           </div>
 
-          <p className="mx-auto mt-6 max-w-sm text-center text-[11px] leading-5 text-hull-400">
-            Account details stay separate from anonymized research exports.
+          <p className="mx-auto mt-6 max-w-sm text-center text-xs leading-5 text-hull-400">
+            Demo account fields stay in memory only. This prototype has no backend authentication or
+            persistence.
           </p>
         </section>
       </div>
@@ -601,10 +606,9 @@ function AuthShell({
 }
 
 const inputClass =
-  'w-full rounded-[var(--radius-button)] border-2 border-ember-200 bg-hull-50 px-4 py-3 text-sm text-space-950 shadow-[0_2px_0_#d87b01] placeholder:text-hull-500 [color-scheme:light] focus:border-space-900'
+  'min-h-12 w-full rounded-[var(--radius-button)] border-2 border-ember-200 bg-hull-50 px-4 py-3 text-base text-space-950 shadow-none placeholder:text-hull-500 [color-scheme:light] focus:border-ember-700 focus:outline-none focus:ring-2 focus:ring-ember-700/20'
 
-const authInputClass =
-  'w-full rounded-[var(--radius-button)] border border-ember-600/60 bg-hull-50 px-4 py-3 text-sm text-space-950 shadow-[0_2px_0_rgb(167_76_0_/_0.25)] placeholder:text-hull-500 [color-scheme:light] focus:border-space-900'
+const authInputClass = inputClass
 
 function ToggleRow({
   label,
@@ -623,15 +627,15 @@ function ToggleRow({
       role="switch"
       aria-checked={checked}
       onClick={() => onChange(!checked)}
-      className="flex w-full items-center justify-between gap-4 rounded-[var(--radius-panel)] border-2 border-ember-200 bg-pastel-cream px-4 py-3 text-left text-space-900 shadow-[0_4px_0_#d87b01]"
+      className="flex min-h-20 w-full items-center justify-between gap-4 border-b border-ember-200 px-4 py-4 text-left text-space-900 transition-colors last:border-b-0 hover:bg-ember-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ember-700"
     >
       <span>
         <span className="block text-sm font-bold text-space-900">{label}</span>
-        <span className="block text-[11px] text-space-600">{description}</span>
+        <span className="block text-xs leading-5 text-space-600">{description}</span>
       </span>
       <span
-        className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
-          checked ? 'bg-ember-500' : 'bg-pastel-lilac'
+        className={`relative h-7 w-12 shrink-0 rounded-full border-2 transition-colors ${
+          checked ? 'border-ember-700 bg-ember-700' : 'border-hull-600 bg-hull-600'
         }`}
         aria-hidden="true"
       >
@@ -673,7 +677,18 @@ export function AppFlow({
   const [streak] = useState(7)
   const [completed, setCompleted] = useState<Record<string, boolean>>({})
   const unlockedIslands = islands.length
-  const [currentIslandIdx, setCurrentIslandIdx] = useState(0)
+  const [currentIslandIdx, setCurrentIslandIdx] = useState(() =>
+    initialScreen === 'caseVignette'
+      ? Math.max(
+          0,
+          islands.findIndex((item) =>
+            item.activities.some(
+              (activity) => activity.type === 'case_vignette' && activity.contentStatus === 'ready'
+            )
+          )
+        )
+      : 0
+  )
   const [dashboardView, setDashboardView] = useState<'map' | 'list'>('map')
   const dashboardGesture = useRef({ y: 0, listAtTop: true })
   const dashboardListRef = useRef<HTMLDivElement>(null)
@@ -706,6 +721,7 @@ export function AppFlow({
   const [profileSaved, setProfileSaved] = useState(false)
   const [interactionValue, setInteractionValue] = useState('')
   const [interactionNote, setInteractionNote] = useState('')
+  const [caseSbar, setCaseSbar] = useState('')
   const [ventLabState, setVentLabState] = useState<Record<string, string | number | boolean>>({})
 
   const ISLANDS = useMemo(() => islands.map(projectIsland), [islands])
@@ -747,7 +763,7 @@ export function AppFlow({
     setScreen(prev)
   }
 
-  function resetTo(s: AppScreen, direction: 'forward' | 'back' = 'forward') {
+  function resetTo(s: AppScreen, direction: 'forward' | 'back' | null = 'forward') {
     setSlideDirection(direction)
     setHistory([])
     setScreen(s)
@@ -812,6 +828,7 @@ export function AppFlow({
         : {}
     )
     videoSegmentsRef.current = []
+    setCaseSbar('')
     videoLastTimeRef.current = 0
     videoGateLatchedRef.current = false
     setVideoEnded(false)
@@ -878,7 +895,7 @@ export function AppFlow({
                 go('enroll')
               }}
             >
-              <Field label="Email" tone="warm">
+              <Field label="Email">
                 <input
                   type="email"
                   autoComplete="email"
@@ -887,7 +904,7 @@ export function AppFlow({
                   placeholder="nurse@example.org"
                 />
               </Field>
-              <Field label="Password" tone="warm">
+              <Field label="Password">
                 <input
                   type="password"
                   autoComplete="current-password"
@@ -898,7 +915,7 @@ export function AppFlow({
                 />
               </Field>
               <Button type="submit" className="mt-2 w-full py-3 text-sm">
-                Sign in &amp; launch
+                Continue to enrollment
               </Button>
             </form>
           </AuthShell>
@@ -915,7 +932,7 @@ export function AppFlow({
                 go('enroll')
               }}
             >
-              <Field label="Full name" tone="warm">
+              <Field label="Full name">
                 <input
                   value={displayName}
                   onChange={(event) => setDisplayName(event.target.value)}
@@ -925,7 +942,7 @@ export function AppFlow({
                   placeholder="Your name"
                 />
               </Field>
-              <Field label="Email" tone="warm">
+              <Field label="Email">
                 <input
                   type="email"
                   autoComplete="email"
@@ -934,7 +951,7 @@ export function AppFlow({
                   placeholder="nurse@example.org"
                 />
               </Field>
-              <Field label="Password" hint="Use at least 8 characters." tone="warm">
+              <Field label="Password" hint="Use at least 8 characters.">
                 <input
                   type="password"
                   autoComplete="new-password"
@@ -945,7 +962,7 @@ export function AppFlow({
                 />
               </Field>
               <Button type="submit" className="mt-2 w-full py-3 text-sm">
-                Create account &amp; launch
+                Continue to enrollment
               </Button>
             </form>
           </AuthShell>
@@ -987,8 +1004,9 @@ export function AppFlow({
                 </Button>
               </form>
             </Panel>
-            <p className="text-center text-[11px] text-hull-400">
-              No account, no email — your progress lives on this device only.
+            <p className="text-center text-xs leading-5 text-hull-400">
+              This prototype keeps enrollment and progress in memory for this session; no backend or
+              persistence is connected.
             </p>
           </ScreenShell>
         )
@@ -996,7 +1014,7 @@ export function AppFlow({
       case 'mission':
         return (
           <ScreenShell title="Mission briefing" subtitle="Curriculum objectives" onBack={back}>
-            <MissionCrawl />
+            <MissionBriefing />
             <Button onClick={() => go('avatar')} className="w-full py-3 text-sm">
               Accept mission
             </Button>
@@ -1007,7 +1025,7 @@ export function AppFlow({
         return (
           <ScreenShell
             title="Choose your operative"
-            subtitle="This identity signs your local save"
+            subtitle="Choose an identity for this session"
             onBack={back}
           >
             <div className="grid grid-cols-1 gap-3">
@@ -1019,14 +1037,14 @@ export function AppFlow({
                     type="button"
                     onClick={() => setAvatar(a.id)}
                     aria-pressed={selected}
-                    className={`raise flex items-center gap-4 rounded-[var(--radius-card)] border-2 p-4 text-left text-space-900 transition-colors ${
+                    className={`flex min-h-16 items-center gap-4 rounded-[var(--radius-card)] border p-4 text-left text-space-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-500 ${
                       selected
-                        ? 'border-ember-300 bg-pastel-peach shadow-[0_5px_0_#d87b01]'
-                        : 'border-ember-200 bg-pastel-cream shadow-[0_4px_0_#d87b01] hover:bg-ember-100'
+                        ? 'border-ember-500 bg-ember-100 ring-2 ring-ember-200'
+                        : 'border-hull-300 bg-hull-50 hover:border-ember-300 hover:bg-hull-100'
                     }`}
                   >
                     <span
-                      className="grid size-12 shrink-0 place-items-center rounded-[var(--radius-icon)] border-2 border-nebula-200 bg-pastel-lilac text-sm font-extrabold text-space-900"
+                      className="grid size-12 shrink-0 place-items-center rounded-[var(--radius-icon)] border border-ember-200 bg-ember-100 text-sm font-extrabold text-space-900"
                       aria-hidden="true"
                     >
                       {a.label.slice(0, 2).toUpperCase()}
@@ -1053,7 +1071,7 @@ export function AppFlow({
       case 'dashboard':
         return (
           <div
-            className="relative z-10 h-dvh w-full overflow-hidden bg-space-900 bg-[url('/background.png')] bg-cover bg-center"
+            className={`relative z-10 w-full overflow-hidden bg-space-900 bg-[url('/background.png')] bg-cover bg-center ${showScreenPicker ? 'h-[calc(100dvh-5rem)]' : 'h-dvh'}`}
             role="region"
             aria-label={`Learning dashboard, ${dashboardView} view`}
             tabIndex={0}
@@ -1151,19 +1169,19 @@ export function AppFlow({
                         go('island')
                       }}
                       style={{ left: spot.left, top: spot.top }}
-                      className="group absolute size-9 -translate-x-1/2 -translate-y-1/2 rounded-full focus-visible:z-30 hover:z-30"
+                      className="group absolute size-11 -translate-x-1/2 -translate-y-1/2 rounded-full focus-visible:z-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-500 focus-visible:ring-offset-2 focus-visible:ring-offset-space-950 hover:z-30"
                     >
                       <span
-                        className={`relative grid size-9 place-items-center rounded-full border-2 font-mono text-[11px] font-extrabold shadow-[0_3px_0_rgb(2_13_24_/_0.35)] transition-transform duration-200 group-hover:scale-110 group-focus-visible:scale-110 ${
+                        className={`relative grid size-11 place-items-center rounded-full border-2 font-mono text-xs font-extrabold shadow-none transition-transform duration-200 group-hover:scale-105 group-focus-visible:scale-105 ${
                           locked
                             ? 'border-hull-300 bg-space-900/80 text-hull-300'
                             : passed
-                              ? 'border-pastel-cream bg-signal-success text-space-950'
-                              : 'border-pastel-cream bg-ember-500 text-space-950'
+                              ? 'border-hull-50 bg-signal-success text-space-950'
+                              : 'border-ember-200 bg-ember-500 text-space-950'
                         }`}
                       >
                         <span
-                          className={`absolute inset-[-6px] -z-10 rounded-full border-2 ${locked ? 'border-hull-300/35' : 'animate-pulse border-ember-300/70'}`}
+                          className={`absolute inset-[-5px] -z-10 rounded-full border ${locked ? 'border-hull-300/35' : 'border-ember-300/70'}`}
                         />
                         {locked ? (
                           <LockIcon className="size-3.5" />
@@ -1188,7 +1206,7 @@ export function AppFlow({
                         </span>
                         <span className="mt-2 block h-1.5 overflow-hidden rounded-full bg-space-700">
                           <span
-                            className="block h-full rounded-full bg-gradient-to-r from-ember-400 to-solar-300"
+                            className="block h-full rounded-full bg-ember-500"
                             style={{ width: `${progress}%` }}
                           />
                         </span>
@@ -1205,14 +1223,14 @@ export function AppFlow({
 
               <button
                 type="button"
-                className="dashboard-map-view absolute bottom-24 left-1/2 z-20 grid size-7 -translate-x-1/2 place-items-center rounded-full border border-pastel-cream/70 bg-space-950/75 font-mono text-sm font-bold text-pastel-cream shadow-[0_3px_10px_rgb(2_13_24_/_0.3)] backdrop-blur-sm hover:scale-110"
+                className="dashboard-map-view absolute bottom-24 left-1/2 z-20 flex min-h-11 -translate-x-1/2 items-center justify-center rounded-[var(--radius-button)] border border-hull-200/70 bg-space-950/90 px-4 py-2 font-mono text-[11px] font-bold text-hull-100 shadow-none backdrop-blur-sm hover:border-ember-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-500 focus-visible:ring-offset-2 focus-visible:ring-offset-space-950"
                 data-active={dashboardView === 'map'}
                 aria-label="Show island list"
                 aria-hidden={dashboardView !== 'map'}
                 tabIndex={dashboardView === 'map' ? 0 : -1}
                 onClick={() => setDashboardView('list')}
               >
-                ↑
+                View list
               </button>
 
               <section
@@ -1227,11 +1245,11 @@ export function AppFlow({
                   <h2 className="text-xl font-extrabold text-white">Your learning islands</h2>
                   <button
                     type="button"
-                    className="grid size-7 place-items-center rounded-full border border-pastel-cream/70 bg-space-950/75 font-mono text-sm font-bold text-pastel-cream shadow-[0_3px_10px_rgb(2_13_24_/_0.3)] backdrop-blur-sm transition-transform hover:scale-110"
+                    className="flex min-h-11 items-center justify-center rounded-[var(--radius-button)] border border-hull-200/70 bg-space-950/90 px-4 py-2 font-mono text-[11px] font-bold text-hull-100 shadow-none backdrop-blur-sm hover:border-ember-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-500 focus-visible:ring-offset-2 focus-visible:ring-offset-space-950"
                     aria-label="Show island map"
                     onClick={() => setDashboardView('map')}
                   >
-                    ↓
+                    View map
                   </button>
                 </div>
 
@@ -1255,12 +1273,12 @@ export function AppFlow({
                           setCurrentIslandIdx(idx)
                           go('island')
                         }}
-                        className={`w-full rounded-[var(--radius-panel)] border-2 p-4 text-left shadow-[0_5px_0_rgb(2_13_24_/_0.28)] transition-[transform,box-shadow,background-color] duration-200 ${
+                        className={`w-full rounded-[var(--radius-panel)] border p-4 text-left shadow-none transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-500 ${
                           locked
                             ? 'border-hull-400/50 bg-space-900/90 text-hull-300'
                             : passed
-                              ? 'border-pastel-mint bg-pastel-mint text-space-950 hover:-translate-y-0.5 hover:bg-white'
-                              : 'border-ember-200 bg-pastel-cream text-space-950 hover:-translate-y-0.5 hover:bg-white'
+                              ? 'border-signal-success/60 bg-signal-success/15 text-space-950 hover:bg-signal-success/25'
+                              : 'border-hull-300 bg-hull-50 text-space-950 hover:border-ember-300 hover:bg-hull-100'
                         }`}
                       >
                         <span className="flex items-start gap-3">
@@ -1310,9 +1328,7 @@ export function AppFlow({
                             >
                               <span
                                 className={`block h-full rounded-full ${
-                                  locked
-                                    ? 'bg-hull-400'
-                                    : 'bg-gradient-to-r from-ember-500 to-solar-300'
+                                  locked ? 'bg-hull-400' : 'bg-ember-500'
                                 }`}
                                 style={{ width: `${progress}%` }}
                               />
@@ -1338,7 +1354,7 @@ export function AppFlow({
 
               {allIslandsPassed && (
                 <Button
-                  variant="nebula"
+                  variant="quiet"
                   onClick={() => go('courseComplete')}
                   className="absolute inset-x-5 bottom-24 z-20 py-3 text-sm"
                 >
@@ -1349,94 +1365,151 @@ export function AppFlow({
           </div>
         )
 
-      case 'island':
-        return (
-          <ScreenShell
-            title={island.name}
-            subtitle={`Island ${currentIslandIdx + 1} of ${ISLANDS.length}`}
-            onBack={() => resetTo('dashboard', 'back')}
-            headerRight={
-              passedIslands[island.id] ? (
-                <Badge tone="streak" icon={<CheckIcon className="size-3" />}>
-                  cleared
-                </Badge>
-              ) : undefined
-            }
-          >
-            <Panel variant="outline" className="p-4">
-              <p className="text-sm leading-relaxed text-hull-200">{island.tagline}</p>
-              <ProgressMeter
-                label="Island progress"
-                value={Math.round((islandDone / island.activities.length) * 100)}
-                className="mt-4 rounded-[var(--radius-button)] bg-white/50 p-3 shadow-[inset_0_0_0_1px_rgb(2_13_24_/_0.12)] [&_[role=progressbar]]:h-4 [&_[role=progressbar]]:border-space-900/35 [&_[role=progressbar]]:bg-space-900/20 [&_[role=progressbar]]:shadow-inner"
-              />
-            </Panel>
-
-            <div className="flex flex-col gap-3">
-              {island.activities.map((a) => {
-                const Icon = activityIcon[a.type]
-                const isDone = !!completed[a.id]
-                return (
-                  <div
-                    key={a.id}
-                    role={a.available ? 'button' : undefined}
-                    tabIndex={a.available ? 0 : -1}
-                    onClick={a.available ? () => openActivity(a) : undefined}
-                    onKeyDown={
-                      a.available
-                        ? (e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                              e.preventDefault()
-                              openActivity(a)
-                            }
-                          }
-                        : undefined
-                    }
-                    className={a.available ? 'cursor-pointer' : 'cursor-not-allowed'}
-                    aria-disabled={!a.available}
-                    aria-label={`${a.title}, ${a.type}, ${a.points} PEEP points${isDone ? ', completed' : ''}${a.available ? '' : `, ${a.record.contentStatus.replace('_', ' ')}`}`}
-                  >
-                    <ActivityCard
-                      title={a.title}
-                      points={a.points}
-                      minutes={a.minutes}
-                      completed={isDone}
-                      unavailable={!a.available}
-                      icon={<Icon className="size-4" />}
-                    />
-                    {!a.available && (
-                      <p className="-mt-2 px-3 pb-1 font-mono text-[10px] font-bold uppercase tracking-wide text-space-700">
-                        {a.record.contentStatus === 'needs_review'
-                          ? 'Needs clinical review'
-                          : 'Coming soon'}
-                      </p>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-
-            <div className="mt-2">
-              {islandDone === island.activities.length && !passedIslands[island.id] ? (
-                island.finalExam.contentStatus === 'ready' && island.finalExam.content ? (
-                  <Button onClick={() => go('finalExamIntro')} className="w-full py-3 text-sm">
-                    Take the island final exam
-                  </Button>
-                ) : (
-                  <Button disabled className="w-full py-3 text-sm">
-                    Final exam coming soon
-                  </Button>
-                )
-              ) : (
-                <p className="text-center font-mono text-[10px] font-bold text-hull-400">
-                  {passedIslands[island.id]
-                    ? 'Exam cleared — the next island is charted.'
-                    : `${island.activities.filter((activity) => !activity.available).length} activities are awaiting approved content; complete the available activities in the meantime.`}
-                </p>
-              )}
-            </div>
-          </ScreenShell>
+      case 'island': {
+        const nextActivity = island.activities.find(
+          (activity) => activity.available && !completed[activity.id]
         )
+        const topics: { title: string; activities: Activity[] }[] = []
+        for (const activity of island.activities) {
+          const previous = topics.at(-1)
+          if (previous?.title === activity.title) previous.activities.push(activity)
+          else topics.push({ title: activity.title, activities: [activity] })
+        }
+        const landmark = ISLAND_SPOTS[currentIslandIdx % ISLAND_SPOTS.length]
+
+        return (
+          <div className="island-journey mx-auto max-w-md">
+            <ScreenShell
+              reserveNavSpace={false}
+              onBack={() => resetTo('dashboard', 'back')}
+              headerRight={
+                <span className="self-center text-xs font-semibold tracking-wide text-hull-200">
+                  {passedIslands[island.id] ? 'Island cleared' : 'Your learning journey'}
+                </span>
+              }
+            >
+              <div className="journey-hero">
+                <div className="relative z-10 min-w-0">
+                  <p className="mb-3 text-xs font-semibold tracking-wide text-ember-200">
+                    Island {String(currentIslandIdx + 1).padStart(2, '0')} /{' '}
+                    {String(ISLANDS.length).padStart(2, '0')}
+                  </p>
+                  <h1 className="break-words text-3xl font-extrabold leading-[1.05] tracking-tight text-white min-[380px]:text-4xl">
+                    {island.name}
+                  </h1>
+                </div>
+                <div
+                  className="journey-landmark"
+                  style={{ backgroundPosition: `${landmark.left} ${landmark.top}` }}
+                  aria-hidden="true"
+                />
+              </div>
+              <ProgressMeter
+                label={`${islandDone} of ${island.activities.length} activities completed`}
+                value={Math.round((islandDone / island.activities.length) * 100)}
+                className="mb-3"
+              />
+
+              <div className="journey-course -mx-4 flex-1 px-4 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] pt-6 sm:-mx-5 sm:px-5">
+                <div className="mb-6 flex items-center justify-between gap-3">
+                  <h2 className="text-lg font-extrabold tracking-tight text-space-950">
+                    Learning path
+                  </h2>
+                  <span className="text-xs font-medium text-space-700">{topics.length} topics</span>
+                </div>
+
+                <div className="flex flex-col gap-7">
+                  {topics.map((topic, index) => (
+                    <section key={`${index}-${topic.title}`} aria-label={topic.title}>
+                      <div className="mb-3 flex items-start gap-3">
+                        <span className="journey-topic-number" aria-hidden="true">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <h3 className="min-w-0 flex-1 pt-1 text-base font-extrabold leading-snug text-space-950">
+                          {topic.title}
+                        </h3>
+                      </div>
+                      <div className="journey-topic-lessons">
+                        {topic.activities.map((activity) => {
+                          const Icon = activityIcon[activity.type]
+                          const isDone = !!completed[activity.id]
+                          const isNext = activity.id === nextActivity?.id
+                          const unavailableReason =
+                            activity.record.contentStatus === 'needs_review'
+                              ? 'Needs clinical review before this activity can open.'
+                              : `Approved content is ${activity.record.contentStatus.replace('_', ' ')}.`
+                          return (
+                            <div key={activity.id}>
+                              <button
+                                type="button"
+                                onClick={() => openActivity(activity)}
+                                disabled={!activity.available}
+                                className="journey-lesson"
+                                data-next={isNext}
+                                aria-current={isNext ? 'step' : undefined}
+                                aria-label={`${activity.title}, ${activity.type}, ${activity.points} PEEP points${isDone ? ', completed' : ''}${activity.available ? '' : `, ${unavailableReason}`}`}
+                              >
+                                <ActivityCard
+                                  title={activityKindLabel[activity.type]}
+                                  points={activity.points}
+                                  minutes={activity.minutes}
+                                  completed={isDone}
+                                  unavailable={!activity.available}
+                                  icon={<Icon className="size-5" />}
+                                  className="journey-activity-card"
+                                />
+                                {activity.available && !isDone && (
+                                  <span className="journey-lesson-action" aria-hidden="true">
+                                    {isNext && <span>Start</span>}
+                                    <BackIcon className="size-4 rotate-180" />
+                                  </span>
+                                )}
+                              </button>
+                              {!activity.available && (
+                                <p className="px-3 pb-3 text-xs leading-5 text-space-700">
+                                  {unavailableReason}
+                                </p>
+                              )}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+
+                <details className="mt-7 border-t border-ember-200 pt-2 text-sm text-space-700">
+                  <summary className="min-h-11 cursor-pointer py-3 font-semibold">
+                    About this island
+                  </summary>
+                  <p className="pb-4 leading-relaxed">{island.tagline}</p>
+                </details>
+                <div className="mt-5">
+                  {islandDone === island.activities.length && !passedIslands[island.id] ? (
+                    island.finalExam.contentStatus === 'ready' && island.finalExam.content ? (
+                      <Button onClick={() => go('finalExamIntro')} className="w-full py-3 text-sm">
+                        Take the island final exam
+                      </Button>
+                    ) : (
+                      <Button disabled className="w-full py-3 text-sm">
+                        Final exam unavailable in approved catalog
+                      </Button>
+                    )
+                  ) : (
+                    <p className="text-sm leading-relaxed text-space-700">
+                      {passedIslands[island.id]
+                        ? 'Exam cleared — the next island is charted.'
+                        : island.activities.some((activity) => !activity.available)
+                          ? `${island.activities.filter((activity) => !activity.available).length} activities are unavailable until approved content is supplied; complete the available activities in the meantime.`
+                          : 'Complete the available activities to unlock the final exam.'}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </ScreenShell>
+          </div>
+        )
+      }
 
       case 'lessonReading': {
         const a = activityFor('reading')
@@ -1444,7 +1517,7 @@ export function AppFlow({
         if (!content) {
           return (
             <ScreenShell title={a.title} subtitle="Reading unavailable" onBack={back}>
-              <Panel className="p-5 text-sm text-hull-200">
+              <Panel className="p-5 text-sm text-space-700">
                 This reading is not available in the approved catalog.
               </Panel>
             </ScreenShell>
@@ -1460,23 +1533,60 @@ export function AppFlow({
         const question = content.confirmationQuestion
         const documentUrl = content.document ? readingMediaUrl(content.document) : null
         return (
-          <ScreenShell title={a.title} subtitle={`Reading · ~${a.minutes} min`} onBack={back}>
-            <Panel className="p-5">
-              <Badge tone="reading" icon={<BookIcon className="size-3" />} className="mb-3">
-                reading
-              </Badge>
+          <ScreenShell
+            title={a.title}
+            subtitle={`Reading · ~${a.minutes} min`}
+            onBack={back}
+            footer={
+              <>
+                {interactionNote && (
+                  <p
+                    role="alert"
+                    className="mb-3 rounded-[var(--radius-button)] border border-signal-danger/40 bg-signal-danger/10 p-4 text-sm font-medium leading-6 text-signal-danger"
+                  >
+                    {interactionNote}
+                  </p>
+                )}
+                <Button
+                  disabled={!quizChoice}
+                  onClick={() =>
+                    completeActivity(a, { type: 'reading', choiceId: quizChoice ?? '' })
+                  }
+                  className="w-full"
+                >
+                  Check understanding · up to {a.points} PEEP
+                </Button>
+              </>
+            }
+          >
+            <Panel className="overflow-hidden p-5">
+              <div className="-mx-5 -mt-5 mb-5 flex flex-wrap items-center justify-between gap-2 border-b border-ember-300 bg-pastel-peach px-5 py-3">
+                <Badge tone="reading" icon={<BookIcon className="size-4" />}>
+                  Reading lesson
+                </Badge>
+                {documentUrl && (
+                  <a
+                    href={documentUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-11 items-center text-xs font-bold text-space-950 underline decoration-2 underline-offset-4"
+                  >
+                    Open full-size PDF
+                  </a>
+                )}
+              </div>
               {documentUrl ? (
                 <object
                   data={documentUrl}
                   type="application/pdf"
                   aria-label={`${a.title} source document`}
-                  className="h-[65vh] min-h-[32rem] w-full rounded-lg bg-white"
+                  className="-mx-5 -mb-5 h-[65vh] min-h-[32rem] w-[calc(100%+2.5rem)] bg-white"
                 >
                   <a
                     href={documentUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-sm text-ember-300 underline"
+                    className="text-sm text-ember-700 underline"
                   >
                     Open the exact source PDF
                   </a>
@@ -1487,7 +1597,7 @@ export function AppFlow({
                     block.kind === 'text' ? (
                       <p
                         key={`${block.kind}-${index}`}
-                        className="whitespace-pre-wrap text-sm leading-relaxed text-hull-200"
+                        className="whitespace-pre-wrap text-base leading-7 text-space-700"
                       >
                         {block.text}
                       </p>
@@ -1503,13 +1613,15 @@ export function AppFlow({
                   )}
                 </div>
               ) : (
-                <p className="whitespace-pre-wrap text-sm leading-relaxed text-hull-200">
+                <p className="whitespace-pre-wrap text-base leading-7 text-space-700">
                   {content.body}
                 </p>
               )}
             </Panel>
             <Panel className="p-5">
-              <h2 className="text-sm font-bold leading-relaxed text-white">{question.prompt}</h2>
+              <h2 className="text-lg font-bold leading-relaxed text-space-950">
+                {question.prompt}
+              </h2>
               <div className="mt-4 flex flex-col gap-2">
                 {question.choices.map((choice) => (
                   <button
@@ -1520,29 +1632,16 @@ export function AppFlow({
                       setQuizChoice(choice.id)
                       setInteractionNote('')
                     }}
-                    className={`rounded-[var(--radius-button)] border px-4 py-3 text-left text-[13px] ${
-                      quizChoice === choice.id
-                        ? 'border-ember-400 bg-ember-500/15 text-white'
-                        : 'border-space-600 bg-space-950/50 text-hull-200 hover:bg-space-700'
-                    }`}
+                    className="answer-choice"
                   >
-                    {choice.text}
+                    <span>{choice.text}</span>
+                    <span className="grid size-5 place-items-center" aria-hidden="true">
+                      {quizChoice === choice.id && <CheckIcon className="size-5" />}
+                    </span>
                   </button>
                 ))}
               </div>
-              {interactionNote && (
-                <p role="alert" className="mt-4 text-[12px] text-solar-400">
-                  {interactionNote}
-                </p>
-              )}
             </Panel>
-            <Button
-              disabled={!quizChoice}
-              onClick={() => completeActivity(a, { type: 'reading', choiceId: quizChoice ?? '' })}
-              className="w-full py-3 text-sm"
-            >
-              Check understanding · up to {a.points} PEEP
-            </Button>
           </ScreenShell>
         )
       }
@@ -1553,7 +1652,7 @@ export function AppFlow({
         if (!content) {
           return (
             <ScreenShell title={a.title} subtitle="Video unavailable" onBack={back}>
-              <Panel className="p-5 text-sm text-hull-200">
+              <Panel className="p-5 text-sm text-space-700">
                 This video is not available in the approved catalog.
               </Panel>
             </ScreenShell>
@@ -1627,7 +1726,26 @@ export function AppFlow({
             : `Watch at least ${Math.round(condition.watchedFraction * 100)}% to complete this activity.`
 
         return (
-          <ScreenShell title={a.title} subtitle={`Video · ~${a.minutes} min`} onBack={back}>
+          <ScreenShell
+            title={a.title}
+            subtitle={`Video · ~${a.minutes} min`}
+            onBack={back}
+            footer={
+              <Button
+                disabled={!videoReady}
+                onClick={() =>
+                  completeActivity(a, {
+                    type: 'video',
+                    ended: videoEnded,
+                    watchedFraction: watchedFraction(),
+                  })
+                }
+                className="w-full"
+              >
+                {videoReady ? `Complete activity · ${a.points} PEEP` : requirement}
+              </Button>
+            }
+          >
             <Panel variant="outline" className="overflow-hidden">
               {videoUrl && !videoErrored ? (
                 <video
@@ -1651,7 +1769,7 @@ export function AppFlow({
               ) : (
                 <div
                   role="status"
-                  className="grid aspect-video place-items-center bg-space-950 px-6 text-center"
+                  className="grid aspect-video place-items-center bg-pastel-cream px-6 text-center"
                 >
                   <p className="max-w-xs text-[13px] leading-relaxed text-hull-200">
                     {videoUrl
@@ -1661,41 +1779,26 @@ export function AppFlow({
                 </div>
               )}
               <div className="flex items-center justify-between gap-3 px-4 py-3">
-                <span className="min-w-0 truncate font-mono text-[10px] font-bold text-hull-300">
-                  {content.media.assetId} · {Math.ceil(content.durationSeconds / 60)} min
+                <span className="text-sm font-semibold text-space-900">
+                  Lesson video · {Math.ceil(content.durationSeconds / 60)} min
                 </span>
-                <Badge tone="video" icon={<PlayIcon className="size-3" />}>
-                  video
+                <Badge tone="points" icon={<StarIcon className="size-3" />}>
+                  +{a.points} PEEP
                 </Badge>
               </div>
             </Panel>
             <Panel className="p-4">
-              <h2 className="mb-1 text-sm font-extrabold text-white">Source media</h2>
-              <p className="text-[13px] leading-relaxed text-hull-300">
-                {content.media.altText ?? a.blurb}
-              </p>
-              <p className="mt-3 font-mono text-[10px] font-bold uppercase tracking-wide text-solar-400">
+              <h2 className="mb-2 text-lg font-extrabold text-space-950">About this lesson</h2>
+              <p className="text-sm leading-6 text-space-700">{content.media.altText ?? a.blurb}</p>
+              <p className="mt-4 rounded-[var(--radius-button)] border-l-4 border-ember-500 bg-ember-100 p-3 text-sm font-semibold leading-6 text-ember-700">
                 {requirement}
               </p>
               {interactionNote && (
-                <p role="alert" className="mt-3 text-[12px] text-solar-400">
+                <p role="alert" className="mt-3 text-xs leading-5 text-signal-danger">
                   {interactionNote}
                 </p>
               )}
             </Panel>
-            <Button
-              disabled={!videoReady}
-              onClick={() =>
-                completeActivity(a, {
-                  type: 'video',
-                  ended: videoEnded,
-                  watchedFraction: watchedFraction(),
-                })
-              }
-              className="w-full py-3 text-sm"
-            >
-              {videoReady ? `Complete activity · ${a.points} PEEP` : requirement}
-            </Button>
           </ScreenShell>
         )
       }
@@ -1715,7 +1818,7 @@ export function AppFlow({
               </Badge>
               {content ? (
                 <>
-                  <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-hull-200">
+                  <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-space-700">
                     {content.objectives.map((objective) => (
                       <li key={objective}>{objective}</li>
                     ))}
@@ -1724,10 +1827,10 @@ export function AppFlow({
                     {content.controls.map((control) => (
                       <div
                         key={control.id}
-                        className="rounded-[var(--radius-chip)] border border-space-600 bg-space-950/50 p-3"
+                        className="rounded-[var(--radius-chip)] border border-hull-300 bg-hull-100 p-3"
                       >
                         <label
-                          className="block text-[12px] font-bold text-white"
+                          className="block text-xs font-bold text-space-900"
                           htmlFor={control.id}
                         >
                           {control.label}
@@ -1784,7 +1887,7 @@ export function AppFlow({
                             onClick={() =>
                               setVentLabState((current) => ({ ...current, [control.id]: true }))
                             }
-                            className="mt-2 rounded-[var(--radius-button)] border border-space-600 px-3 py-2 text-xs text-white"
+                            className="mt-2 min-h-11 rounded-[var(--radius-button)] border border-hull-300 bg-hull-50 px-3 py-2 text-xs font-bold text-space-800 transition-colors hover:border-ember-300 hover:bg-ember-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-500"
                           >
                             {ventLabState[control.id] ? 'Applied' : 'Apply'}
                           </button>
@@ -1792,7 +1895,7 @@ export function AppFlow({
                         {(control.unit ||
                           control.min !== undefined ||
                           control.max !== undefined) && (
-                          <span className="mt-2 block font-mono text-[10px] text-hull-400">
+                          <span className="mt-2 block font-mono text-xs leading-4 text-space-600">
                             {[control.min, control.max]
                               .filter((value) => value !== undefined)
                               .join('–')}
@@ -1804,11 +1907,16 @@ export function AppFlow({
                   </div>
                 </>
               ) : (
-                <p className="mt-4 text-sm text-hull-200">
+                <p className="mt-4 text-sm text-space-700">
                   The approved simulation payload is unavailable.
                 </p>
               )}
             </Panel>
+            {interactionNote && (
+              <p role="alert" className="text-xs leading-5 text-signal-danger">
+                {interactionNote}
+              </p>
+            )}
             <Button
               disabled={!content}
               onClick={() =>
@@ -1825,20 +1933,50 @@ export function AppFlow({
         )
       }
 
-      case 'quiz': {
+      case 'quiz':
+      case 'quizMatch':
+      case 'quizDrag': {
+        const previewInteraction =
+          screen === 'quizMatch' ? 'matching' : screen === 'quizDrag' ? 'drag_drop' : null
+        const hasPreviewQuestion = (activity: Activity) =>
+          Boolean(
+            previewInteraction &&
+            activity.record.type === 'quiz' &&
+            activity.record.content?.questions.some(
+              (item) => item.interaction === previewInteraction
+            )
+          )
         const a =
-          selectedActivity?.record.type === 'quiz'
+          selectedActivity?.record.type === 'quiz' &&
+          (!previewInteraction || hasPreviewQuestion(selectedActivity))
             ? selectedActivity
             : (island.activities.find(
-                (activity) => activity.record.type === 'quiz' && activity.available
-              ) ?? activityFor('quiz', 'matching', 'ordering', 'fill'))
+                (activity) =>
+                  activity.record.type === 'quiz' &&
+                  activity.available &&
+                  (!previewInteraction || hasPreviewQuestion(activity))
+              ) ??
+              ISLANDS.flatMap((item) => item.activities).find(
+                (activity) =>
+                  activity.record.type === 'quiz' &&
+                  activity.available &&
+                  (!previewInteraction || hasPreviewQuestion(activity))
+              ) ??
+              activityFor('quiz', 'matching', 'ordering', 'fill'))
         const questions =
           a.record.type === 'quiz' && a.record.content ? a.record.content.questions : []
-        const question = questions[quizQuestionIndex]
+        const requestedQuestionIndex = previewInteraction
+          ? questions.findIndex((item) => item.interaction === previewInteraction)
+          : -1
+        const questionIndex =
+          requestedQuestionIndex >= 0 && quizQuestionIndex === 0
+            ? requestedQuestionIndex
+            : quizQuestionIndex
+        const question = questions[questionIndex]
         if (!question) {
           return (
             <ScreenShell title={a.title} subtitle="Quiz unavailable" onBack={back}>
-              <Panel className="p-5 text-sm text-hull-200">
+              <Panel className="p-5 text-sm text-space-700">
                 No approved question is available for this activity.
               </Panel>
             </ScreenShell>
@@ -1886,24 +2024,42 @@ export function AppFlow({
         return (
           <ScreenShell
             title={a.title}
-            subtitle={`Question ${quizQuestionIndex + 1} of ${questions.length} · ${question.interaction.replace('_', ' ')}`}
+            subtitle={`Question ${questionIndex + 1} of ${questions.length}`}
             onBack={back}
+            footer={
+              <Button
+                disabled={!answered}
+                onClick={() => {
+                  if (questionIndex + 1 < questions.length) {
+                    setQuizQuestionIndex(questionIndex + 1)
+                  } else {
+                    go('quizFeedback')
+                  }
+                  window.scrollTo({ top: 0, behavior: 'instant' })
+                }}
+                className="w-full"
+              >
+                {questionIndex + 1 === questions.length ? 'Score quiz' : 'Next question'}
+              </Button>
+            }
           >
             <ProgressMeter
               label="Quiz progress"
-              value={Math.round((quizQuestionIndex / questions.length) * 100)}
+              value={Math.round((questionIndex / questions.length) * 100)}
             />
-            <Panel className="p-5">
-              <Badge tone="quiz" icon={<QuizIcon className="size-3" />} className="mb-3">
-                checkpoint quiz
-              </Badge>
+            <Panel className="overflow-hidden p-5">
+              <div className="-mx-5 -mt-5 mb-5 border-b border-ember-300 bg-pastel-peach px-5 py-3">
+                <Badge tone="quiz" icon={<QuizIcon className="size-4" />}>
+                  Checkpoint quiz
+                </Badge>
+              </div>
               {question.promptBlocks ? (
                 <div className="mt-4 flex flex-col gap-3">
                   {question.promptBlocks.map((block, index) =>
                     block.kind === 'text' ? (
                       <p
                         key={`${block.kind}-${index}`}
-                        className="text-sm font-bold leading-relaxed text-white"
+                        className="text-lg font-bold leading-relaxed text-space-950"
                       >
                         {block.text}
                       </p>
@@ -1934,7 +2090,7 @@ export function AppFlow({
                         alt={question.promptMedia?.altText ?? ''}
                       />
                     ))}
-                  <h2 className="text-sm font-bold leading-relaxed text-white">
+                  <h2 className="text-lg font-bold leading-relaxed text-space-950">
                     {question.prompt}
                   </h2>
                 </>
@@ -1960,20 +2116,21 @@ export function AppFlow({
                           })
                         }}
                         aria-pressed={selected}
-                        className={`rounded-[var(--radius-button)] border px-4 py-3 text-left text-[13px] ${
-                          selected
-                            ? 'border-ember-400 bg-ember-500/15 text-white'
-                            : 'border-space-600 bg-space-950/50 text-hull-200 hover:bg-space-700'
-                        }`}
+                        className="answer-choice"
                       >
-                        {choice.media && mediaUrl(choice.media) && (
-                          <img
-                            className="mb-2 max-h-48 w-full rounded-lg object-contain"
-                            src={mediaUrl(choice.media) ?? ''}
-                            alt={choice.media.altText ?? ''}
-                          />
-                        )}
-                        {choice.text}
+                        <span>
+                          {choice.media && mediaUrl(choice.media) && (
+                            <img
+                              className="mb-2 max-h-48 w-full rounded-lg object-contain"
+                              src={mediaUrl(choice.media) ?? ''}
+                              alt={choice.media.altText ?? ''}
+                            />
+                          )}
+                          {choice.text}
+                        </span>
+                        <span className="grid size-5 place-items-center" aria-hidden="true">
+                          {selected && <CheckIcon className="size-5" />}
+                        </span>
                       </button>
                     )
                   })}
@@ -2060,38 +2217,52 @@ export function AppFlow({
                 </div>
               )}
             </Panel>
-            <Button
-              disabled={!answered}
-              onClick={() => {
-                if (quizQuestionIndex + 1 < questions.length) {
-                  setQuizQuestionIndex((index) => index + 1)
-                } else {
-                  go('quizFeedback')
-                }
-              }}
-              className="w-full py-3 text-sm"
-            >
-              {quizQuestionIndex + 1 === questions.length ? 'Score quiz' : 'Next question'}
-            </Button>
           </ScreenShell>
         )
       }
 
       case 'quizFeedback': {
+        const previewInteraction =
+          history[history.length - 1] === 'quizMatch'
+            ? 'matching'
+            : history[history.length - 1] === 'quizDrag'
+              ? 'drag_drop'
+              : null
+        const matchesPreview = (activity: Activity) =>
+          activity.record.type === 'quiz' &&
+          activity.available &&
+          (!previewInteraction ||
+            activity.record.content?.questions.some(
+              (item) => item.interaction === previewInteraction
+            ))
         const a =
-          selectedActivity?.record.type === 'quiz'
+          selectedActivity?.record.type === 'quiz' && matchesPreview(selectedActivity)
             ? selectedActivity
-            : (island.activities.find(
-                (activity) => activity.record.type === 'quiz' && activity.available
-              ) ?? activityFor('quiz', 'matching', 'ordering', 'fill'))
+            : (island.activities.find(matchesPreview) ??
+              ISLANDS.flatMap((item) => item.activities).find(matchesPreview) ??
+              activityFor('quiz', 'matching', 'ordering', 'fill'))
         const grade =
           a.record.type === 'quiz'
             ? gradeActivity(a.record, { type: 'quiz', answers: quizResponses })
             : null
         const passed = grade?.status === 'passed'
+        const explanations = [...new Set(grade?.items.map((item) => item.feedback).filter(Boolean))]
         return (
-          <ScreenShell title="Quiz results" subtitle={a.title} onBack={back}>
-            <Panel className={`p-5 ${passed ? '' : 'border-signal-danger/60'}`}>
+          <ScreenShell
+            title="Quiz results"
+            subtitle={a.title}
+            onBack={back}
+            footer={
+              <Button
+                disabled={!grade}
+                onClick={() => completeActivity(a, { type: 'quiz', answers: quizResponses })}
+                className="w-full"
+              >
+                Continue · collect {grade?.pointsEarned ?? 0} PEEP
+              </Button>
+            }
+          >
+            <Panel className="quiz-result p-5" data-passed={passed}>
               <div className="mb-3 flex items-center gap-2">
                 <span
                   className={`grid size-10 place-items-center rounded-full ${passed ? 'bg-signal-success/20 text-signal-success' : 'bg-signal-danger/20 text-signal-danger'}`}
@@ -2099,132 +2270,55 @@ export function AppFlow({
                 >
                   {passed ? <CheckIcon className="size-5" /> : <QuizIcon className="size-5" />}
                 </span>
-                <h2 className="text-base font-extrabold text-white">
+                <h2 className="text-2xl font-extrabold text-space-950">
                   {grade
                     ? `${grade.correctCount} of ${grade.totalCount} correct`
                     : 'Unable to score'}
                 </h2>
               </div>
-              <p className="text-sm leading-relaxed text-hull-200">
+              <p className="text-sm leading-relaxed text-space-700">
                 {grade
                   ? `${grade.pointsEarned} of ${grade.maxPoints} PEEP points earned.`
                   : 'The selected activity is not an approved quiz.'}
               </p>
-              {grade?.items.map(
-                (item) =>
-                  item.feedback && (
-                    <p key={item.itemId} className="mt-3 text-[12px] leading-relaxed text-hull-300">
-                      {item.feedback}
+              {explanations.length > 0 && (
+                <details className="mt-5 border-t border-space-900/15 pt-2 text-sm text-space-700">
+                  <summary className="min-h-11 cursor-pointer py-3 font-bold">
+                    Review source explanations
+                  </summary>
+                  {explanations.map((explanation, index) => (
+                    <p key={index} className="mt-3 whitespace-pre-line text-sm leading-6">
+                      {explanation}
                     </p>
-                  )
-              )}
-            </Panel>
-            <Button
-              disabled={!grade}
-              onClick={() => completeActivity(a, { type: 'quiz', answers: quizResponses })}
-              className="w-full py-3 text-sm"
-            >
-              Continue · collect {grade?.pointsEarned ?? 0} PEEP
-            </Button>
-          </ScreenShell>
-        )
-      }
-
-      case 'quizMatch': {
-        const activity = activityFor('matching')
-        const question =
-          activity.record.type === 'quiz'
-            ? activity.record.content?.questions.find((item) => item.interaction === 'matching')
-            : undefined
-        return (
-          <ScreenShell title={activity.title} subtitle="Matching activity" onBack={back}>
-            <Panel className="p-5">
-              <h2 className="text-sm font-bold leading-relaxed text-white">
-                {question?.prompt ?? 'The approved matching prompt is unavailable.'}
-              </h2>
-              {question && (
-                <ul className="mt-4 space-y-2 text-[13px] text-hull-200">
-                  {question.choices.map((choice) => (
-                    <li
-                      key={choice.id}
-                      className="rounded-[var(--radius-chip)] border border-space-600 px-3 py-2"
-                    >
-                      {choice.text}
-                    </li>
                   ))}
-                </ul>
+                </details>
               )}
             </Panel>
-            <Button disabled className="w-full py-3 text-sm">
-              Interactive matching coming soon
-            </Button>
           </ScreenShell>
         )
       }
 
-      case 'quizDrag': {
-        const activity = activityFor('ordering')
-        const question =
-          activity.record.type === 'quiz'
-            ? activity.record.content?.questions.find((item) => item.interaction === 'drag_drop')
-            : undefined
+      case 'quizFill':
         return (
-          <ScreenShell title={activity.title} subtitle="Drag-and-drop activity" onBack={back}>
+          <ScreenShell
+            title="Fill in the blank"
+            subtitle="Unavailable in approved catalog"
+            onBack={back}
+          >
             <Panel className="p-5">
-              <h2 className="text-sm font-bold leading-relaxed text-white">
-                {question?.prompt ?? 'The approved drag-and-drop prompt is unavailable.'}
-              </h2>
-              {question && (
-                <>
-                  <div className="mt-4 flex flex-col gap-2">
-                    {question.choices.map((choice) => (
-                      <div
-                        key={choice.id}
-                        className="rounded-[var(--radius-chip)] border border-space-600 px-3 py-2 text-[13px] text-hull-200"
-                      >
-                        {choice.text}
-                      </div>
-                    ))}
-                  </div>
-                  <p className="mt-4 font-mono text-[10px] font-bold uppercase tracking-wide text-hull-400">
-                    Targets: {question.targets.map((target) => target.text).join(' · ')}
-                  </p>
-                </>
-              )}
-            </Panel>
-            <Button disabled className="w-full py-3 text-sm">
-              Interactive sorting coming soon
-            </Button>
-          </ScreenShell>
-        )
-      }
-
-      case 'quizFill': {
-        const activity = activityFor('fill')
-        const question =
-          activity.record.type === 'quiz'
-            ? activity.record.content?.questions.find((item) => item.interaction === 'fill_blank')
-            : undefined
-        return (
-          <ScreenShell title={activity.title} subtitle="Fill in the blank" onBack={back}>
-            <Panel className="p-5">
-              <p className="text-sm leading-relaxed text-hull-200">
-                {question?.prompt ?? 'The approved fill-in prompt is unavailable.'}
+              <Badge tone="neutral" className="mb-3">
+                unavailable
+              </Badge>
+              <p className="text-sm leading-relaxed text-space-700">
+                No approved fill-in question is available in the current curriculum. No synthetic
+                question or grading path is shown here.
               </p>
-              <Field label="Your answer">
-                <input
-                  className={inputClass}
-                  value={interactionValue}
-                  onChange={(event) => setInteractionValue(event.target.value)}
-                />
-              </Field>
             </Panel>
-            <Button disabled className="w-full py-3 text-sm">
-              Interactive grading coming soon
+            <Button variant="secondary" onClick={back} className="w-full">
+              Return to the previous screen
             </Button>
           </ScreenShell>
         )
-      }
 
       case 'caseVignette': {
         const activity = activityFor('case')
@@ -2232,7 +2326,7 @@ export function AppFlow({
         return (
           <ScreenShell title={activity.title} subtitle="Clinical case · SBAR" onBack={back}>
             <Panel className="p-5">
-              <p className="text-sm leading-relaxed text-hull-200">
+              <p className="text-sm leading-relaxed text-space-700">
                 {content?.scenario ?? 'The approved case payload is unavailable.'}
               </p>
               {content && (
@@ -2243,11 +2337,14 @@ export function AppFlow({
                         key={decision.id}
                         type="button"
                         aria-pressed={interactionValue === decision.id}
-                        onClick={() => setInteractionValue(decision.id)}
-                        className={`rounded-[var(--radius-button)] border px-3 py-3 text-left text-[13px] ${
+                        onClick={() => {
+                          setInteractionValue(decision.id)
+                          setInteractionNote('')
+                        }}
+                        className={`min-h-11 rounded-[var(--radius-button)] border px-3 py-3 text-left text-[13px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-500 ${
                           interactionValue === decision.id
-                            ? 'border-ember-400 bg-ember-500/15 text-white'
-                            : 'border-space-600 text-hull-200'
+                            ? 'border-ember-500 bg-ember-100 text-space-950'
+                            : 'border-hull-300 bg-hull-50 text-space-700 hover:border-ember-300 hover:bg-hull-100'
                         }`}
                       >
                         {decision.text}
@@ -2257,20 +2354,28 @@ export function AppFlow({
                   <Field label={content.sbar.prompt}>
                     <textarea
                       className={`${inputClass} mt-3 min-h-24 resize-y`}
-                      value={interactionNote}
-                      onChange={(event) => setInteractionNote(event.target.value)}
+                      value={caseSbar}
+                      onChange={(event) => {
+                        setCaseSbar(event.target.value)
+                        setInteractionNote('')
+                      }}
                     />
                   </Field>
                 </>
               )}
             </Panel>
+            {interactionNote && (
+              <p role="alert" className="text-xs leading-5 text-signal-danger">
+                {interactionNote}
+              </p>
+            )}
             <Button
-              disabled={!content || !interactionValue || !interactionNote.trim()}
+              disabled={!content || !interactionValue || !caseSbar.trim()}
               onClick={() =>
                 completeActivity(activity, {
                   type: 'case_vignette',
                   decisionIds: [interactionValue],
-                  sbar: interactionNote,
+                  sbar: caseSbar,
                 })
               }
               className="w-full py-3 text-sm"
@@ -2287,19 +2392,21 @@ export function AppFlow({
         return (
           <ScreenShell title={activity.title} subtitle="Supervised real-world quest" onBack={back}>
             <Panel className="p-5">
-              <p className="whitespace-pre-wrap text-sm leading-relaxed text-hull-200">
+              <p className="whitespace-pre-wrap text-sm leading-relaxed text-space-700">
                 {content?.instructions ?? 'The approved quest payload is unavailable.'}
               </p>
               {content && (
-                <div className="mt-4 rounded-[var(--radius-chip)] border border-space-600 bg-space-950/50 p-3">
-                  <span className="block font-mono text-[10px] font-bold uppercase tracking-wide text-ember-300">
+                <div className="mt-4 rounded-[var(--radius-chip)] border border-hull-300 bg-hull-100 p-3">
+                  <span className="block font-mono text-[10px] font-bold uppercase tracking-wide text-ember-700">
                     Supervisor
                   </span>
-                  <span className="mt-1 block text-sm text-white">{content.supervisorRole}</span>
-                  <span className="mt-2 block text-[11px] text-hull-400">
+                  <span className="mt-1 block text-sm font-bold text-space-900">
+                    {content.supervisorRole}
+                  </span>
+                  <span className="mt-2 block text-xs leading-5 text-space-600">
                     Validation: {content.offlineValidation.method.replaceAll('_', ' ')}
                   </span>
-                  <label className="mt-4 flex items-start gap-3 text-sm text-white">
+                  <label className="mt-4 flex min-h-11 items-start gap-3 text-sm text-space-800">
                     <input
                       type="checkbox"
                       checked={interactionValue === 'confirmed'}
@@ -2313,6 +2420,11 @@ export function AppFlow({
                 </div>
               )}
             </Panel>
+            {interactionNote && (
+              <p role="alert" className="text-xs leading-5 text-signal-danger">
+                {interactionNote}
+              </p>
+            )}
             <Button
               disabled={!content || interactionValue !== 'confirmed'}
               onClick={() =>
@@ -2346,7 +2458,7 @@ export function AppFlow({
                 Checkpoint cleared
               </p>
               <h1 className="mt-1 text-3xl font-extrabold text-space-950">Activity complete</h1>
-              <p className="mt-3 rounded-full border-2 border-aqua-400/50 bg-pastel-mint px-4 py-2 text-sm font-bold text-space-900">
+              <p className="mt-3 max-w-full break-words rounded-[var(--radius-chip)] border border-hull-300 bg-hull-100 px-4 py-2 text-sm font-bold text-space-900">
                 {lastEarned?.title ?? 'Checkpoint'}
               </p>
             </div>
@@ -2354,6 +2466,7 @@ export function AppFlow({
               tone="points"
               icon={<StarIcon className="size-3" />}
               className="completion-reward px-4 py-2 text-sm"
+              role="status"
               aria-label={`+${lastEarned?.points ?? 0} PEEP points`}
             >
               <span aria-hidden="true">
@@ -2363,7 +2476,7 @@ export function AppFlow({
             <ProgressMeter
               label="Island progress"
               value={Math.round((islandDone / island.activities.length) * 100)}
-              className="completion-progress w-full rounded-[var(--radius-panel)] border-2 border-aqua-400/50 bg-pastel-mint p-3 shadow-[0_4px_0_#5faea8]"
+              className="completion-progress w-full rounded-[var(--radius-panel)] border border-hull-300 bg-hull-100 p-3 shadow-none"
             />
             <div className="completion-actions flex w-full flex-col gap-2">
               {islandDone === island.activities.length && !passedIslands[island.id] ? (
@@ -2373,7 +2486,7 @@ export function AppFlow({
                   </Button>
                 ) : (
                   <Button disabled className="w-full py-3 text-sm">
-                    Final exam coming soon
+                    Final exam unavailable in approved catalog
                   </Button>
                 )
               ) : (
@@ -2386,7 +2499,7 @@ export function AppFlow({
                 onClick={() => resetTo('dashboard', 'back')}
                 className="w-full"
               >
-                Return to planet map
+                Return to dashboard
               </Button>
             </div>
           </OutcomeShell>
@@ -2403,10 +2516,12 @@ export function AppFlow({
           >
             <Panel className="p-5">
               <Badge tone="neutral" className="mb-3">
-                coming soon
+                unavailable
               </Badge>
-              <h2 className="text-base font-extrabold text-white">{island.finalExam.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-hull-200">
+              <h2 className="break-words text-base font-extrabold text-space-950">
+                {island.finalExam.title}
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-space-700">
                 The source corpus does not contain an approved final-exam question bank for this
                 island. No synthetic questions or points will be used.
               </p>
@@ -2425,12 +2540,12 @@ export function AppFlow({
         return (
           <OutcomeShell>
             <Badge tone="neutral">assessment pending</Badge>
-            <h1 className="text-3xl font-extrabold leading-tight text-white">{island.name}</h1>
-            <p className="max-w-xs text-sm leading-relaxed text-hull-300">
+            <h1 className="text-3xl font-extrabold leading-tight text-space-950">{island.name}</h1>
+            <p className="max-w-xs text-sm leading-relaxed text-space-700">
               Island completion cannot be recorded until its approved final exam is available.
             </p>
             <Button onClick={() => resetTo('dashboard', 'back')} className="w-full py-3 text-sm">
-              Return to planet map
+              Return to dashboard
             </Button>
           </OutcomeShell>
         )
@@ -2439,22 +2554,22 @@ export function AppFlow({
         return (
           <OutcomeShell>
             <Badge tone="neutral">course completion pending</Badge>
-            <h1 className="text-3xl font-extrabold leading-tight text-white">
+            <h1 className="text-3xl font-extrabold leading-tight text-space-950">
               Final assessments unavailable
             </h1>
-            <p className="max-w-xs text-sm leading-relaxed text-hull-300">
+            <p className="max-w-xs text-sm leading-relaxed text-space-700">
               Graduation remains locked until all six approved final-exam banks are supplied and
               passed.
             </p>
             <Button onClick={() => resetTo('dashboard', 'back')} className="w-full py-3 text-sm">
-              Back to the planet
+              Return to dashboard
             </Button>
           </OutcomeShell>
         )
 
       case 'profile':
         return (
-          <ScreenShell title="Profile" subtitle="Local identity & record">
+          <ScreenShell title="Profile" subtitle="Session identity & record">
             <HudProfile username={displayName} streakDays={streak} points={points} />
             <Panel className="p-4">
               <div className="grid grid-cols-3 gap-2 text-center">
@@ -2465,10 +2580,10 @@ export function AppFlow({
                 ].map((s) => (
                   <div
                     key={s.label}
-                    className="rounded-[var(--radius-chip)] border border-space-600 bg-space-950/50 px-2 py-3"
+                    className="rounded-[var(--radius-chip)] border border-hull-300 bg-hull-100 px-2 py-3"
                   >
-                    <span className="block text-lg font-extrabold text-white">{s.value}</span>
-                    <span className="block font-mono text-[9px] uppercase tracking-wider text-hull-400">
+                    <span className="block text-lg font-extrabold text-space-950">{s.value}</span>
+                    <span className="block font-mono text-[10px] uppercase tracking-wider text-space-600">
                       {s.label}
                     </span>
                   </div>
@@ -2477,43 +2592,42 @@ export function AppFlow({
             </Panel>
             <Panel className="p-4">
               <Field label="Display name">
-                <div className="flex gap-2">
-                  <input
-                    value={displayName}
-                    onChange={(e) => {
-                      setDisplayName(e.target.value)
-                      setProfileSaved(false)
-                    }}
-                    className={inputClass}
-                    maxLength={24}
-                  />
-                  <Button
-                    variant="secondary"
-                    onClick={() => setProfileSaved(true)}
-                    disabled={displayName.trim().length === 0}
-                  >
-                    Save
-                  </Button>
-                </div>
+                <input
+                  value={displayName}
+                  onChange={(e) => {
+                    setDisplayName(e.target.value)
+                    setProfileSaved(false)
+                  }}
+                  className={inputClass}
+                  maxLength={24}
+                />
               </Field>
+              <Button
+                variant="secondary"
+                className="mt-3 w-full"
+                onClick={() => setProfileSaved(true)}
+                disabled={displayName.trim().length === 0}
+              >
+                Apply name
+              </Button>
               {profileSaved && (
                 <p
                   role="status"
                   className="mt-2 font-mono text-[11px] font-bold text-signal-success"
                 >
-                  Saved locally — no data leaves this device.
+                  Session name updated in memory. No backend or persistence is connected.
                 </p>
               )}
             </Panel>
             <Panel variant="outline" className="flex items-center gap-3 p-4">
-              <UserIcon className="size-5 shrink-0 text-nebula-300" />
-              <p className="text-[12px] leading-relaxed text-hull-300">
+              <UserIcon className="size-5 shrink-0 text-ember-700" />
+              <p className="text-xs leading-5 text-space-700">
                 Operative:{' '}
-                <span className="font-bold text-hull-100">
+                <span className="font-bold text-space-950">
                   {AVATARS.find((a) => a.id === avatar)?.label ?? 'Unassigned'}
                 </span>
-                . Progress is stored in this browser only and can be exported via your site
-                coordinator.
+                . Progress is held in memory for this session; this prototype has no persistence or
+                backend connection.
               </p>
             </Panel>
           </ScreenShell>
@@ -2521,34 +2635,35 @@ export function AppFlow({
 
       case 'settings':
         return (
-          <ScreenShell title="Settings" subtitle="Device-local preferences">
-            <div className="flex flex-col gap-2">
+          <ScreenShell title="Settings" subtitle="Preferences for this session">
+            <Panel className="overflow-hidden">
+              <h2 className="border-b border-ember-300 bg-pastel-peach px-4 py-3 text-base font-extrabold text-space-950">
+                Learning preferences
+              </h2>
               <ToggleRow
                 label="Sound effects"
-                description="Chimes on completion and streak milestones"
+                description="Visual preference for this session"
                 checked={soundOn}
                 onChange={setSoundOn}
               />
               <ToggleRow
                 label="Reduce motion"
-                description="Calmer transitions across the planet map"
+                description="Reduce transitions and animated feedback in this session"
                 checked={reduceMotion}
                 onChange={setReduceMotion}
               />
               <ToggleRow
                 label="Offline mode"
-                description="Simulate a lost connection; packaged content keeps working"
+                description="Show the local offline-mode state; no backend sync is connected"
                 checked={!online}
                 onChange={(v) => {
                   setOnline(!v)
                   if (v) go('offline')
                 }}
               />
-            </div>
+            </Panel>
             <Panel className="p-4">
-              <span className="mb-2 block font-mono text-[11px] font-bold uppercase tracking-wider text-hull-300">
-                Study role
-              </span>
+              <h2 className="mb-3 text-base font-extrabold text-space-950">Study role</h2>
               <div className="grid grid-cols-2 gap-2">
                 {(['learner', 'researcher'] as const).map((r) => (
                   <button
@@ -2556,10 +2671,10 @@ export function AppFlow({
                     type="button"
                     onClick={() => setRole(r)}
                     aria-pressed={role === r}
-                    className={`rounded-[var(--radius-button)] border px-3 py-2.5 font-mono text-[11px] font-bold capitalize ${
+                    className={`min-h-12 rounded-[var(--radius-button)] border-2 px-3 py-3 text-sm font-bold capitalize transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-700 ${
                       role === r
-                        ? 'border-nebula-400 bg-nebula-500/20 text-nebula-200'
-                        : 'border-space-600 bg-space-950/50 text-hull-300 hover:bg-space-700'
+                        ? 'border-ember-600 bg-pastel-peach text-space-950 shadow-[var(--shadow-raise-card)]'
+                        : 'border-ember-200 bg-hull-50 text-space-700 hover:border-ember-300 hover:bg-ember-100'
                     }`}
                   >
                     {r}
@@ -2567,7 +2682,7 @@ export function AppFlow({
                 ))}
               </div>
               <Button
-                variant="nebula"
+                variant="quiet"
                 className="mt-3 w-full"
                 onClick={() => go(role === 'researcher' ? 'researcher' : 'accessDenied')}
               >
@@ -2575,8 +2690,8 @@ export function AppFlow({
                 Open researcher console
               </Button>
             </Panel>
-            <p className="text-center font-mono text-[10px] text-hull-500">
-              GAMER-ICU · local-first build · no telemetry
+            <p className="text-center text-xs leading-5 text-hull-400">
+              GAMER-ICU · session-only prototype · no backend connection
             </p>
           </ScreenShell>
         )
@@ -2601,8 +2716,8 @@ export function AppFlow({
                 { label: 'Suppressed cells', value: '2' },
               ].map((m) => (
                 <Panel key={m.label} className="p-3 text-center">
-                  <span className="block text-xl font-extrabold text-white">{m.value}</span>
-                  <span className="block font-mono text-[9px] uppercase tracking-wider text-hull-400">
+                  <span className="block text-xl font-extrabold text-space-950">{m.value}</span>
+                  <span className="block font-mono text-[10px] uppercase tracking-wider text-space-600">
                     {m.label}
                   </span>
                 </Panel>
@@ -2611,7 +2726,7 @@ export function AppFlow({
             <Panel className="overflow-hidden p-0">
               <table className="w-full text-left text-[12px]">
                 <thead>
-                  <tr className="border-b border-space-600 bg-space-950/60 font-mono text-[9px] uppercase tracking-wider text-hull-400">
+                  <tr className="border-b border-hull-300 bg-hull-100 font-mono text-[10px] uppercase tracking-wider text-space-600">
                     <th className="px-3 py-2.5">Island</th>
                     <th className="px-2 py-2.5 text-right">n</th>
                     <th className="px-2 py-2.5 text-right">Done</th>
@@ -2621,18 +2736,18 @@ export function AppFlow({
                 </thead>
                 <tbody>
                   {RESEARCH_ROWS.map((r) => (
-                    <tr key={r.island} className="border-b border-space-600/50 last:border-0">
-                      <td className="px-3 py-2.5 font-bold text-hull-100">{r.island}</td>
-                      <td className="px-2 py-2.5 text-right font-mono text-hull-300">
+                    <tr key={r.island} className="border-b border-hull-300/70 last:border-0">
+                      <td className="px-3 py-2.5 font-bold text-space-900">{r.island}</td>
+                      <td className="px-2 py-2.5 text-right font-mono text-space-700">
                         {r.enrolled < 5 ? '—' : r.enrolled}
                       </td>
-                      <td className="px-2 py-2.5 text-right font-mono text-hull-300">
+                      <td className="px-2 py-2.5 text-right font-mono text-space-700">
                         {r.completion}%
                       </td>
-                      <td className="px-2 py-2.5 text-right font-mono text-hull-300">
+                      <td className="px-2 py-2.5 text-right font-mono text-space-700">
                         {r.avgScore}
                       </td>
-                      <td className="px-3 py-2.5 text-right font-mono text-hull-300">
+                      <td className="px-3 py-2.5 text-right font-mono text-space-700">
                         {r.medianMin}
                       </td>
                     </tr>
@@ -2641,7 +2756,7 @@ export function AppFlow({
               </table>
             </Panel>
             <div className="flex flex-col gap-2">
-              <Button variant="nebula" onClick={downloadCsv} className="w-full">
+              <Button variant="quiet" onClick={downloadCsv} className="w-full">
                 <DownloadIcon className="size-4" />
                 Download aggregate CSV
               </Button>
@@ -2661,21 +2776,21 @@ export function AppFlow({
         return (
           <OutcomeShell>
             <span
-              className="grid size-20 place-items-center rounded-full bg-space-800 text-hull-300"
+              className="grid size-20 place-items-center rounded-full bg-hull-100 text-space-700"
               aria-hidden="true"
             >
               <WifiOffIcon className="size-10" />
             </span>
             <div>
-              <h1 className="text-2xl font-extrabold text-white">You are offline</h1>
-              <p className="mt-2 max-w-xs text-sm leading-relaxed text-hull-300">
-                No connection detected. Packaged lessons, quizzes and your saved progress keep
-                working — anything new will sync when you are back.
+              <h1 className="text-2xl font-extrabold text-space-950">Offline mode preview</h1>
+              <p className="mt-2 max-w-xs text-sm leading-relaxed text-space-700">
+                This is a local state preview. Lessons and progress are not cached or synchronized;
+                this prototype keeps state in memory only.
               </p>
             </div>
             <Panel variant="outline" className="w-full p-4 text-left">
-              <p className="font-mono text-[11px] leading-relaxed text-hull-300">
-                Cached: 6 islands · 17 activities · all exam banks. Nothing to download.
+              <p className="text-xs leading-5 text-space-700">
+                Nothing is downloaded or sent to a backend in this prototype.
               </p>
             </Panel>
             <div className="flex w-full flex-col gap-2">
@@ -2686,10 +2801,10 @@ export function AppFlow({
                 }}
                 className="w-full py-3 text-sm"
               >
-                Retry connection
+                Return to dashboard
               </Button>
               <Button variant="secondary" onClick={() => resetTo('dashboard')} className="w-full">
-                Keep learning offline
+                Continue in this session
               </Button>
             </div>
           </OutcomeShell>
@@ -2705,25 +2820,29 @@ export function AppFlow({
               <LockIcon className="size-10" />
             </span>
             <div>
-              <h1 className="text-2xl font-extrabold text-white">Access denied</h1>
-              <p className="mt-2 max-w-xs text-sm leading-relaxed text-hull-300">
+              <h1 className="text-2xl font-extrabold text-space-950">
+                Researcher view unavailable
+              </h1>
+              <p className="mt-2 max-w-xs text-sm leading-relaxed text-space-700">
                 The researcher console requires a researcher or administrator role. Your current
-                role is <span className="font-bold text-hull-100">{role}</span>. This attempt has
-                been recorded in the local audit log.
+                role is <span className="font-bold text-space-950">{role}</span>. No access request
+                was sent because this prototype has no backend access control.
               </p>
             </div>
             <div className="flex w-full flex-col gap-2">
               <Button
-                variant="nebula"
+                variant="quiet"
                 disabled={accessRequested}
                 onClick={() => setAccessRequested(true)}
                 className="w-full"
               >
-                {accessRequested ? 'Request sent to site coordinator' : 'Request researcher access'}
+                {accessRequested
+                  ? 'Notice acknowledged for this session'
+                  : 'Acknowledge limitation'}
               </Button>
               {accessRequested && (
                 <p role="status" className="font-mono text-[11px] font-bold text-signal-success">
-                  Access request queued locally.
+                  This limitation was acknowledged for this session.
                 </p>
               )}
               <Button
@@ -2741,20 +2860,26 @@ export function AppFlow({
 
   return (
     <main
-      className={`relative min-h-dvh overflow-x-hidden bg-space-900 bg-[url('/background.png')] bg-cover bg-center bg-no-repeat text-hull-100 ${
+      className={`relative min-h-dvh overflow-x-clip text-hull-100 ${
+        screen === 'welcome' || screen === 'dashboard' || screen === 'mission'
+          ? "bg-space-900 bg-[url('/background.png')] bg-cover bg-center bg-no-repeat"
+          : 'bg-space-950'
+      } ${
         screen === 'island'
           ? 'h-dvh overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
           : ''
-      } ${screen === 'login' || screen === 'register' ? 'lg:bg-right' : ''}`}
+      } ${screen === 'login' || screen === 'register' ? 'lg:bg-right' : ''} ${
+        reduceMotion ? '[&_*]:!animate-none [&_*]:!transition-none' : ''
+      }`}
     >
       {showScreenPicker && (
-        <div className="fixed inset-x-0 top-0 z-50 flex justify-center p-2">
+        <div className="relative z-50 flex h-20 items-center justify-center border-b border-space-600 bg-space-950 p-2">
           <label className="flex items-center gap-2 rounded-full border border-space-600 bg-space-950/95 px-3 py-1.5 font-mono text-[10px] font-bold text-hull-300 shadow-[var(--shadow-panel)]">
             screen
             <select
               value={screen}
               onChange={(e) => resetTo(e.target.value as AppScreen)}
-              className="rounded-[var(--radius-chip)] border border-space-600 bg-space-800 px-2 py-1 font-mono text-[10px] font-bold text-hull-100"
+              className="min-h-11 rounded-[var(--radius-chip)] border border-space-600 bg-space-800 px-3 py-2 font-mono text-xs font-bold text-hull-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-500"
               aria-label="Preview screen"
             >
               {APP_SCREENS.map((s) => (
@@ -2779,7 +2904,7 @@ export function AppFlow({
         {renderScreen()}
       </div>
       {showNav && (
-        <div className="fixed inset-x-0 bottom-5 z-20 pb-[env(safe-area-inset-bottom,0px)] pl-[env(safe-area-inset-left,0px)] pr-[env(safe-area-inset-right,0px)]">
+        <div className="fixed inset-x-0 bottom-4 z-20 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pb-[env(safe-area-inset-bottom,0px)] sm:pl-[max(1.25rem,env(safe-area-inset-left,0px))] sm:pr-[max(1.25rem,env(safe-area-inset-right,0px))]">
           <BottomNav
             activeId={navActive}
             onNavigate={(id) => {

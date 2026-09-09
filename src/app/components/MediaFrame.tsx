@@ -1,18 +1,18 @@
-import Image from "next/image";
-import type { ReactNode } from "react";
+import Image from 'next/image'
+import type { ReactNode } from 'react'
 
-/* Media / illustration frame — dark-space presentation for the planet map
-   and island artwork (Figma Dashboard 193:661-663, home frame 236:356). */
+/* Dark media frame for the map and island artwork. Image sizing and caption
+   behavior remain unchanged so visual assets stay useful on the navy shell. */
 
 export type MediaFrameProps = {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  priority?: boolean;
-  caption?: ReactNode;
-  className?: string;
-};
+  src: string
+  alt: string
+  width: number
+  height: number
+  priority?: boolean
+  caption?: ReactNode
+  className?: string
+}
 
 export function MediaFrame({
   src,
@@ -21,7 +21,7 @@ export function MediaFrame({
   height,
   priority = false,
   caption,
-  className = "",
+  className = '',
 }: MediaFrameProps) {
   return (
     <figure
@@ -36,10 +36,10 @@ export function MediaFrame({
         className="h-full w-full object-cover"
       />
       {caption && (
-        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-space-950/90 to-transparent px-4 pb-3 pt-8 font-mono text-[11px] font-bold text-hull-100">
+        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-space-950/95 to-transparent px-4 pb-3 pt-8 font-sans text-xs font-semibold leading-4 text-hull-100">
           {caption}
         </figcaption>
       )}
     </figure>
-  );
+  )
 }

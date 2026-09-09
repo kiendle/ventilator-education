@@ -1,37 +1,38 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from 'react'
 
-/* Badge — Figma Shared Components Frame 4 (type icons per activity type)
-   and Gamification HUD streak/points chips (236:356 HUD group). */
-
-type BadgeTone = "streak" | "points" | "quiz" | "video" | "reading" | "neutral";
+/* Warm type labels and orange rewards share the application's illustrated palette. */
+type BadgeTone = 'streak' | 'points' | 'quiz' | 'video' | 'reading' | 'neutral'
 
 export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
-  tone?: BadgeTone;
-  icon?: ReactNode;
-  children: ReactNode;
-};
+  tone?: BadgeTone
+  icon?: ReactNode
+  children: ReactNode
+}
+
+const neutralTone = 'border border-hull-300 bg-hull-100 text-space-800'
 
 const tones: Record<BadgeTone, string> = {
-  streak: "border-2 border-ember-200 bg-pastel-cream text-ember-700",
-  points: "border-2 border-nebula-200 bg-pastel-lilac text-space-900",
-  quiz: "border-2 border-solar-400 bg-solar-300 text-space-900",
-  video: "border-2 border-signal-danger/40 bg-[#ffd0c8] text-space-900",
-  reading: "border-2 border-nebula-200 bg-pastel-lilac text-space-900",
-  neutral: "border-2 border-aqua-400/40 bg-pastel-mint text-space-900",
-};
+  streak: 'border border-ember-300 bg-ember-100 text-ember-700',
+  points: 'border border-ember-300 bg-pastel-peach text-space-950',
+  quiz: 'border border-ember-300 bg-pastel-peach text-space-950',
+  video: 'border border-ember-300 bg-pastel-peach text-space-950',
+  reading: 'border border-ember-300 bg-ember-100 text-ember-700',
+  neutral: neutralTone,
+}
 
-export function Badge({ tone = "neutral", icon, children, className = "", ...rest }: BadgeProps) {
+export function Badge({ tone = 'neutral', icon, children, className = '', ...rest }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-[var(--radius-capsule)] px-2.5 py-1 font-mono text-[11px] font-bold leading-none ${tones[tone]} ${className}`}
+      data-tone={tone}
+      className={`inline-flex min-h-7 items-center gap-1.5 rounded-[var(--radius-capsule)] px-3 py-1 font-sans text-xs font-semibold leading-4 ${tones[tone]} ${className}`}
       {...rest}
     >
       {icon && (
-        <span className="grid size-3.5 place-items-center" aria-hidden="true">
+        <span className="grid size-4 shrink-0 place-items-center" aria-hidden="true">
           {icon}
         </span>
       )}
       {children}
     </span>
-  );
+  )
 }

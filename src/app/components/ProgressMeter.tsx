@@ -1,30 +1,30 @@
-import type { HTMLAttributes } from "react";
+import type { HTMLAttributes } from 'react'
 
-/* Progress meter — Figma "iPhone 17 - 11" track (193:670) and
-   Shared Components Frame 5 (linear bar with percentage label). */
+/* Accessible progress indicator with a clamped value and tabular percentage. */
 
 export type ProgressMeterProps = HTMLAttributes<HTMLDivElement> & {
-  value: number; // 0-100
-  label?: string;
-  showValue?: boolean;
-};
+  value: number // 0-100
+  label?: string
+  showValue?: boolean
+}
 
 export function ProgressMeter({
   value,
-  label = "Progress",
+  label = 'Progress',
   showValue = true,
-  className = "",
+  className = '',
   ...rest
 }: ProgressMeterProps) {
-  const clamped = Math.min(100, Math.max(0, value));
+  const numericValue = Number.isNaN(value) ? 0 : value
+  const clamped = Math.min(100, Math.max(0, numericValue))
+  const displayValue = Math.round(clamped)
+
   return (
     <div className={`progress-meter w-full ${className}`} {...rest}>
-      <div className="mb-1.5 flex items-baseline justify-between font-sans text-[11px] font-medium">
-        <span className="text-hull-100">{label}</span>
+      <div className="mb-2 flex items-baseline justify-between font-sans text-xs font-medium leading-4">
+        <span className="text-hull-200">{label}</span>
         {showValue && (
-          <span className="text-white">
-            <span className="font-bold text-ember-300">{clamped}%</span>
-          </span>
+          <span className="font-mono font-bold tabular-nums text-ember-300">{displayValue}%</span>
         )}
       </div>
       <div
@@ -32,14 +32,15 @@ export function ProgressMeter({
         aria-valuenow={clamped}
         aria-valuemin={0}
         aria-valuemax={100}
+        aria-valuetext={`${displayValue}%`}
         aria-label={label}
-        className="h-3 w-full overflow-hidden rounded-[var(--radius-capsule)] border-2 border-ember-200/60 bg-hull-50/30"
+        className="h-3 w-full overflow-hidden rounded-[var(--radius-capsule)] border border-hull-600/60 bg-space-800"
       >
         <div
-          className="h-full rounded-[var(--radius-capsule)] bg-gradient-to-r from-ember-500 via-ember-400 to-solar-400 motion-safe:transition-[width] motion-safe:duration-500"
+          className="h-full rounded-[var(--radius-capsule)] bg-ember-400 motion-safe:transition-[width] motion-safe:duration-300"
           style={{ width: `${clamped}%` }}
         />
       </div>
     </div>
-  );
+  )
 }

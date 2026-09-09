@@ -1,71 +1,75 @@
 @import 'tailwindcss';
 
-/* GAMER-ICU tokens sampled from the Figma design and exported planet artwork. */
+/* GAMER-ICU: navy space, warm paper, peach surfaces, and tactile orange actions. */
 @theme {
-  --color-space-950: #020d18;
-  --color-space-900: #00253f;
-  --color-space-800: #0f172a;
-  --color-space-700: #1e293b;
-  --color-space-600: #334155;
+  --color-space-950: #071525;
+  --color-space-900: #0b2942;
+  --color-space-800: #173b57;
+  --color-space-700: #2b4b63;
+  --color-space-600: #45637a;
 
-  --color-ember-700: #a74c00;
-  --color-ember-600: #d87b01;
-  --color-ember-500: #ff7400;
-  --color-ember-400: #fd9610;
-  --color-ember-300: #ff9318;
-  --color-ember-200: #fed59f;
+  --color-ember-700: #934006;
+  --color-ember-600: #bd5c08;
+  --color-ember-500: #ff8a00;
+  --color-ember-400: #ffa126;
+  --color-ember-300: #ffb564;
+  --color-ember-200: #ffd2a8;
   --color-ember-100: #ffeab8;
 
-  --color-solar-500: #ffcc00;
-  --color-solar-400: #f1c049;
-  --color-solar-300: #ffd87d;
-  --color-solar-200: #fdba74;
+  /* Retained token names for existing callers; the scale stays in the orange family. */
+  --color-solar-500: #c95f05;
+  --color-solar-400: #f2a14a;
+  --color-solar-300: #ffd6ae;
+  --color-solar-200: #ffc48a;
 
-  --color-nebula-600: #4338ca;
-  --color-nebula-500: #4f46e5;
-  --color-nebula-400: #6366f1;
-  --color-nebula-300: #818cf8;
-  --color-nebula-200: #a5b4fc;
+  /* Retained token names for existing callers; these are cool neutrals, not a second accent. */
+  --color-nebula-600: #324a5f;
+  --color-nebula-500: #466177;
+  --color-nebula-400: #6b8498;
+  --color-nebula-300: #9eb4c4;
+  --color-nebula-200: #ccd9e2;
 
-  --color-aqua-400: #5fe1da;
-  --color-aqua-300: #8ff4ee;
-  --color-signal-danger: #fb6f6f;
-  --color-signal-success: #4ade80;
-  --color-signal-info: #38bdf8;
+  --color-aqua-400: #668799;
+  --color-aqua-300: #a4b8c5;
+  --color-signal-danger: #ff969a;
+  --color-signal-success: #69d3a2;
+  --color-signal-info: #8dc9ec;
 
-  --color-hull-50: #f8f8f8;
-  --color-hull-100: #f1f5f9;
-  --color-hull-200: #e6e6e6;
-  --color-hull-300: #d9d9d9;
-  --color-hull-350: #cccccc;
-  --color-hull-400: #b5b0b0;
-  --color-hull-500: #868686;
-  --color-hull-600: #676666;
-  --color-hull-700: #89738a;
-  --color-hull-900: #1e1e1e;
-  --color-ink: #1d1b20;
+  --color-hull-50: #fffdf7;
+  --color-hull-100: #fff6df;
+  --color-hull-200: #f2e5cd;
+  --color-hull-300: #e4d0ad;
+  --color-hull-350: #d4bf9b;
+  --color-hull-400: #b6a68d;
+  --color-hull-500: #7d6a56;
+  --color-hull-600: #594b39;
+  --color-hull-700: #44392e;
+  --color-hull-900: #152a3d;
+  --color-ink: #1a2733;
   --color-warm: #ffaf6d;
 
+  /* Illustration colors support the orange-led controls, never compete with them. */
   --color-pastel-cream: #fff6df;
   --color-pastel-peach: #ffb171;
   --color-pastel-mint: #bdebdc;
   --color-pastel-sky: #c5e8f0;
   --color-pastel-lilac: #ddd2f2;
 
-  --font-sans: var(--font-geist-sans), 'Instrument Sans', system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), 'Cascadia Mono', ui-monospace, monospace;
+  --font-sans: var(--font-geist-sans, ui-sans-serif), 'Instrument Sans', system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono, ui-monospace), 'Cascadia Mono', ui-monospace, monospace;
 
-  --radius-chip: 7px;
-  --radius-icon: 10px;
+  --radius-chip: 8px;
+  --radius-icon: 12px;
   --radius-button: 12px;
-  --radius-panel: 14px;
+  --radius-panel: 16px;
   --radius-card: 16px;
-  --radius-capsule: 60px;
+  --radius-capsule: 9999px;
 
   --shadow-raise-ember: 0 4px 0 #a74c00;
-  --shadow-raise-card: 0 4px 0 #d87b01;
-  --shadow-panel: 0 8px 24px rgb(2 13 24 / 0.28);
-  --shadow-fab: 0 10px 28px rgb(67 56 202 / 0.4);
+  --shadow-raise-card: 0 3px 0 #d7a46c;
+  --shadow-card: 0 3px 0 #e4d0ad;
+  --shadow-panel: 0 5px 0 #d7a46c, 0 12px 24px rgb(7 21 37 / 0.14);
+  --shadow-fab: 0 4px 12px rgb(7 21 37 / 0.2);
 }
 
 html {
@@ -80,10 +84,12 @@ body {
   background: var(--color-space-950);
   color: var(--color-hull-100);
   font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 2px solid var(--color-solar-300);
+  outline: 3px solid var(--color-ember-300);
   outline-offset: 3px;
 }
 
@@ -96,7 +102,7 @@ body {
 
 .raise:active:not(:disabled) {
   transform: translateY(3px);
-  box-shadow: 0 1px 0 rgb(2 13 24 / 0.55);
+  box-shadow: 0 1px 0 #a74c00;
 }
 
 @keyframes page-slide {
@@ -180,99 +186,130 @@ body {
   text-align: center;
 }
 
+.mission-crawl-stage[data-static='true'] {
+  height: auto;
+  overflow: visible;
+  perspective: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.mission-crawl-stage[data-static='true'] .mission-crawl {
+  position: static;
+  width: 100%;
+  transform: none;
+  animation: none;
+}
+
 @keyframes welcome-bubble-in {
-  0% {
+  from {
     opacity: 0;
-    transform: translateY(18px) scale(0.78);
+    transform: translateY(12px);
   }
-  70% {
+  to {
     opacity: 1;
-    transform: translateY(-4px) scale(1.04);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: none;
   }
 }
 
 @keyframes welcome-astronaut-in {
   from {
     opacity: 0;
-    transform: translateY(24px) rotate(5deg);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) rotate(0);
+    transform: none;
   }
 }
 
 .welcome-bubble {
   position: relative;
   max-width: 19rem;
-  border: 3px solid var(--color-ember-200);
-  border-radius: 1.25rem;
-  background: #fff8ed;
-  padding: 1rem 1.35rem;
+  border: 2px solid var(--color-ember-200);
+  border-radius: var(--radius-card);
+  background: var(--color-pastel-cream);
+  padding: 1rem 1.25rem;
   color: var(--color-space-900);
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   text-align: center;
-  box-shadow: 0 8px 0 rgb(2 13 24 / 0.16);
-  animation: welcome-bubble-in 560ms cubic-bezier(0.34, 1.56, 0.64, 1) 320ms both;
+  box-shadow: var(--shadow-card);
+  animation: welcome-bubble-in 360ms ease-out 120ms both;
 }
 
 .welcome-bubble::after {
   position: absolute;
-  bottom: -0.7rem;
-  left: calc(50% - 0.65rem);
-  width: 1.3rem;
-  height: 1.3rem;
-  border-right: 3px solid var(--color-ember-200);
-  border-bottom: 3px solid var(--color-ember-200);
-  background: #fff8ed;
+  bottom: -0.6rem;
+  left: calc(50% - 0.55rem);
+  width: 1.1rem;
+  height: 1.1rem;
+  border-right: 2px solid var(--color-ember-200);
+  border-bottom: 2px solid var(--color-ember-200);
+  background: var(--color-pastel-cream);
   content: '';
   transform: rotate(45deg);
 }
 
 .welcome-astronaut {
-  animation: welcome-astronaut-in 680ms ease-out both;
+  animation: welcome-astronaut-in 420ms ease-out both;
 }
 
-.pastel-card .text-white,
-.pastel-card .text-hull-100 {
+.learning-surface {
+  --color-signal-danger: #b8323a;
+  --color-signal-success: #18754e;
+  --color-signal-info: #236b91;
+  color: var(--color-space-950);
+  color-scheme: light;
+}
+
+.learning-surface :where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--color-ember-700);
+  outline-offset: 3px;
+}
+
+.learning-surface :where(.text-white, .text-hull-100) {
   color: var(--color-space-950);
 }
 
-.pastel-card .text-hull-200,
-.pastel-card .text-hull-300 {
+.learning-surface :where(.text-hull-200, .text-hull-300) {
   color: var(--color-space-700);
 }
 
-.pastel-card .text-hull-400 {
+.learning-surface :where(.text-hull-400, .text-hull-500) {
   color: var(--color-space-600);
 }
 
-.pastel-card .border-space-600 {
-  border-color: var(--color-ember-200);
+.learning-surface :where(.text-ember-300, .text-ember-400, .text-solar-400) {
+  color: var(--color-ember-700);
 }
 
-.pastel-card .bg-space-950\/50,
-.pastel-card .bg-space-950\/60,
-.pastel-card .bg-space-950\/70 {
-  background-color: rgb(255 255 255 / 0.58);
+.learning-surface :where(.border-space-600, .border-space-600\/50) {
+  border-color: var(--color-hull-300);
 }
 
-.pastel-card .bg-space-800 {
-  background-color: var(--color-pastel-cream);
+.learning-surface
+  :where(
+    .bg-space-950\/15,
+    .bg-space-950\/20,
+    .bg-space-950\/50,
+    .bg-space-950\/60,
+    .bg-space-950\/70
+  ) {
+  background-color: rgb(7 21 37 / 0.06);
+}
+
+.learning-surface :where(.bg-space-800) {
+  background-color: var(--color-hull-100);
 }
 
 .dashboard-map-view {
   opacity: 1;
   scale: 1;
   transition:
-    opacity 260ms ease,
-    scale 360ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 200ms ease-out,
+    scale 220ms ease-out;
 }
 
 .dashboard-list-view {
@@ -280,59 +317,50 @@ body {
   translate: 0;
   scale: 1;
   transition:
-    opacity 260ms ease,
-    translate 360ms cubic-bezier(0.22, 1, 0.36, 1),
-    scale 360ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 200ms ease-out,
+    translate 220ms ease-out,
+    scale 220ms ease-out;
 }
 
 .dashboard-map-view[data-active='false'] {
   pointer-events: none;
   opacity: 0;
-  scale: 0.97;
+  scale: 0.985;
 }
 
 .dashboard-list-view[data-active='false'] {
   pointer-events: none;
   opacity: 0;
-  translate: 0 1.75rem;
-  scale: 0.97;
+  translate: 0 1rem;
+  scale: 0.985;
 }
 
 @keyframes completion-check-in {
-  0% {
+  from {
     opacity: 0;
-    transform: scale(0.45) rotate(-14deg);
+    transform: scale(0.92);
   }
-  65% {
+  to {
     opacity: 1;
-    transform: scale(1.12) rotate(3deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0);
+    transform: none;
   }
 }
 
 @keyframes completion-orbit-in {
   from {
     opacity: 0;
-    transform: scale(0.7) rotate(-35deg);
   }
   to {
     opacity: 1;
-    transform: scale(1) rotate(0);
   }
 }
 
 @keyframes completion-spark {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: scale(0.72) rotate(-8deg);
+  from {
+    opacity: 0;
   }
-  50% {
+  to {
     opacity: 1;
-    transform: scale(1.2) rotate(8deg);
   }
 }
 
@@ -343,7 +371,7 @@ body {
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
@@ -358,10 +386,10 @@ body {
 .completion-orbit {
   position: absolute;
   inset: 0;
-  border: 3px dashed var(--color-ember-400);
+  border: 2px dashed var(--color-ember-400);
   border-radius: 999px;
-  background: radial-gradient(circle, var(--color-pastel-mint) 0 53%, transparent 54%);
-  animation: completion-orbit-in 520ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  background: var(--color-pastel-mint);
+  animation: completion-orbit-in 360ms ease-out both;
 }
 
 .completion-check {
@@ -371,14 +399,14 @@ body {
   width: 5rem;
   height: 5rem;
   place-items: center;
-  border: 4px solid var(--color-pastel-mint);
+  border: 3px solid var(--color-pastel-mint);
   border-radius: 999px;
   background: var(--color-space-900);
   color: var(--color-pastel-cream);
   box-shadow:
-    0 6px 0 var(--color-ember-600),
-    0 12px 20px rgb(2 13 24 / 0.22);
-  animation: completion-check-in 560ms cubic-bezier(0.34, 1.56, 0.64, 1) 120ms both;
+    0 2px 0 var(--color-ember-600),
+    0 8px 16px rgb(7 21 37 / 0.16);
+  animation: completion-check-in 360ms ease-out 80ms both;
 }
 
 .completion-spark {
@@ -388,7 +416,7 @@ body {
   font-size: 1.35rem;
   font-weight: 900;
   line-height: 1;
-  animation: completion-spark 600ms ease-out 360ms both;
+  animation: completion-spark 220ms ease-out 180ms both;
 }
 
 .completion-spark-one {
@@ -399,21 +427,21 @@ body {
 .completion-spark-two {
   bottom: 0.5rem;
   left: -0.1rem;
-  animation-delay: 420ms;
+  animation-delay: 220ms;
 }
 
 .completion-spark-three {
   top: 1.3rem;
   left: -0.35rem;
-  color: var(--color-nebula-400);
-  animation-delay: 480ms;
+  color: var(--color-ember-300);
+  animation-delay: 260ms;
 }
 
 .completion-copy,
 .completion-reward,
 .completion-progress,
 .completion-actions {
-  animation: completion-copy-in 180ms ease-out 340ms both;
+  animation: completion-copy-in 180ms ease-out 220ms both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -421,17 +449,225 @@ body {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+  .raise,
+  .dashboard-map-view,
+  .dashboard-list-view {
+    transition: none;
   }
 
-  .mission-crawl {
+  .page-slide-forward,
+  .page-slide-back,
+  .mission-crawl,
+  .welcome-bubble,
+  .welcome-astronaut,
+  .completion-orbit,
+  .completion-check,
+  .completion-spark,
+  .completion-copy,
+  .completion-reward,
+  .completion-progress,
+  .completion-actions {
     animation: none;
-    transform: none;
+  }
+}
+
+/* Island materials retain the original illustrated game's warmth and tactile actions. */
+.island-journey {
+  background: #00253f;
+}
+
+.journey-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40%;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 0.5rem 1rem;
+}
+
+.journey-landmark {
+  aspect-ratio: 1;
+  border: 3px solid var(--color-ember-200);
+  border-radius: var(--radius-capsule);
+  background-color: #00253f;
+  background-image: url('/dashboard-island.png');
+  background-size: 220% auto;
+  box-shadow: 0 5px 0 #a74c00;
+}
+
+.journey-course {
+  border-top: 2px solid var(--color-ember-200);
+  border-radius: 24px 24px 0 0;
+  background: var(--color-pastel-cream);
+}
+
+.journey-topic-number {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  place-items: center;
+  border: 1px solid var(--color-ember-200);
+  border-radius: var(--radius-icon);
+  background: #ffeab8;
+  color: var(--color-ember-700);
+  font-size: 0.75rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.journey-topic-lessons {
+  border: 1px solid #e7d9ba;
+  border-radius: var(--radius-card);
+  background: #fffcf3;
+  box-shadow: 0 3px 0 #e7d9ba;
+}
+
+.journey-lesson {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 4.5rem;
+  border: 0;
+  border-radius: var(--radius-button);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.journey-lesson:disabled {
+  cursor: not-allowed;
+}
+
+.journey-lesson:hover:not(:disabled) {
+  background: #fff0d0;
+}
+
+.journey-lesson[data-next='true'] {
+  z-index: 1;
+  background: #ffb171;
+  box-shadow: 0 4px 0 #d87b01;
+}
+
+.journey-lesson[data-next='true']:hover {
+  background: #ffc28f;
+}
+
+.journey-lesson[data-next='true']:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #d87b01;
+}
+
+.journey-activity-card {
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  padding: 1rem 4.5rem 1rem 0.75rem;
+  box-shadow: none;
+}
+
+.journey-lesson[data-next='true'] .journey-activity-card {
+  --color-ember-100: var(--color-pastel-mint);
+  --color-ember-200: #79bcae;
+  --color-ember-700: #00253f;
+  --color-hull-600: var(--color-space-700);
+}
+
+.journey-lesson-action {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transform: translateY(-50%);
+  color: var(--color-space-900);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.journey-lesson:focus-visible {
+  z-index: 2;
+  outline: 3px solid var(--color-space-900);
+  outline-offset: 3px;
+}
+
+.journey-lesson .journey-activity-card:active {
+  transform: none;
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-lesson {
+    transition: none;
+  }
+}
+
+.lesson-actions {
+  position: sticky;
+  z-index: 30;
+  bottom: 0;
+  align-self: center;
+  width: min(100vw, 28rem);
+  margin: 1.5rem 0 0;
+  border-top: 2px solid var(--color-ember-200);
+  background: var(--color-pastel-cream);
+  padding: 1rem;
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+}
+
+.answer-choice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1.25rem;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.25rem;
+  border: 2px solid var(--color-ember-200);
+  border-radius: var(--radius-button);
+  background: var(--color-hull-50);
+  padding: 0.75rem 1rem;
+  color: var(--color-space-950);
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition:
+    border-color 120ms ease,
+    background-color 120ms ease;
+}
+
+.answer-choice:hover {
+  border-color: var(--color-ember-400);
+  background: var(--color-ember-100);
+}
+
+.answer-choice[aria-pressed='true'] {
+  border-color: var(--color-ember-600);
+  background: var(--color-pastel-peach);
+  box-shadow: var(--shadow-raise-ember);
+}
+
+.answer-choice:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--color-ember-600);
+}
+
+.quiz-result[data-passed='true'] {
+  border-color: var(--color-signal-success);
+  background: var(--color-pastel-mint);
+}
+
+.quiz-result[data-passed='false'] {
+  border-color: var(--color-signal-danger);
+  background: #ffe4df;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .answer-choice {
+    transition: none;
   }
 }

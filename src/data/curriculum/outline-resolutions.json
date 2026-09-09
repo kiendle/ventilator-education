@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Author-maintained source-reconciliation decisions; separate from generated DOCX evidence and the learner curriculum.",
+  "outlineSource": {
+    "relativePath": "GameOutline.docx",
+    "sourceId": "source-7effcb159366c230bc93",
+    "sha256": "9358fe5c2d83356355231f8dcbcb1e20bb87afc70144c40c0ced5acf47161655"
+  },
+  "decisions": [
+    {
+      "decisionId": "lake-mucosa-combined-interface-lesson",
+      "acceptedOn": "2026-09-09",
+      "status": "accepted_for_source_reconciliation",
+      "action": "combine_source_rows",
+      "islandId": "lake-mucosa",
+      "sourceRowIds": [
+        "outline-lake-mucosa-12",
+        "outline-lake-mucosa-13",
+        "outline-lake-mucosa-14"
+      ],
+      "lesson": {
+        "title": "Ventilator Interfaces 101: How to Read Any Ventilator",
+        "activityType": "video",
+        "sourceReferences": [
+          {
+            "relativePath": "1. Lake Mucosa/VentInterfacesLakeMucosa.pptx",
+            "sourceId": "source-f70f88a6b44b4db683dd",
+            "sha256": "529ffc7fbaf2b5f97fa3d75acc342efb01fdfe269f28c6ea887938368b299651",
+            "locator": {
+              "kind": "whole_file"
+            }
+          }
+        ],
+        "sourceUse": "Use the entire PowerPoint as the reference for one combined lesson for now. Preserve its ten clips in slide order; do not assign them to three separate device tours.",
+        "observedEmbeddedVideoDurationSeconds": 665.734
+      },
+      "rationale": "Visual inspection and locally transcribed narration show one continuous multi-device orientation with shared settings, modes, monitoring, device categories, alarms, and a concluding recap, rather than three independent Drager, Servo, and Breas walkthroughs.",
+      "unchangedSourceRowIds": [
+        "outline-lake-mucosa-15"
+      ],
+      "unchangedSourceRowReason": "Boost FiO2 on All Vents remains a separate interactive activity with VentLab _Fio2Boost.pptx as its primary source.",
+      "pendingPublicationDecisions": [
+        "PEEP points for the combined lesson",
+        "Final estimated teaching time",
+        "Updated island activity count, progress denominator, and totals"
+      ],
+      "applicationStatus": "Recorded source reference only; the generated outline, original documents, and learner application have not been changed."
+    },
+    {
+      "decisionId": "interlobar-prvc-tidal-volume-wording",
+      "acceptedOn": "2026-09-09",
+      "status": "accepted_for_source_reconciliation",
+      "action": "record_source_wording_correction",
+      "islandId": "interlobar-divides",
+      "sourceRowIds": [
+        "outline-interlobar-divides-06"
+      ],
+      "lesson": {
+        "title": "Ventilator modes: Choosing a mode",
+        "sourceReferences": [
+          {
+            "relativePath": "2. Interlobar Divides/Choosing a Ventilator Mode  Clinical Case.docx",
+            "sourceId": "source-638af99195c598411f75",
+            "sha256": "da51c1e51f4c666c94a7d400789689e543523d7d760dc5b0232d75e62b9b8c7b",
+            "locator": {
+              "kind": "whole_file"
+            }
+          }
+        ]
+      },
+      "sourceMatchStatus": "matched_with_wording_correction",
+      "correction": {
+        "section": "SIMV PRVC PS > Tidal Volume",
+        "choiceValues": [200, 600],
+        "replacements": [
+          {
+            "from": "changes the Pressure Control",
+            "to": "changes the tidal volume"
+          },
+          {
+            "from": "changes the PC",
+            "to": "changes the tidal volume"
+          },
+          {
+            "from": "What do they change the PC to?",
+            "to": "What do they change the tidal volume to?"
+          }
+        ],
+        "retryBehavior": "Stay in PRVC and present the remaining tidal-volume choices. Do not switch to a pressure-control question.",
+        "scope": "Only these two PRVC feedback branches. Preserve the SIMV PC PS branch and all numerical values."
+      },
+      "rationale": "The PRVC feedback uses pressure-control wording while its current question and remaining options concern tidal volume. Give remaining answers is a retry instruction, not evidence of missing lesson content. This supersedes the earlier incomplete-branches assessment for this source-matching discrepancy.",
+      "clinicalReviewStatus": "This wording and branching decision does not validate the clinical settings or physiological responses in the case.",
+      "applicationStatus": "Correction recorded only; the original DOCX, generated outline, and learner application have not been changed."
+    },
+    {
+      "decisionId": "interlobar-ccdh-video-source-match",
+      "verifiedOn": "2026-09-09",
+      "status": "verified_source_match",
+      "action": "record_verified_source_match",
+      "islandId": "interlobar-divides",
+      "sourceRowIds": [
+        "outline-interlobar-divides-09"
+      ],
+      "lesson": {
+        "title": "CCDH ventilator strategies & “norms”",
+        "sourceReferences": [
+          {
+            "relativePath": "2. Interlobar Divides/CCDH considerations.MOV",
+            "sourceId": "source-5864f1afd209244c6281",
+            "sha256": "ec84d0abc35d398e6d00cd3145f445b6081e71680f3c3412bf024b1479278c22",
+            "locator": {
+              "kind": "whole_file"
+            }
+          }
+        ],
+        "observedVideoDurationSeconds": 172.883333
+      },
+      "sourceMatchStatus": "matched",
+      "evidence": {
+        "method": "Video preview, ffprobe, source SHA-256 verification, and complete local MLX Whisper narration transcription.",
+        "openingTopicStatement": {
+          "startSeconds": 6,
+          "endSeconds": 13,
+          "machineTranscriptExcerpt": "I'm talking to you today about CDH considerations of mechanical ventilation"
+        },
+        "topicCoverage": [
+          "Small lung volumes in CDH",
+          "Pressure-control ventilation and limiting barotrauma",
+          "Rate adjustment for carbon dioxide clearance",
+          "Tubing compensation with very small volumes"
+        ],
+        "limitation": "Machine transcription establishes source-topic identity, not clinical accuracy or an approved learner transcript."
+      },
+      "rationale": "The spoken introduction and subsequent discussion identify the requested topic. This resolves the earlier filename-only ambiguity without relying on the separate CVICU video or requiring an embedded PowerPoint relationship.",
+      "applicationStatus": "Verified source match recorded only; the original video, generated outline, and learner application have not been changed."
+    },
+    {
+      "decisionId": "valley-tracheobronchomalacia-deck-reference",
+      "acceptedOn": "2026-09-09",
+      "status": "accepted_for_source_reconciliation",
+      "action": "accept_slide_deck_reference",
+      "islandId": "valley-of-pulmonara",
+      "sourceRowIds": [
+        "outline-valley-of-pulmonara-03"
+      ],
+      "lesson": {
+        "title": "Tracheobronchomalacia",
+        "sourceReferences": [
+          {
+            "relativePath": "3. Valley of Pulmonara/Nurses TRACHEOBRONCHOMALACIA.pptx",
+            "sourceId": "source-50dbbfb7c85dc411ec99",
+            "sha256": "679b15227f844f0052f2e2b63fed922c04b7868a0f147af52c9bcb81f7dabfd0",
+            "locator": {
+              "kind": "whole_file"
+            }
+          }
+        ],
+        "sourceUse": "Accept the entire 11-slide PowerPoint as the lesson source reference for now, preserving slide order."
+      },
+      "sourceMatchStatus": "matched_with_content_gap",
+      "contentGaps": [
+        {
+          "status": "open",
+          "locator": {
+            "kind": "slide",
+            "slideNumber": 10
+          },
+          "title": "Management and Nursing Considerations",
+          "description": "The slide contains only its heading, with no body text or speaker notes. The management and nursing-considerations content remains to be supplied."
+        }
+      ],
+      "deliveryNote": "The outline requests a video. The accepted deck contains no embedded video or audio, and no separately named topic video was found in the supplied corpus. This decision resolves the source association; it does not claim that a video has been delivered.",
+      "applicationStatus": "Source reference and remaining content gap recorded only; the original PowerPoint, generated outline, and learner application have not been changed."
+    }
+  ]
+}

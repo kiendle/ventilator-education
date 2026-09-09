@@ -1,67 +1,74 @@
-import type { HTMLAttributes, ReactNode } from "react";
-import { Badge } from "./Badge";
-import { FlameIcon, StarIcon, MapIcon } from "./icons";
+import type { HTMLAttributes, ReactNode } from 'react'
+import { Badge } from './Badge'
+import { FlameIcon, StarIcon, MapIcon } from './icons'
 
-/* Gamification HUD — Figma 193:692 (avatar / username / streak / PEEP points)
-   and the compact stat row from home frame 236:356 ("3/6", flame "7", star "120"). */
+/* Compact learner identity and progress stats for the navy application shell. */
 
 export type HudProfileProps = HTMLAttributes<HTMLDivElement> & {
-  username: string;
-  streakDays: number;
-  points: number;
-};
+  username: string
+  streakDays: number
+  points: number
+}
 
-export function HudProfile({ username, streakDays, points, className = "", ...rest }: HudProfileProps) {
+export function HudProfile({
+  username,
+  streakDays,
+  points,
+  className = '',
+  ...rest
+}: HudProfileProps) {
   return (
     <div
-      className={`flex items-center gap-3 rounded-[var(--radius-panel)] border-2 border-ember-200 bg-pastel-cream p-3 text-space-950 shadow-[0_5px_0_#d87b01,0_12px_24px_rgb(2_13_24_/_0.18)] ${className}`}
+      className={`grid grid-cols-[4rem_minmax(0,1fr)] items-center gap-3 rounded-[var(--radius-card)] border-2 border-ember-300 bg-pastel-peach p-4 text-space-950 shadow-[var(--shadow-panel)] ${className}`}
       {...rest}
     >
-      {/* Avatar — indigo gradient tile 193:693 */}
       <span
-        className="grid size-10 shrink-0 place-items-center rounded-[var(--radius-icon)] border-2 border-aqua-400/50 bg-pastel-mint font-sans text-[10px] font-bold text-space-900"
+        className="grid size-16 shrink-0 place-items-center rounded-full border-4 border-pastel-cream bg-space-900 font-sans text-xl font-extrabold text-ember-200 shadow-[var(--shadow-raise-ember)]"
         aria-hidden="true"
       >
         {username.slice(0, 2).toUpperCase()}
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block truncate text-[13px] font-bold text-space-900">{username}</span>
-        <Badge tone="streak" icon={<FlameIcon className="size-3" />} className="mt-1">
-          {streakDays}-day streak
+        <span className="block break-words text-xl font-extrabold leading-tight text-space-900">
+          {username}
+        </span>
+        <Badge tone="streak" icon={<FlameIcon className="size-3.5" />} className="mt-2">
+          <span className="whitespace-nowrap tabular-nums">{streakDays}-day streak</span>
         </Badge>
       </span>
-      {/* PEEP points chip 193:702 */}
-      <span className="shrink-0 rounded-[var(--radius-chip)] border-2 border-ember-200 bg-pastel-peach px-3 py-1.5 text-center">
-        <span className="block text-[15px] font-extrabold leading-tight text-space-900">
+      <span className="col-span-2 flex items-center justify-between gap-3 rounded-[var(--radius-chip)] border border-ember-200 bg-pastel-cream px-3 py-3">
+        <span className="block font-mono text-base font-extrabold leading-5 tabular-nums text-space-900">
           {points.toLocaleString()}
         </span>
-        <span className="block text-[9px] leading-tight text-ember-700">PEEP Points</span>
+        <span className="mt-0.5 block text-xs font-medium leading-4 text-hull-600">
+          PEEP Points
+        </span>
       </span>
     </div>
-  );
+  )
 }
 
-/* Compact stat chip used in the top HUD of the home frame (236:356) */
+/* Compact stat chip used in the shell's progress summary. */
 export type HudStatProps = HTMLAttributes<HTMLSpanElement> & {
-  icon?: "map" | "flame" | "star";
-  children: ReactNode;
-};
+  icon?: 'map' | 'flame' | 'star'
+  children: ReactNode
+}
 
 const statIcons = {
   map: MapIcon,
   flame: FlameIcon,
   star: StarIcon,
-} as const;
+} as const
 
-export function HudStat({ icon = "star", children, className = "", ...rest }: HudStatProps) {
-  const Icon = statIcons[icon];
+export function HudStat({ icon = 'star', children, className = '', ...rest }: HudStatProps) {
+  const Icon = statIcons[icon]
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-[var(--radius-capsule)] border-2 border-ember-200 bg-pastel-cream px-2.5 py-1 font-mono text-[11px] font-bold text-space-900 shadow-[0_2px_0_#d87b01] ${className}`}
+      className={`inline-flex min-h-8 items-center gap-1.5 rounded-[var(--radius-capsule)] border border-space-600 bg-space-800 px-3 py-1 font-mono text-xs font-semibold leading-4 tabular-nums text-hull-100 shadow-[0_1px_3px_rgb(7_21_37_/_0.2)] ${className}`}
       {...rest}
     >
-      <Icon className="size-3.5 text-ember-500" />
+      <Icon className="size-4 text-ember-300" />
       {children}
     </span>
-  );
+  )
 }

@@ -3,6 +3,23 @@ import '../src/app/globals.css'
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: [
+          'Design System',
+          [
+            'Foundations',
+            'Buttons',
+            'Cards & Containers',
+            'Badges & Progress',
+            'HUD & Navigation',
+            'Media',
+          ],
+          'Application',
+          ['Full Flow', 'Screens', 'Home'],
+        ],
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -14,4 +31,4 @@ const preview: Preview = {
   tags: ['autodocs'],
 }
 
-export default preview;
+export default preview

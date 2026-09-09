@@ -1,0 +1,3327 @@
+{
+  "conventions": {
+    "null": "No unambiguous normalized value; consult sourceCells and issues",
+    "rowId": "Source-revision locator only; pair with source.sha256. Not an existing curriculum activity ID",
+    "scope": "Island activity tables and body paragraph text; embedded document images are not extracted by this command",
+    "sourceLocator": "bodyIndex is zero-based in word/document.xml; tableIndex and rowIndex are one-based, including the header row",
+    "sourceStatus": "Verbatim document markings, not verified source-file availability or clinical approval",
+    "totals": "Computed from source rows without expanding repeated quests; ambiguous numeric values make the corresponding sum null"
+  },
+  "documentParagraphs": [
+    {
+      "sourceLocator": {
+        "bodyIndex": 0
+      },
+      "text": "GAMER-ICU"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 2
+      },
+      "text": "Appendix"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 3
+      },
+      "text": "Logistics & Premise"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 4
+      },
+      "text": "Map"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 5
+      },
+      "text": "Goals & Objectives"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 6
+      },
+      "text": "Educational Strategies"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 7
+      },
+      "text": "Regions:"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 8
+      },
+      "text": "Lake Mucosa – anatomy and physiology of the respiratory tract, introduction to ventilator interfaces"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 9
+      },
+      "text": "Interlobar Divides – conventional mechanical ventilation"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 10
+      },
+      "text": "Valley of Pulmonara – disease specific considerations, vent alarms, VAP"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 11
+      },
+      "text": "Bronchial  Bluffs – monitoring (CXR, blood gasses), bag valve & mask ventilation"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 12
+      },
+      "text": "Mount Pneumora – non-conventional mechanical ventilation, ventilator adjuncts, extubations readiness"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 13
+      },
+      "text": "Alveolar Highlands – Putting it all together!"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 16
+      },
+      "text": "GAMER-ICU: Logistics & Premise\n"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 17
+      },
+      "text": "Premise:"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 18
+      },
+      "text": "You are an RN on a special mission to space on the Coughluous-81 space shuttle. You have been recruited to planet AtelectaPrime to defeat Captain Collapse, the commander of the deflated lung quadrant. The only way to do this is to gain knowledge, because knowledge is power! Your mission is to travel across AtelectaPrime and collect as many PEEP points as possible over the next 90 days. Every 30 days, two regions of AtelectaPrime will become available, each with new challenges. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 19
+      },
+      "text": "+ a tour guide (alien?) pops up to guide you through this premise?"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 21
+      },
+      "text": "Time:"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 22
+      },
+      "text": "20 min, ~3x/week = 60 min/week to play"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 23
+      },
+      "text": "Estimated total time of curriculum: 240 min/month x 3 months = total curriculum ~720 min"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 24
+      },
+      "text": "Compliance marked by 80% of activities completed"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 26
+      },
+      "text": "Regions: "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 27
+      },
+      "text": "6 regions total"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 28
+      },
+      "text": "3 months (=90 days) total"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 29
+      },
+      "text": "= 2 regions/month, 240 min/month = 120 min/island AND 2 islands/month (240 min/month)"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 30
+      },
+      "text": "All activities for the open regions are available at the start of the 30-day window. Though it is recommended to do them in order, this is not required. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 31
+      },
+      "text": "Regions remain open as you progress through the months if you wish to go back and re-do activities"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 32
+      },
+      "text": "\nRemuneration: "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 33
+      },
+      "text": "RNs get paid:"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 34
+      },
+      "text": "$10 to take competency (baseline) exam"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 35
+      },
+      "text": "$10 to take competency (end of curriculum) exam"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 36
+      },
+      "text": "Eligible to take exam, regardless of how much they completed"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 37
+      },
+      "text": "$5 to take competency (retention) exam"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 38
+      },
+      "text": "$15 ($5 for each 30-day window they were compliant (completed 80% activities) x3)"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 39
+      },
+      "text": "+BONUS $100 for most PEEP points\n----\nif RN participates, they can make $40 (& knowledge = power)"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 40
+      },
+      "text": "If RN WINS, they can make $140 (& the glory!)"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 43
+      },
+      "text": "GAMER-ICU: Map"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 50
+      },
+      "text": "Goals & Objectives\nThe global goal of this curriculum is to improve pediatric ICU RN competency in IMV. Specific goals and objectives are broken down by RN IMV competency domain. \n"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 51
+      },
+      "text": "1. Domain: Medical & Contextual Knowledge  \nGoal: A pediatric ICU RN who is competent in invasive mechanical ventilation (IMV)…"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 52
+      },
+      "text": "Integrates their knowledge of cardiorespiratory and airway anatomy / physiology into the greater picture of their patient’s disease state and illness course.  "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 53
+      },
+      "text": "Objectives: At the end of this 90-day, gamified curriculum, pediatric ICU RNs will be able to…."
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 54
+      },
+      "text": " List the variables associated with ventilation and oxygenation with 100% accuracy on free text questions on written exam. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 55
+      },
+      "text": "Describe how the following disease processes affect oxygenation and ventilation: "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 56
+      },
+      "text": "Asthma "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 57
+      },
+      "text": "Bronchiolitis "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 58
+      },
+      "text": "Acute respiratory distress syndrome (ARDS) "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 59
+      },
+      "text": "Tracheobronchomalacia "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 60
+      },
+      "text": "as assessed by >/= 80% on a written MCQ exam. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 61
+      },
+      "text": "Systematically interpret their patient’s most recent chest x-ray (using an ABCDE approach) to determine if endotracheal tube placement is appropriate and identify any other pulmonary pathophysiology, as assessed by >/= 80% on a written MCQ exam. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 62
+      },
+      "text": "Interpret arterial, venous, or capillary blood gas results and identify the most appropriate management option, as assessed by >/= 80% on a written MCQ exam. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 63
+      },
+      "text": "2. Domain: Autonomous Decision  Making  \nGoals: A pediatric ICU RN who is competent in invasive mechanical ventilation (IMV)…"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 64
+      },
+      "text": "Cultivates a sense of accountability for comprehensive patient care, including their associated ventilator equipment "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 65
+      },
+      "text": "Forms an accurate and holistic assessment of their patient that can informs appropriate autonomous decision making"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 66
+      },
+      "text": " Objectives: At the end of this 90-day, gamified curriculum, pediatric ICU RNs will be able to…."
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 67
+      },
+      "text": "Describe the level of ventilatory support a patient is receiving by comparing current ventilator settings to physiologic values for patient’s age, as assessed by >/= 80% on a written MCQ exam. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 68
+      },
+      "text": "Compose an accurate, global assessment of their patient’s disease process and severity, as well as current clinical status, by synthesizing data from physical exam, the cardiopulmonary monitor, and the ventilator screen. This will be evaluated by achieving >/= 70% congruence to an assessment statement written by the attending physician. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 69
+      },
+      "text": "3. Domain: Technical Skills  \nGoals: A pediatric ICU RN who is competent in invasive mechanical ventilation (IMV)…"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 70
+      },
+      "text": "Confidently provides appropriate hands-on care for an invasively ventilated patient. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 71
+      },
+      "text": "Reduces harm for invasively ventilated  patients with hands-on care "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 72
+      },
+      "text": "Safely navigates an unplanned extubation or tracheostomy decannulation scenario "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 73
+      },
+      "text": " Objectives: At the end of this 90-day, gamified curriculum, pediatric ICU RNs will be able to…."
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 74
+      },
+      "text": "Pre-requisite knowledge: Demonstrate correct bag-mask ventilation (BVM) on a manikin, as evidenced by achieving adequate chest rise and end tidal CO2. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 75
+      },
+      "text": "Pre-requisite knowledge: Demonstrate the appropriate technique for in-line suction without causing patient harm (bleeding, hypoxia), as evidenced by their ability to select the proper depth of in-line suction on a Ballard catheter station (“skills” portion of exam).  "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 76
+      },
+      "text": "Promptly determine if their patient is still intubated through accurately listing 3 immediate things they can check at the bedside with expected values on a free text question on a written exam. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 77
+      },
+      "text": "List the necessary medication and equipment to execute a safe transport off the unit with 80% accuracy using a free text question on a written exam. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 78
+      },
+      "text": "Classify an extubation readiness test (ERT) as successful or unsuccessful on a written exam, as assessed by >/= 80% on a written MCQ exam."
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 79
+      },
+      "text": "List at least 5 potential risk factors for ventilator-associated pneumonia (VAP), as assessed by a free text question on a written exam. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 80
+      },
+      "text": "4. Domain: Executive Functioning  \nGoals: A pediatric ICU RN who is competent in invasive mechanical ventilation (IMV)…"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 81
+      },
+      "text": "Embodies the ability to multi-task in coordinating all aspects of patient care, while prioritizing airway, breathing, and circulation (ABCs!) "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 82
+      },
+      "text": " Objectives: At the end of this 90-day, gamified curriculum, pediatric ICU RNs will be able to…."
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 83
+      },
+      "text": "Correctly judge whether an artificial airway is effectively oxygenating and ventilating a patient through rapid appraisal of their vital signs, end tidal CO2 waveform, physical exam, and ventilator interface, evaluated by their accuracy in judging 3 clinical scenarios on a written exam. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 84
+      },
+      "text": "Reflect on their current practice on the continuum of task-oriented work to patient- and communication-centered work, as evaluated through written reflection. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 85
+      },
+      "text": "5. Domain: Interpersonal Skills \nGoals: A pediatric ICU RN who is competent in invasive mechanical ventilation (IMV)…"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 86
+      },
+      "text": "Promotes interprofessional collaboration through effective communication and recognition of their roles and limitations "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 87
+      },
+      "text": " Objectives: At the end of this 90-day, gamified curriculum, pediatric ICU RNs will be able to…."
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 88
+      },
+      "text": "o) Value the importance of interprofessional collaboration in enhancing patient safety during ventilator management, as assessed by a written reflection on one or more patient care encounters. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 91
+      },
+      "text": "Educational Strategies"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 93
+      },
+      "text": "Video – a video recorded by a respiratory therapist or pediatric ICU attending or fellow physician. It will be brief, between 2-10 minutes. Nurses will get credit for completion of watching the video"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 94
+      },
+      "text": "Methods: Lectures"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 95
+      },
+      "text": "Highlights: can inform medical knowledge and / or technical skills. May be repeated for those who want to re-enforce concepts, watch again as they encounter scenarios on the unit (e.g., re-watching the video about the oscillator if caring for a child on an oscillator that day)"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 96
+      },
+      "text": "Reading/Graphic – a brief article, graphic, or written presentation may be assigned for the learner to review"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 97
+      },
+      "text": "Methods: Readings, visual graphic"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 98
+      },
+      "text": "Highlights: medical knowledge-based domains, passive learning"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 99
+      },
+      "text": "Quiz – A brief, 2-5 question test. Nurse will get a certain amount of credit for each question answered correctly"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 100
+      },
+      "text": "Methods: online learning, formative feedback / check-in experiences for videos and readings "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 101
+      },
+      "text": "Highlights: medical knowledge-based domains, active learning "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 102
+      },
+      "text": "Types:"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 103
+      },
+      "text": "Multiple choice quiz "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 104
+      },
+      "text": "Drag & Drop"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 105
+      },
+      "text": "Matching"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 106
+      },
+      "text": "Fill in the blank w/ a word bank"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 107
+      },
+      "text": "Clinical case vignettes – clinical scenarios "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 108
+      },
+      "text": "Medical management – Nurses are presented with images or clinical vignettes and must identify problems with current management or determine correct next steps. "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 109
+      },
+      "text": "Communication – Participants must “phone a friend” and summarize the scenario using SBAR (Situation, Background, Assessment, Recommendation) format to an RT or provider. AI will analyze the text and award points based on SBAR use"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 110
+      },
+      "text": "Methods: deliberate practice with feedback, audio, visual, "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 111
+      },
+      "text": "Highlights: active learning, promotes interprofessional collaboration and teamwork skills"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 112
+      },
+      "text": "Quest – This activity requires the learner to complete a routine patient care task in real life (e.g., correctly suction an intubated patient or patient with a tracheostomy they are caring for, boost 100% FiO2 on different ventilator interfaces on the unit that day), observed by an expert (i.e., respiratory therapist or fellow/attending). This allows RNs to learn in real time, with their actual patients (within their scope of practice), and from their co-workers in other fields, with provision of formative feedback."
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 113
+      },
+      "text": "Methods: deliberate practice with feedback and team training roles, peer teaching, demonstration, role models, behavioral interventions, real-life and supervised clinical experiences, demonstrations"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 114
+      },
+      "text": "Highlights: promotes interprofessional collaboration and teamwork skills, great for development of hands-on, technical skills"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 115
+      },
+      "text": "Vent Lab – This activity will have a cartoon ventilator, where nurses must interact with the interface. For example, they may observe values and be asked to identify a problem, solve a problem, or boost FiO2."
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 116
+      },
+      "text": "Methods: role-play, artificial models"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 117
+      },
+      "text": "Highlights: problem solving, executive functioning (i.e., prioritizing, multi-tasking), autonomous decision making"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 120
+      },
+      "text": "TEAM MEMBER SIGN-UP:"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 121
+      },
+      "text": "Alisa Corrado"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 122
+      },
+      "text": "Ashley Siems"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 123
+      },
+      "text": "Lauren Dees"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 124
+      },
+      "text": " Hillary Pennypacker"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 125
+      },
+      "text": "Bea Teppa"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 126
+      },
+      "text": "Kiya Wilkerson\nPeter Scully"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 129
+      },
+      "text": "STATUS KEY:"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 130
+      },
+      "text": "• = ready "
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 131
+      },
+      "text": "x = pending/partial"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 132
+      },
+      "text": "(blank) = not yet complete"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 134
+      },
+      "text": "Lake Mucosa"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 135
+      },
+      "text": "Review of the basics, intro to respiratory and airway anatomy & physiology, oxygenation, ventilation, and ventilator interfaces"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 139
+      },
+      "text": "Interlobar Divides"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 141
+      },
+      "text": "Introduction to conventional mechanical ventilation modes & settings"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 147
+      },
+      "text": "Valley of Pulmonara"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 149
+      },
+      "text": "Disease specific considerations, vent alarms, and ventilator-associated pneumonia (VAP)"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 152
+      },
+      "text": "Bronchial Bluffs"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 153
+      },
+      "text": "Monitoring (CXR, blood gasses), bag valve & mask ventilation"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 157
+      },
+      "text": "Mount Pneumora"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 159
+      },
+      "text": "Non-conventional mechanical ventilation, ventilator adjuncts, extubation readiness"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 162
+      },
+      "text": "Alveolar Highlands"
+    },
+    {
+      "sourceLocator": {
+        "bodyIndex": 163
+      },
+      "text": "Putting it all together!"
+    }
+  ],
+  "islands": [
+    {
+      "activities": [
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-lake-mucosa-01",
+          "sequence": 1,
+          "sourceCells": [
+            "•",
+            "Oxygenation & Mean Airway Pressure",
+            "Video",
+            "10",
+            "3",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 2,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Video",
+          "title": "Oxygenation & Mean Airway Pressure"
+        },
+        {
+          "activityType": "reading",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 2,
+          "rowId": "outline-lake-mucosa-02",
+          "sequence": 2,
+          "sourceCells": [
+            "•",
+            "Oxygenation & Mean Airway Pressure",
+            "Reading/Graphic",
+            "5",
+            "2",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 3,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Reading/Graphic",
+          "title": "Oxygenation & Mean Airway Pressure"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-lake-mucosa-03",
+          "sequence": 3,
+          "sourceCells": [
+            "•",
+            "Oxygenation & Mean Airway Pressure",
+            "Quiz",
+            "10",
+            "3",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 4,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Quiz",
+          "title": "Oxygenation & Mean Airway Pressure"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-lake-mucosa-04",
+          "sequence": 4,
+          "sourceCells": [
+            "•",
+            "Ventilation (& Minute Ventilation)",
+            "Video",
+            "10",
+            "3",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 5,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Video",
+          "title": "Ventilation (& Minute Ventilation)"
+        },
+        {
+          "activityType": "reading",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 2,
+          "rowId": "outline-lake-mucosa-05",
+          "sequence": 5,
+          "sourceCells": [
+            "•",
+            "Ventilation (& Minute Ventilation)",
+            "Reading/Graphic",
+            "5",
+            "2",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 6,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Reading/Graphic",
+          "title": "Ventilation (& Minute Ventilation)"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-lake-mucosa-06",
+          "sequence": 6,
+          "sourceCells": [
+            "•",
+            "Ventilation (& Minute Ventilation)",
+            "Quiz",
+            "10",
+            "3",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 7,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Quiz",
+          "title": "Ventilation (& Minute Ventilation)"
+        },
+        {
+          "activityType": "reading",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-lake-mucosa-07",
+          "sequence": 7,
+          "sourceCells": [
+            "•",
+            "Airway Anatomy",
+            "Reading/Graphic",
+            "5",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 8,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Reading/Graphic",
+          "title": "Airway Anatomy"
+        },
+        {
+          "activityType": "reading",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-lake-mucosa-08",
+          "sequence": 8,
+          "sourceCells": [
+            "•",
+            "Pulmonary Anatomy",
+            "Reading/Graphic ",
+            "5",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 9,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Reading/Graphic ",
+          "title": "Pulmonary Anatomy"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-lake-mucosa-09",
+          "sequence": 9,
+          "sourceCells": [
+            "•",
+            "Airway Sounds ",
+            "Quiz",
+            "10",
+            "3",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 10,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Quiz",
+          "title": "Airway Sounds"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-lake-mucosa-10",
+          "sequence": 10,
+          "sourceCells": [
+            "",
+            "Non-invasive ventilation monitoring (TCOM vs. EtCO2)",
+            "Quiz ",
+            "10",
+            "3",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 11,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": ""
+          },
+          "strategy": "Quiz ",
+          "title": "Non-invasive ventilation monitoring (TCOM vs. EtCO2)"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-lake-mucosa-11",
+          "sequence": 11,
+          "sourceCells": [
+            "",
+            "Oxygenation vs. Ventilation",
+            "Quiz",
+            "10",
+            "3",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 12,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": ""
+          },
+          "strategy": "Quiz",
+          "title": "Oxygenation vs. Ventilation"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-lake-mucosa-12",
+          "sequence": 12,
+          "sourceCells": [
+            "",
+            "“Welcome to my Crib”: \nVentilator interfaces 101 - Drager",
+            "Video",
+            "5",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 13,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": ""
+          },
+          "strategy": "Video",
+          "title": "“Welcome to my Crib”: Ventilator interfaces 101 - Drager"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-lake-mucosa-13",
+          "sequence": 13,
+          "sourceCells": [
+            "",
+            "“Welcome to my Crib”: \nVentilator interfaces 101 – Servo i/u",
+            "Video",
+            "5",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 14,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": ""
+          },
+          "strategy": "Video",
+          "title": "“Welcome to my Crib”: Ventilator interfaces 101 – Servo i/u"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-lake-mucosa-14",
+          "sequence": 14,
+          "sourceCells": [
+            "",
+            "“Welcome to my Crib”: \nVentilator interfaces 101 - Breas",
+            "Video",
+            "5",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 15,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": ""
+          },
+          "strategy": "Video",
+          "title": "“Welcome to my Crib”: Ventilator interfaces 101 - Breas"
+        },
+        {
+          "activityType": "vent_lab",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 5,
+          "rowId": "outline-lake-mucosa-15",
+          "sequence": 15,
+          "sourceCells": [
+            "•",
+            "Boost FiO2 on all vents",
+            "Vent Lab",
+            "10",
+            "5",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 16,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Vent Lab",
+          "title": "Boost FiO2 on all vents"
+        },
+        {
+          "activityType": "quest",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 10,
+          "rowId": "outline-lake-mucosa-16",
+          "sequence": 16,
+          "sourceCells": [
+            "•",
+            "Suctioning 101 ",
+            "Quest #1",
+            "15",
+            "10",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 137,
+            "rowIndex": 17,
+            "tableIndex": 1
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Quest #1",
+          "title": "Suctioning 101"
+        }
+      ],
+      "computedRowTotals": {
+        "activityCount": 16,
+        "estimatedMinutes": 130,
+        "peepPoints": 45
+      },
+      "declaredTotals": {
+        "activityCount": 16,
+        "complianceActivityCount": 12,
+        "estimatedMinutes": 130,
+        "peepPoints": 45,
+        "sourceCells": [
+          "",
+          "TOTAL: \n16 activities (compliance = 12)",
+          "",
+          "130",
+          "45",
+          ""
+        ],
+        "sourceLocator": {
+          "bodyIndex": 137,
+          "rowIndex": 18,
+          "tableIndex": 1
+        }
+      },
+      "description": "Review of the basics, intro to respiratory and airway anatomy & physiology, oxygenation, ventilation, and ventilator interfaces",
+      "id": "lake-mucosa",
+      "order": 1,
+      "sourceLocator": {
+        "bodyIndex": 134
+      },
+      "sourceTable": {
+        "bodyIndex": 137,
+        "headers": [
+          "status",
+          "Topic",
+          "Strategy",
+          "Time (min)",
+          "PEEP Points",
+          "Notes:"
+        ],
+        "tableIndex": 1
+      },
+      "title": "Lake Mucosa"
+    },
+    {
+      "activities": [
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-interlobar-divides-01",
+          "sequence": 1,
+          "sourceCells": [
+            "",
+            "•",
+            "Lung Compliance 101",
+            "Video ",
+            "10",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 142,
+            "rowIndex": 2,
+            "tableIndex": 2
+          },
+          "sourceStatus": {
+            "App dev": "",
+            "Creation status\n": "•"
+          },
+          "strategy": "Video ",
+          "title": "Lung Compliance 101"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 2,
+          "rowId": "outline-interlobar-divides-02",
+          "sequence": 2,
+          "sourceCells": [
+            "",
+            "•\n",
+            "Ventilator Basics: \nIndependent and Dependent variables, normal values",
+            "Video",
+            "15",
+            "2",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 142,
+            "rowIndex": 3,
+            "tableIndex": 2
+          },
+          "sourceStatus": {
+            "App dev": "",
+            "Creation status\n": "•\n"
+          },
+          "strategy": "Video",
+          "title": "Ventilator Basics: Independent and Dependent variables, normal values"
+        },
+        {
+          "activityType": "case_vignette",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 5,
+          "rowId": "outline-interlobar-divides-03",
+          "sequence": 3,
+          "sourceCells": [
+            "",
+            "•",
+            "Ventilator Basics: \nIndependent and Dependent variables, normal values",
+            "Clinical case vignette ",
+            "15",
+            "5",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 142,
+            "rowIndex": 4,
+            "tableIndex": 2
+          },
+          "sourceStatus": {
+            "App dev": "",
+            "Creation status\n": "•"
+          },
+          "strategy": "Clinical case vignette ",
+          "title": "Ventilator Basics: Independent and Dependent variables, normal values"
+        },
+        {
+          "activityType": "reading",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-interlobar-divides-04",
+          "sequence": 4,
+          "sourceCells": [
+            "",
+            "•\n",
+            "Ventilator modes: \nPC vs. PRVC in the PICU",
+            "Reading/Graphic",
+            "5",
+            "1",
+            "\t"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 142,
+            "rowIndex": 5,
+            "tableIndex": 2
+          },
+          "sourceStatus": {
+            "App dev": "",
+            "Creation status\n": "•\n"
+          },
+          "strategy": "Reading/Graphic",
+          "title": "Ventilator modes: PC vs. PRVC in the PICU"
+        },
+        {
+          "activityType": "vent_lab",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Show vent screen (x3 vent interfaces), \nSelect correct mode"
+          ],
+          "peepPoints": 3,
+          "rowId": "outline-interlobar-divides-05",
+          "sequence": 5,
+          "sourceCells": [
+            "",
+            "•\n",
+            "Ventilator Modes:\nDetermining which mode you’re in",
+            "Vent Lab",
+            "10",
+            "3",
+            "Show vent screen (x3 vent interfaces), \nSelect correct mode"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 142,
+            "rowIndex": 6,
+            "tableIndex": 2
+          },
+          "sourceStatus": {
+            "App dev": "",
+            "Creation status\n": "•\n"
+          },
+          "strategy": "Vent Lab",
+          "title": "Ventilator Modes: Determining which mode you’re in"
+        },
+        {
+          "activityType": "case_vignette",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [
+            "\tdone"
+          ],
+          "peepPoints": 5,
+          "rowId": "outline-interlobar-divides-06",
+          "sequence": 6,
+          "sourceCells": [
+            "",
+            "•\n",
+            "Ventilator modes:\nChoosing a mode",
+            "Clinical case vignette",
+            "10",
+            "5",
+            "\tdone"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 142,
+            "rowIndex": 7,
+            "tableIndex": 2
+          },
+          "sourceStatus": {
+            "App dev": "",
+            "Creation status\n": "•\n"
+          },
+          "strategy": "Clinical case vignette",
+          "title": "Ventilator modes: Choosing a mode"
+        },
+        {
+          "activityType": "quest",
+          "estimatedMinutes": null,
+          "explicitRepeatCount": 2,
+          "notes": [],
+          "peepPoints": null,
+          "rowId": "outline-interlobar-divides-07",
+          "sequence": 7,
+          "sourceCells": [
+            "",
+            "•",
+            "Determining compliance",
+            "Quest (available to do x2) #2, #3",
+            "15 (30)",
+            "5 (10)",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 142,
+            "rowIndex": 8,
+            "tableIndex": 2
+          },
+          "sourceStatus": {
+            "App dev": "",
+            "Creation status\n": "•"
+          },
+          "strategy": "Quest (available to do x2) #2, #3",
+          "title": "Determining compliance"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-interlobar-divides-08",
+          "sequence": 8,
+          "sourceCells": [
+            "",
+            "•",
+            "CVICU ventilator strategies & “norms”",
+            "Video",
+            "10",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 142,
+            "rowIndex": 9,
+            "tableIndex": 2
+          },
+          "sourceStatus": {
+            "App dev": "",
+            "Creation status\n": "•"
+          },
+          "strategy": "Video",
+          "title": "CVICU ventilator strategies & “norms”"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-interlobar-divides-09",
+          "sequence": 9,
+          "sourceCells": [
+            "",
+            "•\n",
+            "CCDH ventilator strategies & “norms”",
+            "Video",
+            "10",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 142,
+            "rowIndex": 10,
+            "tableIndex": 2
+          },
+          "sourceStatus": {
+            "App dev": "",
+            "Creation status\n": "•\n"
+          },
+          "strategy": "Video",
+          "title": "CCDH ventilator strategies & “norms”"
+        },
+        {
+          "activityType": "case_vignette",
+          "estimatedMinutes": 20,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 5,
+          "rowId": "outline-interlobar-divides-10",
+          "sequence": 10,
+          "sourceCells": [
+            "",
+            "•",
+            "Ventilator Settings:\nSelecting initial settings for a healthy lung",
+            "Clinical case vignette",
+            "20",
+            "5",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 142,
+            "rowIndex": 11,
+            "tableIndex": 2
+          },
+          "sourceStatus": {
+            "App dev": "",
+            "Creation status\n": "•"
+          },
+          "strategy": "Clinical case vignette",
+          "title": "Ventilator Settings: Selecting initial settings for a healthy lung"
+        }
+      ],
+      "computedRowTotals": {
+        "activityCount": 10,
+        "estimatedMinutes": null,
+        "peepPoints": null
+      },
+      "declaredTotals": {
+        "activityCount": 10,
+        "complianceActivityCount": 8,
+        "estimatedMinutes": 135,
+        "peepPoints": 34,
+        "sourceCells": [
+          "",
+          "",
+          "TOTAL:\n10 activities (compliance = 8)",
+          "",
+          "135",
+          "34",
+          ""
+        ],
+        "sourceLocator": {
+          "bodyIndex": 142,
+          "rowIndex": 12,
+          "tableIndex": 2
+        }
+      },
+      "description": "Introduction to conventional mechanical ventilation modes & settings",
+      "id": "interlobar-divides",
+      "order": 2,
+      "sourceLocator": {
+        "bodyIndex": 139
+      },
+      "sourceTable": {
+        "bodyIndex": 142,
+        "headers": [
+          "App dev",
+          "Creation status\n",
+          "Topic",
+          "Strategy",
+          "Time (min)",
+          "PEEP Points",
+          "Notes:\n"
+        ],
+        "tableIndex": 2
+      },
+      "title": "Interlobar Divides"
+    },
+    {
+      "activities": [
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 2,
+          "rowId": "outline-valley-of-pulmonara-01",
+          "sequence": 1,
+          "sourceCells": [
+            "",
+            "Bronchiolitis pathophysiology",
+            "Video",
+            "10",
+            "2",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 2,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": ""
+          },
+          "strategy": "Video",
+          "title": "Bronchiolitis pathophysiology"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 2,
+          "rowId": "outline-valley-of-pulmonara-02",
+          "sequence": 2,
+          "sourceCells": [
+            "",
+            "Asthma pathophysiology",
+            "Video",
+            "10",
+            "2",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 3,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": ""
+          },
+          "strategy": "Video",
+          "title": "Asthma pathophysiology"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 2,
+          "rowId": "outline-valley-of-pulmonara-03",
+          "sequence": 3,
+          "sourceCells": [
+            "•\n",
+            "Tracheobronchomalacia ",
+            "Video",
+            "10",
+            "2",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 4,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": "•\n"
+          },
+          "strategy": "Video",
+          "title": "Tracheobronchomalacia"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 2,
+          "rowId": "outline-valley-of-pulmonara-04",
+          "sequence": 4,
+          "sourceCells": [
+            "",
+            "ARDS pathophysiology",
+            "Video",
+            "10",
+            "2",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 5,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": ""
+          },
+          "strategy": "Video",
+          "title": "ARDS pathophysiology"
+        },
+        {
+          "activityType": "reading",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [
+            "done"
+          ],
+          "peepPoints": 1,
+          "rowId": "outline-valley-of-pulmonara-05",
+          "sequence": 5,
+          "sourceCells": [
+            "•\n",
+            "ARDS:\nlung protective strategies",
+            "Reading/Graphic",
+            "5",
+            "1",
+            "done"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 6,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": "•\n"
+          },
+          "strategy": "Reading/Graphic",
+          "title": "ARDS: lung protective strategies"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-valley-of-pulmonara-06",
+          "sequence": 6,
+          "sourceCells": [
+            "•",
+            "“Captured”:\nUsing language to depict illness severity & course",
+            "Video",
+            "5",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 7,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Video",
+          "title": "“Captured”: Using language to depict illness severity & course"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-valley-of-pulmonara-07",
+          "sequence": 7,
+          "sourceCells": [
+            "•\n",
+            "Vent Alarms 101",
+            "Video",
+            "15",
+            "3",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 8,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": "•\n"
+          },
+          "strategy": "Video",
+          "title": "Vent Alarms 101"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-valley-of-pulmonara-08",
+          "sequence": 8,
+          "sourceCells": [
+            "•",
+            "Special considerations for EAT patients",
+            "Video",
+            "5",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 9,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": "•"
+          },
+          "strategy": "Video",
+          "title": "Special considerations for EAT patients"
+        },
+        {
+          "activityType": null,
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 5,
+          "rowId": "outline-valley-of-pulmonara-09",
+          "sequence": 9,
+          "sourceCells": [
+            "•\n",
+            "Guess that disease!",
+            "Clinical case vignette/vent lab",
+            "10",
+            "5",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 10,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": "•\n"
+          },
+          "strategy": "Clinical case vignette/vent lab",
+          "title": "Guess that disease!"
+        },
+        {
+          "activityType": "quest",
+          "estimatedMinutes": 20,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Give 3 scenarios for RNs to practice calling RT and giving SBAR/urgency of call"
+          ],
+          "peepPoints": 10,
+          "rowId": "outline-valley-of-pulmonara-10",
+          "sequence": 10,
+          "sourceCells": [
+            "•\n",
+            "Effective Communication:\nVent alarms",
+            "Quest #4",
+            "20",
+            "10",
+            "Give 3 scenarios for RNs to practice calling RT and giving SBAR/urgency of call"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 11,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": "•\n"
+          },
+          "strategy": "Quest #4",
+          "title": "Effective Communication: Vent alarms"
+        },
+        {
+          "activityType": "quest",
+          "estimatedMinutes": 20,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Give 3 scenarios for RNs to practice calling Provider and giving SBAR/urgency of call"
+          ],
+          "peepPoints": 10,
+          "rowId": "outline-valley-of-pulmonara-11",
+          "sequence": 11,
+          "sourceCells": [
+            "•\n",
+            "Effective Communication:\nVent alarms",
+            "Quest #5",
+            "20",
+            "10",
+            "Give 3 scenarios for RNs to practice calling Provider and giving SBAR/urgency of call"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 12,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": "•\n"
+          },
+          "strategy": "Quest #5",
+          "title": "Effective Communication: Vent alarms"
+        },
+        {
+          "activityType": null,
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 2,
+          "rowId": "outline-valley-of-pulmonara-12",
+          "sequence": 12,
+          "sourceCells": [
+            "•\n",
+            "Ventilator-Associated Pneumonia:\nBackground, Sequelae",
+            "Reading/Graphic (old- discarded)\nVideo (new)",
+            "10",
+            "2",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 13,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": "•\n"
+          },
+          "strategy": "Reading/Graphic (old- discarded)\nVideo (new)",
+          "title": "Ventilator-Associated Pneumonia: Background, Sequelae"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Sorting buckets  "
+          ],
+          "peepPoints": 2,
+          "rowId": "outline-valley-of-pulmonara-13",
+          "sequence": 13,
+          "sourceCells": [
+            "•\n",
+            "Ventilator-Associated Pneumonia:\nPrevention",
+            "Quiz",
+            "5",
+            "2",
+            "Sorting buckets  "
+          ],
+          "sourceLocator": {
+            "bodyIndex": 150,
+            "rowIndex": 14,
+            "tableIndex": 3
+          },
+          "sourceStatus": {
+            "status": "•\n"
+          },
+          "strategy": "Quiz",
+          "title": "Ventilator-Associated Pneumonia: Prevention"
+        }
+      ],
+      "computedRowTotals": {
+        "activityCount": 13,
+        "estimatedMinutes": 135,
+        "peepPoints": 43
+      },
+      "declaredTotals": {
+        "activityCount": 13,
+        "complianceActivityCount": 10,
+        "estimatedMinutes": 135,
+        "peepPoints": 43,
+        "sourceCells": [
+          "",
+          "TOTAL:\n13 activities (compliance = 10)",
+          "",
+          "135",
+          "43",
+          "`"
+        ],
+        "sourceLocator": {
+          "bodyIndex": 150,
+          "rowIndex": 15,
+          "tableIndex": 3
+        }
+      },
+      "description": "Disease specific considerations, vent alarms, and ventilator-associated pneumonia (VAP)",
+      "id": "valley-of-pulmonara",
+      "order": 3,
+      "sourceLocator": {
+        "bodyIndex": 147
+      },
+      "sourceTable": {
+        "bodyIndex": 150,
+        "headers": [
+          "status",
+          "Topic",
+          "Strategy",
+          "Time (min)",
+          "PEEP Points",
+          "Notes:\n"
+        ],
+        "tableIndex": 3
+      },
+      "title": "Valley of Pulmonara"
+    },
+    {
+      "activities": [
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-bronchial-bluffs-01",
+          "sequence": 1,
+          "sourceCells": [
+            "",
+            "CXR interpretation",
+            "Video",
+            "10",
+            "1",
+            "",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 2,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Video",
+          "title": "CXR interpretation"
+        },
+        {
+          "activityType": "reading",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-bronchial-bluffs-02",
+          "sequence": 2,
+          "sourceCells": [
+            "•\n",
+            "CXR interpretation",
+            "Reading/Graphic",
+            "5",
+            "1",
+            "",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 3,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Reading/Graphic",
+          "title": "CXR interpretation"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-bronchial-bluffs-03",
+          "sequence": 3,
+          "sourceCells": [
+            "•",
+            "Guess that disease! CXR Interpretations",
+            "Quiz",
+            "10",
+            "3",
+            "",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 4,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•"
+          },
+          "strategy": "Quiz",
+          "title": "Guess that disease! CXR Interpretations"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-bronchial-bluffs-04",
+          "sequence": 4,
+          "sourceCells": [
+            "•\n",
+            "Goldilocks and the 3 ETTs:\nWhen is my tube “just right?” ",
+            "Quiz",
+            "10",
+            "3",
+            "",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 5,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Quiz",
+          "title": "Goldilocks and the 3 ETTs: When is my tube “just right?”"
+        },
+        {
+          "activityType": "quest",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 5,
+          "rowId": "outline-bronchial-bluffs-05",
+          "sequence": 5,
+          "sourceCells": [
+            "•",
+            "CXR in real life",
+            "Quest #6",
+            "10",
+            "5",
+            "",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 6,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•"
+          },
+          "strategy": "Quest #6",
+          "title": "CXR in real life"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 2,
+          "rowId": "outline-bronchial-bluffs-06",
+          "sequence": 6,
+          "sourceCells": [
+            "•\n",
+            "Blood Gas Interpretation:\nPart 1",
+            "Video",
+            "10",
+            "2",
+            "",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 7,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Video",
+          "title": "Blood Gas Interpretation: Part 1"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [
+            "-Identify acid/base disturbance\n-Sorting buckets"
+          ],
+          "peepPoints": 3,
+          "rowId": "outline-bronchial-bluffs-07",
+          "sequence": 7,
+          "sourceCells": [
+            "•\n",
+            "Blood Gas Interpretation:\nIdentify the gas",
+            "Quiz",
+            "15",
+            "3",
+            "-Identify acid/base disturbance\n-Sorting buckets",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 8,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Quiz",
+          "title": "Blood Gas Interpretation: Identify the gas"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 2,
+          "rowId": "outline-bronchial-bluffs-08",
+          "sequence": 8,
+          "sourceCells": [
+            "•\n",
+            "Blood Gas Interpretation:\nPart 2",
+            "Video",
+            "10",
+            "2",
+            "",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 9,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Video",
+          "title": "Blood Gas Interpretation: Part 2"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Predict vent changes"
+          ],
+          "peepPoints": 3,
+          "rowId": "outline-bronchial-bluffs-09",
+          "sequence": 9,
+          "sourceCells": [
+            "•\n",
+            "Blood Gas Interpretation:\nAct on the gas ",
+            "Quiz ",
+            "15",
+            "3",
+            "Predict vent changes",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 10,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Quiz ",
+          "title": "Blood Gas Interpretation: Act on the gas"
+        },
+        {
+          "activityType": "reading",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-bronchial-bluffs-10",
+          "sequence": 10,
+          "sourceCells": [
+            "•\n",
+            "Blood Gas Interpretation:\nSummary graphic",
+            "Reading/Graphic",
+            "5",
+            "1",
+            "",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 11,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Reading/Graphic",
+          "title": "Blood Gas Interpretation: Summary graphic"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-bronchial-bluffs-11",
+          "sequence": 11,
+          "sourceCells": [
+            "•\n",
+            "Bagging 101",
+            "Video",
+            "10",
+            "1",
+            "",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 12,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Video",
+          "title": "Bagging 101"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-bronchial-bluffs-12",
+          "sequence": 12,
+          "sourceCells": [
+            "•\n",
+            "Bagging 201\n",
+            "Video\n",
+            "15",
+            "1",
+            "",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 13,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Video\n",
+          "title": "Bagging 201"
+        },
+        {
+          "activityType": "quest",
+          "estimatedMinutes": 20,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Have RT supervise bagging your patient"
+          ],
+          "peepPoints": 10,
+          "rowId": "outline-bronchial-bluffs-13",
+          "sequence": 13,
+          "sourceCells": [
+            "•\n",
+            "BVM Deliberate Practice",
+            "Quest #7",
+            "20",
+            "10",
+            "Have RT supervise bagging your patient",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 14,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Quest #7",
+          "title": "BVM Deliberate Practice"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-bronchial-bluffs-14",
+          "sequence": 14,
+          "sourceCells": [
+            "",
+            "Troubleshooting ineffective BVM",
+            "Quiz ",
+            "10",
+            "3",
+            "",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 155,
+            "rowIndex": 15,
+            "tableIndex": 4
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Quiz ",
+          "title": "Troubleshooting ineffective BVM"
+        }
+      ],
+      "computedRowTotals": {
+        "activityCount": 14,
+        "estimatedMinutes": 155,
+        "peepPoints": 39
+      },
+      "declaredTotals": {
+        "activityCount": 15,
+        "complianceActivityCount": 12,
+        "estimatedMinutes": 155,
+        "peepPoints": 39,
+        "sourceCells": [
+          "",
+          "TOTAL:\n15 activities (compliance = 12)",
+          "",
+          "155",
+          "39",
+          "",
+          ""
+        ],
+        "sourceLocator": {
+          "bodyIndex": 155,
+          "rowIndex": 16,
+          "tableIndex": 4
+        }
+      },
+      "description": "Monitoring (CXR, blood gasses), bag valve & mask ventilation",
+      "id": "bronchial-bluffs",
+      "order": 4,
+      "sourceLocator": {
+        "bodyIndex": 152
+      },
+      "sourceTable": {
+        "bodyIndex": 155,
+        "headers": [
+          "status\n",
+          "Topic",
+          "Strategy",
+          "Time (min)",
+          "PEEP Points",
+          "Notes:\n",
+          ""
+        ],
+        "tableIndex": 4
+      },
+      "title": "Bronchial Bluffs"
+    },
+    {
+      "activities": [
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-mount-pneumora-01",
+          "sequence": 1,
+          "sourceCells": [
+            "",
+            "Ventilator Dys-synchrony",
+            "Video",
+            "10",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 2,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Video",
+          "title": "Ventilator Dys-synchrony"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-mount-pneumora-02",
+          "sequence": 2,
+          "sourceCells": [
+            "",
+            "Sedation Considerations",
+            "Video",
+            "5",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 3,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Video",
+          "title": "Sedation Considerations"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [
+            "- what it is\n- indications, contra-indications"
+          ],
+          "peepPoints": 1,
+          "rowId": "outline-mount-pneumora-03",
+          "sequence": 3,
+          "sourceCells": [
+            "",
+            "Introduction to HFOV",
+            "Video",
+            "10",
+            "1",
+            "- what it is\n- indications, contra-indications"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 4,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Video",
+          "title": "Introduction to HFOV"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [
+            "RT to film?"
+          ],
+          "peepPoints": 1,
+          "rowId": "outline-mount-pneumora-04",
+          "sequence": 4,
+          "sourceCells": [
+            "",
+            "“Welcome to my crib”:\nHFOV",
+            "Video",
+            "5",
+            "1",
+            "RT to film?"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 5,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Video",
+          "title": "“Welcome to my crib”: HFOV"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [
+            "- what it is\n- indications, contra-indications"
+          ],
+          "peepPoints": 1,
+          "rowId": "outline-mount-pneumora-05",
+          "sequence": 5,
+          "sourceCells": [
+            "•\n",
+            "Introduction to APRV",
+            "Video",
+            "10",
+            "1",
+            "- what it is\n- indications, contra-indications"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 6,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Video",
+          "title": "Introduction to APRV"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 5,
+          "explicitRepeatCount": null,
+          "notes": [
+            "RT to film?"
+          ],
+          "peepPoints": 1,
+          "rowId": "outline-mount-pneumora-06",
+          "sequence": 6,
+          "sourceCells": [
+            "",
+            "“Welcome to my crib”:\nAPRV",
+            "Video",
+            "5",
+            "1",
+            "RT to film?"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 7,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Video",
+          "title": "“Welcome to my crib”: APRV"
+        },
+        {
+          "activityType": "case_vignette",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Include ABG interpretation"
+          ],
+          "peepPoints": 3,
+          "rowId": "outline-mount-pneumora-07",
+          "sequence": 7,
+          "sourceCells": [
+            "",
+            "Escalating care:\nCase 1",
+            "Clinical case vignette",
+            "10",
+            "3",
+            "Include ABG interpretation"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 8,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Clinical case vignette",
+          "title": "Escalating care: Case 1"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Sorting buckets"
+          ],
+          "peepPoints": 3,
+          "rowId": "outline-mount-pneumora-08",
+          "sequence": 8,
+          "sourceCells": [
+            "",
+            "HFOV vs. APRV",
+            "Quiz",
+            "10",
+            "3",
+            "Sorting buckets"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 9,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Quiz",
+          "title": "HFOV vs. APRV"
+        },
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-mount-pneumora-09",
+          "sequence": 9,
+          "sourceCells": [
+            "•",
+            "Weaning from non-CMV",
+            "Video",
+            "10",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 10,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": "•"
+          },
+          "strategy": "Video",
+          "title": "Weaning from non-CMV"
+        },
+        {
+          "activityType": "reading",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [
+            "- what it is\n- indications, contra-indications\n- dosing"
+          ],
+          "peepPoints": 2,
+          "rowId": "outline-mount-pneumora-10",
+          "sequence": 10,
+          "sourceCells": [
+            "",
+            "Ventilator Adjuncts:\niNO",
+            "Reading/Graphic",
+            "10",
+            "2",
+            "- what it is\n- indications, contra-indications\n- dosing"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 11,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Reading/Graphic",
+          "title": "Ventilator Adjuncts: iNO"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Sorting buckets"
+          ],
+          "peepPoints": 3,
+          "rowId": "outline-mount-pneumora-11",
+          "sequence": 11,
+          "sourceCells": [
+            "",
+            "Go from iNO to I KNOW ;)",
+            "Quiz",
+            "10",
+            "3",
+            "Sorting buckets"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 12,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Quiz",
+          "title": "Go from iNO to I KNOW ;)"
+        },
+        {
+          "activityType": "vent_lab",
+          "estimatedMinutes": 20,
+          "explicitRepeatCount": null,
+          "notes": [
+            "2 cases, 1 HFOV and 1 APRV"
+          ],
+          "peepPoints": 5,
+          "rowId": "outline-mount-pneumora-12",
+          "sequence": 12,
+          "sourceCells": [
+            "",
+            "Understanding the non-CMV interface",
+            "Vent Lab",
+            "20",
+            "5",
+            "2 cases, 1 HFOV and 1 APRV"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 13,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Vent Lab",
+          "title": "Understanding the non-CMV interface"
+        },
+        {
+          "activityType": "quest",
+          "estimatedMinutes": 20,
+          "explicitRepeatCount": null,
+          "notes": [
+            "- Find a patient on non-conventional mechanical ventilation\n- Find Provider or RT\n- Explain your understanding of why this patient requires non-conventional ventilation & walk through settings observed @ bedside\n- Elicit feedback",
+            "- Find a patient on non-conventional mechanical ventilation\n- Find RT\n- Walk them through settings and your understanding of this patient\n- elicit feedback"
+          ],
+          "peepPoints": 10,
+          "rowId": "outline-mount-pneumora-13",
+          "sequence": 13,
+          "sourceCells": [
+            "",
+            "Understanding the non-CMV rationale",
+            "Quest #8",
+            "20",
+            "10",
+            "- Find a patient on non-conventional mechanical ventilation\n- Find Provider or RT\n- Explain your understanding of why this patient requires non-conventional ventilation & walk through settings observed @ bedside\n- Elicit feedback",
+            "- Find a patient on non-conventional mechanical ventilation\n- Find RT\n- Walk them through settings and your understanding of this patient\n- elicit feedback"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 160,
+            "rowIndex": 14,
+            "tableIndex": 5
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Quest #8",
+          "title": "Understanding the non-CMV rationale"
+        }
+      ],
+      "computedRowTotals": {
+        "activityCount": 13,
+        "estimatedMinutes": 135,
+        "peepPoints": 33
+      },
+      "declaredTotals": {
+        "activityCount": 12,
+        "complianceActivityCount": 9,
+        "estimatedMinutes": 130,
+        "peepPoints": 32,
+        "sourceCells": [
+          "",
+          "TOTAL:\n12 activities (compliance = 9)",
+          "",
+          "130",
+          "32",
+          ""
+        ],
+        "sourceLocator": {
+          "bodyIndex": 160,
+          "rowIndex": 15,
+          "tableIndex": 5
+        }
+      },
+      "description": "Non-conventional mechanical ventilation, ventilator adjuncts, extubation readiness",
+      "id": "mount-pneumora",
+      "order": 5,
+      "sourceLocator": {
+        "bodyIndex": 157
+      },
+      "sourceTable": {
+        "bodyIndex": 160,
+        "headers": [
+          "status\n",
+          "Topic",
+          "Strategy",
+          "Time (min)",
+          "PEEP Points",
+          "Notes:\n"
+        ],
+        "tableIndex": 5
+      },
+      "title": "Mount Pneumora"
+    },
+    {
+      "activities": [
+        {
+          "activityType": "video",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 1,
+          "rowId": "outline-alveolar-highlands-01",
+          "sequence": 1,
+          "sourceCells": [
+            "",
+            "DOPE & Other Considerations for Airway Emergencies",
+            "Video",
+            "10",
+            "1",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 164,
+            "rowIndex": 2,
+            "tableIndex": 6
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Video",
+          "title": "DOPE & Other Considerations for Airway Emergencies"
+        },
+        {
+          "activityType": "case_vignette",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Goosebumps style\nTopics reviewed:\n- CXR review for ETT \n- recognizing loss of an airway\n- BVM troubleshooting\n"
+          ],
+          "peepPoints": 3,
+          "rowId": "outline-alveolar-highlands-02",
+          "sequence": 2,
+          "sourceCells": [
+            "",
+            "UE in the CT scanner",
+            "Clinical Case Vignette",
+            "15",
+            "3",
+            "Goosebumps style\nTopics reviewed:\n- CXR review for ETT \n- recognizing loss of an airway\n- BVM troubleshooting\n"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 164,
+            "rowIndex": 3,
+            "tableIndex": 6
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Clinical Case Vignette",
+          "title": "UE in the CT scanner"
+        },
+        {
+          "activityType": "case_vignette",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Goosebumps style\nTopics reviewed:\n- CXR interpretation\n- blood gas on bipap\n- blood gas once interpretation\n- ventilator considerations for asthma"
+          ],
+          "peepPoints": 3,
+          "rowId": "outline-alveolar-highlands-03",
+          "sequence": 3,
+          "sourceCells": [
+            "",
+            "Intubating an Asthmatic ",
+            "Clinical case vignette",
+            "15",
+            "3",
+            "Goosebumps style\nTopics reviewed:\n- CXR interpretation\n- blood gas on bipap\n- blood gas once interpretation\n- ventilator considerations for asthma"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 164,
+            "rowIndex": 4,
+            "tableIndex": 6
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Clinical case vignette",
+          "title": "Intubating an Asthmatic"
+        },
+        {
+          "activityType": "case_vignette",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [],
+          "peepPoints": 3,
+          "rowId": "outline-alveolar-highlands-04",
+          "sequence": 4,
+          "sourceCells": [
+            "•\n",
+            "ARDS: Capturing at peak illness",
+            "Clinical Case Vignette",
+            "15",
+            "3",
+            ""
+          ],
+          "sourceLocator": {
+            "bodyIndex": 164,
+            "rowIndex": 5,
+            "tableIndex": 6
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Clinical Case Vignette",
+          "title": "ARDS: Capturing at peak illness"
+        },
+        {
+          "activityType": "case_vignette",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Goosebumps style\nTopics reviewed:\n- ERT pass/fail\n- clinically “captured” and weaned\n- vent alarms"
+          ],
+          "peepPoints": 3,
+          "rowId": "outline-alveolar-highlands-05",
+          "sequence": 5,
+          "sourceCells": [
+            "•\n",
+            "Extubation Readiness",
+            "Clinical Case Vignette",
+            "15",
+            "3",
+            "Goosebumps style\nTopics reviewed:\n- ERT pass/fail\n- clinically “captured” and weaned\n- vent alarms"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 164,
+            "rowIndex": 6,
+            "tableIndex": 6
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Clinical Case Vignette",
+          "title": "Extubation Readiness"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Matching"
+          ],
+          "peepPoints": 3,
+          "rowId": "outline-alveolar-highlands-06",
+          "sequence": 6,
+          "sourceCells": [
+            "",
+            "Vent Alarms",
+            "Quiz",
+            "10",
+            "3",
+            "Matching"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 164,
+            "rowIndex": 7,
+            "tableIndex": 6
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Quiz",
+          "title": "Vent Alarms"
+        },
+        {
+          "activityType": "quiz",
+          "estimatedMinutes": 10,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Sorting"
+          ],
+          "peepPoints": 3,
+          "rowId": "outline-alveolar-highlands-07",
+          "sequence": 7,
+          "sourceCells": [
+            "",
+            "Blood gas analysis & intervention",
+            "Quiz",
+            "10",
+            "3",
+            "Sorting"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 164,
+            "rowIndex": 8,
+            "tableIndex": 6
+          },
+          "sourceStatus": {
+            "status\n": ""
+          },
+          "strategy": "Quiz",
+          "title": "Blood gas analysis & intervention"
+        },
+        {
+          "activityType": "quest",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Practice BVM on a patient with RT. Elicit feedback"
+          ],
+          "peepPoints": 10,
+          "rowId": "outline-alveolar-highlands-08",
+          "sequence": 8,
+          "sourceCells": [
+            "•\n",
+            "BVM",
+            "Quest (RT) #9",
+            "15",
+            "10",
+            "Practice BVM on a patient with RT. Elicit feedback"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 164,
+            "rowIndex": 9,
+            "tableIndex": 6
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Quest (RT) #9",
+          "title": "BVM"
+        },
+        {
+          "activityType": "quest",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [
+            "Interpret a patient’s blood gas for a provider and predict a change to be made. Provide rationale for your recommendation. Elicit feedback"
+          ],
+          "peepPoints": 10,
+          "rowId": "outline-alveolar-highlands-09",
+          "sequence": 9,
+          "sourceCells": [
+            "•\n",
+            "Blood Gas Interpretation",
+            "Quest (provider) #10",
+            "15",
+            "10",
+            "Interpret a patient’s blood gas for a provider and predict a change to be made. Provide rationale for your recommendation. Elicit feedback"
+          ],
+          "sourceLocator": {
+            "bodyIndex": 164,
+            "rowIndex": 10,
+            "tableIndex": 6
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Quest (provider) #10",
+          "title": "Blood Gas Interpretation"
+        },
+        {
+          "activityType": "quest",
+          "estimatedMinutes": 15,
+          "explicitRepeatCount": null,
+          "notes": [
+            "If your patient is undergoing an ERT, discuss the ERT with an RT. Discuss:\nHR, RR, SpO2, Vt. Using each of these, determine if ERT was successful or not. Elicit feedback. "
+          ],
+          "peepPoints": 10,
+          "rowId": "outline-alveolar-highlands-10",
+          "sequence": 10,
+          "sourceCells": [
+            "•\n",
+            "ERT ",
+            "Quest (RT) #11",
+            "15",
+            "10",
+            "If your patient is undergoing an ERT, discuss the ERT with an RT. Discuss:\nHR, RR, SpO2, Vt. Using each of these, determine if ERT was successful or not. Elicit feedback. "
+          ],
+          "sourceLocator": {
+            "bodyIndex": 164,
+            "rowIndex": 11,
+            "tableIndex": 6
+          },
+          "sourceStatus": {
+            "status\n": "•\n"
+          },
+          "strategy": "Quest (RT) #11",
+          "title": "ERT"
+        }
+      ],
+      "computedRowTotals": {
+        "activityCount": 10,
+        "estimatedMinutes": 135,
+        "peepPoints": 49
+      },
+      "declaredTotals": {
+        "activityCount": 10,
+        "complianceActivityCount": 8,
+        "estimatedMinutes": 135,
+        "peepPoints": 49,
+        "sourceCells": [
+          "",
+          "TOTAL:\n10  activities (compliance = 8)",
+          "",
+          "135",
+          "49",
+          ""
+        ],
+        "sourceLocator": {
+          "bodyIndex": 164,
+          "rowIndex": 12,
+          "tableIndex": 6
+        }
+      },
+      "description": "Putting it all together!",
+      "id": "alveolar-highlands",
+      "order": 6,
+      "sourceLocator": {
+        "bodyIndex": 162
+      },
+      "sourceTable": {
+        "bodyIndex": 164,
+        "headers": [
+          "status\n",
+          "Topic",
+          "Strategy",
+          "Time (min)",
+          "PEEP Points",
+          "Notes:\n"
+        ],
+        "tableIndex": 6
+      },
+      "title": "Alveolar Highlands"
+    }
+  ],
+  "issues": [
+    {
+      "code": "ambiguous_numeric_value",
+      "field": "estimatedMinutes",
+      "islandId": "interlobar-divides",
+      "observed": "15 (30)",
+      "rowId": "outline-interlobar-divides-07",
+      "sourceLocator": {
+        "bodyIndex": 142,
+        "rowIndex": 8,
+        "tableIndex": 2
+      }
+    },
+    {
+      "code": "ambiguous_numeric_value",
+      "field": "peepPoints",
+      "islandId": "interlobar-divides",
+      "observed": "5 (10)",
+      "rowId": "outline-interlobar-divides-07",
+      "sourceLocator": {
+        "bodyIndex": 142,
+        "rowIndex": 8,
+        "tableIndex": 2
+      }
+    },
+    {
+      "code": "repeated_activity_row",
+      "field": "explicitRepeatCount",
+      "islandId": "interlobar-divides",
+      "observed": 2,
+      "rowId": "outline-interlobar-divides-07",
+      "sourceLocator": {
+        "bodyIndex": 142,
+        "rowIndex": 8,
+        "tableIndex": 2
+      }
+    },
+    {
+      "code": "ambiguous_activity_type",
+      "field": "activityType",
+      "islandId": "valley-of-pulmonara",
+      "observed": "Clinical case vignette/vent lab",
+      "rowId": "outline-valley-of-pulmonara-09",
+      "sourceLocator": {
+        "bodyIndex": 150,
+        "rowIndex": 10,
+        "tableIndex": 3
+      }
+    },
+    {
+      "code": "ambiguous_activity_type",
+      "field": "activityType",
+      "islandId": "valley-of-pulmonara",
+      "observed": "Reading/Graphic (old- discarded)\nVideo (new)",
+      "rowId": "outline-valley-of-pulmonara-12",
+      "sourceLocator": {
+        "bodyIndex": 150,
+        "rowIndex": 13,
+        "tableIndex": 3
+      }
+    },
+    {
+      "code": "declared_total_mismatch",
+      "computed": 14,
+      "declared": 15,
+      "field": "activityCount",
+      "islandId": "bronchial-bluffs",
+      "sourceLocator": {
+        "bodyIndex": 155,
+        "rowIndex": 16,
+        "tableIndex": 4
+      }
+    },
+    {
+      "code": "unmapped_source_column",
+      "field": "sourceCells[6]",
+      "islandId": "mount-pneumora",
+      "observed": "- Find a patient on non-conventional mechanical ventilation\n- Find RT\n- Walk them through settings and your understanding of this patient\n- elicit feedback",
+      "rowId": "outline-mount-pneumora-13",
+      "sourceLocator": {
+        "bodyIndex": 160,
+        "rowIndex": 14,
+        "tableIndex": 5
+      }
+    },
+    {
+      "code": "declared_total_mismatch",
+      "computed": 13,
+      "declared": 12,
+      "field": "activityCount",
+      "islandId": "mount-pneumora",
+      "sourceLocator": {
+        "bodyIndex": 160,
+        "rowIndex": 15,
+        "tableIndex": 5
+      }
+    },
+    {
+      "code": "declared_total_mismatch",
+      "computed": 135,
+      "declared": 130,
+      "field": "estimatedMinutes",
+      "islandId": "mount-pneumora",
+      "sourceLocator": {
+        "bodyIndex": 160,
+        "rowIndex": 15,
+        "tableIndex": 5
+      }
+    },
+    {
+      "code": "declared_total_mismatch",
+      "computed": 33,
+      "declared": 32,
+      "field": "peepPoints",
+      "islandId": "mount-pneumora",
+      "sourceLocator": {
+        "bodyIndex": 160,
+        "rowIndex": 15,
+        "tableIndex": 5
+      }
+    }
+  ],
+  "purpose": "Source-outline reconciliation; not a published learner curriculum",
+  "schemaVersion": 1,
+  "source": {
+    "byteSize": 956890,
+    "relativePath": "GameOutline.docx",
+    "sha256": "9358fe5c2d83356355231f8dcbcb1e20bb87afc70144c40c0ced5acf47161655",
+    "sourceId": "source-7effcb159366c230bc93"
+  },
+  "summary": {
+    "activityRowCount": 76,
+    "islandCount": 6,
+    "issueCount": 10
+  }
+}

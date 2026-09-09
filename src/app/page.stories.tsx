@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Productionized mobile dashboard composed from the Figma home frame "iPhone 17 - 11" (193:661): full-bleed planet map, HUD stats, profile/points treatment, progress pills and track, feedback FAB and capsule bottom navigation.',
+          'Learning dashboard with the space-map identity, readable progress statistics, an accessible island list, and consistent Home/Profile/Settings navigation. This story uses in-memory preview state.',
       },
     },
   },
