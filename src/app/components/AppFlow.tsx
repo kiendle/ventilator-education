@@ -408,7 +408,7 @@ function ScreenShell({
   footer?: ReactNode
 }) {
   return (
-    <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-md flex-col px-5 pb-8 pt-5">
+    <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-md flex-col pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-[calc(1.25rem+env(safe-area-inset-top,0px))]">
       {(title || onBack) && (
         <header className="mb-4 flex items-center gap-3">
           {onBack && (
@@ -436,7 +436,7 @@ function ScreenShell({
 
 function OutcomeShell({ children }: { children: ReactNode }) {
   return (
-    <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-md items-center px-5 py-8">
+    <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-md items-center pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-[calc(2rem+env(safe-area-inset-top,0px))] pb-[calc(2rem+env(safe-area-inset-bottom,0px))]">
       <Panel className="flex w-full flex-col items-center gap-5 p-6 text-center">{children}</Panel>
     </div>
   )
@@ -514,12 +514,12 @@ function AuthShell({
   const signup = mode === 'register'
 
   return (
-    <div className="relative z-10 min-h-dvh overflow-hidden px-5 py-5 sm:px-8 sm:py-8">
+    <div className="relative z-10 min-h-dvh overflow-hidden pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-[calc(1.25rem+env(safe-area-inset-top,0px))] pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] sm:pl-[max(2rem,env(safe-area-inset-left,0px))] sm:pr-[max(2rem,env(safe-area-inset-right,0px))] sm:pt-[calc(2rem+env(safe-area-inset-top,0px))] sm:pb-[calc(2rem+env(safe-area-inset-bottom,0px))]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgb(95_225_218_/_0.13),transparent_24%),radial-gradient(circle_at_88%_76%,rgb(255_116_0_/_0.14),transparent_26%)]"
       />
-      <div className="relative mx-auto grid min-h-[calc(100dvh-2.5rem)] max-w-5xl items-center gap-12 lg:grid-cols-[1fr_25rem]">
+      <div className="relative mx-auto grid min-h-[calc(100dvh-2.5rem-env(safe-area-inset-top,0px)-env(safe-area-inset-bottom,0px))] sm:min-h-[calc(100dvh-4rem-env(safe-area-inset-top,0px)-env(safe-area-inset-bottom,0px))] max-w-5xl items-center gap-12 lg:grid-cols-[1fr_25rem]">
         <section className="hidden max-w-xl lg:block">
           <p className="mb-6 font-mono text-xs font-bold uppercase tracking-[0.28em] text-aqua-300">
             GAMER-ICU · Flight academy
@@ -849,7 +849,7 @@ export function AppFlow({
     switch (screen) {
       case 'welcome':
         return (
-          <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-md flex-col px-6 py-8">
+          <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-md flex-col pl-[max(1.5rem,env(safe-area-inset-left,0px))] pr-[max(1.5rem,env(safe-area-inset-right,0px))] pt-[calc(2rem+env(safe-area-inset-top,0px))] pb-[calc(2rem+env(safe-area-inset-bottom,0px))]">
             <div className="flex flex-1 flex-col items-center justify-center pb-16">
               <div className="welcome-bubble">Welcome to GAMER-ICU!</div>
               <Image
@@ -1053,7 +1053,7 @@ export function AppFlow({
       case 'dashboard':
         return (
           <div
-            className="relative z-10 mx-auto h-dvh w-full max-w-md overflow-hidden bg-space-900 bg-[url('/background.png')] bg-cover bg-center"
+            className="relative z-10 h-dvh w-full overflow-hidden bg-space-900 bg-[url('/background.png')] bg-cover bg-center"
             role="region"
             aria-label={`Learning dashboard, ${dashboardView} view`}
             tabIndex={0}
@@ -1087,259 +1087,265 @@ export function AppFlow({
               }
             }}
           >
-            <div
-              className="dashboard-map-view pointer-events-none absolute left-[49%] top-[48%] h-[68%] w-[87%] -translate-x-1/2 -translate-y-1/2"
-              data-active={dashboardView === 'map'}
-            >
-              <Image
-                src="/dashboard-island.png"
-                alt=""
-                fill
-                priority
-                sizes="(max-width: 28rem) 78vw, 21.84rem"
-                className="object-contain"
-              />
-            </div>
-            <h1 className="sr-only">Ventilator Education learning dashboard</h1>
-
-            <header className="pointer-events-none absolute inset-x-0 top-0 z-20 px-5 pt-6">
-              <div className="flex items-center justify-between gap-2">
-                <HudStat icon="map" aria-label={`Islands unlocked: ${unlockedIslands} of 6`}>
-                  {unlockedIslands}/6
-                </HudStat>
-                <HudStat icon="flame" aria-label={`Current streak: ${streak} days`}>
-                  {streak}
-                </HudStat>
-                <HudStat icon="star" aria-label={`Total PEEP points: ${points}`}>
-                  {points.toLocaleString()}
-                </HudStat>
+            <div className="absolute top-[env(safe-area-inset-top,0px)] right-[env(safe-area-inset-right,0px)] bottom-[env(safe-area-inset-bottom,0px)] left-[env(safe-area-inset-left,0px)] mx-auto max-w-md">
+              <div
+                className="dashboard-map-view pointer-events-none absolute left-[49%] top-[48%] h-[68%] w-[87%] -translate-x-1/2 -translate-y-1/2"
+                data-active={dashboardView === 'map'}
+              >
+                <Image
+                  src="/dashboard-island.png"
+                  alt=""
+                  fill
+                  priority
+                  sizes="(max-width: 28rem) 78vw, 21.84rem"
+                  className="object-contain"
+                />
               </div>
-            </header>
+              <h1 className="sr-only">Ventilator Education learning dashboard</h1>
 
-            <section
-              className="dashboard-map-view absolute left-[49%] top-[48%] z-10 h-[68%] w-[87%] -translate-x-1/2 -translate-y-1/2"
-              data-active={dashboardView === 'map'}
-              aria-label="Learning landmarks"
-              aria-hidden={dashboardView !== 'map'}
-              inert={dashboardView !== 'map'}
-            >
-              {ISLANDS.map((place, idx) => {
-                const spot = ISLAND_SPOTS[idx]
-                const locked = idx >= unlockedIslands
-                const passed = passedIslands[place.id]
-                const done = place.activities.filter((activity) => completed[activity.id]).length
-                const progress = Math.round((done / place.activities.length) * 100)
-                const tooltipPosition =
-                  spot.tooltip === 'above'
-                    ? 'bottom-10 left-1/2 -translate-x-1/2'
-                    : spot.tooltip === 'below'
-                      ? 'left-1/2 top-10 -translate-x-1/2'
-                      : spot.tooltip === 'left'
-                        ? 'right-10 top-1/2 -translate-y-1/2'
-                        : 'left-10 top-1/2 -translate-y-1/2'
+              <header className="pointer-events-none absolute inset-x-0 top-0 z-20 px-5 pt-6">
+                <div className="flex items-center justify-between gap-2">
+                  <HudStat icon="map" aria-label={`Islands unlocked: ${unlockedIslands} of 6`}>
+                    {unlockedIslands}/6
+                  </HudStat>
+                  <HudStat icon="flame" aria-label={`Current streak: ${streak} days`}>
+                    {streak}
+                  </HudStat>
+                  <HudStat icon="star" aria-label={`Total PEEP points: ${points}`}>
+                    {points.toLocaleString()}
+                  </HudStat>
+                </div>
+              </header>
 
-                return (
-                  <button
-                    key={place.id}
-                    type="button"
-                    aria-disabled={locked}
-                    aria-label={`${place.name}: ${locked ? 'locked' : `${progress}% complete`}`}
-                    onClick={() => {
-                      if (locked) return
-                      setCurrentIslandIdx(idx)
-                      go('island')
-                    }}
-                    style={{ left: spot.left, top: spot.top }}
-                    className="group absolute size-9 -translate-x-1/2 -translate-y-1/2 rounded-full focus-visible:z-30 hover:z-30"
-                  >
-                    <span
-                      className={`relative grid size-9 place-items-center rounded-full border-2 font-mono text-[11px] font-extrabold shadow-[0_3px_0_rgb(2_13_24_/_0.35)] transition-transform duration-200 group-hover:scale-110 group-focus-visible:scale-110 ${
-                        locked
-                          ? 'border-hull-300 bg-space-900/80 text-hull-300'
-                          : passed
-                            ? 'border-pastel-cream bg-signal-success text-space-950'
-                            : 'border-pastel-cream bg-ember-500 text-space-950'
-                      }`}
-                    >
-                      <span
-                        className={`absolute inset-[-6px] -z-10 rounded-full border-2 ${locked ? 'border-hull-300/35' : 'animate-pulse border-ember-300/70'}`}
-                      />
-                      {locked ? (
-                        <LockIcon className="size-3.5" />
-                      ) : passed ? (
-                        <CheckIcon className="size-4" />
-                      ) : (
-                        idx + 1
-                      )}
-                    </span>
-
-                    <span
-                      className={`pointer-events-none absolute w-48 scale-95 rounded-[var(--radius-panel)] border border-white/20 bg-space-950/95 p-3 text-left text-white opacity-0 shadow-[0_10px_28px_rgb(2_13_24_/_0.38)] backdrop-blur-md transition duration-200 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100 ${tooltipPosition}`}
-                    >
-                      <span className="flex items-start justify-between gap-2">
-                        <span className="text-sm font-extrabold leading-tight">{place.name}</span>
-                        <span className="font-mono text-[10px] font-bold text-ember-300">
-                          {locked ? 'LOCKED' : `${progress}%`}
-                        </span>
-                      </span>
-                      <span className="mt-1 block text-[10px] leading-relaxed text-hull-300">
-                        {place.tagline}
-                      </span>
-                      <span className="mt-2 block h-1.5 overflow-hidden rounded-full bg-space-700">
-                        <span
-                          className="block h-full rounded-full bg-gradient-to-r from-ember-400 to-solar-300"
-                          style={{ width: `${progress}%` }}
-                        />
-                      </span>
-                      <span className="mt-1.5 block font-mono text-[9px] font-bold uppercase tracking-wider text-hull-300">
-                        {locked
-                          ? 'Complete the previous island'
-                          : `${done} of ${place.activities.length} activities`}
-                      </span>
-                    </span>
-                  </button>
-                )
-              })}
-            </section>
-
-            <button
-              type="button"
-              className="dashboard-map-view absolute bottom-24 left-1/2 z-20 grid size-7 -translate-x-1/2 place-items-center rounded-full border border-pastel-cream/70 bg-space-950/75 font-mono text-sm font-bold text-pastel-cream shadow-[0_3px_10px_rgb(2_13_24_/_0.3)] backdrop-blur-sm hover:scale-110"
-              data-active={dashboardView === 'map'}
-              aria-label="Show island list"
-              aria-hidden={dashboardView !== 'map'}
-              tabIndex={dashboardView === 'map' ? 0 : -1}
-              onClick={() => setDashboardView('list')}
-            >
-              ↑
-            </button>
-
-            <section
-              ref={dashboardListRef}
-              className="dashboard-list-view absolute inset-x-0 bottom-24 top-20 z-10 overflow-y-auto overscroll-contain px-5 pb-8 pt-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-              data-active={dashboardView === 'list'}
-              aria-label="Island modules"
-              aria-hidden={dashboardView !== 'list'}
-              inert={dashboardView !== 'list'}
-            >
-              <div className="mb-4 flex items-center justify-between px-1">
-                <h2 className="text-xl font-extrabold text-white">Your learning islands</h2>
-                <button
-                  type="button"
-                  className="grid size-7 place-items-center rounded-full border border-pastel-cream/70 bg-space-950/75 font-mono text-sm font-bold text-pastel-cream shadow-[0_3px_10px_rgb(2_13_24_/_0.3)] backdrop-blur-sm transition-transform hover:scale-110"
-                  aria-label="Show island map"
-                  onClick={() => setDashboardView('map')}
-                >
-                  ↓
-                </button>
-              </div>
-
-              <div className="flex flex-col gap-3">
+              <section
+                className="dashboard-map-view absolute left-[49%] top-[48%] z-10 h-[68%] w-[87%] -translate-x-1/2 -translate-y-1/2"
+                data-active={dashboardView === 'map'}
+                aria-label="Learning landmarks"
+                aria-hidden={dashboardView !== 'map'}
+                inert={dashboardView !== 'map'}
+              >
                 {ISLANDS.map((place, idx) => {
+                  const spot = ISLAND_SPOTS[idx]
                   const locked = idx >= unlockedIslands
                   const passed = passedIslands[place.id]
                   const done = place.activities.filter((activity) => completed[activity.id]).length
                   const progress = Math.round((done / place.activities.length) * 100)
-                  const remaining = place.activities.length - done
+                  const tooltipPosition =
+                    spot.tooltip === 'above'
+                      ? 'bottom-10 left-1/2 -translate-x-1/2'
+                      : spot.tooltip === 'below'
+                        ? 'left-1/2 top-10 -translate-x-1/2'
+                        : spot.tooltip === 'left'
+                          ? 'right-10 top-1/2 -translate-y-1/2'
+                          : 'left-10 top-1/2 -translate-y-1/2'
 
                   return (
                     <button
                       key={place.id}
                       type="button"
                       aria-disabled={locked}
+                      aria-label={`${place.name}: ${locked ? 'locked' : `${progress}% complete`}`}
                       onClick={() => {
                         if (locked) return
                         setCurrentIslandIdx(idx)
                         go('island')
                       }}
-                      className={`w-full rounded-[var(--radius-panel)] border-2 p-4 text-left shadow-[0_5px_0_rgb(2_13_24_/_0.28)] transition-[transform,box-shadow,background-color] duration-200 ${
-                        locked
-                          ? 'border-hull-400/50 bg-space-900/90 text-hull-300'
-                          : passed
-                            ? 'border-pastel-mint bg-pastel-mint text-space-950 hover:-translate-y-0.5 hover:bg-white'
-                            : 'border-ember-200 bg-pastel-cream text-space-950 hover:-translate-y-0.5 hover:bg-white'
-                      }`}
+                      style={{ left: spot.left, top: spot.top }}
+                      className="group absolute size-9 -translate-x-1/2 -translate-y-1/2 rounded-full focus-visible:z-30 hover:z-30"
                     >
-                      <span className="flex items-start gap-3">
+                      <span
+                        className={`relative grid size-9 place-items-center rounded-full border-2 font-mono text-[11px] font-extrabold shadow-[0_3px_0_rgb(2_13_24_/_0.35)] transition-transform duration-200 group-hover:scale-110 group-focus-visible:scale-110 ${
+                          locked
+                            ? 'border-hull-300 bg-space-900/80 text-hull-300'
+                            : passed
+                              ? 'border-pastel-cream bg-signal-success text-space-950'
+                              : 'border-pastel-cream bg-ember-500 text-space-950'
+                        }`}
+                      >
                         <span
-                          className={`grid size-10 shrink-0 place-items-center rounded-full border-2 ${
-                            locked
-                              ? 'border-hull-400/60 bg-space-800'
-                              : passed
-                                ? 'border-space-900 bg-signal-success'
-                                : 'border-ember-500 bg-ember-300'
-                          }`}
-                        >
-                          {locked ? (
-                            <LockIcon className="size-4" />
-                          ) : passed ? (
-                            <CheckIcon className="size-5" />
-                          ) : (
-                            <MapIcon className="size-4" />
-                          )}
+                          className={`absolute inset-[-6px] -z-10 rounded-full border-2 ${locked ? 'border-hull-300/35' : 'animate-pulse border-ember-300/70'}`}
+                        />
+                        {locked ? (
+                          <LockIcon className="size-3.5" />
+                        ) : passed ? (
+                          <CheckIcon className="size-4" />
+                        ) : (
+                          idx + 1
+                        )}
+                      </span>
+
+                      <span
+                        className={`pointer-events-none absolute w-48 scale-95 rounded-[var(--radius-panel)] border border-white/20 bg-space-950/95 p-3 text-left text-white opacity-0 shadow-[0_10px_28px_rgb(2_13_24_/_0.38)] backdrop-blur-md transition duration-200 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100 ${tooltipPosition}`}
+                      >
+                        <span className="flex items-start justify-between gap-2">
+                          <span className="text-sm font-extrabold leading-tight">{place.name}</span>
+                          <span className="font-mono text-[10px] font-bold text-ember-300">
+                            {locked ? 'LOCKED' : `${progress}%`}
+                          </span>
                         </span>
-
-                        <span className="min-w-0 flex-1">
-                          <span className="flex items-start justify-between gap-3">
-                            <span>
-                              <span className="block font-mono text-[10px] font-bold uppercase tracking-widest opacity-70">
-                                Island {idx + 1}
-                              </span>
-                              <span className="mt-0.5 block text-base font-extrabold leading-tight">
-                                {place.name}
-                              </span>
-                            </span>
-                            <span className="shrink-0 font-mono text-xs font-extrabold">
-                              {locked ? 'LOCKED' : `${progress}%`}
-                            </span>
-                          </span>
-
-                          <span className="mt-2 block text-xs leading-relaxed opacity-75">
-                            {place.tagline}
-                          </span>
-
+                        <span className="mt-1 block text-[10px] leading-relaxed text-hull-300">
+                          {place.tagline}
+                        </span>
+                        <span className="mt-2 block h-1.5 overflow-hidden rounded-full bg-space-700">
                           <span
-                            className={`mt-3 block h-2.5 overflow-hidden rounded-full ring-1 ring-inset ${
-                              locked
-                                ? 'bg-space-700 ring-hull-300/30'
-                                : 'bg-space-950/20 ring-space-950/15'
-                            }`}
-                          >
-                            <span
-                              className={`block h-full rounded-full ${
-                                locked
-                                  ? 'bg-hull-400'
-                                  : 'bg-gradient-to-r from-ember-500 to-solar-300'
-                              }`}
-                              style={{ width: `${progress}%` }}
-                            />
-                          </span>
-
-                          <span className="mt-2 flex justify-between font-mono text-[10px] font-bold uppercase tracking-wide opacity-70">
-                            <span>
-                              {locked
-                                ? 'Complete previous island'
-                                : `${done}/${place.activities.length} modules done`}
-                            </span>
-                            {!locked && <span>{remaining ? `${remaining} left` : 'Complete'}</span>}
-                          </span>
+                            className="block h-full rounded-full bg-gradient-to-r from-ember-400 to-solar-300"
+                            style={{ width: `${progress}%` }}
+                          />
+                        </span>
+                        <span className="mt-1.5 block font-mono text-[9px] font-bold uppercase tracking-wider text-hull-300">
+                          {locked
+                            ? 'Complete the previous island'
+                            : `${done} of ${place.activities.length} activities`}
                         </span>
                       </span>
                     </button>
                   )
                 })}
-              </div>
-            </section>
+              </section>
 
-            {allIslandsPassed && (
-              <Button
-                variant="nebula"
-                onClick={() => go('courseComplete')}
-                className="absolute inset-x-5 bottom-24 z-20 py-3 text-sm"
+              <button
+                type="button"
+                className="dashboard-map-view absolute bottom-24 left-1/2 z-20 grid size-7 -translate-x-1/2 place-items-center rounded-full border border-pastel-cream/70 bg-space-950/75 font-mono text-sm font-bold text-pastel-cream shadow-[0_3px_10px_rgb(2_13_24_/_0.3)] backdrop-blur-sm hover:scale-110"
+                data-active={dashboardView === 'map'}
+                aria-label="Show island list"
+                aria-hidden={dashboardView !== 'map'}
+                tabIndex={dashboardView === 'map' ? 0 : -1}
+                onClick={() => setDashboardView('list')}
               >
-                View graduation certificate
-              </Button>
-            )}
+                ↑
+              </button>
+
+              <section
+                ref={dashboardListRef}
+                className="dashboard-list-view absolute inset-x-0 bottom-24 top-20 z-10 overflow-y-auto overscroll-contain px-5 pb-8 pt-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                data-active={dashboardView === 'list'}
+                aria-label="Island modules"
+                aria-hidden={dashboardView !== 'list'}
+                inert={dashboardView !== 'list'}
+              >
+                <div className="mb-4 flex items-center justify-between px-1">
+                  <h2 className="text-xl font-extrabold text-white">Your learning islands</h2>
+                  <button
+                    type="button"
+                    className="grid size-7 place-items-center rounded-full border border-pastel-cream/70 bg-space-950/75 font-mono text-sm font-bold text-pastel-cream shadow-[0_3px_10px_rgb(2_13_24_/_0.3)] backdrop-blur-sm transition-transform hover:scale-110"
+                    aria-label="Show island map"
+                    onClick={() => setDashboardView('map')}
+                  >
+                    ↓
+                  </button>
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  {ISLANDS.map((place, idx) => {
+                    const locked = idx >= unlockedIslands
+                    const passed = passedIslands[place.id]
+                    const done = place.activities.filter(
+                      (activity) => completed[activity.id]
+                    ).length
+                    const progress = Math.round((done / place.activities.length) * 100)
+                    const remaining = place.activities.length - done
+
+                    return (
+                      <button
+                        key={place.id}
+                        type="button"
+                        aria-disabled={locked}
+                        onClick={() => {
+                          if (locked) return
+                          setCurrentIslandIdx(idx)
+                          go('island')
+                        }}
+                        className={`w-full rounded-[var(--radius-panel)] border-2 p-4 text-left shadow-[0_5px_0_rgb(2_13_24_/_0.28)] transition-[transform,box-shadow,background-color] duration-200 ${
+                          locked
+                            ? 'border-hull-400/50 bg-space-900/90 text-hull-300'
+                            : passed
+                              ? 'border-pastel-mint bg-pastel-mint text-space-950 hover:-translate-y-0.5 hover:bg-white'
+                              : 'border-ember-200 bg-pastel-cream text-space-950 hover:-translate-y-0.5 hover:bg-white'
+                        }`}
+                      >
+                        <span className="flex items-start gap-3">
+                          <span
+                            className={`grid size-10 shrink-0 place-items-center rounded-full border-2 ${
+                              locked
+                                ? 'border-hull-400/60 bg-space-800'
+                                : passed
+                                  ? 'border-space-900 bg-signal-success'
+                                  : 'border-ember-500 bg-ember-300'
+                            }`}
+                          >
+                            {locked ? (
+                              <LockIcon className="size-4" />
+                            ) : passed ? (
+                              <CheckIcon className="size-5" />
+                            ) : (
+                              <MapIcon className="size-4" />
+                            )}
+                          </span>
+
+                          <span className="min-w-0 flex-1">
+                            <span className="flex items-start justify-between gap-3">
+                              <span>
+                                <span className="block font-mono text-[10px] font-bold uppercase tracking-widest opacity-70">
+                                  Island {idx + 1}
+                                </span>
+                                <span className="mt-0.5 block text-base font-extrabold leading-tight">
+                                  {place.name}
+                                </span>
+                              </span>
+                              <span className="shrink-0 font-mono text-xs font-extrabold">
+                                {locked ? 'LOCKED' : `${progress}%`}
+                              </span>
+                            </span>
+
+                            <span className="mt-2 block text-xs leading-relaxed opacity-75">
+                              {place.tagline}
+                            </span>
+
+                            <span
+                              className={`mt-3 block h-2.5 overflow-hidden rounded-full ring-1 ring-inset ${
+                                locked
+                                  ? 'bg-space-700 ring-hull-300/30'
+                                  : 'bg-space-950/20 ring-space-950/15'
+                              }`}
+                            >
+                              <span
+                                className={`block h-full rounded-full ${
+                                  locked
+                                    ? 'bg-hull-400'
+                                    : 'bg-gradient-to-r from-ember-500 to-solar-300'
+                                }`}
+                                style={{ width: `${progress}%` }}
+                              />
+                            </span>
+
+                            <span className="mt-2 flex justify-between font-mono text-[10px] font-bold uppercase tracking-wide opacity-70">
+                              <span>
+                                {locked
+                                  ? 'Complete previous island'
+                                  : `${done}/${place.activities.length} modules done`}
+                              </span>
+                              {!locked && (
+                                <span>{remaining ? `${remaining} left` : 'Complete'}</span>
+                              )}
+                            </span>
+                          </span>
+                        </span>
+                      </button>
+                    )
+                  })}
+                </div>
+              </section>
+
+              {allIslandsPassed && (
+                <Button
+                  variant="nebula"
+                  onClick={() => go('courseComplete')}
+                  className="absolute inset-x-5 bottom-24 z-20 py-3 text-sm"
+                >
+                  View graduation certificate
+                </Button>
+              )}
+            </div>
           </div>
         )
 
@@ -2773,7 +2779,7 @@ export function AppFlow({
         {renderScreen()}
       </div>
       {showNav && (
-        <div className="fixed inset-x-0 bottom-5 z-20">
+        <div className="fixed inset-x-0 bottom-5 z-20 pb-[env(safe-area-inset-bottom,0px)] pl-[env(safe-area-inset-left,0px)] pr-[env(safe-area-inset-right,0px)]">
           <BottomNav
             activeId={navActive}
             onNavigate={(id) => {

@@ -75,6 +75,7 @@ html {
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
   background: var(--color-space-950);
   color: var(--color-hull-100);
